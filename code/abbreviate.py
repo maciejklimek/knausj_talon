@@ -1,3 +1,5 @@
+# XXX - would be nice to be able pipe these through formatters
+
 import sys
 from typing import Set
 
