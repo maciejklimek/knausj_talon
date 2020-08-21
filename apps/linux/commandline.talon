@@ -159,6 +159,7 @@ download clipboard:
 run script: "./"
 
 # bash convenience stuff
+history: "history\n"
 for file loop:
     insert("for FILE in $(ls \"*\"); do \$FILE; done")
 
