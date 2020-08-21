@@ -1,5 +1,6 @@
 # XXX - trigger alt-1 to hit command window for necessary commands?
 # ex: user.windbg_insert_in_cmd()
+    edit.left()
 
 mode: user.windbg
 -
@@ -129,6 +130,11 @@ loaded modules:
 display pointers:
     insert("dps ")
 
+# XXX - should be generic
+dereference pointer:
+    insert("poi()")
+    edit.left()
+
 show version: key(ctrl-alt-w)
 
 ##
@@ -144,3 +150,8 @@ view call stack: key(alt-6)
 view disassembly: key(alt-7)
 view scratch pad: key(alt-8)
 view (processes|threads): key(alt-9)
+
+# XXX - temp
+dump function params: "r @rcx,@rdx,@r8,@r9\n"
+
+(lib|library) <user.windows_dlls>: "{windows_dlls}"

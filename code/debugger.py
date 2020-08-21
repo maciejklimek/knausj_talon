@@ -34,7 +34,10 @@ x64_registers = {
     "dest": "rdi",
     "stack": "rsp",
     "stack pointer": "rsp",
+    "frame": "rbp",
     "frame pointer": "rbp",
+    "base": "rbp",
+    "base pointer": "rbp",
     "eight": "r8",
     "nine": "r9",
     "ten": "r10",
@@ -48,6 +51,9 @@ x64_registers = {
     "rip": "rip",
     # segment
 }
+
+# XXX - pass by windbg to dump
+windows_x64_register_parameters = ["rcx", "rdx", "r8", "r9"]
 
 # XXX - make this dynamic
 ctx.lists["self.registers"] = x64_registers
