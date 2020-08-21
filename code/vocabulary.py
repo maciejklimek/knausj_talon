@@ -144,6 +144,8 @@ simple_vocabulary = [
     "giffed",
     "gif",
     "LUKS",
+    "able",
+    "metasploit",
 ]
 
 mapping_vocabulary = {
@@ -212,9 +214,11 @@ mapping_vocabulary = {
     "win two key twelve": "win2k12",
     "wind bag": "windbg",
     "ex eighty six": "x86",
+    "ax eighty six": "x86",
     "a city six": "x86",
     "ex sixty four": "x64",
-    "a sixty for": "x64",
+    "a sixty four": "x64",
+    "ax sixty four": "x64",
     "key pass": "keepass",
     "eye three": "i3",
     "an am cli": "nmcli",
@@ -276,6 +280,8 @@ mapping_vocabulary = {
     "gooey": "gui",
     "vee em ware": "vmware",
     "lamby": "lambai",
+    "four matters": "formatters",
+    "meta exploit": "metasploit",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
