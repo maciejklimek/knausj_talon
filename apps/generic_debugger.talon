@@ -67,7 +67,7 @@ list modules: user.debugger_list_modules()
 inspect type: user.debugger_inspect_type()
 
 # Hex Dumping Memory
-hex dump register:
+#hex dump register:
 
 # Convenience
 clear line: user.debugger_clear_line()

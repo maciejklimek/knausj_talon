@@ -1,6 +1,6 @@
 app: termite
 -
-tag(): user.terminal
+tag(): terminal
 
 # Selection mode
 shell yank: key("y")

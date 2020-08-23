@@ -1,14 +1,14 @@
-from talon import Context, actions, ui, Module, app
-
 # from user.knausj_talon.code.snippet_watcher import snippet_watcher
 import os
+
+from talon import Context, Module, actions, app, ui
 
 ctx = Context()
 ctx.matches = r"""
 app: vscode
 mode: user.python
-mode: command 
-and code.language: python
+mode: command
+and code.language: user.python
 """
 # short name -> ide clip name
 ctx.lists["user.snippets"] = {
@@ -37,4 +37,3 @@ def update_list(watch_list):
 #     {os.path.expandvars(r"%AppData%\Code\User\snippets"): ["python.json"],},
 #     update_list,
 # )
-

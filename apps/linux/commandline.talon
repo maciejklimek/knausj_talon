@@ -1,4 +1,4 @@
-i NOTE: these are command line commands, not shell-specific bindings
+# NOTE: these are command line commands, not shell-specific bindings
 # see shell.talon for shell-specific keybindings
 os: linux
 mode: user.terminal
@@ -189,7 +189,6 @@ reboot system: "sudo reboot -h now"
 # unsorted
 zed s h: "zsh"
 cd: "cd "
-grep: "grep "
 elle less: "ls "
 run L S: "ls\n"
 run (S S H | S H): "ssh"

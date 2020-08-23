@@ -1,11 +1,11 @@
 # XXX - trigger alt-1 to hit command window for necessary commands?
 # ex: user.windbg_insert_in_cmd()
-    edit.left()
+#    edit.left()
 
 mode: user.windbg
 -
-tag(): debugger
-tag(): windbg
+tag(): user.debugger
+tag(): user.windbg
 
 ##
 # Generic debugger actions
@@ -108,8 +108,8 @@ action(user.debugger_inspect_type):
     insert("dt ")
 
 # Convenience
-action(user.debugger_clear_line)
-    key(ctrl-a backspace)
+action(user.debugger_clear_line):
+    key("ctrl-a backspace")
 ##
 # Windbg specific functionality
 ##

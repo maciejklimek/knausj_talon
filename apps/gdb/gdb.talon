@@ -19,7 +19,7 @@ action(user.debugger_step_over_line): "next\n"
 action(user.debugger_step_out): "finish\n"
 until <number>: "until {number}"
 action(user.debugger_continue): "c\n"
-action(user.debugger_stop):
+action(user.debugger_stop): key("ctrl-c")
 action(user.debugger_start): "run\n"
 action(user.debugger_restart): "run\n"
 # XXX -

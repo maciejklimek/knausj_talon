@@ -13,7 +13,7 @@ win.title: /VIM/
 -
 
 tag(): user.vim
-tag(): user.tab
+tag(): user.tabs
 settings():
     # Whether or not to always revert back to the previous mode. Example, if
     # you are in insert mode and say 'delete word' it will delete one word and
@@ -512,7 +512,7 @@ split new vertical:
 # open specified buffer in new split
 split (buf|buffer) <number_small>:
     user.vim_set_normal_mode_exterm()
-    key("{number_small}")
+    insert("{number_small}")
     key("ctrl-w")
     key("ctrl-^")
 

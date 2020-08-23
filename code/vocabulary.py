@@ -146,6 +146,7 @@ simple_vocabulary = [
     "LUKS",
     "able",
     "metasploit",
+    "mod",
 ]
 
 mapping_vocabulary = {

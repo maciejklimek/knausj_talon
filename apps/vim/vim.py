@@ -551,6 +551,9 @@ mod.list("vim_motion_commands", desc="Counted VIM commands with motions")
 # mod.list("vim_counted_motions", desc="Counted VIM motion verbs")
 mod.list("vim_counted_actions", desc="Counted VIM action verbs")
 mod.list("vim_counted_actions_keys", desc="Counted VIM action verbs ctrl keys")
+mod.list(
+    "vim_counted_actions_args", desc="Counted VIM action verbs with keyi arguments"
+)
 mod.list("vim_normal_counted_action", desc="Normal counted VIM actions")
 mod.list("vim_normal_counted_actions_keys", desc="Counted VIM action verbs ctrl keys")
 mod.list("vim_motions", desc="Non-counted VIM motions")
@@ -1191,7 +1194,7 @@ class VimMode:
             mode = None
             if "MODE:" in title:
                 mode = title.split("MODE:")[1].split(" ")[0]
-                self.dprint(mode)
+                # self.dprint(mode)
                 if mode not in self.vim_modes.keys():
                     return None
                 self.current_mode = mode
@@ -1269,7 +1272,7 @@ class VimMode:
         cur = self.current_mode_id()
         if type(valid_mode_ids) != list:
             valid_mode_ids = [valid_mode_ids]
-        self.dprint(f"from {cur} to {valid_mode_ids}")
+        # self.dprint(f"from {cur} to {valid_mode_ids}")
         if cur not in valid_mode_ids:
             # Just favor the first mode match
             self.set_mode(

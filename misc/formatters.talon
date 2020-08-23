@@ -13,7 +13,6 @@
 poke <user.word>: insert(user.word)
 list formatters: user.list_formatters()
 hide formatters: user.hide_formatters()
-^nope that$: user.clear_last_phrase()
 format help: user.formatters_help_toggle()
 format recent: user.formatters_recent_toggle()
 format repeat <number>:

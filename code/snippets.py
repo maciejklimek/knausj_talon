@@ -1,5 +1,5 @@
 # defines placeholder actions and captures for ide-specific snippet functionality
-from talon import Module, actions, app, Context
+from talon import Context, Module, actions, app
 
 mod = Module()
 ctx = Context()
@@ -27,4 +27,3 @@ class Actions:
 @ctx.capture(rule="{user.snippets}")
 def snippets(m):
     return m.snippets
-
