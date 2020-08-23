@@ -4,8 +4,8 @@ os: linux
 tag: terminal
 mode: user.gdb
 -
-tag(): gdb
-tag(): debugger
+tag(): user.gdb
+tag(): user.debugger
 
 ##
 # Generic debugger actions

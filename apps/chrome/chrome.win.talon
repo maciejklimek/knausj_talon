@@ -1,14 +1,9 @@
 os: windows
 os: linux
 app: chrome
-app: Chrome
-app: chromium
-app: Chromium
-app: Google Chrome
-app: chrome.exe
 -
 tag(): browser
-tag(): tabs
+tag(): user.tabs
 #action(browser.address):
 
 action(browser.bookmark):
