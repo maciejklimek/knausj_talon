@@ -1,5 +1,5 @@
 os: linux
-tag: vim
+tag: user.vim
 code.language: snippets
 -
 

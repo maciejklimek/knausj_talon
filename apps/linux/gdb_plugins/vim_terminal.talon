@@ -1,5 +1,5 @@
-#tag: vim
-tag: gdb
+#tag: user.vim
+tag: user.gdb
 -
 
 ###

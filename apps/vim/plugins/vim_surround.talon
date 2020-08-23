@@ -1,5 +1,5 @@
 # see `code/vim.py` for more implementation
-tag: vim
+tag: user.vim
 -
 
 # TODO

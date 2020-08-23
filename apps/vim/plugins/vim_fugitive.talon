@@ -1,4 +1,4 @@
-tag: vim
+tag: user.vim
 -
 
 (fugitive|git) add (current|this) file: user.vim_command_mode(":G add %\n")

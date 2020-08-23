@@ -1,4 +1,4 @@
-tag: vim
+tag: user.vim
 -
 
 # XXX - i'm using 'this' right now to avoid conflicting with the support in vim.py

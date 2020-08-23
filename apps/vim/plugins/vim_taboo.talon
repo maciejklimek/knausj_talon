@@ -1,5 +1,5 @@
 # https://github.com/gcmt/taboo.vim/
-tag: vim
+tag: user.vim
 -
 
 tab rename: user.vim_normal_mode_exterm(":TabooRename ")

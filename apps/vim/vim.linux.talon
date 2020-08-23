@@ -12,8 +12,8 @@ app:/term/
 win.title: /VIM/
 -
 
-tag(): vim
-tag(): tab
+tag(): user.vim
+tag(): user.tab
 settings():
     # Whether or not to always revert back to the previous mode. Example, if
     # you are in insert mode and say 'delete word' it will delete one word and

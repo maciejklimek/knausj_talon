@@ -5,7 +5,7 @@
 # XXX - need to make sure not to conflict with vim bindings
 # XXX - missing a significant amount of commands
 
-tag: vim
+tag: user.vim
 and win.title: /\[Git/
 -
 

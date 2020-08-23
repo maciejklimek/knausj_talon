@@ -1,7 +1,10 @@
+# XXX - the sleeps our way too short when in vmware
+
 import os
 import subprocess
 import time
 
+from hexdump import hexdump
 from talon import Context, Module, actions, clip, settings, ui
 
 try:
@@ -24,8 +27,8 @@ class Lambai:
         # self.nvim = pynvim.attach(
         #     "child", argv=["/bin/env", "nvim", "--embed", "--headless"]
         # )
-        nvim_socket_path = "/tmp/nvim"
-        subprocess.Popen(["nvim", "--headless", "--listen", nvim_socket_path])
+        nvim_socket_path = "/tmp/nvim2"
+        # subprocess.Popen(["nvim", "--headless", "--listen", nvim_socket_path])
         self.nvim = pynvim.attach("socket", path=nvim_socket_path)
         self.cursor_pos = 0
         self.orig_cursor_pos = 0
@@ -37,6 +40,9 @@ class Lambai:
         actions.key("ctrl-c")
         time.sleep(0.1)
         text = clip.text()
+        #        print(type(text))
+        #        hexdump(text.encode("utf-8"))
+        #        print(text)
         self.nvim.current.buffer[0] = text
         self.orig_cursor_end_pos = len(text)
 
@@ -67,8 +73,8 @@ class Lambai:
             count = pos
             direction = "right"
             actions.key("home")
-        # print(count)
-        # print(direction)
+        print(count)
+        print(direction)
         # XXX might speed up with word jumping
         for i in range(0, count):
             actions.key(direction)
