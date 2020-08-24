@@ -8,7 +8,7 @@ ctx.matches = r"""
 app: vscode
 mode: user.csharp
 mode: command 
-and code.language: user.csharp
+and code.language: csharp
 """
 # short name -> ide clip name
 ctx.lists["user.snippets"] = {

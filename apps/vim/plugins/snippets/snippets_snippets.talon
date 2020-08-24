@@ -1,6 +1,6 @@
 os: linux
 tag: user.vim
-code.language: user.snippets
+code.language: snippets
 -
 
 (snip|snippet) (snip|snippet):

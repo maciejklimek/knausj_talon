@@ -1,5 +1,5 @@
 tag: user.vim
-code.language: user.gdb
+code.language: gdb
 -
 
 ###

@@ -1,5 +1,5 @@
 tag: user.vim
-code.language: user.bash
+code.language: bash
 -
 ###
 # Public snippets - part of vim-snippets

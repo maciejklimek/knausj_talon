@@ -95,7 +95,7 @@ class code_actions:
             if result in extension_lang_map:
                 result = extension_lang_map[result]
 
-        # print("code.language: user." + result)
+        # print("code.language: " + result)
         return result
 
 
@@ -115,7 +115,7 @@ class Actions:
         forced_language = True
 
     def code_clear_language_mode():
-        """Clears the active language mode, and re-enables code.language: user.extension matching"""
+        """Clears the active language mode, and re-enables code.language: extension matching"""
         global forced_language
         forced_language = False
 

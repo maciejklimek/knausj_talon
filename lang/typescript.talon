@@ -1,6 +1,6 @@
 mode: user.typescript
 mode: command
-and code.language: user.typescript
+and code.language: typescript
 -
 tag(): user.code_operators
 tag(): user.code_comment

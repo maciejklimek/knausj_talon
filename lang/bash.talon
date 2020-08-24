@@ -1,6 +1,6 @@
 mode: user.bash
 mode: command
-and code.language: user.bash
+and code.language: bash
 -
 tag(): user.code_operators
 tag(): user.code_comment

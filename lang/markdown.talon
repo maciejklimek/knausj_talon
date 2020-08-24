@@ -1,6 +1,6 @@
 mode: user.markdown
 mode: command
-and code.language: user.markdown
+and code.language: markdown
 -
 
 # XXX - make work with generic editor commends

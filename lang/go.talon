@@ -1,6 +1,6 @@
 mode: user.go
 mode: command
-and code.language: user.go
+and code.language: go
 -
 variadic: "..."
 logical and: " && "

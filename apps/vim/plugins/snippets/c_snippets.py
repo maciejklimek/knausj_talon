@@ -6,7 +6,7 @@ tag: user.vim
 tag: user.snippets
 mode: user.c
 mode: command
-and code.language: user.c
+and code.language: c
 """
 
 ctx.lists["user.snippets"] = {
