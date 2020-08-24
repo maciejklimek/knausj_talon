@@ -2,7 +2,7 @@ import os
 import re
 import time
 
-from talon import Context, Module, app, imgui, ui, fs
+from talon import Context, Module, app, fs, imgui, ui
 
 # Construct at startup a list of overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
@@ -36,7 +36,7 @@ def launch_applications(m) -> str:
     "Returns a single application name"
 
 
-@ctx.capture(rule="({self.running} | <user.text>)")
+@ctx.capture(rule="{self.running}")  # | <user.text>)")
 def running_applications(m):
     try:
         return m.running
