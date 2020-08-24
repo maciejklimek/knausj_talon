@@ -1,6 +1,6 @@
 mode: user.talon
 mode: command
-and code.language: talon
+and code.language: user.talon
 -
 tag(): user.code_operators
 tag(): user.code_comment

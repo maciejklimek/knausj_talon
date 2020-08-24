@@ -1,6 +1,6 @@
 mode: user.c
 mode: command
-and code.language: c
+and code.language: user.c
 -
 tag(): user.code_operators
 tag(): user.code_comment

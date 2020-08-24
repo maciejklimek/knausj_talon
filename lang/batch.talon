@@ -1,6 +1,6 @@
 mode: user.batch
 mode: command
-and code.language: batch
+and code.language: user.batch
 -
 #tag(): user.code_operators
 tag(): user.code_comment
