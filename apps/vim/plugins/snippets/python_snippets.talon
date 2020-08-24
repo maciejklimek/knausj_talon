@@ -1,5 +1,5 @@
 tag: user.vim
-code.language: python
+code.language: user.python
 -
 ###
 # Public snippets - part of vim-snippets

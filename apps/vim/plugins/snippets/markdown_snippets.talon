@@ -1,6 +1,6 @@
 # these commands are based off the official the markdown vim-snippets
 tag: user.vim
-code.language: markdown
+code.language: user.markdown
 -
 
 ###########################

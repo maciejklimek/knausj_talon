@@ -4,7 +4,7 @@ ctx = Context()
 ctx.matches = r"""
 mode: user.python
 mode: command 
-and code.language: python
+and code.language: user.python
 """
 ctx.lists["user.code_functions"] = {
     "enumerate": "enumerate",

@@ -4,7 +4,7 @@ ctx = Context()
 ctx.matches = r"""
 mode: user.csharp
 mode: command 
-and code.language: csharp
+and code.language: user.csharp
 """
 ctx.lists["user.code_functions"] = {
     "integer": "int.TryParse",

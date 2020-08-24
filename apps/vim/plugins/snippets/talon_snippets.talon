@@ -1,5 +1,5 @@
 tag: user.vim
-code.language: talon
+code.language: user.talon
 -
 
 (snip|snippet) talon file:
