@@ -17,4 +17,4 @@ my work number: user.personal_info("work-phone-numbers")
 my address: user.personal_info("addresses")
 my work address: user.personal_info("work-addresses")
 
-work address {number_small}: user.personal_info_select("work-addresses", number_small)
+work address <number_small>: user.personal_info_select("work-addresses", number_small)
