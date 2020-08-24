@@ -307,8 +307,10 @@ delete (until|till) line <number>:
     insert("''d")
 
 
-clear line:
-    user.vim_insert_mode_key("ctrl-u")
+# XXX - seems buggy
+#clear line:
+#    user.vim_insert_mode_key("ctrl-u")
+
 wipe line:
     user.vim_normal_mode("0d$")
 
@@ -458,6 +460,7 @@ close (bufs|buffers): user.vim_command_mode_exterm(":bd ")
 (buf|buffer) rename: user.vim_command_mode_exterm(":file ")
 (buf|buffer) rename <user.text>: user.vim_command_mode_exterm(":file {text}")
 new (empty|unnamed) buffer: user.vim_command_mode_exterm(":enew\n")
+(buf|buffer) do: user.vim_command_mode_exterm(":bufdo ")
 
 ###
 # Splits
@@ -667,6 +670,9 @@ set split width:
     user.vim_command_mode_exterm(":resize ")
 set split height:
     user.vim_set_command_mode_exterm(":vertical resize ")
+
+(split|window) do:
+    user.vim_command_mode_exterm(":windo ")
 
 ###
 # Diffing
@@ -1014,6 +1020,37 @@ fold line <number> through <number>$: user.vim_normal_mode(":{number_1},{number_
 (close fold|fold close): user.vim_normal_mode("zc")
 open all folds: user.vim_normal_mode("zR")
 close all folds: user.vim_normal_mode("zM")
+
+###
+# QuickFix list
+###
+vim grep:
+    user.vim_command_mode(":vimgrep // */*")
+    key(left:5)
+
+quick [fix] next: user.vim_command_mode(":cn\n")
+quick [fix] (prev|previous): user.vim_command_mode(":cp\n")
+quick [fix] (show|hide): user.vim_command_mode(":cw\n")
+quick [fix] close: user.vim_command_mode(":ccl\n")
+quick [fix] bottom: user.vim_command_mode(":cbo\n")
+quick [fix] do:
+    user.vim_command_mode(":cdo | update")
+    key(left:9)
+set auto write all: user.vim_command_mode(":set autowriteall\n")
+
+
+###
+# Argument list
+###
+(arg|argument) do:
+    user.vim_command_mode(":argdo | update")
+    key(left:9)
+(arg|argument) files:
+    user.vim_command_mode(":arg ")
+(arg|argument) list show:
+    user.vim_command_mode(":arg\n")
+(arg|argument) add:
+    user.vim_command_mode(":argadd ")
 
 ###
 # Command mode

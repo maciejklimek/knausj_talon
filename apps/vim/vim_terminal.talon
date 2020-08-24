@@ -1,5 +1,6 @@
 win.title: /VIM MODE:t/
 -
+
 tag(): terminal
 
 (pop terminal|vim mode):
@@ -7,6 +8,7 @@ tag(): terminal
 
 # pop terminal mode and scroll up once, from this point onward you can scroll
 # like normal
+# XXX - scroll up just become contextual on mode
 rabbit up:
     key(ctrl-\ ctrl-n ctrl-b)
 
