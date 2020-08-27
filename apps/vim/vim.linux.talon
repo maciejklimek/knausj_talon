@@ -1087,6 +1087,9 @@ show unsaved changes:
 swap again:
     key(g &)
 
+pinch: user.vim_normal_mode("0x")
+
+
 # useful for turning a git status list already yanked into a register into a
 # space delimited list you can peace unto the command line
 remove newlines from register <user.any>:

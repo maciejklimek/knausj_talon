@@ -188,14 +188,15 @@ commands_with_motion = {
     # motions
     "change": "c",
     "delete": "d",
-    "trim": "d",  # XXX - because talent doesn't like my "delete"
+    "trim": "d",  # XXX - likely replace with clear
+    "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "indent": ">",
     "unindent": "<",
-    "yank": "y",  # XXX - conflicts with talon 'yank' alphabet for 'y' key
+    "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key
     # NOTE: If you enable this and yank at the same time, some convenience
     # commands you might setup for automatic copying might get swallowed by
     # vim.py grammars
-    "copy": "y",
+    # "copy": "y",
     "fold": "zf",
     "format": "gq",
     "to upper": "gU",
@@ -210,9 +211,10 @@ visual_commands = {
     "change": "c",
     "join": "J",
     "delete": "d",
-    "trim": "d",  # XXX - because talon doesn't like the way I say "delete"
-    "yank": "y",  # XXX - conflicts with talon 'yank' alphabet for 'y' key
-    "copy": "y",
+    "trim": "d",  # XXX - likely replace with clear
+    "clear": "d",  # this is to be consistent with talon generic_editor.talon
+    "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key
+    # "copy": "y",
     "format": "gq",
     "fold": "zf",
     # some visual differences
@@ -235,7 +237,7 @@ vim_motions = {
     "back word": "b",
     "big back": "B",
     "big back word": "B",
-    # XXX - this conflicts with default talon 'end' key pressing
+    # NOTE - this conflicts with default talon 'end' key pressing
     "end": "e",
     "end word": "e",
     "big end": "E",
