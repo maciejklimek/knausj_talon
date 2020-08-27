@@ -72,3 +72,8 @@ apps.windows_terminal = """
 os: windows
 and app.name: WindowsTerminal.exe 
 """
+
+apps.vmware = """
+app.name: vmware
+app.name: Vmware
+"""
