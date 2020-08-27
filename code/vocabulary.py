@@ -147,6 +147,9 @@ simple_vocabulary = [
     "able",
     "metasploit",
     "mod",
+    "most",
+    "mouse",
+    "timeout",
 ]
 
 mapping_vocabulary = {
@@ -279,7 +282,7 @@ mapping_vocabulary = {
     "jiff": "gif",
     "lux": "LUKS",
     "gooey": "gui",
-    "vee em ware": "vmware",
+    "vest where": "vmware",
     "lamby": "lambai",
     "four matters": "formatters",
     "meta exploit": "metasploit",
