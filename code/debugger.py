@@ -5,10 +5,12 @@ from talon import Context, Module
 
 mod = Module()
 mod.tag("debugger", desc="Tag for enabling generic debugger commands")
+mod.list("x64_registers", desc="A list of x64 architecture registers")
+mod.list("x86_registers", desc="A list of x86 architecture registers")
 
 ctx = Context()
 ctx.matches = r"""
-tag: debugger
+tag: user.debugger
 """
 
 x86_registers = {
@@ -56,25 +58,33 @@ x64_registers = {
 windows_x64_register_parameters = ["rcx", "rdx", "r8", "r9"]
 
 # XXX - make this dynamic
-ctx.lists["self.registers"] = x64_registers
+ctx.lists["self.x64_registers"] = x64_registers
+ctx.lists["self.x86_registers"] = x86_registers
 
 # assembly_languages = {
 #    "x86": x86_registers,
 #    "x64": x64_registers,
 # }
 
-mod.list("registers", desc="Main architecture register set")
+
+@mod.capture
+def x64_registers(m) -> str:
+    "Return an x64 register"
+
+
+@ctx.capture(rule="{self.x64_registers}")
+def x64_registers(m):
+    return m.x64_registers
 
 
 @mod.capture
-def registers(m) -> str:
-    "Return an register"
-    return m.registers
+def x86_registers(m) -> str:
+    "Return an x86 register"
 
 
-@ctx.capture(rule="{self.registers}")
-def registers(m):
-    return m.registers
+@ctx.capture(rule="{self.x86_registers}")
+def x86_registers(m):
+    return m.x86_registers
 
 
 @mod.action_class
