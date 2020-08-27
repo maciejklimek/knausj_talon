@@ -1,4 +1,4 @@
-tag: debugger
+tag: user.debugger
 -
 
 # Code execution
@@ -27,7 +27,7 @@ get register: user.debugger_get_register()
 set register: user.debugger_set_register()
 
 # Breakpoints
-break now: user.debugger_break_now()
+break (now|into): user.debugger_break_now()
 break here: user.debugger_break_here()
 (list|show) (breaks|break points): user.debugger_show_breakpoints()
 (set|add) (break|break point): user.debugger_add_sw_breakpoint()

@@ -49,6 +49,8 @@ action(user.debugger_add_hw_breakpoint):
     insert("ba e 1 ")
 action(user.debugger_break_now):
     key(ctrl-break)
+# XXX
+action(user.debugger_break_here): ""
 action(user.debugger_clear_all_breakpoints):
     insert("bc *\n")
 action(user.debugger_clear_breakpoint):
@@ -99,9 +101,9 @@ action(user.debugger_list_modules):
 
 
 # Registers XXX
-register <user.registers>:
+register <user.x64_registers>:
     key(@)
-    insert("{registers}")
+    insert("{x64_registers}")
 
 # Type inspection
 action(user.debugger_inspect_type):

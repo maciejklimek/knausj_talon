@@ -1,6 +1,8 @@
 from talon import Context, Module, actions, ui
 
 mod = Module()
+mod.list("windows_dlls", desc="A list of shortcut names for windows DLLs")
+
 ctx = Context()
 
 ctx.matches = r"""
