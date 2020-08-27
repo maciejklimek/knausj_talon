@@ -1,6 +1,5 @@
 os: linux
 app: vmware
-app: Vmware
 -
 
 new virtual machine: key(ctrl-n)
