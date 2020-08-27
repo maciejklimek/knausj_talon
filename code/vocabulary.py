@@ -286,6 +286,7 @@ mapping_vocabulary = {
     "lamby": "lambai",
     "four matters": "formatters",
     "meta exploit": "metasploit",
+    "toby": "tobii",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
