@@ -11,11 +11,15 @@ settings():
 ###
 # Configuration
 ###
-mouse sleep: user.mouse_sleep()
-mouse wake: user.mouse_wake()
+mouse sleep:
+    user.mouse_sleep()
+# sometimes the tobii stops tracking when awake, and triggering wake again won't fix it
+mouse wake:
+    user.mouse_sleep()
+    user.mouse_wake()
 control mouse: user.mouse_toggle_control_mouse()
 camera overlay: eye_mouse.camera_overlay.toggle()
-run calibration: user.mouse_calibrate()
+(mouse|run) calibration: user.mouse_calibrate()
 [(enable|disable)] zoom mouse: user.mouse_toggle_zoom_mouse()
 [(enable|disable)] zoom auto click: user.mouse_toggle_zoom_auto_click()
 
