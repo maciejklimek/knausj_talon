@@ -13,7 +13,6 @@ sleep all:
     user.mouse_sleep()
     speech.disable()
     app.notify("Talon Sleep All Mode")
-    user.engine_sleep()
 talon sleep:
     speech.disable()
     app.notify("Talon Sleep")
@@ -41,9 +40,7 @@ talon wake:
     user.mouse_sleep()
     speech.disable()
     app.notify("Presentation Mode")
-    user.engine_sleep()
     mode.enable("user.presentation")
-
 
 # XXX - switch to a mode that lets you select debuggers
 [enable] debug mode:
