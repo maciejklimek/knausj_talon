@@ -3,8 +3,8 @@
 # https://fireeye.github.io/IDA_Pro_VoiceAttack_profile/Reference_sheet.html
 mode: user.ida
 -
-tag(): ida
-tag(): disassembler
+tag(): user.ida
+tag(): user.disassembler
 settings():
     # the number of opcodes to display next to assembly instructions, this will depend
     # on your architecture
@@ -15,7 +15,7 @@ settings():
 ##
 
 # File handling
-action(user.disassembler_open_file): 
+action(user.disassembler_open_file):
     key(alt-f)
     sleep(100ms)
     key(down enter)
@@ -41,11 +41,11 @@ action(user.disassembler_next_call): key(ctrl-alt-shift-6)
 action(user.disassembler_previous_call): key(ctrl-alt-shift-7)
 action(user.disassembler_function_start): key(ctrl-alt-shift-1)
 action(user.disassembler_function_end): key(ctrl-alt-shift-2)
-action(user.disassembler_false_branch): 
+action(user.disassembler_false_branch):
     key(ctrl-down)
     sleep(100ms)
     key(enter)
-action(user.disassembler_true_branch): 
+action(user.disassembler_true_branch):
     key(ctrl-down)
     sleep(100ms)
     key(down enter)
@@ -67,7 +67,7 @@ action(user.disassembler_next_text): key(ctrl-t)
 action(user.disassembler_next_unexplored): key(ctrl-u)
 action(user.disassembler_next_value): key(ctrl-i)
 action(user.disassembler_next_void): key(ctrl-v)
-     
+
 # Documenting
 
 ##
@@ -82,7 +82,7 @@ open options menu: key(alt-o)
 open search menu: key(alt-h)
 open view menu: key(alt-v)
 open windows menu: key(alt-w)
-exit without saving:
+(quit|exit) without saving:
     key(alt-x)
     sleep(500ms)
     key(tab down space tab enter)
@@ -100,5 +100,3 @@ toggle opcodes:
     user.ida_open_general_options()
     key(alt-d)
     user.accept_change()
-
-

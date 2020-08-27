@@ -1,4 +1,4 @@
-tag: disassembler
+tag: user.disassembler
 -
 
 # File handling
@@ -44,5 +44,5 @@ next text: user.disassembler_next_text()
 next unexplored: user.disassembler_next_unexplored()
 next value: user.disassembler_next_value()
 next void: user.disassembler_next_void()
-     
+
 # Documenting
