@@ -1,3 +1,5 @@
+# XXX - use different zoom cursor to indicate click count?
+
 import os
 import pathlib
 import platform
@@ -52,6 +54,21 @@ setting_mouse_enable_pop_click = mod.setting(
     default=0,
     desc="Enable pop to click when control mouse is enabled.",
 )
+setting_mouse_enable_zoom_auto_click = mod.setting(
+    "mouse_enable_zoom_auto_click",
+    type=int,
+    default=1,
+    desc="Enable zoom to auto click after the configured time out",
+)
+
+setting_mouse_zoom_auto_click_timeout = mod.setting(
+    "mouse_zoom_auto_click_timeout",
+    type=float,
+    default=1,
+    desc="The time in seconds to delay auto clicking after a zoom occurs",
+)
+
+
 setting_mouse_enable_pop_stops_scroll = mod.setting(
     "mouse_enable_pop_stops_scroll",
     type=int,
@@ -132,6 +149,12 @@ class Actions:
     def mouse_toggle_zoom_mouse():
         """Toggles zoom mouse setting"""
         eye_zoom_mouse.toggle_zoom_mouse(not eye_zoom_mouse.zoom_mouse.enabled)
+        s = "Zoom mouse: "
+        if eye_zoom_mouse.zoom_mouse.enabled:
+            s += "ENABLED"
+        else:
+            s += "DISABLED"
+        app.notify(subtitle=s)
 
     def mouse_cancel_zoom_mouse():
         """Cancel zoom mouse if pending"""
@@ -141,9 +164,54 @@ class Actions:
         ):
             eye_zoom_mouse.zoom_mouse.cancel()
 
-    def mouse_zoom_click():
+    def mouse_zoom_single_click(count: int = 1):
         """Click the mouse and zoom if necessary."""
-        eye_zoom_mouse.zoom_mouse.on_pop(0)
+        eye_zoom_mouse.zoom_mouse.on_pop(0, count)
+
+    def mouse_zoom_click(count: int = 1):
+        """Click the mouse count times and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, count)
+
+    def mouse_zoom_single_click():
+        """Click the mouse, prime one click, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 1)
+
+    def mouse_zoom_double_click():
+        """Click the mouse, prime two clicks, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 2)
+
+    def mouse_zoom_triple_click():
+        """Click the mouse, prime three clicks, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 3)
+
+    def mouse_zoom_auto_single_click(count: int = 1):
+        """Click the mouse, prime count clicks, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, count, True)
+
+    def mouse_zoom_auto_single_click():
+        """Click the mouse, prime one click, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 1, True)
+
+    def mouse_zoom_auto_double_click():
+        """Click the mouse, prime two clicks, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 2, True)
+
+    def mouse_zoom_auto_triple_click():
+        """Click the mouse, prime three clicks, and zoom if necessary."""
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 3, True)
+
+    def mouse_toggle_zoom_auto_click():
+        """Enable auto click"""
+        eye_zoom_mouse.zoom_mouse.auto_click_timeout = (
+            setting_mouse_zoom_auto_click_timeout.get()
+        )
+        eye_zoom_mouse.zoom_mouse.toggle_auto_click()
+        s = "Auto-click zoom mouse: "
+        if eye_zoom_mouse.zoom_mouse.auto_click_enabled:
+            s += "ENABLED"
+        else:
+            s += "DISABLED"
+        app.notify(subtitle=s)
 
     def mouse_drag():
         """(TEMPORARY) Press and hold/release button 0 depending on state for dragging"""
@@ -267,7 +335,7 @@ def on_hiss(active):
 
 
 noise.register("pop", on_pop)
-noise.register("hiss", on_hiss)
+# noise.register("hiss", on_hiss)
 
 
 def mouse_scroll(amount):
