@@ -87,6 +87,18 @@ open windows menu: key(alt-w)
     sleep(500ms)
     key(tab down space tab enter)
 
+# File Menu
+open new instance:
+    key(alt-f)
+    sleep(500ms)
+    key(down)
+    key(enter)
+open new file:
+    key(alt-f)
+    sleep(500ms)
+    key(down:2)
+    key(enter)
+
 ##
 # General options management
 ##
