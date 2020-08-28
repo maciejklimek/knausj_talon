@@ -56,3 +56,5 @@ go to system root: "cd %SYSTEMROOT%\n"
 go to system thirty two: "cd %SYSTEMROOT%\\System32\n"
 go to drivers: "cd %SYSTEMROOT%\\System32\\Drivers\\n"
 go to program files: "cd %PROGRAMFILES%\n"
+
+load registry file: "reg /load "
