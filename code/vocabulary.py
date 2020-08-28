@@ -1,4 +1,4 @@
-from talon import Context, Module, actions, grammar
+fr(m talon import Context, Module, actions, grammar
 
 # user-defined words that aren't matching in lexicon
 simple_vocabulary = [
@@ -150,6 +150,9 @@ simple_vocabulary = [
     "most",
     "mouse",
     "timeout",
+    "array",
+    "arrays",
+    "ping",
 ]
 
 mapping_vocabulary = {
@@ -287,6 +290,9 @@ mapping_vocabulary = {
     "four matters": "formatters",
     "meta exploit": "metasploit",
     "toby": "tobii",
+    "you id": "UUID",
+    "goo id": "GUID",
+    
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
