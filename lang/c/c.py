@@ -1,14 +1,19 @@
-# XXX - reorder some dicts for human readability so we see functions and libraries
+# XXX - re(rder some dicts for human readability so we see functions and libraries
 # first
 
 from talon import Context, Module, actions, settings
 
 mod = Module()
 mod.setting(
-    "use_stdint_datatypes ", type=int, default=1, desc="beep",
+    "use_stdint_datatypes ",
+    type=int,
+    default=1,
+    desc="Use the stdint datatype naming in commands by default",
 )
 
 ctx = Context()
+# XXX - add association with c context maybe, though conflicts with code in
+# markdown in gdb
 
 ctx.lists["self.c_pointers"] = {
     "pointer": "*",
