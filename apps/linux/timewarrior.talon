@@ -1,6 +1,6 @@
 # https://timewarrior.net
 os: linux
-tag: terminal
+tag: user.terminal
 -
 
 time (war|warrior): "timew\n"

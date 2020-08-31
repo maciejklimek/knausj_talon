@@ -96,8 +96,11 @@ open new instance:
 open new file:
     key(alt-f)
     sleep(500ms)
-    key(down:2)
+    key(down:1)
     key(enter)
+
+load script file:
+    key(alt-f7)
 
 ##
 # General options management

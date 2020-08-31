@@ -1,5 +1,5 @@
 os: linux
-tag: terminal
+tag: user.terminal
 -
 tag(): user.file_manager
 #todo: generic tab commands
@@ -17,7 +17,11 @@ scroll up:
   key(shift-pageup)
 scroll down:
   key(shift-pagedown)
-run last:
+run last [command]:
+  key(up)
+  key(enter)
+run last script:
+  insert("./")
   key(up)
   key(enter)
 rerun <user.text>:

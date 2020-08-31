@@ -3,7 +3,7 @@
 os: linux
 mode: user.terminal
 mode: command
-and tag: terminal
+and tag: user.terminal
 -
 (list|lisa): "ls\n"
 (list|lisa) long: "ls -al\n"
@@ -201,3 +201,5 @@ run make (durr | dear): "mkdir "
 
 #
 errors to standard out: "2>&1 "
+
+collide: "sha256sum "

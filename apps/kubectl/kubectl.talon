@@ -1,4 +1,4 @@
-tag: terminal
+tag: user.terminal
 -
 cube: insert(user.kubectl())
 

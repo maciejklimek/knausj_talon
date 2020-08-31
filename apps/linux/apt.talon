@@ -1,5 +1,5 @@
 os: linux
-tag: terminal
+tag: user.terminal
 -
 
 apt: "apt "
