@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 number <number>: insert("{number}")
-dragon words: "<dgnwords>"
-dragon dictation: "<phrase>"
 (shock|slap): key(enter)
-#slap:
-#	edit.line_end()
-#key(enter)
 dot pie: ".py"
 dot talon: ".talon"
 dot mark down: ".md"
@@ -17,6 +11,7 @@ dot net: ".net"
 dot org: ".org"
 dot exe: ".exe"
 dot bin: ".bin"
+dot text: ".txt"
 
 (jay son | jason ): "json"
 (http | htp): "http"
@@ -26,46 +21,20 @@ string U T F eight:
 	insert("'utf8'")
 
 (regex | rejex): "regex"
+
 [pair] (parens|args):
 	insert("()")
-	key(left)
 [pair] (brackets|braces): "{}"
 [pair] squares: "[]"
 [pair] angles: "<>"
 [pair] graves: "``"
 [pair] percents: "%%"
 
-args:
-	insert("()")
-	key(left)
-[inside] (index | array):
-	insert("[]")
-	key(left)
-(dickt in it | inside bracket | in bracket):
-	insert("{}")
-	key(left)
 # XXX - block alone conflicts with vim key words
 add code block:
 	insert("{}")
 	key(left enter enter up tab)
-(in | inside) percent:
-	insert("%%")
-	key(left)
 
-=======
-#(jay son | jason ): "json"
-#(http | htp): "http"
-#tls: "tls"
-#M D five: "md5"
-#word (regex | rejex): "regex"
-#word queue: "queue"
-#word eye: "eye"
-#word iter: "iter"
-#word no: "NULL"
-#word cmd: "cmd"
-#word dup: "dup"
-#word shell: "shell".
->>>>>>> c4075194503a3f34aee56a8d87d26e8ab66b3c08
 zoom in: edit.zoom_in()
 zoom out: edit.zoom_out()
 zoom reset: edit.zoom_out()
@@ -76,7 +45,7 @@ cut that: edit.cut()
 paste that: edit.paste()
 paste match: edit.paste_match_style()
 file save: edit.save()
-<<<<<<< HEAD
+
 #menu help: key(F1)
 #spotlight: key(super)
 #(undo that | skunks): edit.undo()
@@ -106,12 +75,3 @@ pucker:
 web link: "https://"
 insecure web link: "http://"
 file link: "file://"
-=======
-wipe: key(backspace)    
-(pad | padding): 
-	insert("  ") 
-	key(left)
-slap:
-	edit.line_end()
-	key(enter)
->>>>>>> c4075194503a3f34aee56a8d87d26e8ab66b3c08
