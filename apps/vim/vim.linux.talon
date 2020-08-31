@@ -1038,6 +1038,24 @@ quick [fix] do:
     key(left:9)
 set auto write all: user.vim_command_mode(":set autowriteall\n")
 
+###
+# Functions
+###
+function list:
+    user.vim_command_mode(":function\n")
+
+function show:
+    user.vim_command_mode(":function ")
+function show brief:
+    user.vim_command_mode(":function! ")
+function search:
+    user.vim_command_mode(":function / ")
+function call:
+    user.vim_command_mode(":call ")
+recall last function:
+    user.vim_command_mode(":call ")
+    key(up)
+    key(enter)
 
 ###
 # Argument list
