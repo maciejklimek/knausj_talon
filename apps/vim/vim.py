@@ -76,14 +76,14 @@ standard_counted_actions = {
     "undo line": "U",
     "erase": "x",
     "erase reversed": "X",
-    "erase back": "X",
+    #    "erase back": "X",
     #    "put": "p",
-    "put below": "p",
+    # "put below": "p",
     "paste": "p",
-    "paste below": "p",
-    "put before": "P",
+    #    "paste below": "p",
+    #    "put before": "P",
     "paste before": "P",
-    "put above": "P",
+    #    "put above": "P",
     "paste above": "P",
     "repeat": ".",
     "indent line": ">>",
@@ -102,15 +102,15 @@ standard_counted_actions = {
     "lower case line": "guu",
     # XXX - these work from visual mode and normal mode
     "insert before": "I",
-    "insert line": "I",
+    # "insert line": "I",
     "play again": "@@",
     "toggle case": "~",
     "repeat last swap": "&",
     # XXX - not sure how to name these
-    "delete rest": "D",
-    "delete remaining": "D",
+    "clear rest": "D",
+    # "delete remaining": "D",
     "change rest": "C",
-    "change remaining": "C",
+    # "change remaining": "C",
 }
 
 # Standard self.vim_counted_actions key() entries
@@ -180,15 +180,15 @@ ctx.lists["self.vim_counted_actions_args"] = {
 commands_with_motion = {
     # no motions
     "join": "J",
-    "filter": "=",  # XXX - not sure about how to use this
+    # "filter": "=",  # XXX - not sure about how to use this
     # "put": "p",
-    "paste": "p",
-    "undo": "u",
+    "paste": "p",  # XXX this really have motion
+    "undo": "u",  # XXX this really have motion
     "swap case": "~",
     # motions
     "change": "c",
-    "delete": "d",
-    "trim": "d",  # XXX - likely replace with clear
+    # "delete": "d",
+    # "trim": "d",  # XXX - likely replace with clear
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "indent": ">",
     "unindent": "<",
@@ -210,8 +210,8 @@ visual_commands = {
     # normal overlap
     "change": "c",
     "join": "J",
-    "delete": "d",
-    "trim": "d",  # XXX - likely replace with clear
+    # "delete": "d",
+    # "trim": "d",  # XXX - likely replace with clear
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key
     # "copy": "y",
@@ -232,19 +232,22 @@ ctx.lists["self.vim_motion_commands"] = list(
     set().union(commands_with_motion.keys(), visual_commands.keys())
 )
 
+# note that some of these are disabled to reduce the rule explosion to make
+# things faster, where you can enable some if your detection is bad for the
+# ones that are already enabled
 vim_motions = {
     "back": "b",
     "back word": "b",
     "big back": "B",
-    "big back word": "B",
+    # "big back word": "B",
     # NOTE - this conflicts with default talon 'end' key pressing
-    "end": "e",
+    # "end": "e",
     "end word": "e",
     "big end": "E",
     "word": "w",
-    "words": "w",
+    # "words": "w",
     "big word": "W",
-    "big words": "W",
+    # "big words": "W",
     "back end": "ge",
     "back big end": "gE",
     "right": "l",
@@ -262,7 +265,7 @@ vim_motions = {
     "lend": "$",
     "cursor search": "*",
     "curse search": "*",
-    "cursor search reversed": "#",
+    # "cursor search reversed": "#",
     "curse search reversed": "#",
     # These conflict with general 'search' command
     # "search under cursor": "*",
@@ -270,14 +273,14 @@ vim_motions = {
     "again": ";",
     "again reversed": ",",
     "down sentence": ")",
-    "sentence": ")",
+    # "sentence": ")",
     "up sentence": "(",
     "down paragraph": "}",
-    "paragraph": "}",
+    # "paragraph": "}",
     "up paragraph": "{",
-    "start of next section": "]]",
+    # "start of next section": "]]",
     "next section": "]]",
-    "start of previous section": "[[",
+    # "start of previous section": "[[",
     "previous section": "[[",
     # XXX - next section end??
     "end of next section": "][",
@@ -291,21 +294,21 @@ vim_motions = {
     "down line": "+",
     "up line": "-",
     "first character": "_",
-    "cursor home": "H",
-    "curse home": "H",
-    "cursor top": "H",
+    # "cursor home": "H",
+    # "curse home": "H",
+    # "cursor top": "H",
     "curse top": "H",
-    "cursor middle": "M",
+    # "cursor middle": "M",
     "curse middle": "M",
-    "cursor last": "L",
+    # "cursor last": "L",
     "curse last": "L",
-    "cursor bottom": "L",
+    # "cursor bottom": "L",
     "curse bottom": "L",
-    "start of document": "gg",
+    # "start of document": "gg",
     "start of file": "gg",
-    "top of document": "gg",
-    "top of file": "gg",
-    "end of document": "G",
+    # "top of document": "gg",
+    # "top of file": "gg",
+    # "end of document": "G",
     "end of file": "G",
 }
 
@@ -324,10 +327,10 @@ ctx.lists["self.vim_motions"] = {
 
 # XXX - make easier to say
 ctx.lists["self.vim_motions_keys"] = {
-    "last cursor": "ctrl-o",
-    "forward cursor": "ctrl-i",
-    "retrace movements": "ctrl-o",
-    "retrace movements forward": "ctrl-i",
+    "last curse": "ctrl-o",
+    "forward curse": "ctrl-i",
+    # "retrace movements": "ctrl-o",
+    # "retrace movements forward": "ctrl-i",
 }
 
 # all of these motions take a character argument
@@ -335,10 +338,10 @@ vim_motions_with_character = {
     "jump to mark": "'",
     "find": "f",
     "find reversed": "F",
-    "find previous": "F",
+    # "find previous": "F",
     "till": "t",
     "till reversed": "T",
-    "till previous": "T",
+    # "till previous": "T",
 }
 
 # NOTE: these will not work with the surround plug in, since they combo
@@ -379,37 +382,37 @@ common_key_names = {
 # XXX - Should match more wording in vim_surround_targets
 text_object_select = {
     "word": "w",
-    "words": "w",
+    # "words": "w",
     "big word": "W",
-    "big words": "W",
+    # "big words": "W",
     "block": "b",
-    "blocks": "b",
+    # "blocks": "b",
     "big block": "B",
-    "big blocks": "B",
-    "dubquote": '"',
-    "dub quote": '"',
-    "double quotes": '"',
-    "quote": "'",
-    "single quotes": "'",
-    "ticks": "'",
+    # "big blocks": "B",
+    # "dubquote": '"',
+    # "dub quote": '"',
+    "quote": '"',
+    "tick": "'",
+    # "single quotes": "'",
+    # "ticks": "'",
     "parens": "(",
-    "parenthesis": "(",
-    "angle brackets": "<",
+    # "parenthesis": "(",
+    # "angle brackets": "<",
     "angles": "<",
     # These are pluralized because of how you speak vim grammars
     # ex: yank inside braces
-    "curly braces": "{",
+    # "braces": "{",
     "code block": "{",
     "braces": "{",
-    "square brackets": "[",
+    # "square brackets": "[",
     "squares ": "[",
     "brackets": "[",
-    "backticks": "`",
+    # "backticks": "`",
     "graves": "`",
     "sentence": "s",
-    "sentences": "s",
+    # "sentences": "s",
     "paragraph": "p",
-    "paragraphs": "p",
+    # "paragraphs": "p",
     "tag block": "t",
 }
 
@@ -543,7 +546,10 @@ mod.setting(
     desc="Whether or not to use RPC if it is available. Useful for testing or avoiding bugs",
 )
 mod.setting(
-    "vim_debug", type=int, default=0, desc="Debugging used for development",
+    "vim_debug",
+    type=int,
+    default=0,
+    desc="Debugging used for development",
 )
 
 
