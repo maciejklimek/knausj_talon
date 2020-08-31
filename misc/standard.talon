@@ -31,6 +31,8 @@ string U T F eight:
 [pair] (brackets|braces): "{}"
 [pair] squares: "[]"
 [pair] angles: "<>"
+[pair] graves: "``"
+[pair] percents: "%%"
 
 args:
 	insert("()")

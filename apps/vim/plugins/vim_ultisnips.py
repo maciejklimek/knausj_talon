@@ -1,10 +1,13 @@
-from talon import Context, actions
+from talon import Context, Module, actions
 
+mod = Module()
 ctx = Context()
 
 ctx.matches = r"""
-tag: ultisnips
+tag: user.ultisnips
 """
+
+mod.tag("ultisnips", desc="a tag to load ultisnips")
 
 
 @ctx.action_class("user")
