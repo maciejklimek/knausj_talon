@@ -1,5 +1,6 @@
 # see `code/vim.py` for more implementation
 tag: user.vim
+not tag: user.terminal
 -
 
 # TODO

@@ -56,7 +56,7 @@ settings():
     # It how long to wait before issuing commands after a mode change. You
     # want adjust this if when you say things like undo from INSERT mode, an
     # "u" gets inserted into INSERT mode
-    user.vim_mode_change_timeout = 0.30
+    user.vim_mode_change_timeout = 0.25
 
     # When you preserve mode and switch into into insert mode it will often
     # move your cursor, which can mess up the commands you're trying to run from
