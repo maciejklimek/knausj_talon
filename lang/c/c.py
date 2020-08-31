@@ -1,4 +1,4 @@
-# XXX - re(rder some dicts for human readability so we see functions and libraries
+# XXX - reorder some dicts for human readability so we see functions and libraries
 # first
 
 from talon import Context, Module, actions, settings
@@ -14,6 +14,7 @@ mod.setting(
 ctx = Context()
 # XXX - add association with c context maybe, though conflicts with code in
 # markdown in gdb
+
 
 ctx.lists["self.c_pointers"] = {
     "pointer": "*",

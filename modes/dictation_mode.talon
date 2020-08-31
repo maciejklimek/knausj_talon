@@ -62,7 +62,7 @@ clear right <number_small> characters:
     edit.extend_right()
     repeat(number_small - 1)
     edit.delete()
-#formatting 
+#formatting
 formatted <user.format_text>:
     user.auto_format_pause()
     auto_insert(format_text)

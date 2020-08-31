@@ -40,6 +40,8 @@ extension_lang_map = {
     "go": "go",
     "h": "c",
     "hpp": "cplusplus",
+    "js": "javascript",
+    "json": "json",
     "lua": "lua",
     "md": "markdown",
     "pl": "perl",
@@ -50,11 +52,10 @@ extension_lang_map = {
     "sh": "bash",
     "snippets": "snippets",
     "talon": "talon",
+    "ts": "typescript",
     "vba": "vba",
     "vim": "vimscript",
     "vimrc": "vimscript",
-    "js": "javascript",
-    "ts": "typescript",
 }
 
 # flag indicates whether or not the title tracking is enabled

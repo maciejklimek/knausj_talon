@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 number <number>: insert("{number}")
 dragon words: "<dgnwords>"
 dragon dictation: "<phrase>"
@@ -51,6 +52,20 @@ add code block:
 	insert("%%")
 	key(left)
 
+=======
+#(jay son | jason ): "json"
+#(http | htp): "http"
+#tls: "tls"
+#M D five: "md5"
+#word (regex | rejex): "regex"
+#word queue: "queue"
+#word eye: "eye"
+#word iter: "iter"
+#word no: "NULL"
+#word cmd: "cmd"
+#word dup: "dup"
+#word shell: "shell".
+>>>>>>> c4075194503a3f34aee56a8d87d26e8ab66b3c08
 zoom in: edit.zoom_in()
 zoom out: edit.zoom_out()
 zoom reset: edit.zoom_out()
@@ -61,6 +76,7 @@ cut that: edit.cut()
 paste that: edit.paste()
 paste match: edit.paste_match_style()
 file save: edit.save()
+<<<<<<< HEAD
 #menu help: key(F1)
 #spotlight: key(super)
 #(undo that | skunks): edit.undo()
@@ -90,3 +106,12 @@ pucker:
 web link: "https://"
 insecure web link: "http://"
 file link: "file://"
+=======
+wipe: key(backspace)    
+(pad | padding): 
+	insert("  ") 
+	key(left)
+slap:
+	edit.line_end()
+	key(enter)
+>>>>>>> c4075194503a3f34aee56a8d87d26e8ab66b3c08

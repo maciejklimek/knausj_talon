@@ -1,31 +1,56 @@
-from talon import Module, screen, ui, actions, clip, app, settings
+import os
+import subprocess
 from datetime import datetime
-import os, subprocess
+
+from talon import Module, actions, app, clip, screen, settings, ui
 
 active_platform = app.platform
+default_command = None
+if active_platform == "windows":
+
+    default_folder = os.path.expanduser(os.path.join("~", r"OneDrive\Desktop"))
+    # this is probably not the correct way to check for onedrive, quick and dirty
+    if not os.path.isdir(default_folder):
+        default_folder = os.path.join("~", "Desktop")
+elif active_platform == "mac":
+    default_folder = os.path.join("~", "Desktop")
+elif active_platform == "linux":
+    default_folder = "~"
+    default_command = "scrot -s"
 
 mod = Module()
 mod.setting(
-    "screenshot_folder", type=str, default=None, desc="Where to save screenshots",
+    "screenshot_folder",
+    type=str,
+    default=None,
+    desc="Where to save screenshots",
 )
 mod.setting(
-    "screenshot_selection_command", type=str, default=None, desc="Custom screenshot command. File path must fit at end",
+    "screenshot_selection_command",
+    type=str,
+    default=None,
+    desc="Custom screenshot command. File path must fit at end",
 )
+
+screenshot_folder = mod.setting(
+    "screenshot_folder",
+    type=str,
+    default=default_folder,
+    desc="Where to save screenshots. Note this folder must exist.",
+)
+screenshot_selection_command = mod.setting(
+    "screenshot_selection_command",
+    type=str,
+    default=default_command,
+    desc="Commandline trigger for taking a selection of the screen. By default, only linux uses this.",
+)
+
 
 def get_screenshot_path():
     filename = "screenshot-%s.png" % datetime.now().strftime("%Y%m%d%H%M%S")
-    folder = settings.get("user.screenshot_folder")
-    if folder is None:
-        if active_platform == "windows":
-            folder = "~" + os.sep + "Desktop"
-        elif active_platform == "mac":
-            folder = "~"
-        elif active_platform == "linux":
-            folder = "~"
-    to_expand = folder.split(os.sep)
-    to_expand.append(filename)
-    path = os.path.expanduser(os.path.join(*to_expand))
-    return path
+    folder_path = screenshot_folder.get()
+    path = os.path.expanduser(os.path.join(folder_path, filename))
+    return os.path.normpath(path)
 
 
 @mod.action_class
@@ -46,22 +71,20 @@ class Actions:
 
     def screenshot_selection():
         """triggers an application is capable of taking a screenshot of a portion of the screen"""
-
-        if active_platform == "windows":
-            actions.key("super-shift-s")
-        elif active_platform == "mac":
-            actions.key("ctrl-shift-cmd-4")
-        elif active_platform == "linux":
+        command = screenshot_selection_command.get()
+        if command:
             path = get_screenshot_path()
-            command = settings.get("user.screenshot_selection_command")
-            if command is not None:
-                command = command.split(" ")
-                command.append(path)
-                subprocess.Popen(command)
-            else:
-                # XXX - make whatever the default is on gnome/kde?
-                subprocess.Popen(["scrot", "-s", path])
+            command = command.split()
+            command.append(path)
+            subprocess.Popen(command)
             app.notify(subtitle="Screenshot: %s" % path)
+        else:
+            if active_platform == "windows":
+                actions.key("super-shift-s")
+            elif active_platform == "mac":
+                actions.key("ctrl-shift-cmd-4")
+            # linux is handled by the command by default
+            # elif active_platform == "linux":
 
     def screenshot_clipboard():
         """takes a screenshot of the entire screen and saves it to the clipboard"""
