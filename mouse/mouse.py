@@ -164,6 +164,7 @@ class Actions:
         ):
             eye_zoom_mouse.zoom_mouse.cancel()
 
+    # XXX - you should all get a property to test zoom mouse enabled
     def mouse_zoom_single_click(count: int = 1):
         """Click the mouse and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, count)
@@ -184,6 +185,15 @@ class Actions:
         """Click the mouse, prime three clicks, and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, 3)
 
+    # XXX - only if control mouse is disabled
+    def mouse_zoom_move_cursor():
+        """Move the cursor but don't actually click, an zoom if necessary"""
+        pass
+
+    def mouse_zoom_capture_coordinates():
+        """Zoom and copy the clicked coordinate tuple to the clipboard"""
+        pass
+
     def mouse_zoom_auto_single_click(count: int = 1):
         """Click the mouse, prime count clicks, and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, count, True)
@@ -199,6 +209,15 @@ class Actions:
     def mouse_zoom_auto_triple_click():
         """Click the mouse, prime three clicks, and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, 3, True)
+
+    # XXX - only if control mouse is disabled
+    def mouse_zoom_auto_move_cursor():
+        """Move the cursor but don't actually click, an zoom if necessary"""
+        pass
+
+    def mouse_zoom_auto_capture_coordinates():
+        """Zoom and copy the auto click coordinate tuple to the clipboard"""
+        pass
 
     def mouse_toggle_zoom_auto_click():
         """Enable auto click"""

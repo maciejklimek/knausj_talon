@@ -24,10 +24,18 @@ camera overlay: eye_mouse.camera_overlay.toggle()
 [(enable|disable)] zoom auto click: user.mouse_toggle_zoom_auto_click()
 
 ###
-# General clicking
+# General clicking movement
 ###
+# single click
 (touch|chiff): user.mouse_click(0, 1)
+# right click
 (righty|rick): user.mouse_click(1, 1)
+# middle click
+midclick: user.mouse_click(2, 1)
+# double click
+dyke: user.mouse_click(0, 2)
+# triple click
+trike: user.mouse_click(0, 3)
 
 #see keys.py for modifiers.
 #defaults
@@ -45,10 +53,10 @@ camera overlay: eye_mouse.camera_overlay.toggle()
     key("{modifiers}:down")
     user.mouse_click(1, 1)
     key("{modifiers}:up")
-dyke:
-    user.mouse_click(0, 2)
-trike:
-    user.mouse_click(0, 3)
+
+# move to eye location without clicking
+
+# zoom and then move to designated location without clicking
 
 ###
 # Scrolling and dragging
@@ -74,7 +82,9 @@ drag: user.mouse_drag()
 ###
 # disables zoom without clicking in case it fails
 cancel zoom: user.mouse_cancel_zoom_mouse()
-# non-pop zoom single click (auto click if enabled)
+
+# zoom single click - auto clicks if enabled
 (kiff|eagle): user.mouse_zoom_single_click()
-# non-pop zoom single click (auto click even if autoclick setting disabled)
+
+# zoom single click - auto click even if autoclick setting disabled
 kick: user.mouse_zoom_auto_single_click()
