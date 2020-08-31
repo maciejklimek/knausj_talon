@@ -151,7 +151,7 @@ action(edit.undo):
     user.vim_normal_mode_key("u")
 
 ###
-# `code/vim.py` actions based on vimspeak
+# `code/vim.py` actions - includes most motions and core commands
 ###
 # commands that can be triggered in visual or normal mode, and generally don't
 # have counting, etc
@@ -1106,6 +1106,7 @@ swap again:
     key(g &)
 
 pinch: user.vim_normal_mode("0x")
+prefix <user.any>: user.vim_normal_mode("^i{any}")
 
 
 # useful for turning a git status list already yanked into a register into a
