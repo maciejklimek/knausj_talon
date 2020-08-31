@@ -8,6 +8,7 @@ tagList = [
     "windbg",
     "tmux",
     "tabs",
+    "terminal",
     "debugger",
     "disassembler",
     "ida",
