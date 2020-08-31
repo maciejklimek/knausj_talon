@@ -7,8 +7,8 @@ from talon.grammar import Phrase
 ctx = Context()
 key = actions.key
 
-words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(
-    ","
+words_to_keep_lowercase = (
+    "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(",")
 )
 
 last_phrase = ""
