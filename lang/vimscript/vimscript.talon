@@ -34,18 +34,39 @@ action(user.code_operator_division_assignment): " /= "
 # comments - see lang/code_comment.talon
 action(user.code_comment): "\""
 
-# conditionals - see lang/xxx
+# conditionals - see lang/programming.talon
+action(user.code_state_if):
+  insert("if ")
+action(user.code_state_else_if):
+  insert("elseif ")
+action(user.code_state_else):
+  insert("else")
+
+action(user.code_private_function): "function "
+action(user.code_protected_function): "function "
+action(user.code_public_function): "function "
+
 
 ###
 # VIM Script Specific
 ###
-[<user.vim_scope>] variable [<user.text>] [over]:
+assign [<user.vimscript_scope>] (variable|var) [<user.text>] [over]:
     insert("let ")
-    insert(vim_variable_types or '')
+    insert(vimscript_scope or '')
+    user.code_private_variable_formatter(text)
+
+[<user.vimscript_scope>] (variable|var) [<user.text>] [over]:
+    insert(vimscript_scope or '')
     user.code_private_variable_formatter(text)
 
 # see lang/vimscript/vimscript.py for list
-<user.vimscript_function>:
-    insert("{vimscript_function} ")
+<user.vimscript_functions>:
+    insert("{vimscript_functions} ")
 
+# XXX - possibly overlap with some programming.talon
 state command: "command! "
+state end if: "endif"
+state end for: "endfor"
+state end while: "endwhile"
+state end function: "endfunction"
+state continue: "continue"

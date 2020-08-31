@@ -4,11 +4,18 @@ mod = Module()
 ctx = Context()
 ctx.lists["self.vimscript_functions"] = {
     "string len": "strlen",
+    "get line": "getline",
+    "set line": "setline",
+    "length": "len",
 }
 
 ctx.lists["self.vimscript_scope"] = {
+    "argument": "a:",
+    "arg": "a:",
     "buffer": "b:",
+    "buf": "b:",
     "window": "w:",
+    "win": "w:",
     "tab": "t:",
     "special": "v:",
     "global": "g:",
