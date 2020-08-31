@@ -73,3 +73,11 @@ re nest this:
     user.vim_set_visual_block_mode()
     key(} up)
     key(0 I > escape)
+
+###
+# VimScript function shortcuts
+###
+
+convert string to stack:
+    user.vim_command_mode(":call String_to_stack_buffer()")
+    edit.left()
