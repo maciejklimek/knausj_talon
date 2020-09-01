@@ -1,12 +1,13 @@
 # see doc/vim.md
-# XXX - define all the lists separately and then update ctx.lists only once
-# XXX - document that visual selection mode implies terminal escape
-# XXX - eventually use nvim RPC to confirm mode changes vs relying on a time
-#       delay that is buggy depending on your cpu consumption
-# XXX - add setting for disabling local terminal escape when running inside
-#       remote vim sessions via ssh, etc
-# XXX - import and test scenario where the mode isn't listed at all
-# XXX - add test cases
+# TODO:
+# - define all the lists separately and then update ctx.lists only once
+# - document that visual selection mode implies terminal escape
+# - eventually use nvim RPC to confirm mode changes vs relying on a time
+#   delay that is buggy depending on your cpu consumption
+# - add setting for disabling local terminal escape when running inside
+#   remote vim sessions via ssh, etc
+# - import and test scenario where the mode isn't listed at all
+# - add test cases
 
 import time
 
