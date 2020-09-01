@@ -1,10 +1,16 @@
-# Usage: - See doc/vim.md for usage and tutorial
+# USAGE: - See doc/vim.md for usage and tutorial
 #  - See code/vim.py very implementation and additional motion grammars
+#
+# NOTE:
 # Where applicable I try to explicitly select appropriate API for terminal
 # escaping, etc. However in cases where it is unlikely you will say a command
-# from terminal mode, I don't bother. Example "save file" doesn't have
-# explicit terminal escaping. This also helps vim running inside of them
+# from terminal mode, I don't bother. Example "save file" doesn't have explicit
+# terminal escaping. This also helps an embedded vim running inside of a vim
 # terminal work properly.
+#
+# TODO:
+#  - add clearline for command mode / fzf plugin
+#  - test on windows and mac
 
 os:linux
 app:gvim
@@ -816,11 +822,16 @@ modify [register|macro] <user.letter>:
 paste from register <user.any>: user.vim_any_motion_mode('"{any}p')
 yank (into|to) register <user.any>:
     user.vim_any_motion_mode('"{any}y')
+#clear (into|to) register <user.any>:
+#    user.vim_any_motion_mode('"{any}d')
 
 # XXX - this should allow counted yanking, into register should become an
 # optional part of vim.py matching
 yank <user.vim_text_objects> [(into|to)] register <user.any>:
     user.vim_any_motion_mode('"{any}y{vim_text_objects}')
+#clear <user.vim_text_objects> [(into|to)] register <user.any>:
+#    user.vim_any_motion_mode('"{any}d{vim_text_objects}')
+
 
 
 ###
