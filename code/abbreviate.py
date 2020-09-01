@@ -51,6 +51,8 @@ ctx.lists["user.abbreviation"] = {
     "control": "ctrl",
     "constant": "const",
     "copy": "cpy",
+    "count": "cnt",
+    "counter": "ctr",
     "database": "db",
     "declare": "decl",
     "declaration": "decl",
