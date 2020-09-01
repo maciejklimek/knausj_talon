@@ -89,7 +89,7 @@ class ZoomMouse:
         self.canvas.close()
         self.canvas = None
 
-    def on_pop(self, state, count=1, auto=False):
+    def on_pop(self, state, count=1, auto=False, click=True):
         if len(mouse.eye_hist) < 2:
             return
         now = time.time()
@@ -144,17 +144,19 @@ class ZoomMouse:
             self.click_count = count
             if self.auto_click_enabled or auto:
                 time.sleep(self.auto_click_timeout)
-                self.overlay_click()
+                self.overlay_click(click)
             else:
                 self.state = STATE_OVERLAY
         elif self.state == STATE_OVERLAY:
-            self.overlay_click()
+            self.overlay_click(click)
 
-    def overlay_click(self):
+    def overlay_click(self, click):
         self.cancel()
         dot, origin = self.get_pos()
         if origin:
             ctrl.mouse_move(origin.x, origin.y)
+            if not click:
+                return
             for i in range(self.click_count):
                 ctrl.mouse_click(hold=32000)
             self.click_count = 1
