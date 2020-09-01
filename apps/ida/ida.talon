@@ -6,8 +6,8 @@ mode: user.ida
 tag(): user.ida
 tag(): user.disassembler
 settings():
-    # the number of opcodes to display next to assembly instructions, this will depend
-    # on your architecture
+    # the number of opcodes to display next to assembly instructions, this will
+    # depend on your architecture
     user.ida_opcode_count = 8
 
 ##
@@ -50,6 +50,8 @@ action(user.disassembler_true_branch):
     sleep(100ms)
     key(down enter)
 action(user.disassembler_close_window): key(alt-f3)
+action(user.disassembler_cross_references_to): key(ctrl-x)
+action(user.disassembler_cross_references_from): key(ctrl-j)
 toggle graph: key(space)
 
 # Windowing

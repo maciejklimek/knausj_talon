@@ -27,6 +27,9 @@ function start: user.disassembler_function_start()
 function end: user.disassembler_function_end()
 follow false: user.disassembler_false_branch()
 follow true: user.disassembler_true_branch()
+[cross] references to: user.disassembler_cross_references_to()
+[cross] references from: user.disassembler_cross_references_from()
+
 
 # Windowing
 show disassembly: user.disassembler_focus_disassembly()
