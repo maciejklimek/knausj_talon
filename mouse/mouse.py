@@ -116,7 +116,7 @@ class Actions:
     def mouse_click(button: int, count: int):
         """Click the specified mouse button a certain number of times."""
         for i in range(count):
-            ctrl.mouse_click(button)
+            ctrl.mouse_click(button=button)
         if (
             eye_zoom_mouse.zoom_mouse.enabled
             and eye_zoom_mouse.zoom_mouse.state != eye_zoom_mouse.STATE_IDLE
@@ -185,10 +185,10 @@ class Actions:
         """Click the mouse, prime three clicks, and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, 3)
 
-    # XXX - only if control mouse is disabled
     def mouse_zoom_move_cursor():
         """Move the cursor but don't actually click, an zoom if necessary"""
-        pass
+        if not config.control_mouse:
+            eye_zoom_mouse.zoom_mouse.on_pop(0, 1, auto=False, click=False)
 
     def mouse_zoom_capture_coordinates():
         """Zoom and copy the clicked coordinate tuple to the clipboard"""
@@ -196,24 +196,24 @@ class Actions:
 
     def mouse_zoom_auto_single_click(count: int = 1):
         """Click the mouse, prime count clicks, and zoom if necessary."""
-        eye_zoom_mouse.zoom_mouse.on_pop(0, count, True)
+        eye_zoom_mouse.zoom_mouse.on_pop(0, count, auto=True)
 
     def mouse_zoom_auto_single_click():
         """Click the mouse, prime one click, and zoom if necessary."""
-        eye_zoom_mouse.zoom_mouse.on_pop(0, 1, True)
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 1, auto=True)
 
     def mouse_zoom_auto_double_click():
         """Click the mouse, prime two clicks, and zoom if necessary."""
-        eye_zoom_mouse.zoom_mouse.on_pop(0, 2, True)
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 2, auto=True)
 
     def mouse_zoom_auto_triple_click():
         """Click the mouse, prime three clicks, and zoom if necessary."""
-        eye_zoom_mouse.zoom_mouse.on_pop(0, 3, True)
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 3, auto=True)
 
-    # XXX - only if control mouse is disabled
     def mouse_zoom_auto_move_cursor():
         """Move the cursor but don't actually click, an zoom if necessary"""
-        pass
+        if not config.control_mouse:
+            eye_zoom_mouse.zoom_mouse.on_pop(0, 1, auto=True, click=False)
 
     def mouse_zoom_auto_capture_coordinates():
         """Zoom and copy the auto click coordinate tuple to the clipboard"""
