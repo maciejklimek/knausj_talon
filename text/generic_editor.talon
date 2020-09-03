@@ -1,4 +1,4 @@
-not tag: vim
+not app: vim
 -
 
 find it:
@@ -139,48 +139,48 @@ clear way down:
     edit.delete()
 
 #copy commands
-copy all: 
+copy all:
     edit.select_all()
     edit.copy()
 #to do: do we want these variants, seem to conflict
-# copy left: 
+# copy left:
 #      edit.extend_left()
 #      edit.copy()
-# copy right: 
+# copy right:
 #     edit.extend_right()
 #     edit.copy()
-# copy up: 
+# copy up:
 #     edit.extend_up()
 #     edit.copy()
-# copy down: 
+# copy down:
 #     edit.extend_down()
 #     edit.copy()
-copy word left: 
+copy word left:
     edit.extend_word_left()
     edit.copy()
-copy word right: 
+copy word right:
     edit.extend_word_right()
     edit.copy()
 #cut commands
-cut everything: 
+cut everything:
     edit.select_all()
     edit.cut()
 #to do: do we want these variants
-# cut left: 
+# cut left:
 #      edit.select_all()
 #      edit.cut()
-# cut right: 
+# cut right:
 #      edit.select_all()
 #      edit.cut()
-# cut up: 
+# cut up:
 #      edit.select_all()
 #     edit.cut()
-# cut down: 
+# cut down:
 #     edit.select_all()
 #     edit.cut()
-cut word left: 
+cut word left:
     edit.extend_word_left()
     edit.cut()
-cut word right: 
+cut word right:
     edit.extend_word_right()
     edit.cut()

@@ -12,6 +12,8 @@ action(edit.paste):
   key(ctrl-shift-v)
 action(edit.copy):
   key(ctrl-shift-c)
+action(edit.delete_line):
+  key(ctrl-u)
 
 scroll up:
   key(shift-pageup)
