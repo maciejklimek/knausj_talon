@@ -13,9 +13,7 @@
 #  - test on windows and mac
 
 os:linux
-app:gvim
-app:/term/
-win.title: /VIM/
+app:vim
 -
 
 tag(): user.vim
@@ -70,10 +68,10 @@ settings():
     user.vim_mode_switch_moves_cursor = 0
 
     # Whether or not use rpc if it is available
-    user.vim_use_rpc = 0
+    user.vim_use_rpc = 1
 
     # Adds debug output to the talon log
-    user.vim_debug = 1
+    user.vim_debug = 0
 
 ###
 # Actions - Talon generic_editor.talon implementation
@@ -369,6 +367,12 @@ push:
     user.vim_normal_mode_np("$a")
 push <user.any>:
     user.vim_normal_mode_np("$a{any}")
+
+# paste to the end of a line
+# XXX
+push it:
+    user.vim_normal_mode_np("A ")
+    key(escape p)
 
 
 insert <user.text>:
@@ -919,11 +923,13 @@ block (visual|select|highlight): user.vim_any_motion_mode_exterm_key("ctrl-v")
 (select|highlight) <user.vim_select_motion>:
     user.vim_visual_mode("{vim_select_motion}")
 
+# XXX - swap was something that doesn't go higher than 10k for line count
 (select|highlight) lines <number> through <number>:
     user.vim_normal_mode_np("{number_1}G")
     user.vim_set_visual_mode()
     insert("{number_2}G")
 
+# XXX - swap was something that doesn't go higher than 10k for line count
 block (select|highlight) lines <number> through <number>:
     user.vim_normal_mode_np("{number_1}G")
     user.vim_set_visual_block_mode()
@@ -1087,6 +1093,9 @@ recall last function:
 last command:
     user.vim_command_mode(":!!\n")
 
+messages show:
+    user.vim_command_mode(":messages\n")
+
 ###
 # Plugins
 ###
@@ -1117,7 +1126,7 @@ swap again:
     key(g &)
 
 pinch: user.vim_normal_mode("0x")
-prefix <user.any>: user.vim_normal_mode("^i{any}")
+prefix <user.any>: user.vim_normal_mode("I{any}")
 
 
 # useful for turning a git status list already yanked into a register into a

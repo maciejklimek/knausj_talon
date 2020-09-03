@@ -1,4 +1,4 @@
-app: user.vim
+tag: user.vim
 -
 tag(): user.snippets
 tag(): user.ultisnips

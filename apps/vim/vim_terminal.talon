@@ -3,6 +3,11 @@ win.title: /VIM MODE:t/
 
 tag(): user.terminal
 
+
+# XXX - you to figure out how to delete this from other vim contexts
+action(edit.delete_line):
+    key(ctrl-u)
+
 (pop terminal|vim mode):
     key(ctrl-\ ctrl-n)
 

@@ -24,7 +24,7 @@ mod = Module()
 ctx = Context()
 
 ctx.matches = r"""
-win.title:/VIM/
+app: vim
 """
 
 
@@ -102,7 +102,8 @@ standard_counted_actions = {
     "upper case line": "gUU",
     "lower case line": "guu",
     # XXX - these work from visual mode and normal mode
-    "insert before": "I",
+    # "insert before": "I",
+    "prefix": "I",
     # "insert line": "I",
     "play again": "@@",
     "toggle case": "~",
@@ -238,7 +239,7 @@ ctx.lists["self.vim_motion_commands"] = list(
 # ones that are already enabled
 vim_motions = {
     "back": "b",
-    "back word": "b",
+    # "back word": "b",
     "big back": "B",
     # "big back word": "B",
     # NOTE - this conflicts with default talon 'end' key pressing
@@ -256,7 +257,7 @@ vim_motions = {
     "down": "j",
     "up": "k",
     "next": "n",
-    "next reversed": "N",
+    # "next reversed": "N",
     "previous": "N",
     "column zero": "0",
     "column": "|",
@@ -264,7 +265,7 @@ vim_motions = {
     "bend": "^",
     "end of line": "$",
     "lend": "$",
-    "cursor search": "*",
+    # "cursor search": "*",
     "curse search": "*",
     # "cursor search reversed": "#",
     "curse search reversed": "#",
@@ -1197,6 +1198,7 @@ class VimMode:
     def get_active_mode(self):
         if self.nvrpc.init_ok is True:
             mode = self.nvrpc.get_active_mode()["mode"]
+            self.dprint(mode)
             # XXX -
             self.current_mode = mode
         else:
@@ -1204,7 +1206,7 @@ class VimMode:
             mode = None
             if "MODE:" in title:
                 mode = title.split("MODE:")[1].split(" ")[0]
-                # self.dprint(mode)
+                self.dprint(mode)
                 if mode not in self.vim_modes.keys():
                     return None
                 self.current_mode = mode
@@ -1282,7 +1284,7 @@ class VimMode:
         cur = self.current_mode_id()
         if type(valid_mode_ids) != list:
             valid_mode_ids = [valid_mode_ids]
-        # self.dprint(f"from {cur} to {valid_mode_ids}")
+        self.dprint(f"from {cur} to {valid_mode_ids}")
         if cur not in valid_mode_ids:
             # Just favor the first mode match
             self.set_mode(
@@ -1325,7 +1327,7 @@ class VimMode:
         ):
             return
 
-        # print("Setting mode to {}".format(wanted_mode))
+        self.dprint("Setting mode to {}".format(wanted_mode))
         # enter normal mode where necessary
         if self.is_terminal_mode():
             if (
