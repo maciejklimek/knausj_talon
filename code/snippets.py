@@ -1,4 +1,5 @@
 # defines placeholder actions and captures for ide-specific snippet functionality
+# implementers will populate user.snippets
 from talon import Context, Module, actions, app
 
 mod = Module()
