@@ -39,7 +39,10 @@ drive <user.letter>: "{letter}:\\"
 remove file: "del "
 find string: "| findstr"
 show eye pee: "ipconfig /all\n"
+
 clear screen: "cls\n"
+action(edit.delete_line):
+  key(escape)
 
 # XXX - because of vmware conflicts
 magic up:
