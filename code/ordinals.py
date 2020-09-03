@@ -1,3 +1,4 @@
+from copy import deepcopy
 from math import floor
 
 from talon import Context, Module
@@ -91,7 +92,7 @@ for n in range(1, 100):
 
 # remove the word first for when using as a repeater, as first doesn't make
 # sense and it makes it available for other commands
-ordinal_repeaters = ordinal_words
+ordinal_repeaters = deepcopy(ordinal_words)
 del ordinal_repeaters["first"]
 
 mod = Module()
@@ -108,7 +109,7 @@ def ordinals(m) -> int:
 
 @mod.capture
 def ordinal_repeater(m) -> int:
-    "Returns a single ordinial as a digit"
+    "Returns a single ordinial as a digit, omitting first"
 
 
 @ctx.capture(rule="{self.ordinals}")
