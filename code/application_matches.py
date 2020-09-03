@@ -73,7 +73,15 @@ os: windows
 and app.name: WindowsTerminal.exe 
 """
 
+apps.vim = """
+win.title:/VIM/
+"""
+
 apps.vmware = """
 app.name: vmware
 app.name: Vmware
+"""
+
+apps.libreoffice_writer = """
+app.name: LibreOffice Writer
 """
