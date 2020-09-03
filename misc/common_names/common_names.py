@@ -9,12 +9,13 @@ mod.list("first_names", desc="Common first names")
 mod.list("last_names", desc="Common first names")
 
 cwd = os.path.dirname(os.path.realpath(__file__))
-first_names_file = os.path.join(cwd, "common_names", "first_names.csv")
-last_names_file = os.path.join(cwd, "common_names", "last_names.csv")
+first_names_file = os.path.join(cwd, "first_names.csv")
+last_names_file = os.path.join(cwd, "last_names.csv")
 
 # These list should contain values you don't want to be published publicly.
-private_first_names_file = os.path.join(cwd, "common_names", "private_first_names.csv")
-private_last_names_file = os.path.join(cwd, "common_names", "private_last_names.csv")
+# see the read me about keeping them private
+private_first_names_file = os.path.join(cwd, "private_first_names.csv")
+private_last_names_file = os.path.join(cwd, "private_last_names.csv")
 
 
 def populate_list(name_list, file_name):
