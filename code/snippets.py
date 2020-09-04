@@ -8,6 +8,9 @@ mod.tag("snippets", desc="Tag for enabling code snippet-related commands")
 mod.list("snippets", desc="List of code snippets")
 
 
+ctx.lists["user.snippets"] = {}
+
+
 @mod.capture
 def snippets(m) -> list:
     """Returns a snippet name"""
