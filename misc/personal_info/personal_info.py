@@ -3,7 +3,7 @@ import os
 import sys
 from typing import Set
 
-from talon import Context, Module, actions, imgui, settings, ui
+from talon import Context, Module, actions, fs, imgui, settings, ui
 
 mod = Module()
 mod.mode("personal_info")
@@ -63,15 +63,24 @@ class PersonalInfo:
 
     def __init__(self):
         cwd = os.path.dirname(os.path.realpath(__file__))
-        personal_info_file = os.path.join(cwd, "personal_info.json")
-        with open(personal_info_file, "r") as f:
+        self.personal_info_file = os.path.join(cwd, "personal_info.json")
+        self.update_commands()
+        fs.watch(self.personal_info_file, self.__on_fs_change)
+
+    def __on_fs_change(self, name, flags):
+        print("updating personal info commands")
+        self.update_commands()
+
+    def update_commands(self):
+        with open(self.personal_info_file, "r") as f:
             self.db = json.loads(f.read())
             for key in self.db:
                 self.command_key_map[" ".join(key.split("-"))] = key
+        global ctx
+        ctx.lists["user.personal_info"] = self.command_key_map
 
 
 pi = PersonalInfo()
-ctx.lists["user.personal_info"] = pi.command_key_map
 
 
 def raise_personal_info():
