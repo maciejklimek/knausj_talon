@@ -12,9 +12,11 @@ mod.setting(
 )
 
 ctx = Context()
-# XXX - add association with c context maybe, though conflicts with code in
-# markdown in gdb
-
+ctx.matches = r"""
+mode: user.c
+mode: command
+and code.language: c
+"""
 
 ctx.lists["self.c_pointers"] = {
     "pointer": "*",
