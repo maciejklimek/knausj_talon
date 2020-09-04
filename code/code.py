@@ -35,6 +35,7 @@ extension_lang_map = {
     "asm": "assembly",
     "bat": "batch",
     "c": "c",
+    "cmake": "cmake",
     "cpp": "cplusplus",
     "cs": "csharp",
     "gdb": "gdb",
