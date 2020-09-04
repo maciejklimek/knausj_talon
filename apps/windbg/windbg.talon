@@ -100,10 +100,10 @@ action(user.debugger_list_modules):
     insert("lm\n")
 
 
-# Registers XXX
-register <user.x64_registers>:
+# Registers depend on architecture mode
+register <user.registers>:
     key(@)
-    insert("{x64_registers}")
+    insert("{registers}")
 
 # Type inspection
 action(user.debugger_inspect_type):

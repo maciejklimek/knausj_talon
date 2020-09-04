@@ -1,6 +1,10 @@
 tag: user.debugger
 -
 
+# Assembly language selection
+current architecture: user.debugger_current_architecture()
+cycle architecture: user.debugger_cycle_architecture()
+
 # Code execution
 
 ## instruction level

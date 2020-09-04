@@ -1,90 +1,70 @@
 # XXX - execute until line number/cursor
-# XXX - more memory printing he thumping
+# XXX - more memory printing
+# XXX - need a way to disable the architecture modes, maybe be on context
+# destruction
 
-from talon import Context, Module
+from talon import Context, Module, actions, app
 
 mod = Module()
 mod.tag("debugger", desc="Tag for enabling generic debugger commands")
-mod.list("x64_registers", desc="A list of x64 architecture registers")
-mod.list("x86_registers", desc="A list of x86 architecture registers")
+# this list is updated by architecture specific python files
+mod.list("registers", desc="A list of architecture registers")
 
 ctx = Context()
 ctx.matches = r"""
 tag: user.debugger
 """
 
-x86_registers = {
-    "air": "eax",
-    "bat": "ebx",
-    "cap": "ecx",
-    "drum": "edx",
-    "source": "esi",
-    "dest": "edi",
-    "stack": "esp",
-    "frame": "ebp",
-    "instruction": "eip",
-}
+ctx.lists["user.registers"] = {}
 
-x64_registers = {
-    # general purpose
-    "air": "rax",
-    "racks": "rax",
-    "bat": "rbx",
-    "cap": "rcx",
-    "drum": "rdx",
-    "source": "rsi",
-    "dest": "rdi",
-    "stack": "rsp",
-    "stack pointer": "rsp",
-    "frame": "rbp",
-    "frame pointer": "rbp",
-    "base": "rbp",
-    "base pointer": "rbp",
-    "eight": "r8",
-    "nine": "r9",
-    "ten": "r10",
-    "eleven": "r11",
-    "twelve": "r12",
-    "thirteen": "r13",
-    "fourteen": "r14",
-    "fifteen": "r15",
-    # pointers
-    "instruction": "rip",
-    "rip": "rip",
-    # segment
-}
+
+@mod.capture
+def registers(m) -> list:
+    "Return an register"
+
+
+@ctx.capture(rule="{user.registers}")
+def registers(m):
+    return m.registers
+
+
+class Debugger:
+    def __init__(self, mod):
+        self.arch_index = 0
+        self.architectures = ["x86", "x64"]
+        for arch in self.architectures:
+            mod.tag(arch, desc="Tag for enabling {arch} architecture")
+        self.architecture = self.architectures[self.arch_index]
+
+    def cycle_architecture(self):
+        """Switch between supported architectures"""
+        # actions.mode.disable(f"user.{self.architecture}")
+        self.arch_index += 1
+        if self.arch_index == len(self.architectures):
+            self.arch_index = 0
+        self.architecture = self.architectures[self.arch_index]
+        # XXX - debugger ever has more tags, this will be a problem
+        ctx.tags = [f"user.{self.architecture}"]
+        # XXX - modes don't work for dynamic context loading it seems,
+        # as a:
+        # ```
+        # ctx.matches = r"""
+        # mode: user.x64
+        # """
+        # ```
+        # won't activate...
+        # actions.mode.disable(f"user.{self.architecture}")
+        app.notify(subtitle=f"Debug architecture: {self.architecture}")
+
+    def current_architecture(self):
+        """Display the current architecture"""
+        app.notify(subtitle=f"Debug architecture: {self.architecture}")
+
+
+debugger = Debugger(mod)
 
 # XXX - pass by windbg to dump
 windows_x64_register_parameters = ["rcx", "rdx", "r8", "r9"]
-
-# XXX - make this dynamic
-ctx.lists["self.x64_registers"] = x64_registers
-ctx.lists["self.x86_registers"] = x86_registers
-
-# assembly_languages = {
-#    "x86": x86_registers,
-#    "x64": x64_registers,
-# }
-
-
-@mod.capture
-def x64_registers(m) -> str:
-    "Return an x64 register"
-
-
-@ctx.capture(rule="{self.x64_registers}")
-def x64_registers(m):
-    return m.x64_registers
-
-
-@mod.capture
-def x86_registers(m) -> str:
-    "Return an x86 register"
-
-
-@ctx.capture(rule="{self.x86_registers}")
-def x86_registers(m):
-    return m.x86_registers
 
 
 @mod.action_class
@@ -211,3 +191,13 @@ class Actions:
 
     def debugger_list_modules():
         """List the loaded modules in the debuggee memory space"""
+
+    def debugger_cycle_architecture():
+        """Switch to the next architecture mode"""
+        global debugger
+        debugger.cycle_architecture()
+
+    def debugger_current_architecture():
+        """Switch to the next architecture mode"""
+        global debugger
+        debugger.current_architecture()
