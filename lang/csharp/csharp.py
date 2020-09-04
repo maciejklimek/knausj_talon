@@ -1,9 +1,9 @@
-from talon import Module, Context, actions, ui, imgui
+from talon import Context, Module, actions, imgui, ui
 
 ctx = Context()
 ctx.matches = r"""
 mode: user.csharp
-mode: command 
+mode: command
 and code.language: csharp
 """
 ctx.lists["user.code_functions"] = {
