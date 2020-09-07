@@ -54,7 +54,7 @@ bold: key(ctrl-b)
 (strike | strikethrough): key(ctrl-shift-x)
 mark all read: key(shift-esc)
 mark channel read: key(esc)
-(clear | scrap | scratch): key(ctrl-a backspace)
+clear line: key(ctrl-a backspace)
     # Files and Snippets
 (slack | lack) upload: key(ctrl-u)
 (slack | lack) snippet: key(ctrl-shift-enter)
