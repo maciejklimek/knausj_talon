@@ -5,10 +5,8 @@ mode: user.terminal
 mode: command
 and tag: user.terminal
 -
-(list|lisa): "ls\n"
-(list|lisa) long: "ls -al\n"
-(list|lisa) <user.text>: "ls {text}"
-(list|lisa) (deer|dir): "ls "
+lisa: "ls "
+lily: "ls -al "
 
 # directory and files
 katie: "cd "
@@ -103,9 +101,13 @@ generate see scope database:
     insert('> cscope.files\n')
     insert("cscope -q -R -b -i cscope.files\n")
 
+pee grep: "pgrep "
+pee kill: "pkill "
 process list: "ps -ef\n"
 process top: "htop\n"
 locate: "locate "
+head: "head "
+head <number_small>: "head -n {number_small} "
 (where am I|print working directory): "pwd\n"
 
 edit here: insert("edit .\n")
@@ -115,6 +117,8 @@ edit <user.text>$:
 
 edit:
     insert("edit ")
+edit read me:
+    insert("edit README.md\n")
 
 # XXX - ~/.edit/sessions/<tab>
 edit session:
@@ -183,23 +187,17 @@ run top: "htop\n"
 pee kill: "pkill "
 pee kill <user.text>: "pkill {text}"
 kill <number>: "kill -9 {number}"
+kill: "kill -9 "
 reboot system: "sudo reboot -h now"
 
 # XXX - from the old standard.talon file
 # unsorted
 zed s h: "zsh"
-cd: "cd "
-elle less: "ls "
-run L S: "ls\n"
-run (S S H | S H): "ssh"
 diff: "diff "
 run vim: "vim "
 run make: "make\n"
-run make (durr | dear): "mkdir "
+run see make: "cmake "
 
-#export <user.text>:
-
-#
 errors to standard out: "2>&1 "
 
 collide: "sha256sum "
