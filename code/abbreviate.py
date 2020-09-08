@@ -117,6 +117,7 @@ ctx.lists["user.abbreviation"] = {
     "markdown": "md",
     "message": "msg",
     "metasploit": "msf",
+    "microphone": "mic",
     "milligram": "mg",
     "millisecond": "ms",
     "miscellaneous": "misc",
