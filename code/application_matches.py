@@ -85,3 +85,7 @@ app.name: Vmware
 apps.libreoffice_writer = """
 app.name: LibreOffice Writer
 """
+
+apps.stellaris = """
+app.name: stellaris
+"""
