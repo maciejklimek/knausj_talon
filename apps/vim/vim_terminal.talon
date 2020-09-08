@@ -4,11 +4,10 @@ win.title: /VIM MODE:t/
 tag(): user.terminal
 
 
-# XXX - you to figure out how to delete this from other vim contexts
 action(edit.delete_line):
     key(ctrl-u)
 
-(pop terminal|vim mode):
+pop (terminal|term):
     key(ctrl-\ ctrl-n)
 
 # pop terminal mode and scroll up once, from this point onward you can scroll
