@@ -1,3 +1,6 @@
+# TODO:
+# - need a generic for any clicking zoom overlay to trigger the click
+
 settings():
     #stop continuous scroll/gaze scroll with a pop
     user.mouse_enable_pop_stops_scroll = 0
@@ -21,7 +24,7 @@ control mouse: user.mouse_toggle_control_mouse()
 camera overlay: eye_mouse.camera_overlay.toggle()
 (mouse|run) calibration: user.mouse_calibrate()
 [(enable|disable)] zoom mouse: user.mouse_toggle_zoom_mouse()
-[(enable|disable)] zoom auto click: user.mouse_toggle_zoom_auto_click()
+[(enable|disable)] auto click: user.mouse_toggle_zoom_auto_click()
 
 ###
 # General clicking and movement
@@ -56,6 +59,7 @@ trike: user.mouse_click(0, 3)
     key("{modifiers}:up")
 
 # move to eye location without clicking
+hover: user.mouse_move_cursor()
 
 # zoom and then move to designated location without clicking
 
@@ -79,6 +83,12 @@ curse (hide|no): user.mouse_hide_cursor()
 drag: user.mouse_drag()
 
 ###
+# Coordinate capturing
+###
+mouse trap: user.mouse_capture_coordinates()
+log mouse clicks: user.mouse_log_clicks()
+
+###
 # Zoom features
 ###
 # disables zoom without clicking in case it fails
@@ -88,10 +98,12 @@ cancel zoom: user.mouse_cancel_zoom_mouse()
 (kiff|eagle): user.mouse_zoom_single_click()
 
 # zoom single click - auto click even if autoclick setting disabled
-kick: user.mouse_zoom_auto_single_click()
+#kick: user.mouse_zoom_auto_single_click()
 
 # relocate cursor to clicked location
 portal: user.mouse_zoom_move_cursor()
 
 # auto relocate cursor to clicked location
 auto portal: user.mouse_zoom_auto_move_cursor()
+
+drift: user.mouse_zoom_drag()

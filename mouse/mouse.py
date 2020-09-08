@@ -5,11 +5,14 @@ import pathlib
 import platform
 import subprocess
 
-from talon import (Context, Module, actions, app, cron, ctrl, imgui, noise,
-                   settings, ui)
+from talon import (Context, Module, actions, app, clip, cron, ctrl, imgui,
+                   noise, settings, ui)
 from talon.engine import engine
+from talon.track.geom import Point2d
 from talon_plugins import eye_mouse, eye_zoom_mouse, speech
-from talon_plugins.eye_mouse import config, toggle_control
+from talon_plugins.eye_mouse import config, mouse, toggle_control
+
+main_screen = ui.main_screen()
 
 key = actions.key
 self = actions.self
@@ -111,6 +114,23 @@ def gui_wheel(gui: imgui.GUI):
         actions.user.mouse_scroll_stop()
 
 
+def get_mouse_pos():
+    """Get the most position based of the eye history average
+    :returns: the origin containing the x and y coordinates
+
+    """
+    dot = Point2d(0, 0)
+    hist = mouse.eye_hist[-config.eye_avg :]
+    for left, right in hist:
+        dot += (left.gaze + right.gaze) / 2
+    dot /= len(hist)
+    dot *= Point2d(main_screen.width, main_screen.height)
+
+    off = dot - (self.pos - self.off)
+    origin = self.img.rect.pos + off / config.img_scale
+    return dot, origin
+
+
 @mod.action_class
 class Actions:
     def mouse_click(button: int, count: int):
@@ -185,6 +205,19 @@ class Actions:
         """Click the mouse, prime three clicks, and zoom if necessary."""
         eye_zoom_mouse.zoom_mouse.on_pop(0, 3)
 
+    def mouse_move_cursor():
+        """Move the cursor but don't actually click, and disable control mouse"""
+        if config.control_mouse:
+            eye_mouse.control_mouse.disable()
+        _, origin = eye_zoom_mouse.zoom_mouse.get_pos()
+        ctrl.mouse_move(origin.x, origin.y)
+
+    def mouse_capture_coordinates():
+        """copy the current coordinate tuple to the clipboard"""
+        print(ctrl.mouse_pos())
+        x, y = ctrl.mouse_pos()
+        clip.set_text(f"{x},{y}")
+
     def mouse_zoom_move_cursor():
         """Move the cursor but don't actually click, an zoom if necessary"""
         if not config.control_mouse:
@@ -192,6 +225,10 @@ class Actions:
 
     def mouse_zoom_capture_coordinates():
         """Zoom and copy the clicked coordinate tuple to the clipboard"""
+        pass
+
+    def mouse_log_clicks():
+        """Cause coordinates to be logged a small stack"""
         pass
 
     def mouse_zoom_auto_single_click(count: int = 1):
@@ -235,11 +272,11 @@ class Actions:
     def mouse_drag():
         """(TEMPORARY) Press and hold/release button 0 depending on state for dragging"""
         if 1 not in ctrl.mouse_buttons_down():
-            # print("start drag...")
+            print("start drag...")
             ctrl.mouse_click(button=0, down=True)
             # app.notify("drag started")
         else:
-            # print("end drag...")
+            print("end drag...")
             ctrl.mouse_click(button=0, up=True)
 
         # app.notify("drag stopped")
@@ -249,6 +286,11 @@ class Actions:
             and eye_zoom_mouse.zoom_mouse.state != eye_zoom_mouse.STATE_IDLE
         ):
             eye_zoom_mouse.zoom_mouse.cancel()
+
+    def mouse_zoom_drag():
+        """zoom end press in hold/release button 0 depending on state"""
+
+        eye_zoom_mouse.zoom_mouse.on_pop(0, 1, auto=False, click=False, drag=True)
 
     def mouse_sleep():
         """Disables control mouse, zoom mouse, and re-enables cursor"""
