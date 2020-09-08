@@ -274,13 +274,14 @@ vim_motions = {
     # "search under cursor reversed": "#",
     "again": ";",
     "again reversed": ",",
-    "down sentence": ")",
-    # "sentence": ")",
+    # "down sentence": ")",
+    "sentence": ")",
     "up sentence": "(",
-    "down paragraph": "}",
-    # "paragraph": "}",
+    # "down paragraph": "}",
+    "paragraph": "}",
     "up paragraph": "{",
     # "start of next section": "]]",
+    # XXX - section, and last section
     "next section": "]]",
     # "start of previous section": "[[",
     "previous section": "[[",
@@ -291,6 +292,7 @@ vim_motions = {
     # XXX - not sure about naming - don't seem to work yet
     "block end": "]}",
     "block start": "[{",
+    # XXX - last block
     "previous block": "[}",
     "matching": "%",
     "down line": "+",
@@ -339,10 +341,12 @@ ctx.lists["self.vim_motions_keys"] = {
 vim_motions_with_character = {
     "jump to mark": "'",
     "find": "f",
-    "find reversed": "F",
+    "fever": "F",
+    # "find reversed": "F",
     # "find previous": "F",
     "till": "t",
-    "till reversed": "T",
+    "tier": "T",
+    # "till reversed": "T",
     # "till previous": "T",
 }
 
