@@ -1,4 +1,5 @@
 not app: vim
+# XXX - use a tag for vim terminal?
 -
 
 find it:
