@@ -83,10 +83,10 @@ pulse restart:
 ###
 # Admin
 ###
-(dav mail session):
-    user.vim_command_mode(":source ~/.vim/sessions/davmail.session")
-(scratch session):
-    user.vim_command_mode(":source ~/.vim/sessions/scratch.session")
+dav mail session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/davmail.session")
+scratch session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/scratch.session")
 
 ###
 # Work
@@ -127,6 +127,12 @@ open alternate work space:
 (disconnect|stop) work (tunnel|vpn):
     user.system_command("/home/aa/scripts/disconnect_work_vpn.sh")
 
+###
+# Talon dev
+###
+
+stellaris session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/stellaris.session")
 ###
 # Chat
 ###
