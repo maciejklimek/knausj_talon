@@ -75,6 +75,14 @@ move (win|window) right: key("super-shift-l")
 move (win|window) up: key("super-shift-k")
 move (win|window) down: key("super-shift-j")
 
+shuffle <number_small>: key("super-shift-{number_small}")
+shuffle ten: key("super-shift-0")
+shuffle last [port]: key(super-shift-b)
+shuffle left: key("super-shift-h")
+shuffle right: key("super-shift-l")
+shuffle up: key("super-shift-k")
+shuffle down: key("super-shift-j")
+
 (win|window) horizontal: key(super-;)
 (win|window) vertical: key(super-v)
 
