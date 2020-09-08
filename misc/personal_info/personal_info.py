@@ -27,8 +27,6 @@ def personal_info(m):
     return m.personal_info
 
 
-# John 11 1self1toself0
-
 # ctx.matches = r"""
 # mode: command
 # """
