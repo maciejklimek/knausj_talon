@@ -1,4 +1,4 @@
-number <number>: insert("{number}")
+(numb|number) <number>: insert("{number}")
 (shock|slap): key(enter)
 dot pie: ".py"
 dot talon: ".talon"
@@ -12,6 +12,8 @@ dot org: ".org"
 dot exe: ".exe"
 dot bin: ".bin"
 dot text: ".txt"
+dot session: ".session"
+dot jason: ".json"
 
 (jay son | jason ): "json"
 (http | htp): "http"
