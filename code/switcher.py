@@ -120,7 +120,7 @@ def update_overrides(name, flags):
     overrides = {}
 
     if name is None or name == override_file_path:
-        print("update_overrides")
+        # print("update_overrides")
         with open(override_file_path, "r") as f:
             for line in f:
                 line = line.rstrip()
