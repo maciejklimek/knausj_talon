@@ -41,6 +41,7 @@ list (directories|folders): "find . -maxdepth 1 -type d  -ls\n"
 list files: "find . -maxdepth 1 -type f  -ls\n"
 
 touch: "touch "
+file: "file "
 # file management
 move file: "mv "
 copy file: "cp "
@@ -201,3 +202,8 @@ run see make: "cmake "
 errors to standard out: "2>&1 "
 
 collide: "sha256sum "
+
+pie env: "python -m venv env"
+python module: "python -m "
+[pip] freeze requirements: "pip freeze > requirements.txt\n"
+enter python environment: "source env/bin/activate"
