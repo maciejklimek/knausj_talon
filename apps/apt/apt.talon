@@ -1,7 +1,10 @@
 os: linux
-tag: user.terminal
+tag: user.packager_apt
 -
 
+# see apt.py per additional actions
+# XXX - switch to generic packages
+action(user.packager): "apt "
 apt: "apt "
 apt autoremove: "apt autoremove "
 apt edit sources: "apt edit-sources\n"
