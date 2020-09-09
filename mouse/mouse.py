@@ -114,21 +114,21 @@ def gui_wheel(gui: imgui.GUI):
         actions.user.mouse_scroll_stop()
 
 
-def get_mouse_pos():
-    """Get the most position based of the eye history average
-    :returns: the origin containing the x and y coordinates
+# XXX - add gui for showing cursor positions
+class MouseTracker(object):
 
-    """
-    dot = Point2d(0, 0)
-    hist = mouse.eye_hist[-config.eye_avg :]
-    for left, right in hist:
-        dot += (left.gaze + right.gaze) / 2
-    dot /= len(hist)
-    dot *= Point2d(main_screen.width, main_screen.height)
+    """Tracks and gives mouse positions"""
 
-    off = dot - (self.pos - self.off)
-    origin = self.img.rect.pos + off / config.img_scale
-    return dot, origin
+    def __init__(self):
+        """Prepare the tracking stack"""
+        self.cursor_log = []
+        self.max_log_size = 10
+
+    def log_cursor(self):
+        """Store the most most recent mouse position."""
+        if len(self.cursor_log) > self.max_log_size:
+            self.cursor_log.pop(0)
+        self.cursor_log.append(ctrl.mouse_pos())
 
 
 @mod.action_class
@@ -161,6 +161,16 @@ class Actions:
     def mouse_calibrate():
         """Start calibration"""
         eye_mouse.calib_start()
+
+    def mouse_enable_control_mouse():
+        """Enables control mouse if disabled"""
+        if not config.control_mouse:
+            toggle_control(True)
+
+    def mouse_disable_control_mouse():
+        """Disables control mouse if enabled"""
+        if config.control_mouse:
+            toggle_control(False)
 
     def mouse_toggle_control_mouse():
         """Toggles control mouse"""
