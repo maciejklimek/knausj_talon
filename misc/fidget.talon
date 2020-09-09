@@ -41,7 +41,7 @@ jump to shell functions: "cd ~/.ohmyzsh/custom/functions/\n"
 jump to dotfiles: "cd ~/dotfiles\n"
 
 # config
-edit ignore file: "vim .gitignore\n"
+edit (ignore file|git ignore): "vim .gitignore\n"
 (edit|at it) (secure shell| S S H) config: "vim ~/.ssh/config\n"
 (edit|at it) (eye three|window manager) config: "vim ~/.i3/config\n"
 (edit|at it) window manager config: "vim ~/.i3/config\n"
@@ -61,6 +61,7 @@ public source: "cd  ~/pub/src/\n"
 edit talon lexicon: "vim ~/.talon/w2l/en_US/lexicon.txt && rm ~/.talon/w2l/en_US/lexicon_flat.bin\n"
 x him: "exim"
 add to do: "# XXX - "
+porno: "XXX "
 edit sue do config: "sudo visudo\n"
 edit find results:
     insert("vim $(find . -name \"\")")
