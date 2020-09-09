@@ -14,6 +14,7 @@ dot bin: ".bin"
 dot text: ".txt"
 dot session: ".session"
 dot jason: ".json"
+dot zip: ".zip"
 
 (jay son | jason ): "json"
 (http | htp): "http"
