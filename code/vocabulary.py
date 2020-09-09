@@ -153,6 +153,7 @@ simple_vocabulary = [
     "array",
     "arrays",
     "ping",
+    "stellaris",
 ]
 
 mapping_vocabulary = {
@@ -292,6 +293,8 @@ mapping_vocabulary = {
     "toby": "tobii",
     "you id": "UUID",
     "goo id": "GUID",
+    # weird common typo
+    "dolores": "stellaris",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
