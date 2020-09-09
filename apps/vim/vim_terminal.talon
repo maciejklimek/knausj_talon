@@ -13,7 +13,10 @@ pop (terminal|term):
 # pop terminal mode and scroll up once, from this point onward you can scroll
 # like normal
 # XXX - scroll up just become contextual on mode
-rabbit up:
+# rabbit up:
+action(edit.page_up):
+    key(ctrl-\ ctrl-n ctrl-b)
+scroll up:
     key(ctrl-\ ctrl-n ctrl-b)
 
 # this causes exclusive terminal windows to exit without requiring key press or
