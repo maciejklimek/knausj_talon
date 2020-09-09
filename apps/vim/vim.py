@@ -1042,9 +1042,19 @@ class Actions:
         """press a given list of keys in normal mode"""
         v = VimMode()
         v.set_normal_mode()
-        for key in keys:
+        for key in keys.split(" "):
             # print(key)
             actions.key(key)
+
+    def vim_normal_mode_exterm_keys(keys: str, term_return: str = "False"):
+        """press a given list of keys in normal mode"""
+        v = VimMode()
+        v.set_normal_mode_exterm()
+        for key in keys.split(" "):
+            # print(key)
+            actions.key(key)
+        if term_return == "True":
+            v.set_insert_mode()
 
     def vim_visual_mode(cmd: str):
         """run a given list of commands in visual mode"""
