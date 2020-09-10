@@ -15,8 +15,8 @@ letters_string = "abcdefghijklmnopqrstuvwxyz"
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
-default_f_digits = "one two three four five six seven eight nine ten eleven twelve".split(
-    " "
+default_f_digits = (
+    "one two three four five six seven eight nine ten eleven twelve".split(" ")
 )
 
 mod = Module()
@@ -96,29 +96,17 @@ ctx.lists["self.modifier"] = {
 alphabet = dict(zip(default_alphabet, letters_string))
 ctx.lists["self.letter"] = alphabet
 ctx.lists["self.symbol"] = {
-    "back tick": "`",
     "grave": "`",
-    "`": "`",
     "comma": ",",
-    ",": ",",
     "dot": ".",
-    "period": ".",
     "point": ".",
     "space": " ",
     "void": " ",
     "semi": ";",
-    "semicolon": ";",
-    "apostrophe": "'",
-    #    "quote": "'",
     "tick": "'",
     "lock": "[",
-    # "L square": "[",
-    "left square": "[",
     "square": "[",
-    # "R square": "]",
-    "right square": "]",
     "rock": "]",
-    "forward slash": "/",
     "slash": "/",
     "backslash": "\\",
     "minus": "-",
@@ -126,56 +114,31 @@ ctx.lists["self.symbol"] = {
     "negative": "-",
     "equals": "=",
     "plus": "+",
-    "question mark": "?",
+    "question": "?",
     "tilde": "~",
     "bang": "!",
-    "exclamation point": "!",
     "dollar": "$",
-    "dollar sign": "$",
-    "down score": "_",
     "under score": "_",
+    "score": "_",
     "colon": ":",
-    "lape": "(",
+    "coal": ":",
+    "lub": "(",
     "paren": "(",
-    # "L paren": "(",
-    "left paren": "(",
-    "rape": ")",
-    # "R paren": ")",
-    "right paren": ")",
-    # }
-    # "curly brace": "{",
-    "left brace": "{",
+    "rub": ")",
     "lace": "{",
-    # "L brace": "{",
     "race": "}",
-    # "R brace": "}",
-    "right brace": "}",
-    # "right curly brace": "}",
     "angle": "<",
-    "left angle": "<",
     "langle": "<",
-    "less than": "<",
     "rangle": ">",
-    # "R angle": ">",
-    "right angle": ">",
-    "greater than": ">",
     "star": "*",
-    "asterisk": "*",
-    "pound": "#",
     "hash": "#",
-    "hash sign": "#",
-    "number sign": "#",
     "percent": "%",
-    "percent sign": "%",
+    "cent": "%",
     "caret": "^",
     "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
     "amper": "&",
     "pipe": "|",
     "quote": '"',
-    # "dubquote": '"',
-    # "double quote": '"',
 }
 
 
