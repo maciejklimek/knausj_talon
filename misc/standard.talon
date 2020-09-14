@@ -1,20 +1,5 @@
 (numb|number) <number>: insert("{number}")
-(shock|slap): key(enter)
-dot pie: ".py"
-dot talon: ".talon"
-dot mark down: ".md"
-dot shell: ".sh"
-dot vim: ".vim"
-dot see: ".c"
-dot com: ".com"
-dot net: ".net"
-dot org: ".org"
-dot exe: ".exe"
-dot bin: ".bin"
-dot text: ".txt"
-dot session: ".session"
-dot jason: ".json"
-dot zip: ".zip"
+shock: key(enter)
 
 (jay son | jason ): "json"
 (http | htp): "http"
