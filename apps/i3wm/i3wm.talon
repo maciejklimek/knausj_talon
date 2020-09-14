@@ -26,7 +26,7 @@ launch <user.text>:
 reload i three config: key(super-shift-c)
 restart i three: key(super-shift-r)
 
-full screen: key(super-f)
+(full screen|scuba): key(super-f)
 toggle floating: key(super-shift-space)
 focus floating: key(super-space)
 center window: key(super-shift-d)
