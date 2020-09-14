@@ -104,6 +104,22 @@ open new file:
 load script file:
     key(alt-f7)
 
+# View menu
+
+# Open subviews
+quick view: key(ctrl-1)
+decompile: key(f5)
+view names: key(shift-f4)
+view functions: key(shift-f3)
+view strings: key(shift-f12)
+view segments: key(shift-f7)
+view segment registers: key(shift-f8)
+view signatures: key(shift-f5)
+view type libraries: key(shift-f11)
+view structures: key(shift-f9)
+view enumerations: key(key)
+view local types: key(shift-f1)
+
 ##
 # General options management
 ##
