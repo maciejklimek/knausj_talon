@@ -16,13 +16,18 @@ ultisnips_snippets = {
     "for loop": "for",
     "class": "class",
     "function": "def",
-    "method": "defc",
+    "method": "deff",
+    "class method": "defc",
     "static method": "defs",
-    "from import ": "from",
+    "from": "from",
     "if": "if",
     "if else": "ife",
     "if if else": "ifee",
     "try": "try",
+    "try except": "trye",
+    "finally": "tryf",
+    "trip string": '"',
+    "trip tick": "'",
 }
 
 private_snippets = {

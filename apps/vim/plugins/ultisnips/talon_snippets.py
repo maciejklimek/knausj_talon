@@ -18,6 +18,8 @@ private_snippets = {
     "big insert": "tmi",
     "key": "tk",
     "snippet": "tsnip",
+    "heading": "tcom",
+    "settings": "tset",
 }
 
 ctx.lists["user.snippets"] = {**ultisnips_snippets, **private_snippets}
