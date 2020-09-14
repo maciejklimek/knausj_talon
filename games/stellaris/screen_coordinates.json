@@ -1,7 +1,92 @@
 {
-    "screen_coordinates": {
-        "2560x1440": {
-            "government":"0,0"
+    "2560x1440": {
+        "neutral": [
+            2321,
+            34
+        ],
+        "government": [
+            29,
+            34
+        ],
+        "alert_slot_0": [
+            346,
+            82
+        ],
+        "alert_slot_1": [
+            400,
+            82
+        ],
+        "topbar": {
+            "energy": [
+                112,
+                34
+            ],
+            "minerals": [
+                193,
+                34
+            ],
+            "food": [
+                269,
+                34
+            ],
+            "goods": [
+                350,
+                34
+            ],
+            "alloys": [
+                427,
+                34
+            ],
+            "influence": [
+                509,
+                34
+            ],
+            "unity": [
+                586,
+                34
+            ],
+            "research": [
+                654,
+                34
+            ],
+            "matter": [
+                716,
+                34
+            ],
+            "sprawl": [
+                795,
+                34
+            ],
+            "envoys": [
+                852,
+                34
+            ],
+            "population": [
+                903,
+                34
+            ],
+            "starbase": [
+                968,
+                34
+            ],
+            "naval": [
+                1041,
+                34
+            ]
+        },
+        "offsets": {
+            "planet_orders": [
+                "description": "menu popped up when right clicking planet",
+              "base": [
+                  603,746
+              ], 
+              "explore_system": [
+                617,788  
+              ],
+              "survey_system": [
+                 615,819 
+              ]
+            ]
         }
     }
 }
