@@ -1,3 +1,6 @@
+mode: command
+-
+
 #extensions
 dot pie: ".py"
 dot talon: ".talon"
@@ -10,5 +13,8 @@ dot com: ".com"
 dot net: ".net"
 dot org: ".org"
 dot exe: ".exe"
-dot (bin | bend): ".bin"	
+dot (bin | bend): ".bin"
 dot (jason | jay son): ".json"
+dot zip: ".zip"
+dot text: ".txt"
+dot session: ".session"
