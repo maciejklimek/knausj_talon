@@ -199,11 +199,16 @@ run vim: "vim "
 run make: "make\n"
 run see make: "cmake "
 
-errors to standard out: "2>&1 "
+(redirect errors|errors to standard out): "2>&1 "
 
 collide: "sha256sum "
 
-pie env: "python -m venv env"
+###
+# Python
+###
+
+new pie env: "python -m venv env"
 python module: "python -m "
 [pip] freeze requirements: "pip freeze > requirements.txt\n"
 enter python environment: "source env/bin/activate"
+leave python environment: "deactivate"
