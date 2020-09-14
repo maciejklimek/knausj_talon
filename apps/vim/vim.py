@@ -66,16 +66,15 @@ standard_counted_actions = {
     "append line": "A",
     "insert": "i",
     "insert column zero": "gI",
-    # "open": "o",  # conflicts too much with other commands
-    "open below": "o",
-    "open above": "O",
+    # "open below": "o",
+    # "open above": "O",
     # opposite is useful for visual mode cursor swapping
     "opposite": "o",
     "substitute": "s",
     "substitute line": "S",
     "undo": "u",
     "undo line": "U",
-    "erase": "x",
+    # "erase": "x",
     "erase reversed": "X",
     #    "erase back": "X",
     #    "put": "p",
@@ -135,10 +134,12 @@ standard_counted_actions_control_keys = {
 # alias commands from standard_counted_actions above, without replacing them
 # there to prevent merge conflicts.
 custom_counted_action = {
-    "panic": "u",
+    # "panic": "u",
     "dine": "dd",
     "drop": "x",
     "yine": "Y",
+    "ochre": "o",
+    "orca": "O",
     "slide left": "<<",
     "slide right": ">>",
 }
@@ -339,7 +340,8 @@ ctx.lists["self.vim_motions_keys"] = {
 
 # all of these motions take a character argument
 vim_motions_with_character = {
-    "jump to mark": "'",
+    # "jump to mark": "'",
+    "go mark": "'",
     "find": "f",
     "fever": "F",
     # "find reversed": "F",
