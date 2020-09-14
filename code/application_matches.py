@@ -89,3 +89,9 @@ app.name: LibreOffice Writer
 apps.stellaris = """
 app.name: stellaris
 """
+
+# O10editor because we can't lead with a 0
+apps.O10editor = """
+app.name: 010editor
+app.name: 010 Editor
+"""
