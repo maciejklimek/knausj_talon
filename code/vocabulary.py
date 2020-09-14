@@ -154,10 +154,10 @@ simple_vocabulary = [
     "arrays",
     "ping",
     "stellaris",
+    "config",
 ]
 
 mapping_vocabulary = {
-    "all i": "ollie",
     "and u s kernel": "ntoskrnl",
     "as break": "sbrk",
     "as p one": "sp1",
@@ -295,6 +295,7 @@ mapping_vocabulary = {
     "goo id": "GUID",
     # weird common typo
     "dolores": "stellaris",
+    "sinology": "synology",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
