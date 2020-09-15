@@ -25,6 +25,7 @@ camera overlay: eye_mouse.camera_overlay.toggle()
 (mouse|run) calibration: user.mouse_calibrate()
 [(enable|disable)] zoom mouse: user.mouse_toggle_zoom_mouse()
 [(enable|disable)] auto click: user.mouse_toggle_zoom_auto_click()
+[(enable|disable)] blink click: user.mouse_toggle_blink_click()
 
 ###
 # General clicking and movement

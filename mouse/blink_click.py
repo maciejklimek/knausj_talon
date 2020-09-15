@@ -3,15 +3,17 @@ from os import system
 from sys import platform
 from time import time
 
-from talon import actions, ctrl, ui
+from talon import Module, actions, app, ctrl, ui
 from talon.track.geom import Point2d
 from talon.voice import Key
 from talon_plugins.eye_mouse import menu, tracker
 
-
+mod = Module()
 # Tobii 4C verson, @Dan on slack for help!
 # Change self.magic = 4 for Tobii 5 it ahould work, unless scroll is breaks that.
-class Blink:
+class EyeMouseBlink:
+    enabled = False
+
     def __init__(self):
         self.turn_screen_off_when_away = False  # I like this feature. #MAC ONLY ATM
         self.time_to_sleep = 4000  # Increase time before screen tursn off
@@ -20,7 +22,7 @@ class Blink:
             True  # depricated - one blink means you will have lots of misclicks
         )
         self.magic = 24  # works on 4c might not be optimized # CHANGME if not clicking accuratley (won't work on 4C speed probably like =35)
-        self.scroll_sensitivity = 8  # I like it kinda fast. 6-7 slower.
+        self.scroll_sensitivity = 1  # I like it kinda fast. 6-7 slower.
         self.second = False
         self.blinking = False
         self.nosignal = 0
@@ -123,7 +125,7 @@ class Blink:
     def on_gaze(self, frame):
         l, r = frame.left, frame.right
         # print("GGG",frame.gaze)
-        # print(l,r)
+        # print(l, r)
         pos = frame.gaze
         pos *= self.size_px
         self.current_time = int(self.get_time())
@@ -239,14 +241,21 @@ class Blink:
             self.nosignal += 1
 
 
-blink = Blink()
+blink = EyeMouseBlink()
 
 
-def toggle_blink_click(state):
-    if state:
-        tracker.register("gaze", blink.on_gaze)
-    else:
-        tracker.unregister("gaze", blink.on_gaze)
+@mod.action_class
+class Actions:
+    def mouse_toggle_blink_click():
+        """Turn on an off blink clicking"""
+        global blink
+        if not blink.enabled:
+            tracker.register("gaze", blink.on_gaze)
+            blink.enabled = True
+        else:
+            tracker.unregister("gaze", blink.on_gaze)
+            blink.enabled = False
+        app.notify(subtitle="blink click: %s" % blink.enabled)
 
 
 # menu.toggle('Blink Click + Wink Scroll', weight=2, cb=toggle_blink_click)
