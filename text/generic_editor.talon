@@ -45,10 +45,10 @@ go way down:
 go way up:
     edit.file_start()
 
-go page down:
+(go page down|pink):
     edit.page_down()
 
-go page up:
+(go page up|punk):
     edit.page_up()
 
 # selecting

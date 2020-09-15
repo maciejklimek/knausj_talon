@@ -178,7 +178,7 @@ action(edit.undo):
 # These are prefix with `file` to match the `file save` action defined by talon
 action(edit.save):
     user.vim_command_mode(":w\n")
-saviour:
+sage:
     user.vim_command_mode(":w\n")
 file save as:
     key(escape)
@@ -389,12 +389,12 @@ insert <user.text>:
     user.vim_insert_mode("{text}")
 
 # helpful for fixing typos or bad lexicons that miss a character
-inject <user.any> [before]:
+(inject|cram) <user.any> [before]:
     user.vim_insert_mode_key("{any}")
     # since there is no ctrl-o equiv coming from normal
     key(escape)
 
-inject <user.any> after:
+(inject|cram) <user.any> after:
     user.vim_normal_mode_key("a {any}")
     # since we can't perserve mode with ctrl-o
     key(escape)
@@ -1133,8 +1133,13 @@ show unsaved changes:
 swap again:
     key(g &)
 
+# remove first byte from a line
 pinch: user.vim_normal_mode("0x")
 prefix <user.any>: user.vim_normal_mode("I{any}")
+squish: user.vim_command_mode(":s/  / /g\n")
+# XXX - this could be a generic talon thing
+magnet: user.vim_normal_mode("f x")
+magnet back: user.vim_normal_mode("F x")
 
 
 # useful for turning a git status list already yanked into a register into a
