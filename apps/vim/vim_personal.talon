@@ -23,6 +23,18 @@ open talon plugins:
     user.vim_command_mode_exterm(":e ~/source/talon/releases/latest/resources/talon_plugins\n")
 open talon python:
     user.vim_command_mode_exterm(":e ~/source/talon/releases/latest/resources/python/lib/python3.7/site-packages/talon\n")
+open config:
+    user.vim_command_mode_exterm(":e ~/.vimrc\n")
+open eye three:
+    user.vim_command_mode_exterm(":e ~/.i3/config\n")
+
+###
+# Admin
+###
+dav mail session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/davmail.session")
+scratch session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/scratch.session")
 
 ###
 #
@@ -85,3 +97,6 @@ re nest this:
 convert string to stack:
     user.vim_command_mode(":call String_to_stack_buffer()")
     edit.left()
+
+stellaris session:
+    user.vim_command_mode_exterm(":source ~/.vim/sessions/stellaris.session")

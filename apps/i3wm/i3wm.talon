@@ -14,7 +14,7 @@ port (prev|previous|left): key(super-y)
 (win|window) up: key(super-k)
 (win|window) down: key(super-j)
 (win|window) kill: key(super-shift-q)
-kill (win|window): key(super-shift-q)
+murder: key(super-shift-q)
 (win|window) stacking: key(super-s)
 (win|window) default: key(super-e)
 (win|window) tabbed: key(super-w)
@@ -58,7 +58,7 @@ shrink window:
 # XXX - should include talon sleep maybe
 lock screen: key(super-shift-x)
 
-launch (shell|terminal): key(super-enter)
+(launch shell|koopa): key(super-enter)
 horizontal (shell|terminal):
     key(super-;)
     key(super-enter)
@@ -96,3 +96,44 @@ new scratch (shell|window):
 next scratch:
     key(super--)
     key(super--)
+
+###
+# Custom
+###
+
+
+# fix an error related to the layout of vim terminals inside i3
+wiggle:
+    key(super-f)
+    sleep(1)
+    key(super-f)
+
+
+orwell:
+    key(super-0)
+    sleep(1)
+    edit.copy()
+    key(super-u)
+    sleep(1)
+    edit.paste()
+    key(enter)
+
+reveal:
+    key(super-0)
+    sleep(1)
+    key(ctrl-u)
+    key(super-u)
+    sleep(1)
+    edit.paste()
+    key(enter)
+
+
+new scratch shell:
+    user.system_command_nb("/home/aa/scripts/workflow/scratch_shell.sh")
+
+
+pulse restart:
+    key(super-enter)
+    sleep(1)
+    insert("pulseaudio -k && pulseaudio --start\n")
+    key(super-shift-q)
