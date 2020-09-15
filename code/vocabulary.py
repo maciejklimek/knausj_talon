@@ -296,6 +296,7 @@ mapping_vocabulary = {
     # weird common typo
     "dolores": "stellaris",
     "sinology": "synology",
+    "and or": "and/or",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
