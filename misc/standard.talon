@@ -63,3 +63,15 @@ pucker:
 web link: "https://"
 insecure web link: "http://"
 file link: "file://"
+
+add to do: "# XXX - "
+porno: "XXX "
+
+
+###
+# Chat
+###
+smiley: ":)"
+sad face: ":("
+big smiley: ":D"
+jiff smiley: ">\\o "

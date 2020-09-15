@@ -2,6 +2,7 @@ mode: command
 -
 
 #extensions
+dot batch: ".bat"
 dot pie: ".py"
 dot talon: ".talon"
 dot mark down: ".md"
