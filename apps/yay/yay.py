@@ -5,7 +5,7 @@ ctx = Context()
 
 ctx.matches = r"""
 tag: user.terminal
-and tag: user.packager_yay
+tag: user.packager_yay
 """
 
 
