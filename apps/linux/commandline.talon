@@ -6,7 +6,9 @@ mode: command
 and tag: user.terminal
 -
 lisa: "ls "
+lizzie: "ls\n"
 lily: "ls -al "
+lizard: "ls -al\n"
 
 # directory and files
 katie: "cd "
