@@ -1192,6 +1192,7 @@ class VimMode:
         self.current_rpc = None
         self.nvrpc = NeoVimRPC()
         self.current_mode = self.get_active_mode()
+        self.canceled_timeout = settings.get("user.vim_cancel_queued_commands_timeout")
 
     def dprint(self, s):
         if settings.get("user.vim_debug"):
@@ -1396,6 +1397,7 @@ class VimMode:
             # commands that might affect our command. For instance, accidental
             # number queueing followed by :w, etc
             actions.key("escape")
+            time.sleep(self.canceled_timeout)
             self.wait_mode_change("n")
 
         # switch to explicit mode if necessary. we will be normal mode here
