@@ -463,6 +463,7 @@ swap global:
 (buf|buffer) close current: user.vim_command_mode(":bd\n")
 (delete|close) (current|this) buffer: user.vim_command_mode_exterm(":bd\n")
 botch: user.vim_command_mode_exterm(":bd\n")
+force botch: user.vim_command_mode_exterm(":bd!\n")
 force (buf|buffer) close: user.vim_command_mode_exterm(":bd!\n")
 (buf|buffer) open: user.vim_command_mode_exterm(":b ")
 [go] (buf|buffer) (first|rewind): user.vim_command_mode_exterm(":br\n")
@@ -588,6 +589,7 @@ split <number_small>:
     key(ctrl-w ctrl-w)
 
 # personal convenience shortcuts
+
 # split right
 sprite:
     user.vim_set_normal_mode_exterm()
@@ -1115,6 +1117,10 @@ nerd tree: user.vim_normal_mode_exterm(":NERDTree\n")
 ###
 # Convenience
 ###
+force last:
+    user.vim_command_mode_exterm(":")
+    key(up !)
+
 run as python:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!python' shellescape(@%, 1)\n")
