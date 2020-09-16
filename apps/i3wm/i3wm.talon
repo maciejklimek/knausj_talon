@@ -5,7 +5,7 @@ os: linux
 
 port <number_small>: key("super-{number_small}")
 port ten: key(super-0)
-port (last|back|flip): key(super-u)
+(port flip|flipper): key(super-u)
 port (right|next): key(super-o)
 port (prev|previous|left): key(super-y)
 
