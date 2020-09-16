@@ -1,7 +1,7 @@
 import collections
 from os import system
 from sys import platform
-from time import time
+from time import sleep, time
 
 from talon import Module, actions, app, ctrl, ui
 from talon.track.geom import Point2d
@@ -15,8 +15,8 @@ class EyeMouseBlink:
     enabled = False
 
     def __init__(self):
-        self.turn_screen_off_when_away = False  # I like this feature. #MAC ONLY ATM
-        self.time_to_sleep = 4000  # Increase time before screen tursn off
+        self.turn_screen_off_when_away = True
+        self.time_to_sleep = 4000  # Increase time before screen turns off
         self.beep = False  # requires windows
         self.two_blinks = (
             True  # depricated - one blink means you will have lots of misclicks
@@ -122,6 +122,34 @@ class EyeMouseBlink:
         if self.left_open and not self.right_open:
             ctrl.mouse_scroll(self.scroll_sensitivity)
 
+    def suspend_screen(self):
+        """Place the monitor into energy saving mode"""
+        if not self.turn_screen_off_when_away:
+            return
+        if platform == "darwin":
+            cmd = "pmset displaysleepnow"
+        elif platform == "linux":
+            cmd = "xset dpms force standby"
+        else:
+            return
+        self.sleep = True
+        self.nosignal = 0
+        self.second = False
+
+        print("sleeping in two seconds")
+        sleep(2)
+        system(cmd)
+
+    def wake_screen(self):
+        """Force fully wake the screen upsteep"""
+        if not self.turn_screen_off_when_away:
+            return
+        self.sleep = False
+        if platform == "linux":
+            cmd = "xset dpms force on"
+        print("waking up screen")
+        system(cmd)
+
     def on_gaze(self, frame):
         l, r = frame.left, frame.right
         # print("GGG",frame.gaze)
@@ -200,9 +228,11 @@ class EyeMouseBlink:
                             pass  # print("Eyes are closed oddly..")
                         else:
                             # print("Allowing it")
-                            ctrl.mouse_click(
-                                pos=(self.target_x, self.target_y), hold=32000
-                            )
+                            # ctrl.mouse_click(
+                            #    pos=(self.target_x, self.target_y), hold=32000
+                            # )
+                            # app.notify(subtitle="blink click")
+                            pass
                         # ctrl.mouse_click(pos=(self.target_x, self.target_y), hold=32000)
                         self.second = False
             self.eyes = True
@@ -217,27 +247,10 @@ class EyeMouseBlink:
             if self.nosignal == 0:
                 self.eyes = False
                 # print("No signal", self.nosignal)
-            if self.nosignal > 500 and not self.sleep:
-                # print("Going to sleep")
-                self.sleep = True
-                if (
-                    self.sleep
-                    and self.turn_screen_off_when_away
-                    and platform == "darwin"
-                ):
-                    self.sleep = False
-                    self.nosignal = 0
-                    self.signal = 0
-                    self.second = False
-                    from time import sleep
-
-                    sleep(2)
-                    cmd = "pmset displaysleepnow"
-                    system(cmd)
-            if self.nosignal < self.time_to_sleep:
-                # Computer is awake and sees eyes
-                self.sleep = False
-            # print("SLeep status: ", self.sleep, self.nosignal)
+            if not self.sleep and self.nosignal > self.time_to_sleep:
+                self.suspend_screen()
+            elif self.sleep and self.nosignal < self.time_to_sleep:
+                self.wake_screen()
             self.nosignal += 1
 
 
