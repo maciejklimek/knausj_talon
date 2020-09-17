@@ -3,7 +3,7 @@ tag: user.terminal
 
 pip install: "pip install "
 pip remove: "pip remove "
-pip freeze requirements: "pip freeze -r requirements.txt"
+pip freeze requirements: "pip freeze > requirements.txt"
 pip download: "pip download "
 pip show: "pip show "
 # XXX - this won't work outside of linux obviously

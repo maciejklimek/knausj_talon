@@ -4,7 +4,7 @@ mod = Module()
 ctx = Context()
 ctx.matches = r"""
 os: linux
-app: terminal
+tag: user.terminal
 """
 
 

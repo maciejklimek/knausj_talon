@@ -5,4 +5,4 @@ tag: user.packager_yay
 action(user.packager): "yay "
 action(user.package_search): "yay -sS "
 action(user.package_install): "yay -S "
-action(user.package_or_move): "yay -R "
+action(user.package_remove): "yay -R "
