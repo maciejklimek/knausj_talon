@@ -57,7 +57,7 @@ class Actions:
         path = OUTPUT_DIR / f"{words}-{datetime_now()}.flac"
 
         flac.write_flac(str(path), current_phrase["samples"], compression_level=1)
-        print(f"saved: {path}")
+        print(f"RECORDED: {path}")
 
     def record_wav(words: str):
         """Record the phrase audio to a wave file"""
@@ -70,7 +70,7 @@ class Actions:
             w.setsampwidth(2)
             w.setframerate(16000)
             w.writeframes(binary)
-        print(f"saved: {path}")
+        print(f"RECORDED: {path}")
 
 
 @mod.action
