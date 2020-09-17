@@ -26,6 +26,7 @@ camera overlay: eye_mouse.camera_overlay.toggle()
 [(enable|disable)] zoom mouse: user.mouse_toggle_zoom_mouse()
 [(enable|disable)] auto click: user.mouse_toggle_zoom_auto_click()
 [(enable|disable)] blink click: user.mouse_toggle_blink_click()
+[(enable|disable)] sleep tracker: user.mouse_toggle_eye_mouse_sleep_tracker()
 
 ###
 # General clicking and movement
@@ -102,7 +103,7 @@ cancel zoom: user.mouse_cancel_zoom_mouse()
 #kick: user.mouse_zoom_auto_single_click()
 
 # relocate cursor to clicked location
-portal: user.mouse_zoom_move_cursor()
+#portal: user.mouse_zoom_move_cursor()
 
 # auto relocate cursor to clicked location
 auto portal: user.mouse_zoom_auto_move_cursor()

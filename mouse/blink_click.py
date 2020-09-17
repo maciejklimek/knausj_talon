@@ -9,20 +9,84 @@ from talon.voice import Key
 from talon_plugins.eye_mouse import menu, tracker
 
 mod = Module()
+
+
+# XXX - support putting talon to sleep
+class EyeMouseSleepTracker(object):
+
+    """Track whether or not eyes are present. Wake and sleep the screen
+    accordingly"""
+
+    enabled = False
+
+    def __init__(self):
+        """Set up sleep states"""
+        self.idle_tracker_max_ticks = (
+            4000  # Number of no eye frames to process before trigger sleep
+        )
+        self.nosignal = 0  # Number of ticks there have been no signal
+        self.sleeping = False
+        self.main_screen = ui.main_screen()
+        self.size_px = Point2d(self.main_screen.width, self.main_screen.height)
+
+    def suspend_screen(self):
+        """Place the monitor into energy saving mode"""
+        if platform == "darwin":
+            cmd = "pmset displaysleepnow"
+        elif platform == "linux":
+            app.notify(subtitle="would sleep screen")
+            # cmd = "xset dpms force standby"
+            cmd = ""
+        else:
+            return
+        self.sleeping = True
+        self.nosignal = 0
+        self.second = False
+
+        print("sleeping in two seconds")
+        sleep(2)
+        system(cmd)
+
+    def wake_screen(self):
+        """Force fully wake the screen upsteep"""
+        self.sleeping = False
+        if platform == "linux":
+            cmd = "xset dpms force on"
+        print("waking up screen")
+        system(cmd)
+
+    def on_gaze(self, frame):
+        pos = frame.gaze
+        pos *= self.size_px
+        if not (pos.x <= 0 and pos.y <= 0):
+            self.nosignal = 0
+        else:
+            # No signal
+            self.signal = 0
+            if self.sleeping:
+                if self.nosignal < self.idle_tracker_max_ticks:
+                    self.wake_screen()
+            else:
+                if self.nosignal == self.idle_tracker_max_ticks:
+                    self.suspend_screen()
+            self.nosignal = max(self.idle_tracker_max_ticks, self.nosignal + 1)
+
+
 # Tobii 4C verson, @Dan on slack for help!
 # Change self.magic = 4 for Tobii 5 it ahould work, unless scroll is breaks that.
 class EyeMouseBlink:
     enabled = False
 
     def __init__(self):
-        self.turn_screen_off_when_away = True
-        self.time_to_sleep = 4000  # Increase time before screen turns off
+        # tweakable variables
         self.beep = False  # requires windows
         self.two_blinks = (
             True  # depricated - one blink means you will have lots of misclicks
         )
         self.magic = 24  # works on 4c might not be optimized # CHANGME if not clicking accuratley (won't work on 4C speed probably like =35)
         self.scroll_sensitivity = 1  # I like it kinda fast. 6-7 slower.
+
+        # state tracking
         self.second = False
         self.blinking = False
         self.nosignal = 0
@@ -122,34 +186,6 @@ class EyeMouseBlink:
         if self.left_open and not self.right_open:
             ctrl.mouse_scroll(self.scroll_sensitivity)
 
-    def suspend_screen(self):
-        """Place the monitor into energy saving mode"""
-        if not self.turn_screen_off_when_away:
-            return
-        if platform == "darwin":
-            cmd = "pmset displaysleepnow"
-        elif platform == "linux":
-            cmd = "xset dpms force standby"
-        else:
-            return
-        self.sleep = True
-        self.nosignal = 0
-        self.second = False
-
-        print("sleeping in two seconds")
-        sleep(2)
-        system(cmd)
-
-    def wake_screen(self):
-        """Force fully wake the screen upsteep"""
-        if not self.turn_screen_off_when_away:
-            return
-        self.sleep = False
-        if platform == "linux":
-            cmd = "xset dpms force on"
-        print("waking up screen")
-        system(cmd)
-
     def on_gaze(self, frame):
         l, r = frame.left, frame.right
         # print("GGG",frame.gaze)
@@ -242,19 +278,14 @@ class EyeMouseBlink:
             self.eye_scroll_right(frame)
             self.eye_scroll_left(frame)
         else:
-            # No signal
             self.signal = 0
             if self.nosignal == 0:
                 self.eyes = False
-                # print("No signal", self.nosignal)
-            if not self.sleep and self.nosignal > self.time_to_sleep:
-                self.suspend_screen()
-            elif self.sleep and self.nosignal < self.time_to_sleep:
-                self.wake_screen()
             self.nosignal += 1
 
 
 blink = EyeMouseBlink()
+sleep_tracker = EyeMouseSleepTracker()
 
 
 @mod.action_class
@@ -269,6 +300,17 @@ class Actions:
             tracker.unregister("gaze", blink.on_gaze)
             blink.enabled = False
         app.notify(subtitle="blink click: %s" % blink.enabled)
+
+    def mouse_toggle_eye_mouse_sleep_tracker():
+        """Turn on an off eye mouse sleep tracker"""
+        global sleep_tracker
+        if not sleep_tracker.enabled:
+            tracker.register("gaze", sleep_tracker.on_gaze)
+            sleep_tracker.enabled = True
+        else:
+            tracker.unregister("gaze", sleep_tracker.on_gaze)
+            sleep_tracker.enabled = False
+        app.notify(subtitle="eye sleep tracker: %s" % sleep_tracker.enabled)
 
 
 # menu.toggle('Blink Click + Wink Scroll', weight=2, cb=toggle_blink_click)
