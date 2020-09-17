@@ -211,6 +211,5 @@ collide: "sha256sum "
 
 new pie env: "python -m venv env"
 python module: "python -m "
-[pip] freeze requirements: "pip freeze > requirements.txt\n"
 enter python environment: "source env/bin/activate"
 leave python environment: "deactivate"
