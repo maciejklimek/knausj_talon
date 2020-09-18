@@ -7,6 +7,8 @@ os: linux
 tag: user.terminal
 """
 
+mod.tag("packager_yay", desc="arch packager")
+
 
 @mod.action_class
 class Actions:
