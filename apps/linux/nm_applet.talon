@@ -1,4 +1,4 @@
-app.name: nm-applet
+app: nm-applet
 -
 
 # Deal with the NetworkManager 2FA pop-up when we need to enter/confirm 2FA
