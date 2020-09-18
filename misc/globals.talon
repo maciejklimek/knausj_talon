@@ -15,3 +15,7 @@ show keyboard:
     user.system_command("/home/aa/scripts/florence_show.sh")
 hide keyboard:
     user.system_command("/home/aa/scripts/florence_hide.sh")
+talon restart:
+    user.system_command("bash ~/scripts/restart_talon.sh")
+talon kill:
+    user.system_command("bash ~/scripts/terminate_talon.sh")
