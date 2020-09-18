@@ -2,6 +2,7 @@ win.title: /VIM MODE:t/
 -
 
 tag(): user.terminal
+tag(): user.vim_terminal
 
 
 action(edit.delete_line):

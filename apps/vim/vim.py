@@ -497,6 +497,7 @@ vim_on_and_off_settings = {
 }
 
 mod.tag("vim", desc="a tag to load various vim plugins")
+mod.tag("vim_terminal", desc="a tag to designate if we are in a vim terminal")
 mod.setting(
     "vim_preserve_insert_mode",
     type=int,
