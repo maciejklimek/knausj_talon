@@ -10,7 +10,7 @@
 <user.format_text> over: insert(format_text)
 # word conflicts with vim.py
 #word <user.word>: insert(user.word)
-poke <user.word>: insert(user.word)
+just <user.word>: insert(user.word)
 list formatters: user.list_formatters()
 hide formatters: user.hide_formatters()
 format help: user.formatters_help_toggle()
