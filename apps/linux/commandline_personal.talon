@@ -24,10 +24,6 @@ talon plugins:
     insert("cd ~/source/talon/releases/latest/resources/talon_plugins\n")
     insert("ls\n")
 talon source: "cd  ~/src/talon\n"
-talon restart:
-    user.system_command("bash ~/scripts/restart_talon.sh")
-talon kill:
-    user.system_command("bash ~/scripts/terminate_talon.sh")
 
 
 edit (vim|them) config: "vim ~/.vimrc\n"

@@ -1,3 +1,4 @@
+# XXX - this should have os awarenss
 from talon import Context, Module, actions
 
 mod = Module()
@@ -10,9 +11,17 @@ def paths(m) -> str:
 
 
 ctx = Context()
-ctx.lists["user.paths"] = {
+if "user.paths" not in ctx.lists:
+    ctx.lists["user.paths"] = {}
+orig_paths = ctx.lists["user.paths"]
+new_paths = {
     "sessions": "~/.vim/sessions/",
+    "temp": "/tmp",
+    "config": "/etc",
+    "user": "/usr",
+    "log": "/var/log",
 }
+ctx.lists["user.paths"] = {**orig_paths, **new_paths}
 
 
 @ctx.capture(rule="{user.paths}")

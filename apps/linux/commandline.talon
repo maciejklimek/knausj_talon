@@ -12,10 +12,12 @@ lizard: "ls -al\n"
 
 # directory and files
 katie: "cd "
+katie <user.paths>:
+    insert("cd {paths}\n")
+    insert("ls\n")
 katie up: "cd ../\n"
 (parent|up) dir: "../"
 traverse: "../"
-katie <user.text>: "cd {text}"
 katie home: "cd\n"
 katie last: "cd -\n"
 
@@ -164,6 +166,9 @@ download clipboard:
 
 # because talent doesn't seem to like me saying ./
 run script: "./"
+reverb:
+    insert("./")
+    key(up enter)
 
 # bash convenience stuff
 history: "history\n"
