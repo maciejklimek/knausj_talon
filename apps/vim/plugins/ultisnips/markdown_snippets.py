@@ -25,6 +25,7 @@ ctx.lists["user.snippets"] = {
     "image": "img",
     "inline code": "ilc",
     "code block": "cbl",
+    "shell block": "shellcbl",
     "reference link": "refl",
     "footnote": "fnt",
     "detail": "detail",
