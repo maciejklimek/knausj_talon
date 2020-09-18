@@ -3,7 +3,7 @@ from os import system
 from sys import platform
 from time import sleep, time
 
-from talon import Module, actions, app, ctrl, ui
+from talon import Module, actions, app, ctrl, settings, ui
 from talon.track.geom import Point2d
 from talon.voice import Key
 from talon_plugins.eye_mouse import menu, tracker
@@ -11,7 +11,6 @@ from talon_plugins.eye_mouse import menu, tracker
 mod = Module()
 
 
-# XXX - support putting talon to sleep
 class EyeMouseSleepTracker(object):
 
     """Track whether or not eyes are present. Wake and sleep the screen
@@ -21,13 +20,17 @@ class EyeMouseSleepTracker(object):
 
     def __init__(self):
         """Set up sleep states"""
-        self.idle_tracker_max_ticks = (
-            4000  # Number of no eye frames to process before trigger sleep
-        )
         self.nosignal = 0  # Number of ticks there have been no signal
         self.sleeping = False
         self.main_screen = ui.main_screen()
         self.size_px = Point2d(self.main_screen.width, self.main_screen.height)
+        self.settings = {
+            "max_eyeless_ticks": settings.get(
+                "user.mouse_sleep_tracker_timeout_frames"
+            ),
+            "sleep_mode": settings.get("user.mouse_sleep_tracker_sleep_mode"),
+            "suspend_screen": settings.get("user.mouse_sleep_tracker_suspend_screen"),
+        }
 
     def suspend_screen(self):
         """Place the monitor into energy saving mode"""
@@ -39,9 +42,6 @@ class EyeMouseSleepTracker(object):
             cmd = ""
         else:
             return
-        self.sleeping = True
-        self.nosignal = 0
-        self.second = False
 
         print("sleeping in two seconds")
         sleep(2)
@@ -49,27 +49,43 @@ class EyeMouseSleepTracker(object):
 
     def wake_screen(self):
         """Force fully wake the screen upsteep"""
-        self.sleeping = False
         if platform == "linux":
             cmd = "xset dpms force on"
         print("waking up screen")
         system(cmd)
 
+    def wake(self):
+        self.sleeping = False
+        app.notify(subtitle="waking from eye sleep state")
+        if self.settings["sleep_mode"]:
+            actions.speech.enable()
+        if self.settings["suspend_screen"]:
+            self.wake_screen()
+
+    def suspend(self):
+        self.sleeping = True
+        app.notify(subtitle="entering eye sleep state")
+        if self.settings["sleep_mode"]:
+            actions.speech.disable()
+        if self.settings["suspend_screen"]:
+            self.suspend_screen()
+
     def on_gaze(self, frame):
         pos = frame.gaze
         pos *= self.size_px
+        max_ticks = self.settings["max_eyeless_ticks"]
         if not (pos.x <= 0 and pos.y <= 0):
             self.nosignal = 0
-        else:
-            # No signal
-            self.signal = 0
             if self.sleeping:
-                if self.nosignal < self.idle_tracker_max_ticks:
-                    self.wake_screen()
+                self.wake()
+        else:
+            if self.sleeping:
+                if self.nosignal < max_ticks:
+                    self.wake()
             else:
-                if self.nosignal == self.idle_tracker_max_ticks:
-                    self.suspend_screen()
-            self.nosignal = max(self.idle_tracker_max_ticks, self.nosignal + 1)
+                if self.nosignal == max_ticks:
+                    self.suspend()
+            self.nosignal = min(max_ticks, self.nosignal + 1)
 
 
 # Tobii 4C verson, @Dan on slack for help!

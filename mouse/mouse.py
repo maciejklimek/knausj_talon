@@ -70,8 +70,6 @@ setting_mouse_zoom_auto_click_timeout = mod.setting(
     default=1,
     desc="The time in seconds to delay auto clicking after a zoom occurs",
 )
-
-
 setting_mouse_enable_pop_stops_scroll = mod.setting(
     "mouse_enable_pop_stops_scroll",
     type=int,
@@ -102,6 +100,25 @@ setting_mouse_wheel_down_amount = mod.setting(
     default=120,
     desc="The amount to scroll up/down (equivalent to mouse wheel on Windows by default)",
 )
+setting_mouse_tracker_timeout_frames = mod.setting(
+    "mouse_sleep_tracker_timeout_frames",
+    type=int,
+    default=2000,
+    desc="Number of continuous eyeless frames to wait both before suspending",
+)
+setting_mouse_tracker_suspend_screen = mod.setting(
+    "mouse_sleep_tracker_suspend_screen",
+    type=int,
+    default=1,
+    desc="Determines if the monitor will be shut off when no person is detected.",
+)
+setting_mouse_tracker_enter_sleep_mode = mod.setting(
+    "mouse_sleep_tracker_enter_sleep_mode",
+    type=int,
+    default=1,
+    desc="Determines if talon sleep mode will be entered when no person is detected.",
+)
+
 
 continuous_scoll_mode = ""
 
