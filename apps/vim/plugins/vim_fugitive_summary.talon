@@ -28,7 +28,7 @@ preview file: key(p)
 
 # Commit maps
 
-commit changes: "cc"
+commit [changes]: "cc"
 amend last commit: "ca"
 
 # Checkout/branch maps
@@ -40,6 +40,6 @@ amend last commit: "ca"
 # Miscellaneous maps
 
 close status: "gq"
-fugitive help: "g?"
+help: "g?"
 
 # Global maps
