@@ -30,7 +30,6 @@ focus: key(q)
 # open galaxy map
 map: key(e)
 search: key(f)
-outline: key(o)
 faster: key(+)
 slower: key(-)
 
@@ -39,6 +38,8 @@ slower: key(-)
 science: key(3)
 
 # Outline bar
+outline:
+    user.stellaris_outliner()
 # XXX - this will have to all be coordinates
 
 # Top bar

@@ -16,6 +16,64 @@
             400,
             82
         ],
+        "navigation": {
+            "slot_0": [
+                26,
+                82
+            ],
+            "slot_delta": [
+                26,
+                122
+            ]
+        },
+        "outliner": {
+            "entries": {
+                "planets": [
+                    2346,
+                    205
+                ],
+                "sectors": [
+                    2343,
+                    238
+                ],
+                "shipyards": [
+                    2353,
+                    272
+                ],
+                "fleet": [
+                    2356,
+                    313
+                ],
+                "ships": [
+                    2356,
+                    346
+                ],
+                "armies": [
+                    2354,
+                    387
+                ],
+                "factions": [
+                    2350,
+                    431
+                ]
+            },
+            "status_x": [
+                2328,
+                520
+            ],
+            "status_x_delta": [
+                2327,
+                561
+            ],
+            "entry_x": [
+                2450,
+                508
+            ],
+            "planet_x": [
+                2539,
+                507
+            ]
+        },
         "topbar": {
             "energy": [
                 112,
@@ -75,18 +133,21 @@
             ]
         },
         "offsets": {
-            "planet_orders": [
+            "planet_orders": {
                 "description": "menu popped up when right clicking planet",
-              "base": [
-                  603,746
-              ], 
-              "explore_system": [
-                617,788  
-              ],
-              "survey_system": [
-                 615,819 
-              ]
-            ]
+                "base": [
+                    603,
+                    746
+                ],
+                "explore_system": [
+                    617,
+                    788
+                ],
+                "survey_system": [
+                    615,
+                    819
+                ]
+            }
         }
     }
 }

@@ -5,6 +5,7 @@
 # files
 import json
 import os
+from time import sleep
 
 from talon import Context, Module, actions, ctrl, settings, ui
 from talon_plugins.eye_mouse import config, mouse, toggle_control
@@ -60,11 +61,11 @@ class Stellaris(object):
 
         # alerts
         self.alert_max = 10  # the maximum we index to the right
-        # self.alert_x, self.alert_y = self.coords["alert_slot_0"]
-        self.alert_x, self.alert_y = self.get_pos("alert_slot_0")
-        # self.alert_delta, _ = self.coords["alert_slot_1"]
-        self.alert_delta, _ = self.get_pos("alert_slot_1")
-        self.alert_delta -= self.alert_x
+
+        # outliner
+        self.outliner = self.coords["outliner"]
+        self.outliner_open = False
+        self.outliner_state = "idle"
 
     # XXX - probably can just be a lambda
     def offset_x(self):
@@ -83,9 +84,9 @@ class Stellaris(object):
         pos = ui.active_window().rect.y
         return 0
 
-    def get_pos(self, entry: str):
+    def get_pos(self, db: dict, entry: str):
         """Query json coordinate adjusted by games screen"""
-        pos = self.coords[entry]
+        pos = db[entry]
         return (pos[0] + self.offset_x(), pos[1] + self.offset_y())
 
     def hover_topbar(self, name: str):
@@ -103,6 +104,9 @@ class Stellaris(object):
         """Placed the mouse over the specified alert index"""
         if index < 1:
             index = 1
+        self.alert_x, self.alert_y = self.get_pos(self.coords, "alert_slot_0")
+        self.alert_delta, _ = self.get_pos(self.coords, "alert_slot_1")
+        self.alert_delta -= self.alert_x
         x = self.alert_x + ((index - 1) * self.alert_delta)
         self.hover(x, self.alert_y)
 
@@ -130,15 +134,45 @@ class Stellaris(object):
         if click:
             ctrl.mouse_click(button=0, hold=16000)
 
+    def toggle_outliner(self):
+        """Open or close the outliner window on the right """
+        actions.key("o")
+        if self.outliner_state == "closed":
+            self.outliner_state = "open"
+        else:
+            self.outliner_state = "closed"
+
+    def outliner_init(self):
+        """Close all of the entries after opening the outliner.
+
+        This assumes that the outliner has been configured to have all of the
+        entries opened by default.
+
+        """
+        self.toggle_outliner()
+        sleep(0.1)
+        entries = self.outliner["entries"]
+        for entry in entries.keys():
+            print(entry)
+            sleep(0.075)
+            x, y = self.get_pos(entries, entry)
+            ctrl.mouse_move(x, y)
+            ctrl.mouse_click(button=0, hold=16000)
+
 
 stellaris = Stellaris()
 
 
 @mod.action_class
 class Actions:
-    def government():
+    def stellaris_government():
         """Clicks on the government icon"""
         global stellaris
+
+    def stellaris_outliner():
+        """Toggle the outliner in prep for voice usage"""
+        global stellaris
+        stellaris.outliner_init()
 
     def stellaris_hover_topbar(name: str):
         """Hover over a specified resource"""
