@@ -1,6 +1,7 @@
 # defines placeholder actions and captures for ide-specific snippet functionality
 from talon import Context, Module, actions, app, imgui, registry
 
+ctx = Context()
 mod = Module()
 mod.tag("snippets", desc="Tag for enabling code snippet-related commands")
 mod.list("snippets", desc="List of code snippets")
