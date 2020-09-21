@@ -298,6 +298,7 @@ mapping_vocabulary = {
     "dolores": "stellaris",
     "sinology": "synology",
     "and or": "and/or",
+}
 
 # Add single words here if Talon recognizes them, but they need to have their
 # capitalization adjusted.
