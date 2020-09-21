@@ -155,6 +155,7 @@ simple_vocabulary = [
     "ping",
     "stellaris",
     "config",
+    "make",
 ]
 
 mapping_vocabulary = {
