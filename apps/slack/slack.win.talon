@@ -65,3 +65,5 @@ clear line: key(ctrl-a backspace)
     # Miscellaneous
 (slack | lack) shortcuts: key(ctrl-/)
 emote <user.text>: "{text}"
+toggle left sidebar: key(ctrl-shift-d)
+toggle right sidebar: key(ctrl-.)
