@@ -1,5 +1,9 @@
 # USAGE: - See doc/vim.md for usage and tutorial
 #  - See code/vim.py very implementation and additional motion grammars
+# FILES:
+#   * vim.talon - commands that do not work in terminal mode
+#   * vim_mixed.talon - commands that do not work in terminal mode
+#   * vim_terminal.talon - commands that only work in terminal mode
 #
 # NOTE:
 # Where applicable I try to explicitly select appropriate API for terminal
@@ -14,6 +18,7 @@
 
 os:linux
 app:vim
+#and not tag: user.vim_terminal
 -
 
 tag(): user.vim
@@ -140,7 +145,7 @@ action(edit.indent_less):
 action(edit.delete_line):
     user.vim_normal_mode("dd")
 action(edit.delete):
-    user.vim_normal_mode_key(x)
+    user.vim_insert_mode_key("backspace")
 
 # note these are for mouse highlighted copy/paste. shouldn't be used for actual
 # vim commands
@@ -559,7 +564,7 @@ split <user.vim_arrow>:
     user.vim_set_normal_mode_exterm()
     key(ctrl-w)
     key("{vim_arrow}")
-split (flip|last):
+(split flip|spitter):
     user.vim_set_normal_mode_exterm()
     key(ctrl-w)
     key(p)
@@ -722,7 +727,7 @@ buffer end diff:
 [go] tab (left|prev|previous): user.vim_command_mode_exterm(":tabprevious\n")
 [go] tab first: user.vim_command_mode_exterm(":tabfirst\n")
 [go] tab last: user.vim_command_mode_exterm(":tablast\n")
-[go] tab flip: user.vim_normal_mode_exterm("g\t")
+([go] tab flip|tipper): user.vim_normal_mode_exterm("g\t")
 [go] tab <number_small>: user.vim_normal_mode_exterm("{number_small}gt")
 tab new: user.vim_command_mode_exterm(":tabnew\n")
 tab edit: user.vim_command_mode_exterm(":tabedit ")
@@ -753,6 +758,7 @@ lights off:
 (show|set) relative [line] [numbers]:
     user.vim_command_mode_exterm(":set nonumber\n")
     user.vim_command_mode_exterm(":set relativenumber\n")
+# XXX - make a vimrc function to toggle
 (unset|set no|hide) line numbers: user.vim_command_mode_exterm(":set nonu\n")
 show [current] settings: user.vim_command_mode_exterm(":set\n")
 (unset paste|set no paste): user.vim_command_mode_exterm(":set nopaste\n")

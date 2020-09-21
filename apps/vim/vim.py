@@ -314,11 +314,13 @@ vim_motions = {
     # "cursor bottom": "L",
     "curse bottom": "L",
     # "start of document": "gg",
-    "start of file": "gg",
+    # "start of file": "gg",
+    "loft": "gg",
     # "top of document": "gg",
     # "top of file": "gg",
     # "end of document": "G",
-    "end of file": "G",
+    # "end of file": "G",
+    "gut": "G",
 }
 
 vim_motions_custom = {
