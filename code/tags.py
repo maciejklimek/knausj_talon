@@ -9,6 +9,7 @@ tagList = [
     "gdb",
     "ida",
     "tabs",
+    "terminal",
     "tmux",
     "windbg",
 ]
