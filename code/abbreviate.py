@@ -200,6 +200,7 @@ ctx.lists["user.abbreviation"] = {
     "technology": "tech",
     "temperature": "temp",
     "temporary": "tmp",
+    "temp": "tmp",
     "text": "txt",
     "time of check time of use": "toctou",
     "token": "tok",
