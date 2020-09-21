@@ -21,6 +21,17 @@ new_paths = {
     "user": "/usr",
     "log": "/var/log",
 }
+
+# XXX - add support for selecting
+windows_paths = {
+    "desktop": "%USERPROFILE%\\Desktop",
+    "profile": "%USERPROFILE%",
+    "root": "%SYSTEMROOT%",
+    "windows": "%SYSTEMROOT%",
+    "system": "%SYSTEMROOT%\\System32",
+    "drivers": "%SYSTEMROOT%\\System32\\Drivers",
+    "programs": "%PROGRAMFILES%",
+}
 ctx.lists["user.paths"] = {**orig_paths, **new_paths}
 
 
