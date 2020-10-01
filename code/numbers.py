@@ -200,3 +200,13 @@ mod.list("number_scaled", desc="Mix of numbers and digits")
 @mod.capture
 def number_scaled(m) -> str:
     "Returns a series of numbers as a string"
+
+
+@mod.action_class
+class Actions:
+    def count_numbers(num1: int, num2: int):
+        """return a counted series of numbers"""
+        s = ""
+        for n in range(num1, num2 + 1):
+            s += f"{n} "
+        actions.insert(s)
