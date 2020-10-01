@@ -19,6 +19,7 @@ ctx.lists["user.snippets"] = {
     "italics": "*",
     "bold": "**",
     "bold italics": "***",
+    "strike through": "~~",
     "comment": "/*",
     # Common stuff #
     "link": "link",

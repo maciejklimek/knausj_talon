@@ -9,7 +9,7 @@ refresh [directory]: key(r)
 refresh root [directory]: key(R)
 
 # file node mappings
-open (line|file|node) <number_small>$:
+open (row|file|node) <number_small>$:
     insert(":{number_small}\n")
     key(o)
 recursive open [file]: key(O)
@@ -18,7 +18,7 @@ open file [in] split: key(i)
 open file [in] vertical split: key(s)
 
 # directory node mappings
-close (line|file|node) <number_small>$:
+close (row|file|node) <number_small>$:
     insert(":{number_small}\n")
     key(o)
 close parent node: key(x)
