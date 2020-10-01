@@ -1,16 +1,10 @@
 # XXX - use different zoom cursor to indicate click count?
 
 import os
-import pathlib
-import platform
-import subprocess
 
-from talon import (Context, Module, actions, app, clip, cron, ctrl, imgui,
-                   noise, settings, ui)
-from talon.engine import engine
-from talon.track.geom import Point2d
-from talon_plugins import eye_mouse, eye_zoom_mouse, speech
-from talon_plugins.eye_mouse import config, mouse, toggle_control
+from talon import Module, actions, app, clip, cron, ctrl, imgui, noise, ui
+from talon_plugins import eye_mouse, eye_zoom_mouse
+from talon_plugins.eye_mouse import config, toggle_control
 
 main_screen = ui.main_screen()
 
@@ -379,6 +373,7 @@ class Actions:
         """move the mouse cursor to the center of the currently active window"""
         rect = ui.active_window().rect
         ctrl.mouse_move(rect.left + (rect.width / 2), rect.top + (rect.height / 2))
+
 
 def show_cursor_helper(show):
     """Show/hide the cursor"""
