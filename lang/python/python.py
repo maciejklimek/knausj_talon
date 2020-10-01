@@ -1,7 +1,6 @@
-from talon import Module, Context, actions, ui, imgui, clip, settings
 import re
 
-from talon import actions, Context, Module
+from talon import Context, Module, actions, clip, imgui, settings, ui
 
 mod = Module()
 ctx = Context()
@@ -22,6 +21,27 @@ ctx.lists["user.code_functions"] = {
     "string": "str",
     "update": "update",
 }
+
+"""a set of fields used in python dog strings that will follow the
+reStructuredText format"""
+docstring_fields = {
+    "class": ":class:",
+    "function": ":func:",
+    "parameter": ":param:",
+    "raise": ":raise:",
+    "returns": ":returns:",
+}
+mod.list("python_docstring_fields", desc="python docstring fields")
+ctx.lists["user.python_docstring_fields"] = docstring_fields
+
+type_list = {
+    "boolean": "bool",
+    "integer": "int",
+    "string": "str",
+}
+
+mod.list("python_type_list", desc="python types")
+ctx.lists["user.python_type_list"] = type_list
 
 exception_list = [
     "BaseException",
@@ -137,4 +157,3 @@ class module_actions:
             actions.key(f"left:{len(s) - end_pos}")
         else:
             actions.insert(text)
-

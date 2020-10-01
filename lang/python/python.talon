@@ -115,11 +115,15 @@ for in:
     key(space)
     edit.left()
 dock string:
-    insert("\"\"\"")
-    insert("\"\"\"")
+    key(":6)
     edit.left()
     edit.left()
     edit.left()
+big dock string:
+    key(":3)
+    key(enter:2)
+    key(":3)
+    edit.up()
 
 ####
 # Keywords
@@ -131,6 +135,10 @@ false: "False"
 pass: "pass"
 self: "self"
 
+type {user.python_type_list}:
+    insert("{python_type_list}")
+field {user.python_docstring_fields}:
+    insert("{python_docstring_fields}")
 ####
 # Miscellaneous
 # XXX - make these snippets probably
