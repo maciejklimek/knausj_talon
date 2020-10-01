@@ -46,9 +46,7 @@ funk <user.code_functions>:
     old_clip = clip.text()
     user.code_insert_function(code_functions, "")
     clip.set_text(old_clip)
-library <user.code_libraries>:
-    insert("library()")
-    key(left)
+(include|import|library) <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
     key(end enter)
 funk cell <number>:
