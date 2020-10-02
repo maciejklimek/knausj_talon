@@ -99,7 +99,7 @@ action(user.code_false): "False"
 # Operators
 ####
 empty dict: "{}"
-empty list: "{}"
+empty list: "()"
 word (dickt | dictionary): "dict"
 state (def | deaf | deft): "def "
 class <user.text>:
