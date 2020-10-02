@@ -91,8 +91,7 @@ action(user.code_state_return):
 	insert("return ")
 action(user.code_true): "True"
 action(user.code_false): "False"
-
-
+action(user.code_document_string): user.insert_cursor("\"\"\"[|]\"\"\"")
 
 
 ####

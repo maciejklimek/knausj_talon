@@ -120,8 +120,6 @@ state error: "#error "
 state pre else if: "#elif "
 state pre end: "#endif "
 state pragma: "#pragma "
-
-
 state default: "default:\nbreak;"
 
 #control flow
