@@ -293,8 +293,8 @@ swap lines:
 swap paragraph:
     user.vim_normal_mode("d}}")
     user.vim_normal_mode("p")
-replace <user.any>:
-    user.vim_any_motion_mode("r{any}")
+replace <user.unmodified_key>:
+    user.vim_any_motion_mode("r{unmodified_key}")
 replace (ship|upper|upper case) <user.letters>:
     user.vim_any_motion_mode_key("r")
     user.keys_uppercase_letters(letters)
@@ -380,8 +380,8 @@ append file:
 
 push:
     user.vim_normal_mode_np("$a")
-push <user.any>:
-    user.vim_normal_mode_np("$a{any}")
+push <user.unmodified_key>:
+    user.vim_normal_mode_np("$a{unmodified_key}")
 
 # paste to the end of a line
 # XXX
@@ -394,13 +394,13 @@ insert <user.text>:
     user.vim_insert_mode("{text}")
 
 # helpful for fixing typos or bad lexicons that miss a character
-(inject|cram) <user.any> [before]:
-    user.vim_insert_mode_key("{any}")
+(inject|cram) <user.unmodified_key> [before]:
+    user.vim_insert_mode_key("{unmodified_key}")
     # since there is no ctrl-o equiv coming from normal
     key(escape)
 
-(inject|cram) <user.any> after:
-    user.vim_normal_mode_key("a {any}")
+(inject|cram) <user.unmodified_key> after:
+    user.vim_normal_mode_key("a {unmodified_key}")
     # since we can't perserve mode with ctrl-o
     key(escape)
 
@@ -837,20 +837,20 @@ modify [register|macro] <user.letter>:
     insert("{letter}")
     key(')
 
-[copy] register <user.any> [in] to [register] <user.any>:
+[copy] register <user.unmodified_key> [in] to [register] <user.unmodified_key>:
     user.vim_command_mode(":let@{any_2}=@{any_1}\n")
-paste from register <user.any>: user.vim_any_motion_mode('"{any}p')
-yank (into|to) register <user.any>:
-    user.vim_any_motion_mode('"{any}y')
-#clear (into|to) register <user.any>:
-#    user.vim_any_motion_mode('"{any}d')
+paste from register <user.unmodified_key>: user.vim_any_motion_mode('"{unmodified_key}p')
+yank (into|to) register <user.unmodified_key>:
+    user.vim_any_motion_mode('"{unmodified_key}y')
+#clear (into|to) register <user.unmodified_key>:
+#    user.vim_any_motion_mode('"{unmodified_key}d')
 
 # XXX - this should allow counted yanking, into register should become an
 # optional part of vim.py matching
-yank <user.vim_text_objects> [(into|to)] register <user.any>:
-    user.vim_any_motion_mode('"{any}y{vim_text_objects}')
-#clear <user.vim_text_objects> [(into|to)] register <user.any>:
-#    user.vim_any_motion_mode('"{any}d{vim_text_objects}')
+yank <user.vim_text_objects> [(into|to)] register <user.unmodified_key>:
+    user.vim_any_motion_mode('"{unmodified_key}y{vim_text_objects}')
+#clear <user.vim_text_objects> [(into|to)] register <user.unmodified_key>:
+#    user.vim_any_motion_mode('"{unmodified_key}d{vim_text_objects}')
 
 
 
@@ -917,17 +917,17 @@ search (reversed|reverse) sensitive:
 
 # XXX - is it possible to integrate these with vim_motions_with_character?
 # ordinals work different for `t` for some reason, so we don't need to -1
-till <user.ordinals> <user.any>:
-    user.vim_any_motion_mode("t{any}{ordinals};")
+till <user.ordinals> <user.unmodified_key>:
+    user.vim_any_motion_mode("t{unmodified_key}{ordinals};")
 
-till (reversed|previous) <user.ordinals> <user.any>:
-    user.vim_any_motion_mode("T{any}{ordinals};")
+till (reversed|previous) <user.ordinals> <user.unmodified_key>:
+    user.vim_any_motion_mode("T{unmodified_key}{ordinals};")
 
-find <user.ordinals> <user.any>:
-    user.vim_any_motion_mode("f{any}{ordinals-1};")
+find <user.ordinals> <user.unmodified_key>:
+    user.vim_any_motion_mode("f{unmodified_key}{ordinals-1};")
 
-find (reversed|previous) <user.ordinals> <user.any>:
-    user.vim_any_motion_mode("F{any}{ordinals-1};")
+find (reversed|previous) <user.ordinals> <user.unmodified_key>:
+    user.vim_any_motion_mode("F{unmodified_key}{ordinals-1};")
 
 ###
 # Visual Text Selection
@@ -995,21 +995,21 @@ block (select|highlight) (until|till) line <number>:
 ###
 # Visual Text Editing
 ###
-prefix <user.vim_select_motion> with <user.any>:
+prefix <user.vim_select_motion> with <user.unmodified_key>:
     user.vim_visual_mode("{vim_select_motion}")
     insert(":")
     # leave time for vim to populate '<,'>
     sleep(50ms)
-    insert("s/^/{any}/g\n")
+    insert("s/^/{unmodified_key}/g\n")
 
 # Assumes visual mode
 # XXX - possibly worth moving to a file that actually triggers on a visual mode
 # title
-prefix with <user.any>:
+prefix with <user.unmodified_key>:
     insert(":")
     # leave time for vim to populate '<,'>
     sleep(50ms)
-    insert("s/^/{any}/g\n")
+    insert("s/^/{unmodified_key}/g\n")
 
 
 ###
@@ -1147,7 +1147,7 @@ swap again:
 
 # remove first byte from a line
 pinch: user.vim_normal_mode("0x")
-prefix <user.any>: user.vim_normal_mode("I{any}")
+prefix <user.unmodified_key>: user.vim_normal_mode("I{unmodified_key}")
 squish: user.vim_command_mode(":s/  / /g\n")
 # XXX - this could be a generic talon thing
 magnet: user.vim_normal_mode("f x")
@@ -1156,8 +1156,8 @@ magnet back: user.vim_normal_mode("F x")
 
 # useful for turning a git status list already yanked into a register into a
 # space delimited list you can peace unto the command line
-remove newlines from register <user.any>:
-    user.vim_command_mode(":let @{any}=substitute(strtrans(@{any}),'\^@',' ','g')\n")
+remove newlines from register <user.unmodified_key>:
+    user.vim_command_mode(":let @{unmodified_key}=substitute(strtrans(@{unmodified_key}),'\^@',' ','g')\n")
 
 ###
 # Custom
