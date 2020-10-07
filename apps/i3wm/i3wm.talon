@@ -1,4 +1,4 @@
-# NOTE: If you want to use i3wm you must enable the tag code/tags.py
+# NOTE: If you want to use i3wm you must enable the tag settings.talon. ex: `tag(): user.i3wm`
 os: linux
 tag: user.i3wm
 -
