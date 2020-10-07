@@ -113,11 +113,8 @@ for in:
     edit.word_left()
     key(space)
     edit.left()
-dock string:
-    key(":6)
-    edit.left()
-    edit.left()
-    edit.left()
+half dock string:
+    key(":3)
 big dock string:
     key(":3)
     key(enter:2)
@@ -134,10 +131,22 @@ false: "False"
 pass: "pass"
 self: "self"
 
+# for annotating function parameters
+is type {user.python_type_list}:
+    insert(": {python_type_list}")
+returns [type] {user.python_type_list}:
+    insert(" -> {python_type_list}")
+# for generic reference of types
 type {user.python_type_list}:
     insert("{python_type_list}")
-field {user.python_docstring_fields}:
+dock {user.python_docstring_fields}:
     insert("{python_docstring_fields}")
+    edit.left()
+dock type {user.python_type_list}:
+    user.insert_cursor(":type [|]: {python_type_list}")
+dock returns type {user.python_type_list}:
+    user.insert_cursor(":rtype [|]: {python_type_list}")
+
 ####
 # Miscellaneous
 # XXX - make these snippets probably
@@ -188,6 +197,7 @@ capture <user.text>:
     insert('    "Returns a string"\n')
 pie test: "pytest"
 state past: "pass"
+
 
 ^funky <user.text>$: user.code_private_function(text)
 #^pro funky <user.text>$: user.code_protected_function(text)

@@ -1,12 +1,12 @@
 import re
 
-from talon import Context, Module, actions, clip, imgui, settings, ui
+from talon import Context, Module, actions, settings
 
 mod = Module()
 ctx = Context()
 ctx.matches = r"""
 mode: user.python
-mode: command 
+mode: command
 and code.language: python
 """
 ctx.lists["user.code_functions"] = {
@@ -29,8 +29,16 @@ docstring_fields = {
     "function": ":func:",
     "parameter": ":param:",
     "raise": ":raise:",
-    "returns": ":returns:",
+    "returns": ":return:",
+    "type": ":type:",
+    "return type": ":rtype:",
+    # these are sphinx-specific
+    "see also": ".. seealso:: ",
+    "notes": ".. notes:: ",
+    "warning": ".. warning:: ",
+    "todo": ".. todo:: ",
 }
+
 mod.list("python_docstring_fields", desc="python docstring fields")
 ctx.lists["user.python_docstring_fields"] = docstring_fields
 
@@ -38,6 +46,19 @@ type_list = {
     "boolean": "bool",
     "integer": "int",
     "string": "str",
+    "none": "None",
+    "dick": "Dict",
+    "float": "float",
+    "any": "Any",
+    "tuple": "Tuple",
+    "union": "UnionAny",
+    "iterable": "Iterable",
+    "vector": "Vector",
+    "bytes": "bytes",
+    "sequence": "Sequence",
+    "callable": "Callable",
+    "list": "List",
+    "no return": "NoReturn",
 }
 
 mod.list("python_type_list", desc="python types")
