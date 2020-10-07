@@ -1,3 +1,4 @@
 app: vim
 -
-toggle zoom: key(ctrl-w m)
+toggle zoom:
+    user.vim_normal_mode_exterm_key("ctrl-w m")

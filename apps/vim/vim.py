@@ -354,6 +354,7 @@ vim_motions_with_character = {
     # "find previous": "F",
     "till": "t",
     "tier": "T",
+    "last": "T",
     # "till reversed": "T",
     # "till previous": "T",
 }
@@ -593,7 +594,6 @@ mod.list("vim_jump_targets", desc="VIM jump targets")
 mod.list("vim_normal_counted_motion_command", desc="Counted normal VIM commands")
 mod.list("vim_counted_motion_command_with_ordinals", desc="Counted normal VIM commands")
 mod.list("vim_select_motion", desc="VIM visual mode selection motions")
-mod.list("vim_any", desc="All vim commands")
 
 # Plugin-specific lists
 mod.list("vim_surround_targets", desc="VIM surround plugin targets")
@@ -709,11 +709,6 @@ def vim_motions_all_adjust(m) -> str:
 
 
 @mod.capture
-def vim_any(m) -> str:
-    "Any one key"
-
-
-@mod.capture
 def vim_text_objects(m) -> str:
     "Returns a string"
 
@@ -773,7 +768,7 @@ def vim_motions_with_upper_character(m) -> str:
 
 
 @ctx.capture(
-    rule="{self.vim_motions_with_character} (<user.letter>|<digits>|<user.symbol>)"
+    rule="{self.vim_motions_with_character} (<user.letter>|<digits>|<user.symbol_key>)"
 )
 def vim_motions_with_character(m) -> str:
     return m.vim_motions_with_character + "".join(str(x) for x in list(m)[1:])

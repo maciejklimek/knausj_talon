@@ -248,7 +248,7 @@ line <number>:
 
 # XXX - add support for [{, [(, etc
 matching: user.vim_any_motion_mode_key("%")
-matching <user.symbol>: user.vim_any_motion_mode("f{symbol}%")
+matching <user.symbol_key>: user.vim_any_motion_mode("f{symbol_key}%")
 
 # jump list
 show jump list: user.vim_command_mode_exterm(":jumps\n")
