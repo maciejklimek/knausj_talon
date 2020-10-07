@@ -839,7 +839,7 @@ modify [register|macro] <user.letter>:
 
 [copy] register <user.unmodified_key> [in] to [register] <user.unmodified_key>:
     user.vim_command_mode(":let@{any_2}=@{any_1}\n")
-paste from register <user.unmodified_key>: user.vim_any_motion_mode('"{unmodified_key}p')
+(paste from register|put) <user.unmodified_key>: user.vim_any_motion_mode('"{unmodified_key}p')
 yank (into|to) register <user.unmodified_key>:
     user.vim_any_motion_mode('"{unmodified_key}y')
 #clear (into|to) register <user.unmodified_key>:
