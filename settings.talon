@@ -21,7 +21,7 @@ settings():
     #the amount to scroll up/down (equivalent to mouse wheel on Windows by default)
     user.mouse_wheel_down_amount = 120
     # where to save screen shots
-    user.screenshot_folder = "~/images/screenshots"
+    user.screenshot_folder = "/home/aa/images/screenshots/"
     # what command to use for selection based screenshots
     user.screenshot_selection_command = "scrot -s"
 
