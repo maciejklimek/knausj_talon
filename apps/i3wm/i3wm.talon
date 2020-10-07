@@ -1,10 +1,9 @@
 os: linux
 # TODO: match a window manager specified in a settings file
-# TODO: take `super` from a settings file
 -
 
-port <number_small>: key("super-{number_small}")
-port ten: key(super-0)
+port <number_small>: user.system_command("i3-msg workspace {number_small}")
+port ten: user.system_command("i3-msg workspace 0")
 (port flip|flipper): key(super-u)
 port (right|next): key(super-o)
 port (prev|previous|left): key(super-y)
