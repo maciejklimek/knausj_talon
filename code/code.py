@@ -1,8 +1,4 @@
-import os
-import re
-
-from talon import (Context, Module, actions, app, fs, imgui, registry,
-                   settings, ui)
+from talon import Context, Module, actions, app, imgui, registry, settings
 
 ctx = Context()
 mod = Module()
