@@ -98,6 +98,7 @@ ctx.lists["user.abbreviation"] = {
     "funny": "lol",
     "generic": "gen",
     "generate": "gen",
+    "hypertext": "http",
     "history": "hist",
     "image": "img",
     "import table": "iat",
@@ -215,6 +216,7 @@ ctx.lists["user.abbreviation"] = {
     "versus": "vs",
     "visual": "vis",
     "visual studio": "msvc",
+    "web": "www",
     "what the fuck": "wtf",
     "window": "win",
 }
