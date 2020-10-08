@@ -146,6 +146,7 @@ dock type {user.python_type_list}:
     user.insert_cursor(":type [|]: {python_type_list}")
 dock returns type {user.python_type_list}:
     user.insert_cursor(":rtype [|]: {python_type_list}")
+import <user.code_libraries>: import {code_libraries}
 
 ####
 # Miscellaneous
@@ -206,3 +207,8 @@ state past: "pass"
 #^pro static funky <user.text>$: user.code_protected_static_function(text)
 #^pub static funky <user.text>$: user.code_public_static_function(text)
 raise {user.python_exception}: user.insert_cursor("raise {python_exception}([|])")
+
+toggle imports: user.code_toggle_libraries()
+import <user.code_libraries>:
+    user.code_insert_library(code_libraries, "")
+    key(end enter)

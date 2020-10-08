@@ -37,7 +37,7 @@ default_cursor = {
 
 # todo figure out why notepad++ still shows the cursor sometimes.
 hidden_cursor = os.path.join(
-    os.path.dirname(os.path.realpath(__file__)), "Resources\HiddenCursor.cur"
+    os.path.dirname(os.path.realpath(__file__)), "Resources\\HiddenCursor.cur"
 )
 
 mod = Module()
@@ -388,7 +388,7 @@ def show_cursor_helper(show):
 
         try:
             Registrykey = winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER, "Control Panel\Cursors", 0, winreg.KEY_WRITE
+                winreg.HKEY_CURRENT_USER, "Control Panel\\Cursors", 0, winreg.KEY_WRITE
             )
 
             for value_name, value in default_cursor.items():
