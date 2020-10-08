@@ -297,7 +297,7 @@ replace <user.unmodified_key>:
     user.vim_any_motion_mode("r{unmodified_key}")
 replace (ship|upper|upper case) <user.letters>:
     user.vim_any_motion_mode_key("r")
-    user.keys_uppercase_letters(letters)
+    user.insert_formatted(letters, "ALL_CAPS")
 
 # indenting
 # XXX - are temporarily disabled for speed testing
