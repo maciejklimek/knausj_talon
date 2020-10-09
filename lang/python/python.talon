@@ -132,7 +132,7 @@ pass: "pass"
 self: "self"
 
 # for annotating function parameters
-is type {user.python_type_list}:
+make type {user.python_type_list}:
     insert(": {python_type_list}")
 returns [type] {user.python_type_list}:
     insert(" -> {python_type_list}")
@@ -148,54 +148,11 @@ dock returns type {user.python_type_list}:
     user.insert_cursor(":rtype [|]: {python_type_list}")
 import <user.code_libraries>: import {code_libraries}
 
-####
-# Miscellaneous
-# XXX - make these snippets probably
-####
-define private (method|function) <user.text>:
-    insert("def _")
-    insert(user.formatted_text(text, "snake"))
-    insert("(self):")
-    key(left)
-    key(left)
-
-define public (method|function) <user.text>:
-    insert("def ")
-    insert(user.formatted_text(text, "snake"))
-    insert("(self):")
-    key(left)
-    key(left)
-
-define (method|function) <user.text>$:
-    insert("def ")
-    insert(user.formatted_text(text, "snake"))
-    insert("():")
-    key(left)
-    key(left)
-
-call method <user.text>:
-    key(.)
-    insert(user.formatted_text(text, "snake"))
-    insert("()")
-    key(left)
-
 call [function] <user.text>:
     insert(user.formatted_text(text, "snake"))
     insert("()")
     key(left)
 
-# XXX - move to a talon programming helper
-capture <user.text>:
-    insert("@mod.capture\ndef ")
-    insert(user.formatted_text(text, "snake"))
-    insert("(m) -> str:\n")
-    insert('    "Returns a string"\n\n')
-    insert("@ctx.capture(rule='{self.")
-    insert(user.formatted_text(text, "snake"))
-    insert("}')\ndef ")
-    insert(user.formatted_text(text, "snake"))
-    insert("(m) -> str:\n")
-    insert('    "Returns a string"\n')
 pie test: "pytest"
 state past: "pass"
 
