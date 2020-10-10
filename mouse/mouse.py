@@ -389,11 +389,7 @@ def show_cursor_helper(show):
 
         try:
             Registrykey = winreg.OpenKey(
-<<<<<<< HEAD:mouse/mouse.py
-                winreg.HKEY_CURRENT_USER, "Control Panel\\Cursors", 0, winreg.KEY_WRITE
-=======
                 winreg.HKEY_CURRENT_USER, r"Control Panel\Cursors", 0, winreg.KEY_WRITE
->>>>>>> fd30bfa844cc7a5b09aef1b261bdfe57de4878b8:code/mouse.py
             )
 
             for value_name, value in default_cursor.items():
