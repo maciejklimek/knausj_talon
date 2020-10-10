@@ -1,4 +1,4 @@
-tag: user.vim
+tag: user.vim_nerdtree
 win.title: /NERD_tree/
 -
 

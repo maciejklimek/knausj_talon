@@ -23,6 +23,32 @@ app:vim
 
 tag(): user.vim
 tag(): user.tabs
+
+# Talon VIM plugin tags. Uncomment tags for plugins you having installed and
+# want to use.
+tag(): user.vim_ale
+tag(): user.vim_change_inside_surroundings
+tag(): user.vim_cscope
+tag(): user.vim_easy_align
+tag(): user.vim_easymotion
+tag(): user.vim_floaterm
+tag(): user.vim_fugitive
+tag(): user.vim_fugitive_summary
+tag(): user.vim_fzf
+tag(): user.vim_markdown_toc
+tag(): user.vim_nerdtree
+tag(): user.vim_obsession
+tag(): user.vim_plug
+tag(): user.vim_signature
+tag(): user.vim_surround
+tag(): user.vim_taboo
+tag(): user.vim_tabular
+tag(): user.vim_unicode
+tag(): user.vim_you_are_here
+tag(): user.vim_youcompleteme
+tag(): user.vim_zoom
+
+
 settings():
     # Whether or not to always revert back to the previous mode. Example, if
     # you are in insert mode and say 'delete word' it will delete one word and

@@ -1,4 +1,4 @@
-tag: user.vim
+tag: user.vim_fzf
 -
 
 rizzle: user.vim_normal_mode_exterm(":Rg\n")

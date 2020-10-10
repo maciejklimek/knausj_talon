@@ -27,6 +27,35 @@ ctx.matches = r"""
 app: vim
 """
 
+# talon vim plugins. see apps/vim/plugins/
+# to enable plugins you'll want to set these inside vim.talon
+tag_list = [
+    "vim_ale",
+    "vim_change_inside_surroundings",
+    "vim_cscope",
+    "vim_easy_align",
+    "vim_easymotion",
+    "vim_floaterm",
+    "vim_fugitive",
+    "vim_fugitive_summary",
+    "vim_fzf",
+    "vim_markdown_toc",
+    "vim_nerdtree",
+    "vim_obsession",
+    "vim_plug",
+    "vim_signature",
+    "vim_surround",
+    "vim_taboo",
+    "vim_tabular",
+    "vim_unicode",
+    "vim_you_are_here",
+    "vim_youcompleteme",
+    "vim_zoom",
+]
+
+for entry in tag_list:
+    mod.tag(entry, f"tag to load {entry} and/or related plugins ")
+
 
 # Based on you using a custom title string like this:
 # see doc/vim.md

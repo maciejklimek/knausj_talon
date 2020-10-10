@@ -1,5 +1,5 @@
 # https://github.com/voldikss/vim-floaterm
-app: vim
+tag: user.vim_floaterm
 -
 
 float term: user.vim_command_mode_exterm(":FloatermNew\n")
