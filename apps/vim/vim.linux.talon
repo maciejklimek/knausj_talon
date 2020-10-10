@@ -4,6 +4,7 @@
 #   * vim.talon - commands that do not work in terminal mode
 #   * vim_mixed.talon - commands that do not work in terminal mode
 #   * vim_terminal.talon - commands that only work in terminal mode
+#   *
 #
 # NOTE:
 # Where applicable I try to explicitly select appropriate API for terminal
@@ -44,6 +45,7 @@ tag(): user.vim_surround
 tag(): user.vim_taboo
 tag(): user.vim_tabular
 tag(): user.vim_unicode
+tag(): user.vim_ultisnips
 tag(): user.vim_you_are_here
 tag(): user.vim_youcompleteme
 tag(): user.vim_zoom
