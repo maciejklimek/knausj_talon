@@ -213,7 +213,7 @@ collide: "sha256sum "
 # Python
 ###
 
-new pie env: "python -m venv env"
+new (pie|python) (env|environment): "python -m venv env"
 python module: "python -m "
-enter python environment: "source env/bin/activate"
-leave python environment: "deactivate"
+(activate|enter python environment): "source env/bin/activate\n"
+(deactivate|leave python environment): "deactivate\n"
