@@ -748,16 +748,24 @@ buffer end diff:
 
 ###
 # Tab
+#
+# This is a combination of Talon generic commands from `misc/tab.talon` and my
+# own extras.
 ###
+
+# `misc/tab.talon` versions
+action(app.tab_open): user.vim_command_mode_exterm(":tabnew\n")
+action(app.tab_close): user.vim_command_mode_exterm(":tabclose\n")
+action(app.tab_next): user.vim_command_mode_exterm(":tabnext\n")
+
+
 (list|show) tabs: user.vim_command_mode(":tabs\n")
-(close this tab|tab close): user.vim_command_mode_exterm(":tabclose\n")
 [go] tab (next|right): user.vim_command_mode_exterm(":tabnext\n")
 [go] tab (left|prev|previous): user.vim_command_mode_exterm(":tabprevious\n")
 [go] tab first: user.vim_command_mode_exterm(":tabfirst\n")
 [go] tab last: user.vim_command_mode_exterm(":tablast\n")
 ([go] tab flip|tipper): user.vim_normal_mode_exterm("g\t")
 [go] tab <number_small>: user.vim_normal_mode_exterm("{number_small}gt")
-tab new: user.vim_command_mode_exterm(":tabnew\n")
 tab edit: user.vim_command_mode_exterm(":tabedit ")
 tab move right: user.vim_command_mode_exterm(":tabm +\n")
 tab move left: user.vim_command_mode_exterm(":tabm -\n")

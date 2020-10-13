@@ -2,8 +2,6 @@
 # TODO:
 # - define all the lists separately and then update ctx.lists only once
 # - document that visual selection mode implies terminal escape
-# - eventually use nvim RPC to confirm mode changes vs relying on a time
-#   delay that is buggy depending on your cpu consumption
 # - add setting for disabling local terminal escape when running inside
 #   remote vim sessions via ssh, etc
 # - import and test scenario where the mode isn't listed at all
@@ -48,6 +46,7 @@ tag_list = [
     "vim_taboo",
     "vim_tabular",
     "vim_unicode",
+    "vim_ultisnips",
     "vim_you_are_here",
     "vim_youcompleteme",
     "vim_zoom",

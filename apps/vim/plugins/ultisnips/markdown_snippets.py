@@ -2,7 +2,7 @@ from talon import Context
 
 ctx = Context()
 ctx.matches = r"""
-app: vim
+tag: user.vim_ultisnips
 mode: user.markdown
 mode: command
 and code.language: markdown
