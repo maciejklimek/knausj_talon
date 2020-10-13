@@ -195,7 +195,10 @@ class Actions:
         """code_operator_less_than_or_equal_to"""
 
     def code_operator_in():
-        """code_operator_less_than_or_equal_to"""
+        """code_operator_in"""
+
+    def code_operator_not_in():
+        """code_operator_not_in"""
 
     def code_operator_and():
         """codee_operator_and"""
