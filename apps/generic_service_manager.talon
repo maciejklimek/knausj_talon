@@ -1,8 +1,7 @@
-# service systemctl etc
 tag: user.terminal
 -
 tag(): user.service_manager
-tag(): user.systemctl
+tag(): user.systemd
 
 service: user.service()
 service restart: user.service_restart()
