@@ -37,6 +37,8 @@ action(user.code_operator_greater_than): " > "
 action(user.code_operator_greater_than_or_equal_to): " >= "
 action(user.code_operator_less_than): " < "
 action(user.code_operator_less_than_or_equal_to): " <= "
+action(user.code_operator_in): " in "
+action(user.code_operator_not_in): " not in "
 action(user.code_operator_and): " and "
 action(user.code_operator_or): " or "
 action(user.code_operator_bitwise_and): " & "
@@ -146,7 +148,7 @@ dock type {user.python_type_list}:
     user.insert_cursor(":type [|]: {python_type_list}")
 dock returns type {user.python_type_list}:
     user.insert_cursor(":rtype [|]: {python_type_list}")
-import <user.code_libraries>: import {code_libraries}
+import <user.code_libraries>: "import {code_libraries}"
 
 call [function] <user.text>:
     insert(user.formatted_text(text, "snake"))
