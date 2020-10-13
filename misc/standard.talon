@@ -44,7 +44,7 @@ mute: key(mute)
 play next: key(next)
 play previous: key(prev)
 
-(play | pause): key(play_pause)
+(play | pause): key(play)
 
 local host: "127.0.0.1"
 (hex|hexadecimal) [(num|number)] <number>: "0x{number}"
