@@ -51,7 +51,7 @@ edit python snippets:
 jump to work: "cd ~/source/edg/ && ls\n"
 talon pulls: "cd  ~/source/talon_pull/fidget\n"
 new talon pull branch: "new_talon_pull_repo.sh "
-public source: "cd  ~/pub/source/\n"
+public source: "cd  ~/public/source/\n"
 edit talon lexicon: "vim ~/.talon/w2l/en_US/lexicon.txt && rm ~/.talon/w2l/en_US/lexicon_flat.bin\n"
 
 

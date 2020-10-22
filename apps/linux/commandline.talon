@@ -26,7 +26,14 @@ make (dur|dear|dir|directory) <user.text>: "mkdir {text}"
 remove (dur|dear|dir|directory): "rmdir "
 remove (dur|dear|dir|directory) <user.text>: "rmdir {text}"
 remove file: "rm "
-tree: "tree\n"
+
+# tree
+tree: "tree -L 2\n"
+tree long: "tree -L 2 -p\n"
+tree all: "tree -L 2 -a\n"
+tree folders: "tree -L 2 -d\n"
+
+
 temp (dur|dear|dir|directory): "cd /tmp\n"
 pop (dur|dear|dir|directory): "popd\n"
 
@@ -117,8 +124,8 @@ head <number_small>: "head -n {number_small} "
 
 edit here: insert("edit .\n")
 
-edit <user.text>$:
-    insert("edit {text}")
+#edit <user.text>$:
+#    insert("edit {text}")
 
 edit:
     insert("edit ")
@@ -217,3 +224,17 @@ new (pie|python) (env|environment): "python -m venv env"
 python module: "python -m "
 (activate|enter python environment): "source env/bin/activate\n"
 (deactivate|leave python environment): "deactivate\n"
+
+
+###
+# Screen recording
+###
+
+record screen: insert("recordmydesktop")
+
+###
+# X11 stuff
+###
+
+screen dimensions: "xdpyinfo | grep dimensions\n"
+screen resolution: "xdpyinfo | awk '/dimensions/{{print $2}}'\n"
