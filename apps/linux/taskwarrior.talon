@@ -44,3 +44,5 @@ task done <number_small>$: "task {number_small} done"
 task (<number_small> delete|delete <number_small>)$: "task {number_small} delete"
 
 task <number_small>$: "task {number_small} "
+
+task filter: "task long | fzf\n"
