@@ -56,6 +56,8 @@ extension_lang_map = {
     "vba": "vba",
     "vim": "vimscript",
     "vimrc": "vimscript",
+    "yaml": "yaml",
+    "yml": "yaml",
 }
 
 # flag indicates whether or not the title tracking is enabled
