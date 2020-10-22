@@ -45,6 +45,7 @@ tag_list = [
     "vim_surround",
     "vim_taboo",
     "vim_tabular",
+    "vim_wiki",
     "vim_unicode",
     "vim_ultisnips",
     "vim_you_are_here",

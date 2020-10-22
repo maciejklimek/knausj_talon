@@ -46,6 +46,7 @@ tag(): user.vim_taboo
 tag(): user.vim_tabular
 tag(): user.vim_unicode
 tag(): user.vim_ultisnips
+tag(): user.vim_wiki
 tag(): user.vim_you_are_here
 tag(): user.vim_youcompleteme
 tag(): user.vim_zoom
@@ -757,6 +758,7 @@ buffer end diff:
 action(app.tab_open): user.vim_command_mode_exterm(":tabnew\n")
 action(app.tab_close): user.vim_command_mode_exterm(":tabclose\n")
 action(app.tab_next): user.vim_command_mode_exterm(":tabnext\n")
+[go] tab <number_small>: user.vim_normal_mode_exterm("{number_small}gt")
 
 
 (list|show) tabs: user.vim_command_mode(":tabs\n")
@@ -765,7 +767,6 @@ action(app.tab_next): user.vim_command_mode_exterm(":tabnext\n")
 [go] tab first: user.vim_command_mode_exterm(":tabfirst\n")
 [go] tab last: user.vim_command_mode_exterm(":tablast\n")
 ([go] tab flip|tipper): user.vim_normal_mode_exterm("g\t")
-[go] tab <number_small>: user.vim_normal_mode_exterm("{number_small}gt")
 tab edit: user.vim_command_mode_exterm(":tabedit ")
 tab move right: user.vim_command_mode_exterm(":tabm +\n")
 tab move left: user.vim_command_mode_exterm(":tabm -\n")
@@ -1027,6 +1028,12 @@ block (select|highlight) (until|till) line <number>:
     user.vim_set_visual_block_mode()
     insert("''")
 
+# Greedily highlight whatever is under the cursor. Doesn't work if on the first
+# character of the entry, in which case you should say a normal motion like
+# "select big end", etc
+select this:
+    user.vim_normal_mode_np("B")
+    user.vim_visual_mode("E")
 
 ###
 # Visual Text Editing
@@ -1128,6 +1135,8 @@ recall last function:
 
 ###
 # Argument list
+#
+# TODO missing write and movement ex: :wnext
 ###
 (arg|argument) do:
     user.vim_command_mode(":argdo | update")
@@ -1138,6 +1147,14 @@ recall last function:
     user.vim_command_mode(":arg\n")
 (arg|argument) add:
     user.vim_command_mode(":argadd ")
+(arg|argument) next:
+    user.vim_command_mode(":next\n")
+(arg|argument) previous:
+    user.vim_command_mode(":prev\n")
+(arg|argument) first:
+    user.vim_command_mode(":first\n")
+(arg|argument) last:
+    user.vim_command_mode(":last\n")
 
 ###
 # Command mode
@@ -1163,6 +1180,13 @@ force last:
     user.vim_command_mode_exterm(":")
     key(up !)
 
+###
+# Command execution
+###
+
+# Run the current script view the command line
+invoke this:
+    user.vim_command_mode(":!%\n")
 run as python:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!python' shellescape(@%, 1)\n")
