@@ -38,13 +38,7 @@ file save: edit.save()
 #spotlight: key(super)
 #(undo that | skunks): edit.undo()
 #redo that: edit.redo()
-volume up: key(volup)
-volume down: key(voldown)
-mute: key(mute)
-play next: key(next)
-play previous: key(prev)
 
-(play | pause): key(play)
 
 local host: "127.0.0.1"
 (hex|hexadecimal) [(num|number)] <number>: "0x{number}"
@@ -65,7 +59,6 @@ insecure web link: "http://"
 file link: "file://"
 
 add to do: "# XXX - "
-porno: "XXX "
 
 
 ###
