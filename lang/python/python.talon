@@ -155,6 +155,8 @@ call [function] <user.text>:
     insert("()")
     key(left)
 
+index <user.word>: '["{word}"]'
+
 pie test: "pytest"
 state past: "pass"
 
@@ -166,6 +168,7 @@ state past: "pass"
 #^pro static funky <user.text>$: user.code_protected_static_function(text)
 #^pub static funky <user.text>$: user.code_public_static_function(text)
 raise {user.python_exception}: user.insert_cursor("raise {python_exception}([|])")
+(deck|decorator) {user.python_decorator}: user.insert_cursor("@{python_decorator}")
 
 toggle imports: user.code_toggle_libraries()
 import <user.code_libraries>:

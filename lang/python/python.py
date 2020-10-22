@@ -136,6 +136,13 @@ ctx.lists["user.python_exception"] = {
     for exception in exception_list
 }
 
+decorator_list = ["classmethod", "property", "staticmethod"]
+mod.list("python_decorator", desc="python decorator")
+ctx.lists["user.python_decorator"] = {
+    " ".join(re.findall("[A-Z][^A-Z]*", decorator)).lower(): decorator
+    for decorator in decorator_list
+}
+
 
 @ctx.action_class("user")
 class user_actions:
