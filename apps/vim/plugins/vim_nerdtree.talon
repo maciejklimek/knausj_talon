@@ -7,6 +7,8 @@ close parent: key(x)
 close all children: key(X)
 refresh [directory]: key(r)
 refresh root [directory]: key(R)
+root up: key(u)
+root up day: key(U)
 
 # file node mappings
 open (row|file|node) <number_small>$:
@@ -14,8 +16,8 @@ open (row|file|node) <number_small>$:
     key(o)
 recursive open [file]: key(O)
 open file: key(o)
-open file [in] split: key(i)
-open file [in] vertical split: key(s)
+open [file] [in] split: key(i)
+open [file] [in] vertical [split]: key(s)
 
 # directory node mappings
 close (row|file|node) <number_small>$:
@@ -41,11 +43,11 @@ copy (node|file): "mc"
 # tree navigation mappings
 go root [(dur|dir|directory)]: key(P)
 go parent [(dur|dir|directory)]: key(p)
-go first child [(dur|dir|directory)]: key(K)
-go last child [(dur|dir|directory)]: key(J)
+go first [child] [directory]: key(K)
+go last [child] [directory]: key(J)
 
 # tree filtering mappings
-show hidden files: key(I)
+show hidden [files]: key(I)
 
 # other mappings
 quick help: key(?)
