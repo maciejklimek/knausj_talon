@@ -12,6 +12,6 @@ state task: "- [ ] "
 
 # XXX - Update to something that uses the [|] trick
 link clip:
-    insert("(here)[")
+    edit.insert("(here)[")
     edit.paste()
-    insert("]")
+    edit.insert("]")
