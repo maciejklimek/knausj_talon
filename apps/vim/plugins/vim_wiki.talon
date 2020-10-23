@@ -5,6 +5,7 @@ tag: user.vim_wiki
 # \<Plug>NiceCenterCursor"`, since the wiki relies on `<leader>`. You can see
 # the mappings with `:nmap` or similar.
 # XXX - add scope for when a wiki is actually open
+# XXX - consider switching to `key` isntead of wiki
 
 -
 
@@ -38,6 +39,11 @@ diary last:
 diary next:
     user.vim_command_mode_exterm(':execute "normal \<Plug>VimwikiMakeTomorrowDiaryNote"\n')
 
+wiki help:
+    user.vim_command_mode_exterm(':help vimwiki')
+wiki help commands:
+    user.vim_command_mode_exterm(':help vimwiki-commands')
+
 ###
 # Internal Vim Wiki Commands
 #
@@ -54,6 +60,11 @@ wiki tab link:
     user.vim_command_mode(":VimwikiTabnewLink\n")
 wiki next link:
     user.vim_command_mode(":VimwikiNextLink\n")
+
+# Convenience for when you aren't directly on the link
+go [next] link:
+    user.vim_command_mode(":VimwikiNextLink\n")
+    user.vim_command_mode(":VimwikiFollowLink\n")
 wiki last link:
     user.vim_command_mode(":VimwikiPrevLink\n")
 wiki go to:
