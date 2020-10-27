@@ -138,14 +138,14 @@ edit session:
 
 lazy edit:
     insert("edit ")
-    insert("$(find . -not -path '*/\.git/*' -name \"**\")")
+    insert("$(find . -not -path '*/\\.git/*' -name \"**\")")
     key("left")
     key("left")
     key("left")
 
 lazy edit <user.text>:
     insert("edit ")
-    insert("$(find . -not -path '*/\.git/*' -name \"*{text}*\")\n")
+    insert("$(find . -not -path '*/\\.git/*' -name \"*{text}*\")\n")
 
 find <user.text> inside (python|pie) files:
     insert('$(find . -name \"*.py\") | xargs rg -i "{text}"\n')
@@ -180,7 +180,7 @@ reverb:
 # bash convenience stuff
 history: "history\n"
 for file loop:
-    insert("for FILE in $(ls \"*\"); do \$FILE; done")
+    insert("for FILE in $(ls \"*\"); do $FILE; done")
 
 network manager log: "sudo journalctl -u NetworkManager.service\n"
 
