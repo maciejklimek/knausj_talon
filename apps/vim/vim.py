@@ -45,6 +45,7 @@ tag_list = [
     "vim_surround",
     "vim_taboo",
     "vim_tabular",
+    "vim_taskwiki",
     "vim_unicode",
     "vim_ultisnips",
     "vim_wiki",
@@ -313,7 +314,9 @@ vim_motions = {
     "up sentence": "(",
     # "down paragraph": "}",
     "paragraph": "}",
+    "graph": "}",
     "up paragraph": "{",
+    "up graph": "{",
     # "start of next section": "]]",
     # XXX - section, and last section
     "next section": "]]",
@@ -366,6 +369,7 @@ ctx.lists["self.vim_motions"] = {
 
 
 # XXX - make easier to say
+# TODO - Not sure if curse always applies
 ctx.lists["self.vim_motions_keys"] = {
     "last curse": "ctrl-o",
     "forward curse": "ctrl-i",
@@ -784,7 +788,7 @@ def vim_motions(m) -> str:
     return m.vim_motions
 
 
-@ctx.capture(rule="{self.vim_motions_keys}")
+@ctx.capture("user.vim_motions_keys", rule="{self.vim_motions_keys}")
 def vim_motions_keys(m) -> str:
     return m.vim_motions_keys
 

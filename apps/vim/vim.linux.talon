@@ -44,6 +44,7 @@ tag(): user.vim_signature
 tag(): user.vim_surround
 tag(): user.vim_taboo
 tag(): user.vim_tabular
+tag(): user.vim_taskwiki
 tag(): user.vim_unicode
 tag(): user.vim_ultisnips
 tag(): user.vim_wiki
@@ -250,6 +251,9 @@ open this file in [split|window]:
     key(f)
 open this file in vertical [split|window]:
     user.vim_command_mode(":vertical wincmd f\n")
+pillar this:
+    user.vim_command_mode(":vertical wincmd f\n")
+
 
 (show|list) current directory: user.vim_command_mode(":pwd\n")
 change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
@@ -482,7 +486,7 @@ deleted selected empty lines:
     insert(":")
     # leave time for vim to populate '<,'>
     sleep(50ms)
-    insert("g/^$/d\j")
+    insert("g/^$/d\\j")
 
 swap global:
     user.vim_command_mode(":%s///g")
@@ -864,7 +868,7 @@ force (make|save) session: user.vim_command_mode_exterm(":mksession! ")
 (register|registers|macros) list: user.vim_command_mode_exterm(":reg\n")
 show (register|macro) <user.letter>: user.vim_command_mode(":reg {letter}\n")
 play macro <user.letter>: user.vim_any_motion_mode("@{letter}")
-repeat macro: user.vim_any_motion_mode("@@")
+(repeat|re) macro: user.vim_any_motion_mode("@@")
 record macro <user.letter>: user.vim_any_motion_mode("q{letter}")
 (finish macro|cancel macro|stop macro|stop recording): user.vim_any_motion_mode("q")
 modify [register|macro] <user.letter>:
@@ -928,29 +932,29 @@ visual block mode: user.vim_any_motion_mode_exterm_key("ctrl-v")
 # Searching
 ###
 search:
-    user.vim_any_motion_mode_exterm("/\c")
+    user.vim_any_motion_mode_exterm("/\\c")
 
 search sensitive:
     key(escape)
-    user.vim_any_motion_mode_exterm("/\C")
+    user.vim_any_motion_mode_exterm("/\\C")
 
 search <user.text>$:
-    user.vim_any_motion_mode_exterm("/\c{text}\n")
+    user.vim_any_motion_mode_exterm("/\\c{text}\n")
 
 search <user.text> sensitive$:
-    user.vim_any_motion_mode_exterm("/\C{text}\n")
+    user.vim_any_motion_mode_exterm("/\\C{text}\n")
 
 search <user.ordinals> <user.text>$:
-    user.vim_any_motion_mode_exterm("{ordinals}/\c{text}\n")
+    user.vim_any_motion_mode_exterm("{ordinals}/\\c{text}\n")
 
 search (reversed|reverse) <user.text>$:
-    user.vim_any_motion_mode_exterm("?\c{text}\n")
+    user.vim_any_motion_mode_exterm("?\\c{text}\n")
 
 search (reversed|reverse):
-    user.vim_any_motion_mode_exterm("?\c")
+    user.vim_any_motion_mode_exterm("?\\c")
 
 search (reversed|reverse) sensitive:
-    user.vim_any_motion_mode_exterm("?\C")
+    user.vim_any_motion_mode_exterm("?\\C")
 
 # XXX - is it possible to integrate these with vim_motions_with_character?
 # ordinals work different for `t` for some reason, so we don't need to -1
@@ -1180,19 +1184,26 @@ force last:
     user.vim_command_mode_exterm(":")
     key(up !)
 
+left align paragraph:
+    user.vim_visual_mode("}:left\n")
+
 ###
 # Command execution
 ###
 
 # Run the current script view the command line
+# XXX - These should only enable in python lang mode
 invoke this:
     user.vim_command_mode(":!%\n")
-run as python:
+run python:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!python' shellescape(@%, 1)\n")
+run sandbox:
+    user.vim_normal_mode_np(":w\n")
+    insert(":exec '!env/bin/python3' shellescape(@%, 1)\n")
 
-remove trailing white space: user.vim_normal_mode(":%s/\s\+$//e\n")
-(remove all|normalize) tabs: user.vim_normal_mode(":%s/\t/    /eg\n")
+remove trailing white space: user.vim_normal_mode(":%s/\\s\\+$//e\n")
+(remove all|normalize) tabs: user.vim_normal_mode(":%s/\\t/    /eg\n")
 # assumes visual mode
 (delete|trim) empty lines:
     insert(":")
@@ -1217,7 +1228,7 @@ magnet back: user.vim_normal_mode("F x")
 # useful for turning a git status list already yanked into a register into a
 # space delimited list you can peace unto the command line
 remove newlines from register <user.unmodified_key>:
-    user.vim_command_mode(":let @{unmodified_key}=substitute(strtrans(@{unmodified_key}),'\^@',' ','g')\n")
+    user.vim_command_mode(":let @{unmodified_key}=substitute(strtrans(@{unmodified_key}),'\\^@',' ','g')\n")
 
 ###
 # Custom
