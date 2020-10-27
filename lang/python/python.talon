@@ -148,7 +148,6 @@ dock type {user.python_type_list}:
     user.insert_cursor(":type [|]: {python_type_list}")
 dock returns type {user.python_type_list}:
     user.insert_cursor(":rtype [|]: {python_type_list}")
-import <user.code_libraries>: "import {code_libraries}"
 
 call [function] <user.text>:
     insert(user.formatted_text(text, "snake"))
