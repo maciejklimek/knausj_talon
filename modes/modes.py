@@ -20,11 +20,11 @@ class Actions:
     def talon_sleep_callback():
         """Additional actions to be run when talon goes to sleep"""
         actions.user.system_command_nb(
-            ["/home/aa/source/obs-cli/obs-cli.py", "--stop-recording"]
+            "/home/aa/source/obs-cli/obs-cli.py --stop-recording"
         )
 
     def talon_wake_callback():
         """Additional actions to be run when talon wakes up"""
         actions.user.system_command_nb(
-            ["/home/aa/source/obs-cli/obs-cli.py", "--start-recording"]
+            "/home/aa/source/obs-cli/obs-cli.py --start-recording"
         )
