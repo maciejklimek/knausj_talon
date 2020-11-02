@@ -157,7 +157,10 @@ call [function] <user.text>:
 index <user.word>: '["{word}"]'
 
 pie test: "pytest"
-state past: "pass"
+state pass: "pass"
+state as string: '.decode("utf-8")'
+F string: 'f""'
+raw string: 'r""'
 
 
 ^funky <user.text>$: user.code_private_function(text)
