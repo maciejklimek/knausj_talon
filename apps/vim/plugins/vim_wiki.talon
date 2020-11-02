@@ -102,8 +102,10 @@ wiki move call left:
 wiki move call right:
     user.vim_command_mode(":VimwikiTableMoveColumnRight\n")
 
+# TODO - change command to update wiki?
 wiki generate links:
     user.vim_command_mode(":VimwikiGenerateLinks")
+# TODO - change command to update diary?
 wiki generate diary links:
     user.vim_command_mode(":VimwikiDiaryGenerateLinks\n")
 # :VimwikiDiaryNextDay - redundant? See global diary next

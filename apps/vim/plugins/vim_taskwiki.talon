@@ -31,7 +31,6 @@ task tags: user.vim_command_mode(":TaskWikiTags\n")
 task start: user.vim_command_mode(":TaskWikiStart\n")
 task stop: user.vim_command_mode(":TaskWikiStop\n")
 
-
 task refresh: user.vim_command_mode(":TaskWikiBufferLoad\n")
 task save: user.vim_command_mode(":TaskWikiBufferSave\n")
 task inspect: user.vim_command_mode(":TaskWikiInspect\n")

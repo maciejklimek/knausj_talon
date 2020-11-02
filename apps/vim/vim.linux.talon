@@ -32,6 +32,7 @@ tag(): user.vim_change_inside_surroundings
 tag(): user.vim_cscope
 tag(): user.vim_easy_align
 tag(): user.vim_easymotion
+tag(): user.vim_fern
 tag(): user.vim_floaterm
 tag(): user.vim_fugitive
 tag(): user.vim_fugitive_summary
@@ -257,6 +258,7 @@ pillar this:
 
 (show|list) current directory: user.vim_command_mode(":pwd\n")
 change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
+reorient: user.vim_command_mode(":lcd %:p:h\n")
 
 ###
 # Navigation, movement and jumping
@@ -267,8 +269,6 @@ change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
 #[(go|jump)] [to] line <number>:
 [go] row <number>:
     user.vim_command_mode_exterm(":{number}\n")
-line <number>:
-    app.notify("stop saying that")
 
 # These are especially useful when in terminal mode and you want to jump to
 # something in normal mode that is in the history. Doubley so if you use
@@ -1169,13 +1169,17 @@ last command:
 messages show:
     user.vim_command_mode(":messages\n")
 
-###
-# Plugins
-###
-
-# NOTE: This is here rather than nerdtree.talon to load the split buffer, which
-# triggers nerdtree.talon when focused. Don't move this into nerdtree.talon
-nerd tree: user.vim_normal_mode_exterm(":NERDTree\n")
+# This allows to see plug-in and script errors from the messages screen in a
+# new editable buffer.
+# WARNING: clobbers register a
+messages extract:
+    user.vim_command_mode(":vsplit\n")
+    user.vim_command_mode(":enew\n")
+    user.vim_command_mode(":redir @a\n")
+    user.vim_command_mode(":silent messages\n")
+    user.vim_command_mode(":redir END\n")
+    user.vim_normal_mode('"ap')
+    user.vim_normal_mode('G')
 
 ###
 # Convenience
