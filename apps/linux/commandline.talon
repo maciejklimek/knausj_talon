@@ -9,6 +9,7 @@ lisa: "ls "
 lizzie: "ls\n"
 lily: "ls -al "
 lizard: "ls -al\n"
+latest: "ls -Art | tail -n1\n"
 
 # directory and files
 katie: "cd "
@@ -92,8 +93,8 @@ now grep:
     insert("| grep -i ")
 
 # networking
-show (I P|eye pee): "ip addr\n"
-show route: "ip route\n"
+net [work] (I P|eye pee): "ip addr\n"
+net [work] (route|routes): "ip route\n"
 net stat: "netstat -ant\n"
 net cat: "nc -vv "
 net cat listener: "nc -v -l -p "
