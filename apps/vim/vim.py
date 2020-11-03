@@ -34,6 +34,7 @@ tag_list = [
     "vim_easy_align",
     "vim_easymotion",
     "vim_fern",
+    "vim_fern_mapping_fzf",
     "vim_floaterm",
     "vim_fugitive",
     "vim_fugitive_summary",

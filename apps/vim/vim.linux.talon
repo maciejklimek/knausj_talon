@@ -33,6 +33,7 @@ tag(): user.vim_cscope
 tag(): user.vim_easy_align
 tag(): user.vim_easymotion
 tag(): user.vim_fern
+tag(): user.vim_fern_mapping_fzf
 tag(): user.vim_floaterm
 tag(): user.vim_fugitive
 tag(): user.vim_fugitive_summary
@@ -1180,6 +1181,20 @@ messages extract:
     user.vim_command_mode(":redir END\n")
     user.vim_normal_mode('"ap')
     user.vim_normal_mode('G')
+
+###
+# Spell check
+#
+# Recommend you `set spellfile` somewhere
+###
+
+spell add: user.vim_normal_mode('zg')
+spell wrong: user.vim_normal_mode('zw')
+spell undo add: user.vim_normal_mode('zug')
+spell undo wrong: user.vim_normal_mode('zug')
+spell suggest: user.vim_normal_mode('z=')
+spell next: user.vim_normal_mode(']s')
+spell last: user.vim_normal_mode('[s')
 
 ###
 # Convenience
