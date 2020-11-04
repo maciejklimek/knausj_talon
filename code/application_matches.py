@@ -47,6 +47,10 @@ and app.name: Signal
 
 os: linux
 and app.name: signal
+
+os: linux
+and app.name: Signal-desktop
+
 """
 
 apps.termite = """
@@ -94,4 +98,9 @@ app.name: stellaris
 apps.O10editor = """
 app.name: 010editor
 app.name: 010 Editor
+"""
+
+apps.openshot = """
+os: linux
+and app.name: openshot-qt
 """
