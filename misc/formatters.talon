@@ -9,8 +9,6 @@
 # word conflicts with vim.py
 #word <user.word>: insert(user.word)
 just <user.word>: insert(user.word)
-list formatters: user.list_formatters()
-hide formatters: user.hide_formatters()
 <user.format_text>+$: user.insert_many(format_text_list)
 <user.format_text>+ over: user.insert_many(format_text_list)
 <user.formatters> that: user.formatters_reformat_selection(user.formatters)
