@@ -9,7 +9,10 @@ lisa: "ls "
 lizzie: "ls\n"
 lily: "ls -al "
 lizard: "ls -al\n"
+# TODO - somehow make this scriptable to print anything
 latest: "ls -Art | tail -n1\n"
+watch latest: "vlc $(ls -Art | tail -n1)"
+
 
 # directory and files
 katie: "cd "
