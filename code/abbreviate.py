@@ -55,6 +55,7 @@ ctx.lists["user.abbreviation"] = {
     "copy": "cpy",
     "count": "cnt",
     "counter": "ctr",
+    "cute": "qt",
     "database": "db",
     "date format": "yyyy-mm-dd",
     "declare": "decl",
