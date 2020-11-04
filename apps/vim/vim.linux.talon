@@ -1203,7 +1203,7 @@ force last:
     user.vim_command_mode_exterm(":")
     key(up !)
 
-left align paragraph:
+left align (graph|paragraph):
     user.vim_visual_mode("}:left\n")
 
 ###
