@@ -54,6 +54,12 @@ def letter(m) -> str:
     "One letter key"
 
 
+@mod.capture(rule="{self.letter}")
+def upper_letter(m) -> str:
+    "Return one upper case"
+    return m.letter.upper()
+
+
 @mod.capture
 def letters(m) -> str:
     "Multiple letter keys"
@@ -245,7 +251,7 @@ def keys(m) -> str:
 
 @ctx.capture(rule="{self.letter}+")
 def letters(m):
-    return ''.join(m.letter_list)
+    return "".join(m.letter_list)
 
 
 @mod.action_class
