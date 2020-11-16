@@ -27,8 +27,9 @@ task add: "task add "
 task add <user.text>: "task add {text}\n"
 task undo: "task undo\n"
 
-tasks [list] all: "task\n"
-(tasks|task next): "task next\n"
+#tasks [list] all: "task\n"
+task next: "task next\n"
+task <number>$: "task {number} "
 
 # task editing
 task <number> (edit|at it)$: "task {number} edit"
@@ -43,9 +44,12 @@ task (<number> done|done <number>)$: "task {number} done"
 task done <number>$: "task {number} done"
 task (<number> delete|delete <number>)$: "task {number} delete"
 
-task <number>$: "task {number} "
 
 task filter: "task long | fzf\n"
 
 # requires some sort of personal sync server set up or https://inthe.am, etc
 task sink: "task sync\n"
+
+task diagnostics: "task diag\n"
+task projects: "task projects\n"
+task tags: "task tags\n"

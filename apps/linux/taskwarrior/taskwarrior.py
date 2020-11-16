@@ -21,6 +21,12 @@ ctx.lists["self.task_modifiable_verbs"] = {
     "done": "done",
 }
 
+ctx.lists["self.task_virtual_tags"] = {
+    "completed": "COMPLETED",
+    "project": "PROJECT",
+    "unblocked": "UNBLOCKED",
+}
+
 ctx.lists["self.task_filters"] = {}
 
 ctx.lists["self.task_modifiers"] = {
@@ -35,6 +41,7 @@ mod.list("task_unmodifiable_verbs", desc="taskwarrior unmodifiable commands")
 mod.list("task_modifiable_verbs", desc="taskwarrior modifiable commands")
 mod.list("task_modifiers", desc="taskwarrior command modifiers")
 mod.list("task_filters", desc="taskwarrior command filters")
+mod.list("task_virtual_tags", desc="taskwarrior virtual tags")
 
 
 @mod.capture
