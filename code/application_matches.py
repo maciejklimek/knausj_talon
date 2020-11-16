@@ -103,4 +103,9 @@ app.name: 010 Editor
 apps.openshot = """
 os: linux
 and app.name: openshot-qt
+
+os: linux
+and app.name: openshot
+
+win.title:/OpenShot Video Editor/
 """
