@@ -48,6 +48,7 @@ tag_list = [
     "vim_taboo",
     "vim_tabular",
     "vim_taskwiki",
+    "vim_test",
     "vim_unicode",
     "vim_ultisnips",
     "vim_wiki",
@@ -384,6 +385,8 @@ ctx.lists["self.vim_motions_keys"] = {
 # all of these motions take a character argument
 vim_motions_with_character = {
     # "jump to mark": "'",
+    # TODO - clear 'go mark' <mark> is awkward. may want til as well, or just
+    # no go... But double check with Marks in vim.linux.talon
     "go mark": "'",
     "find": "f",
     "fever": "F",

@@ -47,6 +47,7 @@ tag(): user.vim_surround
 tag(): user.vim_taboo
 tag(): user.vim_tabular
 tag(): user.vim_taskwiki
+tag(): user.vim_test
 tag(): user.vim_unicode
 tag(): user.vim_ultisnips
 tag(): user.vim_wiki
@@ -258,6 +259,7 @@ pillar this:
 
 
 (show|list) current directory: user.vim_command_mode(":pwd\n")
+print working directory: user.vim_command_mode(":pwd\n")
 change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
 reorient: user.vim_command_mode(":lcd %:p:h\n")
 
@@ -461,11 +463,17 @@ swap (selected|highlighted):
     key(left)
     key(left)
 
-sort (selected|highlighted):
+sort selected:
     insert(":")
     # leave time for vim to populate '<,'>
-    sleep(50ms)
+    sleep(100ms)
     insert("sort\n")
+
+unique selected:
+    insert(":")
+    # leave time for vim to populate '<,'>
+    sleep(100ms)
+    insert("sort u\n")
 
 # assumes visual mode
 reswap (selected|highlighted):
@@ -832,15 +840,23 @@ set file format unix:
 ###
 # Marks
 ###
+# TODO - need to fix this "True" for terminal return stuff
 (new|create) mark <user.letter>:
-#    user.vim_set_normal_mode_exterm()
-#    key(m)
-#    key(letter)
     user.vim_normal_mode_exterm_keys("m {letter}", "True")
+
+(new|create) global mark <user.upper_letter>:
+    user.vim_normal_mode_exterm_keys("m {upper_letter}", "True")
+
 (go|jump) [to] mark <user.letter>:
     user.vim_set_normal_mode_exterm()
     key(`)
     key(letter)
+
+((go|jump) [to] global mark|gallop) <user.upper_letter>:
+    user.vim_set_normal_mode_exterm()
+    key(`)
+    key(upper_letter)
+
 (del|delete) (mark|marks):
     user.vim_command_mode_exterm(":delmarks ")
 (del|delete) all (mark|marks):
@@ -849,11 +865,15 @@ set file format unix:
     user.vim_command_mode_exterm(":marks\n")
 (list|show) specific marks:
     user.vim_command_mode_exterm(":marks ")
+
+# special marks
 (go|jump) [to] last edit: user.vim_normal_mode("`.")
 (go|jump) [to] last insert: user.vim_normal_mode("`^")
 # differences this puts you into insert mode
+# TODO - change the way you say this?
 continue last insert:user.vim_normal_mode("gi")
-(go|jump) [to] last (cursor|location): user.vim_normal_mode_exterm("``")
+jump last curse: user.vim_normal_mode_exterm("``")
+jump last line: user.vim_normal_mode_exterm("''")
 
 ###
 # Session
@@ -881,8 +901,9 @@ modify [register|macro] <user.letter>:
 
 [copy] register <user.unmodified_key> [in] to [register] <user.unmodified_key>:
     user.vim_command_mode(":let@{any_2}=@{any_1}\n")
+# TODO - pastor
 (paste from register|put) <user.unmodified_key>: user.vim_any_motion_mode('"{unmodified_key}p')
-yank (into|to) register <user.unmodified_key>:
+yank (into|to) [register] <user.unmodified_key>:
     user.vim_any_motion_mode('"{unmodified_key}y')
 #clear (into|to) register <user.unmodified_key>:
 #    user.vim_any_motion_mode('"{unmodified_key}d')
@@ -1095,12 +1116,43 @@ force new terminal:
 ###
 # Folding
 ###
-fold (lines|line): user.vim_normal_mode("fZ")
+
+# creation
+fold (row|line): user.vim_normal_mode("zF")
+# NOTE: see vim.py for zf usage
+
+# deletion
+fold delete: user.vim_normal_mode("zd")
+fold delete nested: user.vim_normal_mode("zD")
+fold delete all: user.vim_normal_mode("zE")
+
+
+# navigation
+fold open: user.vim_normal_mode("zo")
+fold open nested: user.vim_normal_mode("zO")
+fold close: user.vim_normal_mode("zc")
+fold close nested: user.vim_normal_mode("zC")
+fold open all: user.vim_normal_mode("zR")
+fold open curse: user.vim_normal_mode("zv")
+fold close all: user.vim_normal_mode("zM")
 fold line <number> through <number>$: user.vim_normal_mode(":{number_1},{number_2}fo\n")
-(unfold|open fold|fold open): user.vim_normal_mode("zo")
-(close fold|fold close): user.vim_normal_mode("zc")
-open all folds: user.vim_normal_mode("zR")
-close all folds: user.vim_normal_mode("zM")
+
+
+fold start: user.vim_normal_mode("[z")
+fold end: user.vim_normal_mode("]z")
+fold next: user.vim_normal_mode("zj")
+fold last: user.vim_normal_mode("zk")
+
+# misc
+fold reset: user.vim_normal_mode("zn")
+fold normal: user.vim_normal_mode("zN")
+
+fold update: user.vim_normal_mode("zx")
+fold undo: user.vim_normal_mode("zX")
+
+# TODO: folddoo
+# TODO: folddoc
+
 
 ###
 # QuickFix list
@@ -1214,12 +1266,27 @@ left align (graph|paragraph):
 # XXX - These should only enable in python lang mode
 invoke this:
     user.vim_command_mode(":!%\n")
-run python:
+shrun as python:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!python' shellescape(@%, 1)\n")
-run sandbox:
+run as sandbox:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!env/bin/python3' shellescape(@%, 1)\n")
+
+run python script:
+    user.vim_normal_mode_np(":w\n")
+    user.insert_cursor(":exec '!python3 [|]'")
+run sandbox script:
+    user.vim_normal_mode_np(":w\n")
+    user.insert_cursor(":exec '!env/bin/python3 [|]'")
+
+exec repeat:
+    user.insert_cursor(":exec ")
+    key(up)
+
+script repeat:
+    user.insert_cursor(":!")
+    key(up)
 
 remove trailing white space: user.vim_normal_mode(":%s/\\s\\+$//e\n")
 (remove all|normalize) tabs: user.vim_normal_mode(":%s/\\t/    /eg\n")
