@@ -93,3 +93,6 @@ edit find results:
     edit.left()
     edit.left()
 run talon update: "~/.talon/bin/update\n"
+
+# markdown to docx
+generate dock: user.insert_cursor("pandoc [|].md --self-contained --highlight-style=tango -o .docx")
