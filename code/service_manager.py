@@ -5,6 +5,7 @@ ctx = Context()
 ctx.matches = r"""
 os: linux
 tag: user.terminal
+tag: user.service_manager
 """
 
 mod.tag("service_manager", desc="generic service manager support")
@@ -25,6 +26,12 @@ class Actions:
 
     def service_start():
         """Start a service"""
+
+    def service_disable():
+        """Disable a service"""
+
+    def service_enable():
+        """Enable a service"""
 
     def service_reload():
         """Reload a service"""
