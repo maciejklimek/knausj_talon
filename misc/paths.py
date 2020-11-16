@@ -23,7 +23,9 @@ def paths(m) -> str:
 
 ctx = Context()
 ctx.lists["user.paths_public"] = {
+    "user services": "~/.config/systemd/user/",
     "sessions": "~/.vim/sessions/",
+    "plugins": "~/.vim/plugged/",
     "temp": "/tmp",
     "config": "/etc",
     "user": "/usr",
