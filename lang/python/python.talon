@@ -158,7 +158,11 @@ index <user.word>: '["{word}"]'
 
 pie test: "pytest"
 state pass: "pass"
+# for things like None comparsion
+state is not: " is not "
+state is: " is "
 state as string: '.decode("utf-8")'
+state as bytes: '.encode("utf-8")'
 F string: 'f""'
 raw string: 'r""'
 
