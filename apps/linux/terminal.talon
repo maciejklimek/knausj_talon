@@ -18,10 +18,13 @@ tag(): user.nmcli
 tag(): user.taskwarrior
 tag(): user.timewarrior
 tag(): user.make
-tag(): user.kubectl
+#tag(): user.kubectl
 tag(): user.tmux
 tag(): user.git
-tag(): user.docker
+#tag(): user.docker
+tag(): user.service_manager
+tag(): user.timer_manager
+tag(): user.systemd
 
 action(edit.page_down):
   key(shift-pagedown)
