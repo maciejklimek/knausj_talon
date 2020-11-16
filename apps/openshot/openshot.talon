@@ -1,5 +1,5 @@
 # https://www.openshot.org/user-guide/
-app: openshot-qt
+app: openshot
 -
 
 about: key(ctrl-h)
@@ -9,12 +9,12 @@ add to timeline: key(ctrl-w)
 animated title: key(ctrl-b)
 choose profile: key(ctrl-p)
 show details: key(ctrl-d)
-export video: key(ctrl-e)
-fast forward: key(l)
+export [file]: key(ctrl-e)
+fast forward: key(L)
 #full screen: key(f11)
-import files: key(ctrl-f)
-jump to end: key(ctrl-end)
-jump to start: key(ctrl-home)
+import [file]: key(ctrl-f)
+jump end: key(ctrl-end)
+jump start: key(ctrl-home)
 new project: key(ctrl-n)
 next frame: key(right)
 next marker: key(ctrl-right)
