@@ -2,6 +2,7 @@ os: linux
 tag: user.terminal
 -
 
+net man: "nmcli "
 net man running: "nmcli -t -f RUNNING general\n"
 net man status: "nmcli general\n"
 net man devices: "nmcli\n"
