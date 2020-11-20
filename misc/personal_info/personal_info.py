@@ -17,19 +17,11 @@ mod.list("personal_info", desc="List of personal info populated by json file")
 ctx = Context()
 
 
-@mod.capture
+@mod.capture(rule="{user.personal_info}")
 def personal_info(m) -> list:
     """Returns a personal_info name"""
-
-
-@ctx.capture(rule="{user.personal_info}")
-def personal_info(m):
     return m.personal_info
 
-
-# ctx.matches = r"""
-# mode: command
-# """
 
 main_screen = ui.main_screen()
 
