@@ -27,7 +27,7 @@ app: vim
 
 # talon vim plugins. see apps/vim/plugins/
 # to enable plugins you'll want to set these inside vim.talon
-tag_list = [
+plugin_tag_list = [
     "vim_ale",
     "vim_change_inside_surroundings",
     "vim_cscope",
@@ -56,9 +56,18 @@ tag_list = [
     "vim_youcompleteme",
     "vim_zoom",
 ]
+for entry in plugin_tag_list:
+    mod.tag(entry, f"tag to load {entry} vim plugin commands")
 
-for entry in tag_list:
-    mod.tag(entry, f"tag to load {entry} and/or related plugins ")
+mode_tag_list = [
+    "vim_terminal_mode",
+    "vim_command_mode",
+    "vim_visual_mode",
+    "vim_normal_mode",
+    "vim_insert_mode",
+]
+for entry in mode_tag_list:
+    mod.tag(entry, f"tag to load {entry} specific commands")
 
 
 # Based on you using a custom title string like this:
@@ -1191,6 +1200,7 @@ class VimNonRpc:
 
 
 class VimMode:
+    # TODO: make this an Enum
     # mode ids represent generic statusline mode() values. see :help mode()
     NORMAL = 1
     VISUAL = 2
@@ -1351,6 +1361,8 @@ class VimMode:
                 no_preserve=no_preserve,
                 escape_terminal=escape_terminal,
             )
+            # Trigger / untrigger mode-related talon grammars
+            self.set_mode_tag(valid_mode_ids[0])
 
     # Often I will say `delete line` and it will trigger `@delete` and `@nine`.
     # This then keys 9. I then say `undo` to fix the bad delete, which does 9
@@ -1374,10 +1386,23 @@ class VimMode:
         else:
             time.sleep(timeout)
 
-    # XXX - should switch this to neovim RPC when available. note however, it
-    # appears neovim api doesn't support programmatic mode switching, only
-    # querying. also querying certain modes is broken (^V mode undetected)
-    # for now we simply use keyboard binding combinations
+    @classmethod
+    # We don't want unnecessarily only call this from set_mode() is the user
+    # might change the mode of vim manually or speaking keys, but we still want
+    # the context specific grammars to match.
+    # TODO: present to figure out if this makes sense present addition to
+    # win.title matching I already do. I think it does make sense for cases of
+    # overriding certain default actions like home/end
+    def set_mode_tag(self, mode):
+        global mode_tag_list
+        global ctx
+
+        print(ctx.tags)
+
+    # NOTE: querying certain modes is broken (^V mode undetected)
+    # Setting mode with RPC is impossible, which makes sense because it would
+    # break things like macro recording/replaying. So we use keyboard
+    # combinations
     def set_mode(self, wanted_mode, no_preserve=False, escape_terminal=False):
         current_mode = self.get_active_mode()
 

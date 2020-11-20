@@ -1158,8 +1158,8 @@ fold undo: user.vim_normal_mode("zX")
 # QuickFix list
 ###
 vim grep:
-    user.vim_command_mode(":vimgrep // */*")
-    key(left:5)
+    user.vim_command_mode(":vimgrep // */**")
+    key(left:6)
 
 quick [fix] next: user.vim_command_mode(":cn\n")
 quick [fix] (prev|previous): user.vim_command_mode(":cp\n")
@@ -1266,9 +1266,12 @@ left align (graph|paragraph):
 # XXX - These should only enable in python lang mode
 invoke this:
     user.vim_command_mode(":!%\n")
-shrun as python:
+run as python:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!python' shellescape(@%, 1)\n")
+run as bash:
+    user.vim_normal_mode_np(":w\n")
+    insert(":exec '!bash' shellescape(@%, 1)\n")
 run as sandbox:
     user.vim_normal_mode_np(":w\n")
     insert(":exec '!env/bin/python3' shellescape(@%, 1)\n")
