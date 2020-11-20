@@ -76,6 +76,8 @@ state (variable|var) <user.text>$:
     upper_text = user.formatted_text(snake_text, "upper")
     insert(upper_text)
 
+state echo: "echo "
+
 # XXX will overlap somewhat with core shell commands use terminals, show me one
 # to combine somehow
 copy file:
