@@ -15,6 +15,7 @@ mod.tag("cron", desc="non-systemd timer timer")
 
 @mod.action_class
 class Actions:
+    # System-wide timer control
     def timer():
         """Run the default timer manager"""
 
@@ -61,4 +62,53 @@ class Actions:
         """Enable a timer by name"""
 
     def timer_disable_by_name(name: str):
+        """Disable a timer by name"""
+
+    # User timers vs system-wide timers
+    def timer_user():
+        """Run the default timer manager"""
+
+    def timer_user_status():
+        """Show the timer status"""
+
+    def timer_user_stop():
+        """Stop a timer"""
+
+    def timer_user_start():
+        """Start a timer"""
+
+    def timer_user_disable():
+        """Disable a timer"""
+
+    def timer_user_enable():
+        """Enable a timer"""
+
+    def timer_user_reload():
+        """Reload a timer"""
+
+    def timer_user_restart():
+        """Restart a timer"""
+
+    def timer_user_help():
+        """Service manager help"""
+
+    def timer_user_kill():
+        """Kill a timer"""
+
+    def timer_user_is_enabled():
+        """List if a timer is enabled"""
+
+    def timer_user_status_by_name(name: str):
+        """List a timers status by name"""
+
+    def timer_user_stop_by_name(name: str):
+        """Stop a timer by name"""
+
+    def timer_user_start_by_name(name: str):
+        """Start to timer by name"""
+
+    def timer_user_enable_by_name(name: str):
+        """Enable a timer by name"""
+
+    def timer_user_disable_by_name(name: str):
         """Disable a timer by name"""
