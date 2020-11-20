@@ -109,3 +109,8 @@ and app.name: openshot
 
 win.title:/OpenShot Video Editor/
 """
+
+apps.sqlitebrowser = """
+os: linux
+and app.name: "/DB Browser for SQLite/"
+"""
