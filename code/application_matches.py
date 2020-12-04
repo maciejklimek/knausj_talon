@@ -53,6 +53,15 @@ and app.name: Signal-desktop
 
 """
 
+apps.zathura = """
+os: linux
+and app.name: Zathura
+
+os: linux
+and app.name: zathura
+
+"""
+
 apps.termite = """
 os: linux
 and app.name: /termite/
