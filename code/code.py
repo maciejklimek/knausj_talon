@@ -63,6 +63,10 @@ extension_lang_map = {
     "yml": "yaml",
 }
 
+# Files that don't have specific extensions bit that are known to be associated
+# with specific languages. Ex: CMakeLists.txt is cmake
+special_file_map = {"CMakeLists.txt": "cmake"}
+
 # flag indicates whether or not the title tracking is enabled
 forced_language = False
 
@@ -92,6 +96,10 @@ class code_actions:
         if not forced_language:
             file_extension = actions.win.file_ext()
             file_name = actions.win.filename()
+
+            # Favor full matches
+            if file_name in special_file_map:
+                return special_file_map[file_name]
 
             if file_extension != "":
                 result = file_extension
