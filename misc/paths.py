@@ -29,6 +29,7 @@ ctx.lists["user.paths_public"] = {
     "temp": "/tmp",
     "config": "/etc",
     "user": "/usr",
+    "user lib": "/usr/lib",
     "log": "/var/log",
 }
 
