@@ -66,6 +66,10 @@ apps.termite = """
 os: linux
 and app.name: /termite/
 """
+apps.kitty = """
+os: linux
+and app.name: /kitty/
+"""
 
 apps.windows_explorer = """
 os: windows
