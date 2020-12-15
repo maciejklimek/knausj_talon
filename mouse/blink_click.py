@@ -51,7 +51,7 @@ class EyeMouseSleepTracker(object):
         if platform == "linux":
             cmd = "xset dpms force on"
         print("waking up screen")
-        system(cmd)
+        # system(cmd)
 
     def wake(self):
         self.sleeping = False
