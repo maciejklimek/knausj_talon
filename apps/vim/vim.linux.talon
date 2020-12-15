@@ -504,14 +504,13 @@ swap global:
 ###
 # Buffers
 ###
-((buf|buffer) list|list (buf|buffer)s): user.vim_command_mode_exterm(":ls\n")
+(buf|buffer) list: user.vim_command_mode_exterm(":ls\n")
 (buf|buffer) (close|delete) <number_small>: user.vim_command_mode_exterm(":bd {number_small} ")
-(close|delete) (buf|buffer) <number_small>: user.vim_command_mode_exterm(":bd {number_small} ")
 (buf|buffer) close current: user.vim_command_mode(":bd\n")
-(delete|close) (current|this) buffer: user.vim_command_mode_exterm(":bd\n")
+(buf|buffer) close last: user.vim_command_mode(":bd #\n")
+(buf|buffer) force close: user.vim_command_mode_exterm(":bd!\n")
 botch: user.vim_command_mode_exterm(":bd\n")
 force botch: user.vim_command_mode_exterm(":bd!\n")
-force (buf|buffer) close: user.vim_command_mode_exterm(":bd!\n")
 (buf|buffer) open: user.vim_command_mode_exterm(":b ")
 [go] (buf|buffer) (first|rewind): user.vim_command_mode_exterm(":br\n")
 [go] (buf|buffer) (left|prev): user.vim_command_mode_exterm(":bprev\n")
