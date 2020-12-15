@@ -8,6 +8,7 @@ and tag: user.terminal
 lisa: "ls "
 lizzie: "ls\n"
 lily: "ls -al "
+lydia: "ls -d */\n"
 lizard: "ls -al\n"
 # TODO - somehow make this scriptable to print anything
 latest: "ls -Art | tail -n1\n"
@@ -186,7 +187,7 @@ history: "history\n"
 for file loop:
     insert("for FILE in $(ls \"*\"); do $FILE; done")
 
-network manager log: "sudo journalctl -u NetworkManager.service\n"
+net man log: "journalctl -u NetworkManager --no-pager --lines 100\n"
 
 # ssh
 secure shell: "ssh"
