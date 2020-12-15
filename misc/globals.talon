@@ -30,3 +30,5 @@ blue tooth connect:
     key(enter)
     sleep(400ms)
     key(enter)
+
+over: skip()
