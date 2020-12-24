@@ -7,9 +7,9 @@ tagList = [
     "disassembler",
     "firefox",
     "gdb",
+    "git",  # commandline tag for git commands
     "ida",
     "tabs",
-    "terminal",
     "tmux",
     "windbg",
     "yay",

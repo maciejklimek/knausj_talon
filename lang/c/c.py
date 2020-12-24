@@ -145,87 +145,55 @@ def c_cast(m) -> str:
     "Returns a string"
 
 
-@mod.capture
-def c_stdint_cast(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
+@mod.capture(rule="{self.c_pointers}")
 def c_pointers(m) -> str:
     "Returns a string"
-
-
-@mod.capture
-def c_signed(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def c_types(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def stdint_types(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def stdint_signed(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def c_variable(m) -> str:
-    "Returns a string"
-
-
-@ctx.capture(rule="{self.c_pointers}")
-def c_pointers(m) -> str:
     return m.c_pointers
 
 
-@ctx.capture(rule="{self.c_signed}")
+@mod.capture(rule="{self.c_signed}")
 def c_signed(m) -> str:
+    "Returns a string"
     return m.c_signed
 
 
-@ctx.capture(rule="{self.c_types}")
+@mod.capture(rule="{self.c_types}")
 def c_types(m) -> str:
+    "Returns a string"
     return m.c_types
 
 
-@ctx.capture(rule="{self.c_types}")
-def c_types(m) -> str:
-    return m.c_types
-
-
-@ctx.capture(rule="{self.stdint_types}")
+@mod.capture(rule="{self.stdint_types}")
 def stdint_types(m) -> str:
+    "Returns a string"
     return m.stdint_types
 
 
-@ctx.capture(rule="{self.stdint_signed}")
+@mod.capture(rule="{self.stdint_signed}")
 def stdint_signed(m) -> str:
+    "Returns a string"
     return m.stdint_signed
 
 
 # NOTE: we purposely we don't have a space after signed, to faciltate stdint
 # style uint8_t constructions
-@ctx.capture(rule="[<self.c_signed>]<self.c_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.c_signed>]<self.c_types> [<self.c_pointers>+]")
 def c_cast(m) -> str:
+    "Returns a string"
     return "(" + " ".join(list(m)) + ")"
 
 
 # NOTE: we purposely we don't have a space after signed, to faciltate stdint
 # style uint8_t constructions
-@ctx.capture(rule="[<self.stdint_signed>]<self.stdint_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.stdint_signed>]<self.stdint_types> [<self.c_pointers>+]")
 def c_stdint_cast(m) -> str:
+    "Returns a string"
     return "(" + "".join(list(m)) + ")"
 
 
-@ctx.capture(rule="[<self.c_signed>]<self.c_types>[<self.c_pointers>]")
+@mod.capture(rule="[<self.c_signed>]<self.c_types>[<self.c_pointers>]")
 def c_variable(m) -> str:
+    "Returns a string"
     return " ".join(list(m))
 
 
@@ -263,7 +231,5 @@ class user_actions:
         actions.user.code_insert_function(result, None)
 
     def code_insert_library(text: str, selection: str):
-        actions.insert("#include <>")
-        actions.edit.left()
-        actions.clip.set_text(text + "{}".format(selection))
-        actions.edit.paste()
+        actions.user.paste("#include <{}>".format(selection))
+

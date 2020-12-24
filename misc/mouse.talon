@@ -48,6 +48,10 @@ dubclick:
 	mouse_click()
 	# close the mouse grid
 	user.grid_close()
+drag: 
+	user.mouse_drag()
+	# close the mouse grid
+	user.grid_close()
 wheel down: user.mouse_scroll_down()
 wheel down here:
     user.mouse_move_center_active_window()
@@ -97,6 +101,4 @@ wheel tiny right here:
     mouse_scroll(0, 20)
 curse yes: user.mouse_show_cursor()
 curse no: user.mouse_hide_cursor()
-drag: user.mouse_drag()
-
 copy mouse position: user.copy_mouse_position()

@@ -126,4 +126,8 @@ win.title:/OpenShot Video Editor/
 apps.sqlitebrowser = """
 os: linux
 and app.name: "/DB Browser for SQLite/"
+
+mod.apps.windows_power_shell = """
+os: windows
+and app.name: powershell.exe
 """

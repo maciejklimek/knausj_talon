@@ -51,12 +51,10 @@ go way up:
 
 # selecting
 select line:
-    edit.line_start()
-    edit.extend_line_end()
+    edit.select_line()
 
 select all:
     edit.select_all()
-
 
 select left:
     edit.extend_left()
@@ -69,6 +67,9 @@ select up:
 
 select down:
     edit.extend_line_down()
+
+select word:
+    edit.select_word()
 
 select word left:
     edit.extend_word_left()
@@ -113,6 +114,9 @@ clear down:
     edit.extend_line_down()
     edit.delete()
 
+clear word:
+    edit.delete_word()
+
 clear word left:
     edit.extend_word_left()
     edit.delete()
@@ -154,12 +158,23 @@ copy all:
 # copy down:
 #     edit.extend_down()
 #     edit.copy()
+
+copy word:
+    edit.select_word()
+    edit.copy()
+
 copy word left:
     edit.extend_word_left()
     edit.copy()
+
 copy word right:
     edit.extend_word_right()
     edit.copy()
+
+copy line:
+    edit.select_line()
+    edit.copy()
+
 #cut commands
 cut everything:
     edit.select_all()
@@ -177,9 +192,19 @@ cut everything:
 # cut down:
 #     edit.select_all()
 #     edit.cut()
+
+cut word:
+    edit.select_word()
+    edit.cut()
+
 cut word left:
     edit.extend_word_left()
     edit.cut()
+
 cut word right:
     edit.extend_word_right()
+    edit.cut()
+
+cut line:
+    edit.select_line()
     edit.cut()
