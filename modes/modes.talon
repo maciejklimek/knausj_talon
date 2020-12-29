@@ -28,6 +28,9 @@ talon wake:
     mode.disable("command")
     mode.enable("dictation")
     app.notify("Dictation Mode")
+    user.code_clear_language_mode()
+    mode.disable("user.gdb")
+
 ^command mode$:
     mode.disable("sleep")
     mode.disable("dictation")

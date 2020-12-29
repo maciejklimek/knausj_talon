@@ -18,13 +18,9 @@ tag: user.debugger
 ctx.lists["user.registers"] = {}
 
 
-@mod.capture
-def registers(m) -> list:
-    "Return an register"
-
-
-@ctx.capture(rule="{user.registers}")
-def registers(m):
+@mod.capture(rule="{self.registers}")
+def registers(m) -> str:
+    "Returns a register"
     return m.registers
 
 
