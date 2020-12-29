@@ -2,14 +2,8 @@ from talon import Context, Module, actions, grammar
 from .user_settings import bind_list_to_csv, bind_word_map_to_csv
 
 
-# Add single words here if Talon recognizes them, but they need to have their
-# capitalization adjusted.
-capitalize = [
-=======
-
 # Default words that will need to be capitalized (particularly under w2l).
 _capitalize_defaults = [
->>>>>>> upstream/master
     "I",
     "I'm",
     "I've",
