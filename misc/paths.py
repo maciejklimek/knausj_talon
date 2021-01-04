@@ -31,6 +31,7 @@ ctx.lists["user.paths_public"] = {
     "user": "/usr",
     "user lib": "/usr/lib",
     "log": "/var/log",
+    "password": "/etc/passwd",
 }
 
 ctx.lists["user.paths_private"] = {}

@@ -87,7 +87,7 @@ and app.name: cmd.exe
 
 apps.windows_terminal = """
 os: windows
-and app.name: WindowsTerminal.exe 
+and app.name: WindowsTerminal.exe
 """
 
 apps.vim = """
@@ -126,8 +126,9 @@ win.title:/OpenShot Video Editor/
 apps.sqlitebrowser = """
 os: linux
 and app.name: "/DB Browser for SQLite/"
+"""
 
-mod.apps.windows_power_shell = """
+apps.windows_power_shell = """
 os: windows
 and app.name: powershell.exe
 """

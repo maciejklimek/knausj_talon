@@ -1,4 +1,4 @@
-from talon import Context, Module, actions, app, ui
+from talon import Context, Module
 
 
 def ordinal(n):
@@ -65,11 +65,6 @@ for n in range(1, 100):
         ordinal_small[word] = n
     ordinal_numbers[word] = n
 
-
-# remove the word first for when using as a repeater, as first doesn't make
-# sense and it makes it available for other commands
-ordinal_repeaters = deepcopy(ordinal_words)
-del ordinal_repeaters["first"]
 
 mod = Module()
 ctx = Context()
