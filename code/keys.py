@@ -1,7 +1,7 @@
 import sys
 from typing import Set
 
-from talon import Context, Module, actions
+from talon import Context, Module, actions, app
 
 # My experience:
 #   fine - conflicts with find
@@ -27,6 +27,7 @@ mod.list("number_key", desc="All number keys")
 mod.list("modifier_key", desc="All modifier keys")
 mod.list("function_key", desc="All function keys")
 mod.list("special_key", desc="All special keys")
+mod.list("punctuation", desc="words for inserting punctuation into text")
 
 
 @mod.capture(rule="{self.modifier_key}+")
@@ -69,6 +70,7 @@ def upper_letter(m) -> str:
 def letters(m) -> str:
     "Multiple letter keys"
     return m.letters
+
 
 @mod.capture(rule="{self.special_key}")
 def special_key(m) -> str:
@@ -131,7 +133,34 @@ ctx.lists["self.modifier_key"] = {
 }
 alphabet = dict(zip(default_alphabet, letters_string))
 ctx.lists["self.letter"] = alphabet
-ctx.lists["self.symbol_key"] = {
+
+# `punctuation_words` is for words you want available BOTH in dictation and as
+# key names in command mode. `symbol_key_words` is for key names that should be
+# available in command mode, but NOT during dictation.
+punctuation_words = {
+    # TODO: I'm not sure why we need these, I think it has something to do with
+    # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
+    "`": "`",
+    ",": ",",  # <== these things
+    "back tick": "`",
+    "comma": ",",
+    "period": ".",
+    "semicolon": ";",
+    "colon": ":",
+    "forward slash": "/",
+    "question mark": "?",
+    "exclamation mark": "!",
+    "exclamation point": "!",
+    "dollar sign": "$",
+    "asterisk": "*",
+    "hash sign": "#",
+    "number sign": "#",
+    "percent sign": "%",
+    "at sign": "@",
+    "and sign": "&",
+    "ampersand": "&",
+}
+symbol_key_words = {
     "grave": "`",
     "comma": ",",
     "dot": ".",
@@ -176,7 +205,10 @@ ctx.lists["self.symbol_key"] = {
     "quote": '"',
 }
 
-
+# make punctuation words also included in {user.symbol_keys}
+symbol_key_words.update(punctuation_words)
+ctx.lists["self.punctuation"] = punctuation_words
+ctx.lists["self.symbol_key"] = symbol_key_words
 ctx.lists["self.number_key"] = dict(zip(default_digits, numbers))
 ctx.lists["self.arrow_key"] = {
     "down": "down",
@@ -204,6 +236,10 @@ alternate_keys = {
     "junk": "backspace",
     "nuke": "delete",
 }
+# mac apparently doesn't have the menu key.
+if app.platform in ("windows", "linux"):
+    alternate_keys["menu key"] = "menu"
+
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)
 ctx.lists["self.special_key"] = keys

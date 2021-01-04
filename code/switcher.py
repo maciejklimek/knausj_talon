@@ -3,7 +3,7 @@ import re
 import time
 
 import talon
-from talon import Context, Module, actions, fs, imgui, ui
+from talon import Context, Module, actions, app, fs, imgui, ui
 
 # Construct at startup a list of overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
@@ -154,7 +154,7 @@ class Actions:
         gui.hide()
 
 
-@imgui.open(software=False)
+@imgui.open(software=app.platform == "linux")
 def gui(gui: imgui.GUI):
     gui.text("Names of running applications")
     gui.line()

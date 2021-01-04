@@ -15,7 +15,7 @@ def snippets(m) -> list:
     """Returns a snippet name"""
 
 
-@imgui.open(software=False)
+@imgui.open(software=app.platform == "linux")
 def gui(gui: imgui.GUI):
     gui.text("snippets")
     gui.line()
