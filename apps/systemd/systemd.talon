@@ -1,5 +1,5 @@
 tag: user.systemd
-tag: user.terminal
+tag: terminal
 -
 
 # System-wide services

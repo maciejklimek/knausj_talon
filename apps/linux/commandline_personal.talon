@@ -1,7 +1,7 @@
 os: linux
 mode: user.terminal
 mode: command
-and tag: user.terminal
+and tag: terminal
 -
 
 dev talon:

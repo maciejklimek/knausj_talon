@@ -4,7 +4,7 @@ mod = Module()
 ctx = Context()
 ctx.matches = r"""
 os: linux
-tag: user.terminal
+tag: terminal
 tag: user.service_manager
 """
 

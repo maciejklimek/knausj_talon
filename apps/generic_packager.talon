@@ -1,5 +1,5 @@
 os: linux
-tag: user.terminal
+tag: terminal
 -
 # assert your system packager here
 tag(): user.packager_yay

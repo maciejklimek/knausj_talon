@@ -1,4 +1,4 @@
-tag: user.terminal
+tag: terminal
 -
 
 pulse command: "pacmd "
@@ -8,3 +8,5 @@ pulse devices: "pacmd list-sources | grep -e 'index:' -e device.string -e 'name:
 pulse sources: "pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'\n"
 
 pulse edit defaults: "sudo vim /etc/pulse/default.pa\n"
+pulse control: user.system_command("pavucontrol")
+pulse restart: user.system_command("pulseaudio -k && pulseaudio --start")

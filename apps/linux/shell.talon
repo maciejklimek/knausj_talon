@@ -1,5 +1,5 @@
 os: linux
-tag: user.terminal
+tag: terminal
 -
 (rerun|run) last [command]: "!!\n\n"
 cancel [that]: key("ctrl-c")

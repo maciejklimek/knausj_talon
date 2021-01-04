@@ -1,4 +1,4 @@
-tag: user.terminal
+tag: terminal
 tag: user.timer_manager
 -
 

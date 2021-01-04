@@ -4,7 +4,7 @@ mod = Module()
 ctx = Context()
 ctx.matches = r"""
 os: linux
-tag: user.terminal
+tag: terminal
 """
 
 mod.tag("package_manager", desc="linux package manager")

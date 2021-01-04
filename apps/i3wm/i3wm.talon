@@ -7,6 +7,7 @@ settings():
 
 
 port <number_small>: user.system_command("i3-msg workspace {number_small}")
+
 port ten: user.system_command("i3-msg workspace 10")
 (port flip|flipper): user.system_command("i3-msg workspace back_and_forth")
 port right: user.system_command("i3-msg workspace next")
