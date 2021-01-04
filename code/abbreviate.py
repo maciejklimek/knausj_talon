@@ -166,6 +166,7 @@ ctx.lists["user.abbreviation"] = {
     "package": "pkg",
     "parameter": "param",
     "parameters": "params",
+    "password": "passwd",
     "pico second": "ps",
     "pie": "py",
     "pixel": "px",
