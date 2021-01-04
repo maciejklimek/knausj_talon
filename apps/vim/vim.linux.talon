@@ -1281,6 +1281,9 @@ run python script:
 run sandbox script:
     user.vim_normal_mode_np(":w\n")
     user.insert_cursor(":exec '!env/bin/python3 [|]'")
+run make:
+    user.vim_normal_mode_np(":w\n")
+    insert(":!make\n")
 
 exec repeat:
     user.insert_cursor(":exec ")
