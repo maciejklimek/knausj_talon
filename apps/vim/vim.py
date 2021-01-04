@@ -1,4 +1,4 @@
-# see doc/vljm.md
+# see doc/vim.md
 # TODO:
 # - define all the lists separately and then update ctx.lists only once
 # - document that visual selection mode implies terminal escape
