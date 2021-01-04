@@ -2,9 +2,12 @@ import os
 import pathlib
 import subprocess
 
-from talon import Context, Module, actions, app, cron, ctrl, imgui, noise, settings, ui
+import talon
+from talon import (Context, Module, actions, app, cron, ctrl, imgui, noise,
+                   settings, ui)
 from talon_plugins import eye_mouse, eye_zoom_mouse, speech
-from talon_plugins.eye_mouse import config, toggle_camera_overlay, toggle_control
+from talon_plugins.eye_mouse import (config, toggle_camera_overlay,
+                                     toggle_control)
 
 key = actions.key
 self = actions.self
@@ -291,6 +294,7 @@ class Actions:
         else:
             s += "DISABLED"
         app.notify(subtitle=s)
+
     def mouse_trigger_zoom_mouse():
         """Trigger zoom mouse if enabled"""
         if eye_zoom_mouse.zoom_mouse.enabled:
@@ -432,8 +436,13 @@ def on_hiss(active):
     print("hissing")
 
 
-noise.register("pop", on_pop)
-# noise.register("hiss", on_hiss)
+try:
+    noise.register("pop", on_pop)
+    # noise.register("hiss", on_hiss)
+except talon.lib.cubeb.CubebError as e:
+    app.notify("Failed to register pop. Is possible audio error")
+    print("Failed to register pop. Is possible audio error")
+    print(e)
 
 
 def mouse_scroll(amount):
