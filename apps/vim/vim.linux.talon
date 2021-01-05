@@ -15,6 +15,7 @@
 #
 # TODO:
 #  - add clearline for command mode / fzf plugin
+#  - add word jumping and searching for command mode
 #  - test on windows and mac
 
 os:linux
@@ -24,9 +25,10 @@ app:vim
 
 tag(): user.vim
 tag(): user.tabs
+# TODO - add line_commands, etc
 
-# Talon VIM plugin tags. Uncomment tags for plugins you having installed and
-# want to use.
+# Talon VIM plugin tags
+# Comment out tags for plugins you don't use
 tag(): user.vim_ale
 tag(): user.vim_change_inside_surroundings
 tag(): user.vim_cscope
@@ -112,14 +114,17 @@ settings():
     user.vim_debug = 0
 
 ###
-# Actions - Talon generic_editor.talon implementation
+# Actions - Talon generic command implementation
 ###
 #
-# NOTE: You can disable generic_editor.talon by renaming it, and still fully
-# control vim. These are more for people that are used to the official talon
-# editor commands that want to trial vim a bit. I don't personally use most of
-# the actions here, so they have not been thoroughly tested.
+# NOTE: These are provided for people that want to use the official talon
+# edit and line commands. The vim-specific commands can be used as an
+# alternative where the command names differ. See `generic_editor.talon`, 
 #
+# TODO - currently the generic talon commands for things like
+# `line_commands.talon` similar or not enabled via tag by default, however the
+# underlying `edit` commands works so it should be possible to add fairly
+# easily.
 ###
 action(edit.find):
     user.vim_normal_mode_exterm_key("/")
@@ -170,6 +175,9 @@ action(edit.extend_file_start):
     user.vim_visual_mode("gg")
 action(edit.extend_file_end):
     user.vim_visual_mode("G")
+
+action(edit.delete_word):
+    user.vim_normal_mode("dw")
 
 action(edit.indent_more):
     user.vim_normal_mode(">>")
