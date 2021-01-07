@@ -1,7 +1,6 @@
 win.title: /VIM MODE:t/
 -
 
-tag(): terminal
 tag(): user.vim_terminal
 
 

@@ -70,8 +70,7 @@ for entry in mode_tag_list:
     mod.tag(entry, f"tag to load {entry} specific commands")
 
 
-# Based on you using a custom title string like this:
-# see doc/vim.md
+# Based on you using a custom titlestring see doc/vim.md
 @ctx.action_class("win")
 class win_actions:
     def filename():
