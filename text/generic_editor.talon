@@ -24,10 +24,10 @@ go up:
 go down:
     edit.down()
 
-go line start:
+(go line start|bend):
     edit.line_start()
 
-go line end:
+(go line end|lend):
     edit.line_end()
 
 go way left:
