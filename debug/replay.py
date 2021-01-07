@@ -17,6 +17,8 @@ class _RecordingReplayer(object):
 
     def __init__(self, count=10):
         """Specify the number of default recording to list in the picker"""
+        self.gui_open = False
+        self.recordings_list = []
         self.count = count
         self.recordings = pathlib.Path(TALON_HOME, "recordings/")
         if settings.get("speech.record_all") != 1:
@@ -53,26 +55,29 @@ class _RecordingReplayer(object):
 
 main_screen = ui.main_screen()
 
-recordings_list = []
 
+rr = _RecordingReplayer()
 
 def close_replay_picker():
-    global recordings_list
-    recordings_list = []
+    global rr
+    rr.gui_open = False
     gui.hide()
     actions.mode.disable("user.replay_picker_open")
 
 
 @imgui.open(y=0, x=main_screen.width / 2.6, software=False)
 def gui(gui: imgui.GUI):
-    replayer = _RecordingReplayer(10)
     gui.text("Select a recording")
     gui.line()
     index = 1
-    global recordings_list
-    recordings_list = []
-    recordings_list.extend(replayer.last_recordings())
-    for path in recordings_list:
+    global rr
+    # we do this because this code is called in a refresh loop
+    if not rr.gui_open:
+        rr.gui_open = True
+        rr.recordings_list.clear()
+        rr.recordings_list.extend(rr.last_recordings())
+
+    for path in rr.recordings_list:
         gui.text("Pick {}: {} ".format(index, path.name))
         index = index + 1
 
@@ -97,11 +102,12 @@ class Actions:
 
     def replay_pick(choice: int):
         """Hides the replay_picker display"""
-        global recordings_list
-        rr = _RecordingReplayer()
-        rr.play_file(recordings_list[choice])
+        global rr
+
+        #rr.recordings_list.extend(rr.last_recordings())
+        rr.play_file(rr.recordings_list[choice-1])
 
     def replay_last_recording():
         """Insert some info from the last self.count recordings"""
-        rr = _RecordingReplayer(10)
+        global rr
         rr.play_last()
