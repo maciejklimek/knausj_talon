@@ -30,6 +30,7 @@ ctx.lists["user.abbreviation"] = {
     "authentication": "authn",
     "authorization": "authz",
     "away from keyboard": "afk",
+    "backup": "bkp",
     "binary": "bin",
     "boolean": "bool",
     "british columbia": "bc",
