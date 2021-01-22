@@ -2,6 +2,17 @@ os: linux
 tag: user.gdb
 -
 tag(): user.debugger
+tag(): user.terminal_program
+tag(): user.readline
+
+# XXX - this would be better to be managed with settings maybe
+# optional generic debugger plugins
+# specify which heap plugin you're using
+# similar to the architecture
+tag(): user.libptmalloc
+#tag(): user.libdlmalloc
+#tag(): user.libheap
+
 
 ##
 # Generic debugger actions
@@ -49,6 +60,11 @@ action(user.debugger_disable_all_breakpoints):
     insert("disable br\n")
 action(user.debugger_disable_breakpoint):
     insert("disable br  ")
+
+# Analysis
+action(user.debugger_backtrace): "bt\n"
+action(user.debugger_exit): "quit\n"
+action(user.debugger_exit_force): "quit\ny\n"
 
 break [on] clipboard:
     insert("break ")
@@ -116,16 +132,10 @@ undisplay: "undisplay\n"
 # threads
 info threads: "info threads\n"
 
-restart [program]: "r\n"
-continue: "c\n"
-back trace: "bt\n"
-debug quit: "quit\n"
-# more quickly quit when there are inferiors
-debug force quit: "quit\ny\n"
 (show|info) (inf|inferiors): "info inferiors\n"
 inferior <number_small>$: "inferior {number_small}\n"
 inferior: "inferior "
-resume main (inf|inferior):
+resume from main:
     insert("inferior 1\n")
     insert("c\n")
 resume [from] (inf|inferior) <number_small>$:

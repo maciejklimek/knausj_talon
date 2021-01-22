@@ -13,14 +13,15 @@ step over: user.debugger_step_over()
 
 ## line level
 step line: user.debugger_step_line()
-step over line: user.debugger_step_over_line()
+(step over|next) line: user.debugger_step_over_line()
 step out: user.debugger_step_out()
 continue: user.debugger_continue()
 
 ## these are multi word to avoid accidental utterance
 debug start: user.debugger_start()
 debug stop: user.debugger_stop()
-debug exit: user.debugger_exit()
+debug (exit|quit): user.debugger_exit()
+debug force (exit|quit): user.debugger_exit_force()
 debug detach: user.debugger_detach()
 debug restart: user.debugger_restart()
 
@@ -74,4 +75,4 @@ inspect type: user.debugger_inspect_type()
 #hex dump register:
 
 # Convenience
-clear line: user.debugger_clear_line()
+clear command: user.debugger_clear_line()

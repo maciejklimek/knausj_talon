@@ -6,6 +6,12 @@ find it:
 next one:
     edit.find_next()
 
+find <user.unmodified_key>:
+    user.line_find_forward(unmodified_key)
+
+(find last|fever) <user.unmodified_key>:
+    user.line_find_backward(unmodified_key)
+
 go word left:
     edit.word_left()
 
@@ -43,7 +49,7 @@ go way down:
 go way up:
     edit.file_start()
 
-(go page down|pink):
+scroll:
     edit.page_down()
 
 (go page up|punk):
@@ -114,24 +120,20 @@ clear down:
     edit.extend_line_down()
     edit.delete()
 
-clear word:
-    edit.delete_word()
+#clear word:
+#    edit.delete_word()
 
-clear word left:
-    edit.extend_word_left()
-    edit.delete()
+(clear word left|clear back):
+    user.delete_word_left()
 
-clear word right:
-    edit.extend_word_right()
-    edit.delete()
+clear word [right]:
+    user.delete_word_right()
 
-clear way left:
-    edit.extend_line_start()
-    edit.delete()
+(clear way left|clear bend):
+    user.delete_line_beginning()
 
-clear way right:
-    edit.extend_line_end()
-    edit.delete()
+(clear way right|clear lend):
+    user.delete_line_remaining()
 
 clear way up:
     edit.extend_file_start()
