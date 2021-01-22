@@ -1,4 +1,3 @@
-mode: user.python
 mode: command
 and code.language: python
 -

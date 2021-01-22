@@ -1,10 +1,9 @@
 os: linux
-mode: user.terminal
 mode: command
 and tag: terminal
 -
 
-dev talon:
+develop talon:
     insert("cd ~/.talon/user/fidget\n")
     insert("ls\n")
 

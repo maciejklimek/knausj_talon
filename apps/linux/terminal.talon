@@ -34,8 +34,6 @@ action(edit.paste):
   key(ctrl-shift-v)
 action(edit.copy):
   key(ctrl-shift-c)
-action(edit.delete_line):
-  key(ctrl-u)
 
 run last [command]:
   key(up)
@@ -58,21 +56,21 @@ kill all:
 #tag(): tabs
 
 # own <term name>.talon file
-action(edit.find):
-  key(ctrl-shift-f)
-action(edit.word_left):
-  key(ctrl-w left)
-action(edit.word_right):
-  key(ctrl-w right)
-action(app.tab_open):
-  key(ctrl-shift-t)
-action(app.tab_close):
-  key(ctrl-shift-w)
-action(app.tab_next):
-  key(ctrl-pagedown)
-action(app.tab_previous):
-  key(ctrl-pageup)
-action(app.window_open):
-  key(ctrl-shift-n)
+#action(edit.find):
+#  key(ctrl-shift-f)
+#action(edit.word_left):
+#  key(ctrl-w left)
+#action(edit.word_right):
+#  key(ctrl-w right)
+#action(app.tab_open):
+#  key(ctrl-shift-t)
+#action(app.tab_close):
+#  key(ctrl-shift-w)
+#action(app.tab_next):
+#  key(ctrl-pagedown)
+#action(app.tab_previous):
+#  key(ctrl-pageup)
+#action(app.window_open):
+#  key(ctrl-shift-n)
 #go tab <number>:
 #  key("alt-{number}")

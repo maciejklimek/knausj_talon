@@ -3,15 +3,19 @@ mode: command
 and code.language: markdown
 -
 
+code block:
+    insert("```\n\n")
+    insert("```\n")
+    key(up:2)
 state task: "- [ ] "
 
 # XXX - make work with generic editor commends
 #make link:
-#    edit.insert("[](")
+#    insert("[](")
 #    edit.word_end
 
 # XXX - Update to something that uses the [|] trick
 link clip:
-    edit.insert("(here)[")
+    insert("(here)[")
     edit.paste()
-    edit.insert("]")
+    insert("]")

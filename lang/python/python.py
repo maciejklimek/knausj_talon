@@ -5,7 +5,9 @@ from talon import Context, Module, actions, settings
 mod = Module()
 ctx = Context()
 ctx.matches = r"""
+tag: user.python
 mode: user.python
+and not tag: user.python
 mode: command
 and code.language: python
 """

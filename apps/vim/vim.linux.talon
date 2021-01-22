@@ -925,7 +925,7 @@ find (reversed|previous) <user.ordinals> <user.unmodified_key>:
 # Visual Text Selection
 ###
 (visual|select|highlight) line: user.vim_visual_mode("V")
-block (visualkselect|highlight): user.vim_any_motion_mode_exterm_key("ctrl-v")
+block (visual|select|highlight): user.vim_any_motion_mode_exterm_key("ctrl-v")
 (visual|select|highlight) block: user.vim_any_motion_mode_exterm_key("ctrl-v")
 
 (select|highlight) <user.vim_select_motion>:

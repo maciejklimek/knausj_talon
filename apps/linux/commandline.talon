@@ -5,11 +5,11 @@ mode: user.terminal
 mode: command
 and tag: terminal
 -
-lisa: "ls "
-lizzie: "ls\n"
+list file: "ls "
+list here: "ls\n"
 lily: "ls -al "
+lily here: "ls -al\n"
 lydia: "ls -d */\n"
-lizard: "ls -al\n"
 # TODO - somehow make this scriptable to print anything
 edit latest: "edit $(ls -Art | tail -n1)\n"
 latest: "ls -Art | tail -n1\n"
@@ -17,15 +17,15 @@ watch latest: "vlc $(ls -Art | tail -n1)"
 
 
 # directory and files
-katie: "cd "
-katie <user.paths>:
+pivot: "cd "
+pivot <user.paths>:
     insert("cd {paths}\n")
     insert("ls\n")
-katie up: "cd ../\n"
+pivot up: "cd ../\n"
 (parent|up) dir: "../"
 traverse: "../"
-katie home: "cd\n"
-katie last: "cd -\n"
+pivot home: "cd\n"
+pivot last: "cd -\n"
 
 make (dur|dear|dir|directory): "mkdir "
 make (dur|dear|dir|directory) <user.text>: "mkdir {text}"
@@ -191,7 +191,7 @@ for file loop:
 net man log: "journalctl -u NetworkManager --no-pager --lines 100\n"
 
 # ssh
-secure shell: "ssh"
+secure shell: "ssh "
 secure shell <user.text>: "ssh {text}\n"
 secure copy [<user.text>]:
     insert("scp -r ")
@@ -214,12 +214,16 @@ reboot system: "sudo reboot -h now"
 # unsorted
 zed s h: "zsh"
 diff: "diff "
+
+# XXX - make run commands part of something else?
 run vim: "vim "
 run make: "make\n"
 run see make: "cmake "
 
 (redirect errors|errors to standard out): "2>&1 "
+ignore errors: "2>/dev/null"
 
+# XXX
 collide: "sha256sum "
 
 ###

@@ -6,12 +6,12 @@ settings():
     user.i3_mod_key = "super"
 
 
-port <number_small>: user.system_command("i3-msg workspace {number_small}")
+portal <number_small>: user.system_command("i3-msg workspace {number_small}")
 
-port ten: user.system_command("i3-msg workspace 10")
-(port flip|flipper): user.system_command("i3-msg workspace back_and_forth")
-port right: user.system_command("i3-msg workspace next")
-port left: user.system_command("i3-msg workspace prev")
+portal ten: user.system_command("i3-msg workspace 10")
+(portal flip|flipper): user.system_command("i3-msg workspace back_and_forth")
+portal right: user.system_command("i3-msg workspace next")
+portal left: user.system_command("i3-msg workspace prev")
 
 (win|window) left: user.system_command("i3-msg focus left")
 (win|window) right: user.system_command("i3-msg focus right")
@@ -91,7 +91,7 @@ launch <user.text>:
         insert("{text}")
 lock screen: user.i3wm_launch()
 
-(launch shell|koopa): user.i3wm_shell()
+term me: user.i3wm_shell()
 
 new scratch (shell|window):
     user.i3wm_shell()

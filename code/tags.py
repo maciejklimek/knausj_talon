@@ -7,6 +7,8 @@ tagList = [
     "disassembler",
     "firefox",
     "gdb",
+    "libptmalloc",
+    "libdlmalloc",
     "git",  # commandline tag for git commands
     "ida",
     "tabs",
@@ -24,6 +26,13 @@ tagList = [
     "tmux",
     "docker",
     "git",
+    # allows programs running inside of a terminal (ex: gdb) to share
+    # common terminal commands like ctrl+c, but without actually
+    # supporting all of this shell commands themselves (ls, cd, etc)
+    "terminal_program",
+    # a tag for defining very specific terminal command line editor
+    # commands, see command_line_editing_readline.talon
+    "readline"
 ]
 
 for entry in tagList:

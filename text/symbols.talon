@@ -5,6 +5,7 @@ double dash: "--"
 #(rbrack | are bracket | right bracket): "}"
 triple quote: '"""'
 triple tick: "'''"
+gravy: "```"
 (dot dot | dotdot): ".."
 #ellipses: "…"
 ellipses: "..."

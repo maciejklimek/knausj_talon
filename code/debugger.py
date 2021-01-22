@@ -95,6 +95,9 @@ class Actions:
     def debugger_exit():
         """Exit the debugger"""
 
+    def debugger_exit_force():
+        """Force exit the debugger"""
+
     def debugger_detach():
         """Detach the debugger"""
 

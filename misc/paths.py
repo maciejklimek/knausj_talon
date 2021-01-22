@@ -24,6 +24,7 @@ def paths(m) -> str:
 ctx = Context()
 ctx.lists["user.paths_public"] = {
     "user services": "~/.config/systemd/user/",
+    "services": "/etc/systemd/system/",
     "sessions": "~/.vim/sessions/",
     "plugins": "~/.vim/plugged/",
     "temp": "/tmp",
@@ -32,6 +33,11 @@ ctx.lists["user.paths_public"] = {
     "user lib": "/usr/lib",
     "log": "/var/log",
     "password": "/etc/passwd",
+    "shadow": "/etc/shadow",
+    "hosts": "/etc/hosts",
+    "resolve": "/etc/resolve.conf",
+    "null": "/dev/null",
+    "zero": "/dev/zero",
 }
 
 ctx.lists["user.paths_private"] = {}
