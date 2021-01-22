@@ -27,6 +27,8 @@ app: vim
 
 # talon vim plugins. see apps/vim/plugins/
 # to enable plugins you'll want to set these inside vim.talon
+# XXX - that should just be automatically done based off the file names inside
+# of the plugin folder since it's annoying to manage
 plugin_tag_list = [
     "vim_ale",
     "vim_change_inside_surroundings",
@@ -39,6 +41,7 @@ plugin_tag_list = [
     "vim_fugitive",
     "vim_fugitive_summary",
     "vim_fzf",
+    "vim_grammarous",
     "vim_markdown_toc",
     "vim_nerdtree",
     "vim_obsession",
@@ -159,7 +162,7 @@ standard_counted_actions = {
 standard_counted_actions_control_keys = {
     "redo": "ctrl-r",
     # "scroll down": "ctrl-f",
-    "pink": "ctrl-f",
+    "scroll": "ctrl-f",
     # "scroll up": "ctrl-b",
     "punk": "ctrl-b",
     # "page down": "ctrl-f",
@@ -168,8 +171,8 @@ standard_counted_actions_control_keys = {
     # "half page up": "ctrl-u",
     # "half scroll down": "ctrl-d",
     # "half scroll up": "ctrl-u",
-    "half pink": "ctrl-d",
-    "half punk": "ctrl-u",
+    "skip": "ctrl-d",
+    "skate": "ctrl-u",
     "increment": "ctrl-a",
     "decrement": "ctrl-x",
 }
@@ -288,10 +291,9 @@ vim_motions = {
     # "back word": "b",
     "big back": "B",
     # "big back word": "B",
-    # NOTE - this conflicts with default talon 'end' key pressing
-    # "end": "e",
-    "end word": "e",
-    "big end": "E",
+    # "end": "e",  # NOTE - this conflicts with default talon 'end' key pressing
+    "tip": "e",
+    "big tip": "E",
     "word": "w",
     # "words": "w",
     "big word": "W",
@@ -309,7 +311,7 @@ vim_motions = {
     "column": "|",
     "start of line": "^",
     "bend": "^",
-    "end of line": "$",
+    #"end of line": "$",
     "lend": "$",
     # "cursor search": "*",
     "curse search": "*",
@@ -828,14 +830,14 @@ def vim_motions_with_phrase(m) -> str:
 
 
 @ctx.capture(
-    rule="(<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
+    rule="[<user.number_string>] (<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
 )
 def vim_motions_all(m) -> str:
     return "".join(list(m))
 
 
 @ctx.capture(
-    rule="(<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
+    rule="[<user.number_string>] (<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
 )
 def vim_motions_all_adjust(m) -> str:
     v = VimMode()

@@ -1,5 +1,5 @@
 tag: user.vim_taskwiki
-and not tag: terminal
+and not tag: user.vim_terminal
 -
 
 task (annotate|meta): user.vim_command_mode(":TaskWikiAnnotate\n")

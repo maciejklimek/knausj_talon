@@ -1,4 +1,5 @@
 tag: user.vim_ultisnips
+and not tag: user.vim_terminal
 -
 tag(): user.snippets
 (reload|refresh) snippets: user.vim_normal_mode_exterm(":call UltiSnips#RefreshSnippets()\n")

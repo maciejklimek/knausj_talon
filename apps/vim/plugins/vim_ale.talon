@@ -1,4 +1,5 @@
 tag: user.vim_ale
+and not tag: user.vim_terminal
 -
 
 ale help: user.vim_command_mode(":help ale\n")

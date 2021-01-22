@@ -1,7 +1,8 @@
 os: linux
+not tag: user.readline
 -
 
-# XXX - citizen work for terminals
+# XXX - does not work for terminals
 action(edit.copy):
 	key(ctrl-c)
 
@@ -23,6 +24,24 @@ action(edit.delete):
 action(edit.delete_word):
 	actions.edit.select_word()
 	actions.edit.delete()
+
+
+action(user.delete_word_right):
+    edit.extend_word_right()
+    edit.delete()
+
+# XXX - only relevant for editors that have highlighting
+action(user.delete_word_left):
+    edit.extend_word_left()
+    edit.delete()
+
+action(user.delete_line_beginning):
+    edit.extend_line_start()
+    edit.delete()
+
+action(user.delete_line_remaining):
+    edit.extend_line_beginning()
+    edit.delete()
 
 action(edit.down):
 	key(down)

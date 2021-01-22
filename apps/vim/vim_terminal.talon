@@ -4,9 +4,6 @@ win.title: /VIM MODE:t/
 tag(): user.vim_terminal
 
 
-action(edit.delete_line):
-    key(ctrl-u)
-
 pop (terminal|term):
     key(ctrl-\ ctrl-n)
 
