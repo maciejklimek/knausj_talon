@@ -60,13 +60,25 @@ def populate_shell_tags(shell_command):
         "ssh": "terminal",
         "gdb": "user.gdb",
     }
+    # XXX - there's probably a better way to deal with this
+    fuzzy_shell_tags = {
+        # Match on stuff like fzf running in floating term
+        #"term://": "user.readline",
+    }
     print(shell_command)
     if shell_command in shell_tags:
         ctx.tags = [shell_tags[shell_command]]
     else:
+        found_fuzzy = False
+        for tag in fuzzy_shell_tags:
+            if shell_command.startswith(tag):
+                ctx.tags = [shell_tags[shell_command]]
+                found_fuzzy = True
+                break
         #ctx.tags = ["terminal"]
-        print(f"WARNING: missing tag for shell cmd: {shell_command}")
-        print(f"WARNING: consider updating vim_terminal.py: {shell_command}")
+        if not found_fuzzy:
+            print(f"WARNING: missing tag for shell cmd: {shell_command}")
+            print(f"WARNING: consider updating vim_terminal.py: {shell_command}")
 
 
 ui.register("win_title", parse_vim_term_title)

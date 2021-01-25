@@ -220,7 +220,7 @@ go (next|newer) jump [entry]: user.vim_normal_mode_exterm_key("ctrl-i")
 # XXX - add jump to <id>
 
 # ctags/symbol
-(jump|dive) [to] (symbol|tag): user.vim_normal_mode_key("ctrl-]")
+jump (symbol|tag): user.vim_normal_mode_key("ctrl-]")
 (pop|leave) (symbol|tag): user.vim_normal_mode_key("ctrl-t")
 
 # scrolling and page position

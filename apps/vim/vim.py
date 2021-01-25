@@ -651,208 +651,86 @@ mod.list("vim_surround_targets", desc="VIM surround plugin targets")
 # Plugin modes
 mod.mode("vim_fugitive", desc="A fugitive mode that exposes git mappings")
 
-
-@mod.capture
+@mod.capture(rule="{self.vim_arrow}")
 def vim_arrow(m) -> str:
     "An arrow direction to be converted to vim direction"
     return m.vim_arrow
 
 
-@mod.capture
-def vim_surround_targets(m) -> str:
-    "Returns a text object used by the surround plugin"
-
-
-@mod.capture
-def vim_select_motion(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_counted_actions(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_counted_actions_keys(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_normal_counted_action(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_normal_counted_actions_keys(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_jump_targets(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_jumps(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_jump_range(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_text_object_range(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
+@mod.capture(rule="{self.vim_text_object_select}")
 def vim_text_object_select(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_motion_commands(m) -> str:
-    "Returns a list of verbs"
-
-
-# @mod.capture
-# def vim_counted_motions(m) -> str:
-#    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_keys(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_with_upper_character(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_with_character(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_with_phrase(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_all(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_motions_all_adjust(m) -> str:
-    "Returns a list of verbs"
-
-
-@mod.capture
-def vim_text_objects(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_unranged_surround_text_objects(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_normal_counted_motion_command(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_counted_motion_command_with_ordinals(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def vim_normal_counted_motion_keys(m) -> str:
-    "Returns a string"
-
-
-@ctx.capture(rule="{self.vim_arrow}")
-def vim_arrow(m):
-    return m.vim_arrow
-
-
-@ctx.capture(rule="{self.vim_text_object_select}")
-def vim_text_object_select(m) -> str:
-    "Returns a string"
+    "Returns a string representing a selection text object"
     return m.vim_text_object_select
 
 
-@ctx.capture(rule="{self.vim_text_object_range}")
+@mod.capture(rule="{self.vim_text_object_range}")
 def vim_text_object_range(m) -> str:
-    "Returns a string"
+    "Returns a string ranged text object"
     return m.vim_text_object_range
 
 
-@ctx.capture(rule="{self.vim_motions}")
+@mod.capture(rule="{self.vim_motions}")
 def vim_motions(m) -> str:
+    "Returns to string representing motion verb"
     return m.vim_motions
 
 
-@ctx.capture("user.vim_motions_keys", rule="{self.vim_motions_keys}")
+@mod.capture(rule="{self.vim_motions_keys}")
 def vim_motions_keys(m) -> str:
+    "Returns a key representing a motion"
     return m.vim_motions_keys
 
 
-@ctx.capture(
+@mod.capture(
     rule="{self.vim_motions_with_character} (ship|upper|uppercase) <user.letter>"
 )
 def vim_motions_with_upper_character(m) -> str:
+    "Returns a motion string with an upper case character"
     return m.vim_motions_with_character + "".join(list(m)[2:]).upper()
 
 
-@ctx.capture(
+@mod.capture(
     rule="{self.vim_motions_with_character} (<user.letter>|<digits>|<user.symbol_key>)"
 )
 def vim_motions_with_character(m) -> str:
+    "Returns a motion with a character argument"
     return m.vim_motions_with_character + "".join(str(x) for x in list(m)[1:])
 
 
-@ctx.capture(rule="{self.vim_motions_with_phrase} <user.text>")
+@mod.capture(rule="{self.vim_motions_with_phrase} <user.text>")
 def vim_motions_with_phrase(m) -> str:
+    "Returns a motion with a phrase argument"
     return "".join(list(m.vim_motions_with_phrase + m.text))
 
 
-@ctx.capture(
+@mod.capture(
     rule="[<user.number_string>] (<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
 )
 def vim_motions_all(m) -> str:
+    "Returns a rule matching optionally numbered vim motion"
     return "".join(list(m))
 
 
-@ctx.capture(
+@mod.capture(
     rule="[<user.number_string>] (<self.vim_motions>|<self.vim_motions_with_character>|<self.vim_motions_with_upper_character>|<self.vim_motions_with_phrase>)"
 )
 def vim_motions_all_adjust(m) -> str:
+    "Returns a rule matching a vim motion, and adjusts the vim mode"
     v = VimMode()
     v.set_any_motion_mode()
     print(m)
     return "".join(list(m))
 
 
-@ctx.capture(rule="{self.vim_counted_actions}")
+@mod.capture(rule="{self.vim_counted_actions}")
 def vim_counted_actions(m) -> str:
+    "Returns string matching accounted action"
     return m.vim_counted_actions
 
 
-@ctx.capture(rule="{self.vim_counted_actions_keys}")
+@mod.capture(rule="{self.vim_counted_actions_keys}")
 def vim_counted_actions_keys(m) -> str:
+    "Returns key matching accounted action"
     return m.vim_counted_actions_keys
 
 
@@ -861,48 +739,55 @@ def vim_counted_actions_keys(m) -> str:
 #    return "".join(str(x) for x in list(m))
 
 
-@ctx.capture(rule="{self.vim_jump_range}")
+@mod.capture(rule="{self.vim_jump_range}")
 def vim_jump_range(m) -> str:
+    "Returns a string representing a ranged jump"
     return m.vim_jump_range
 
 
-@ctx.capture(rule="{self.vim_jumps}")
+@mod.capture(rule="{self.vim_jumps}")
 def vim_jumps(m) -> str:
+    "Returns a string representing a jump target"
     return m.vim_jumps
 
 
-@ctx.capture(rule="{self.vim_surround_targets}")
+@mod.capture(rule="{self.vim_surround_targets}")
 def vim_surround_targets(m) -> str:
+    "Returns a string representing a vim surround plugin target"
     return m.vim_surround_targets
 
 
-@ctx.capture(rule="<self.vim_jump_range> <self.vim_jumps>")
+@mod.capture(rule="<self.vim_jump_range> <self.vim_jumps>")
 def vim_jump_targets(m) -> str:
+    "Returns a string representing a ranged jump target"
     return "".join(list(m))
 
 
-@ctx.capture(
+@mod.capture(
     # XXX - trying to reduce list sizes and never use this
     # rule="[<number_small>] <self.vim_text_object_range> <self.vim_text_object_select>"
     rule="<self.vim_text_object_range> <self.vim_text_object_select>"
 )
 def vim_text_objects(m) -> str:
+    "Returns a string representing a ranged texts objects selection"
     return "".join(str(x) for x in list(m))
 
 
 # Sometimes you want to imply a surround action is going to work on a word, but
 # saying around is tedious, of this is defaults to selecting around if no
 # actual inner or around range is spoken
-@ctx.capture(rule="[<number_small>] <self.vim_text_object_select>")
+@mod.capture(rule="[<number_small>] <self.vim_text_object_select>")
 def vim_unranged_surround_text_objects(m) -> str:
+    "Returns a string representing an unranged surround plugin target"
     if len(list(m)) == 1:
         return "a" + "".join(list(m))
     else:
         return "".join(str(m.number_small)) + "a" + "".join(list(m)[1:])
 
 
-@ctx.capture(rule="{self.vim_motion_commands}")
+@mod.capture(rule="{self.vim_motion_commands}")
 def vim_motion_commands(m) -> str:
+    "Returns a string representing a motion command"
     v = VimMode()
     if v.is_visual_mode():
         if str(m) in visual_commands:
@@ -918,22 +803,25 @@ def vim_motion_commands(m) -> str:
     return commands_with_motion[str(m)]
 
 
-@ctx.capture(
+@mod.capture(
     rule="[<number_small>] <self.vim_motion_commands> [(<self.vim_motions_all> | <self.vim_text_objects> | <self.vim_jump_targets>)]"
 )
 def vim_normal_counted_motion_command(m) -> str:
+    "Returns a string representing a motion command with optional arguments"
     return "".join(str(x) for x in list(m))
 
 
-@ctx.capture(
+@mod.capture(
     rule="<self.vim_motion_commands> <user.ordinals> (<self.vim_motions_all>|<self.vim_jump_targets>)"
 )
 def vim_counted_motion_command_with_ordinals(m) -> str:
+    "Returns a string of a motion command with optional counted argument"
     return "".join([str(m.ordinals - 1), "".join(m[2:]), m[0], "".join(m[2:])])
 
 
-@ctx.capture(rule="[<number_small>] <self.vim_motions_keys>")
+@mod.capture(rule="[<number_small>] <self.vim_motions_keys>")
 def vim_normal_counted_motion_keys(m) -> str:
+    "Returns a string of a counted motion representing keys"
     # we do this because we pass everything to key() which needs a space
     # separated list
     if len(str(m).split(" ")) > 1:
@@ -944,8 +832,9 @@ def vim_normal_counted_motion_keys(m) -> str:
 
 # XXX - could combine actions_keys and _action version by test if the entry is
 # in which list. might reduce number usage?
-@ctx.capture(rule="[<number_small>] <self.vim_counted_actions>")
+@mod.capture(rule="[<number_small>] <self.vim_counted_actions>")
 def vim_normal_counted_action(m) -> str:
+    "Returns a string of a counted motion"
     # XXX - may need to do action-specific mode checking
     v = VimMode()
     v.cancel_queued_commands()
@@ -958,8 +847,9 @@ def vim_normal_counted_action(m) -> str:
     return "".join(str(x) for x in list(m))
 
 
-@ctx.capture(rule="[<number_small>] <self.vim_counted_actions_keys>")
+@mod.capture(rule="[<number_small>] <self.vim_counted_actions_keys>")
 def vim_normal_counted_actions_keys(m) -> str:
+    "Returns a string of a counted action representing keys"
     v = VimMode()
     v.cancel_queued_commands()
     v.set_any_motion_mode()
@@ -974,10 +864,11 @@ def vim_normal_counted_actions_keys(m) -> str:
         return m.vim_counted_actions_keys
 
 
-@ctx.capture(
+@mod.capture(
     rule="[<number_small>] (<self.vim_motions> | <self.vim_text_objects> | <self.vim_jump_targets>)"
 )
 def vim_select_motion(m) -> str:
+    "Returns a string of some selection motion"
     return "".join(str(x) for x in list(m))
 
 
