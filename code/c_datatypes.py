@@ -30,41 +30,25 @@ mod.list("c_signed", desc="Common C datatype signed modifiers")
 mod.list("c_types", desc="Common C types")
 
 
-@mod.capture
-def datatype(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
+@mod.capture(rule="{self.c_pointers}")
 def c_pointers(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def c_signed(m) -> str:
-    "Returns a string"
-
-
-@mod.capture
-def c_types(m) -> str:
-    "Returns a string"
-
-
-@ctx.capture(rule="{self.c_pointers}")
-def c_pointers(m) -> str:
+    "Return a pointer symbol"
     return m.c_pointers
 
 
-@ctx.capture(rule="{self.c_signed}")
+@mod.capture(rule="{self.c_signed}")
 def c_signed(m) -> str:
+    "Return a signed or unsigned symbol"
     return m.c_signed
 
 
-@ctx.capture(rule="{self.c_types}")
+@mod.capture(rule="{self.c_types}")
 def c_types(m) -> str:
+    "Return a C datatype symbol"
     return m.c_types
 
 
-@ctx.capture(rule="[<self.c_signed>] <self.c_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.c_signed>] <self.c_types> [<self.c_pointers>+]")
 def datatype(m) -> str:
+    "Return a C declaration string matching a datatype"
     return "(" + " ".join(list(m)) + ")"

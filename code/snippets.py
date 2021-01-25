@@ -10,10 +10,6 @@ mod.list("snippets", desc="List of code snippets")
 ctx.lists["user.snippets"] = {}
 
 
-@mod.capture
-def snippets(m) -> list:
-    """Returns a snippet name"""
-
 
 @imgui.open(software=app.platform == "linux")
 def gui(gui: imgui.GUI):
@@ -49,6 +45,7 @@ class Actions:
             gui.show()
 
 
-@ctx.capture(rule="{user.snippets}")
-def snippets(m):
+@mod.capture(rule="{user.snippets}")
+def snippets(m) -> str:
+    """Returns a snippet name"""
     return m.snippets

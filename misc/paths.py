@@ -6,20 +6,6 @@ mod.list("paths_public", desc="Common paths")
 mod.list("paths_private", desc="Common private paths")
 
 
-@mod.capture
-def paths_public(m) -> str:
-    "One path"
-
-
-@mod.capture
-def paths_private(m) -> str:
-    "One private path"
-
-
-@mod.capture
-def paths(m) -> str:
-    "One path"
-
 
 ctx = Context()
 ctx.lists["user.paths_public"] = {
@@ -54,16 +40,18 @@ windows_paths = {
 }
 
 
-@ctx.capture(rule="{user.paths_public}")
-def paths_public(m):
+@mod.capture(rule="{user.paths_public}")
+def paths_public(m)-> str:
     return m.paths_public
 
 
-@ctx.capture(rule="{user.paths_private}")
-def paths_private(m):
+@mod.capture(rule="{user.paths_private}")
+def paths_private(m)-> str:
+    "One private path"
     return m.paths_private
 
 
-@ctx.capture(rule="<user.paths_public>|<user.paths_private>")
-def paths(m):
+@mod.capture(rule="<user.paths_public>|<user.paths_private>")
+def paths(m)-> str:
+    "One path"
     return m
