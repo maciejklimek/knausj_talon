@@ -26,6 +26,11 @@ tag(): user.service_manager
 tag(): user.timer_manager
 tag(): user.systemd
 
+# unset this if you use `bindkey -v`
+tag(): user.shell_edit_emacs
+
+# these are generic linux edit commands that don't need to be part of
+# the shell_edit_ABC.talon specific ones
 action(edit.page_down):
   key(shift-pagedown)
 action(edit.page_up):

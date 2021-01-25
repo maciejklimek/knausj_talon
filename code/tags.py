@@ -32,7 +32,8 @@ tagList = [
     "terminal_program",
     # a tag for defining very specific terminal command line editor
     # commands, see command_line_editing_readline.talon
-    "readline"
+    "readline",
+    "shell_edit_emacs"
 ]
 
 for entry in tagList:

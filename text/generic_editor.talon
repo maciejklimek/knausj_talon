@@ -1,6 +1,9 @@
 -
 
-find it:
+# VIM uses find for line searching
+# XXX - is a good chance this conflicts with other grammars from certain
+# applications
+search:
     edit.find()
 
 next one:
@@ -83,16 +86,16 @@ select word left:
 select word right:
     edit.extend_word_right()
 
-select way left:
+select (way left|bend):
     edit.extend_line_start()
 
-select way right:
+select (way right|lend):
     edit.extend_line_end()
 
-select way up:
+select (way up|loft):
     edit.extend_file_start()
 
-select way down:
+select (way down|gut):
     edit.extend_file_end()
 
 # editing

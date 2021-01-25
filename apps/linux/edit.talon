@@ -1,5 +1,7 @@
 os: linux
 not tag: user.readline
+and not tag: terminal
+
 -
 
 # XXX - does not work for terminals
@@ -46,6 +48,14 @@ action(user.delete_line_remaining):
 action(edit.down):
 	key(down)
 
+action(edit.up):
+	key(up)
+
+action(edit.left):
+	key(left)
+
+action(edit.right):
+	key(right)
 #action(edit.extend_again):
 
 #action(edit.extend_column):
@@ -127,9 +137,6 @@ action(edit.indent_more):
 #action(edit.jump_column(n: int)
 #action(edit.jump_line(n: int)
 
-action(edit.left):
-	key(left)
-
 action(edit.line_down):
 	key(down home)
 
@@ -172,9 +179,6 @@ action(edit.print):
 action(edit.redo):
 	key(ctrl-y)
 
-action(edit.right):
-	key(right)
-
 action(edit.save):
 	key(ctrl-s)
 
@@ -206,9 +210,6 @@ action(edit.select_word):
 
 action(edit.undo):
 	key(ctrl-z)
-
-action(edit.up):
-	key(up)
 
 action(edit.word_left):
 	key(ctrl-left)
