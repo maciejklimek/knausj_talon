@@ -40,6 +40,7 @@ ctx.lists["user.abbreviation"] = {
     "centimeter": "cm",
     "char": "chr",
     "character": "char",
+    "chip": "cpu",
     "class": "cls",
     "client": "cli",
     "column": "col",
