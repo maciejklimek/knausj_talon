@@ -1,13 +1,10 @@
 question [mark]: "?"
-(downscore | underscore): "_"
+score: "_"
 double dash: "--"
-#(bracket | brack | left bracket): "{"
-#(rbrack | are bracket | right bracket): "}"
 triple quote: '"""'
 triple tick: "'''"
 gravy: "```"
 (dot dot | dotdot): ".."
-#ellipses: "…"
 ellipses: "..."
 (comma and | spamma): ", "
 plus: "+"
@@ -16,6 +13,7 @@ dub arrow: "=>"
 new line: "\\n"
 carriage return: "\\r"
 line feed: "\\r\\n"
+end of file: "EOF"
 empty (string|quotes):
     '""'
     key(left)
