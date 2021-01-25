@@ -162,6 +162,7 @@ find <user.text> inside (python|pie) files less:
 man: "man "
 so do: "sudo "
 d message: "dmesg"
+system log: "journalctl -k --no-pager --no-hostname\n"
 disk usage: "df -h\n"
 
 # extraction

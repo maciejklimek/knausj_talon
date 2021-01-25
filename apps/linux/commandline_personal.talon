@@ -17,7 +17,7 @@ talon base:
     insert("cd ~/.talon/\n")
     insert("ls\n")
 talon (python|classes):
-    insert("cd ~/source/talon/releases/latest/resources/python/lib/python3.7/site-packages/talon\n")
+    insert("cd ~/source/talon/releases/latest/resources/python/lib/python3.9/site-packages/talon\n")
     insert("ls\n")
 talon plugins:
     insert("cd ~/source/talon/releases/latest/resources/talon_plugins\n")

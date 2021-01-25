@@ -2,8 +2,9 @@ os: linux
 tag: terminal
 -
 (rerun|run) last [command]: "!!\n\n"
-cancel [that]: key("ctrl-c")
-damn (it|that): key("ctrl-d")
+cancel [that]: key(ctrl-c)
+fucker: key(ctrl-c)
+damn (it|that): key(ctrl-d)
 
 # fzf keybindings
 search history: key(ctrl-r)
