@@ -1,7 +1,6 @@
 os: linux
 -
 
-show notifications: key(ctrl-`)
 dunce pause: user.system_command('notify-send "DUNST_COMMAND_PAUSE"')
 dunce resume: user.system_command('notify-send "DUNST_COMMAND_RESUME"')
 test notification: user.system_command('notify-send "Hello from Talon"')
