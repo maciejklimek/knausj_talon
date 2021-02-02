@@ -59,6 +59,7 @@ def populate_shell_tags(shell_command):
         "root@oedo": "terminal",
         "ssh": "terminal",
         "gdb": "user.gdb",
+        "htop": "user.htop",
     }
     # XXX - there's probably a better way to deal with this
     fuzzy_shell_tags = {
@@ -76,10 +77,10 @@ def populate_shell_tags(shell_command):
                 found_fuzzy = True
                 break
         #ctx.tags = ["terminal"]
-        if not found_fuzzy:
-            print(f"WARNING: missing tag for shell cmd: {shell_command}")
-            print(f"WARNING: consider updating vim_terminal.py: {shell_command}")
-
+#        if not found_fuzzy:
+#            print(f"WARNING: missing tag for shell cmd: {shell_command}")
+#            print(f"WARNING: consider updating vim_terminal.py: {shell_command}")
+#
 
 ui.register("win_title", parse_vim_term_title)
 ui.register("win_focus", parse_vim_term_title)

@@ -25,3 +25,8 @@ literal: key(ctrl-v)
 # XXX - a the ctrl-r ctrl-<key> stuff
 
 # XXX - add the ctrl-d autocompletion stuff
+
+# regex
+# XXX - should be made part of a generic regex grammar
+state non greedy: "\{{-}}"
+state greedy: ".*"
