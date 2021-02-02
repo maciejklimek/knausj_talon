@@ -232,22 +232,15 @@ commands_with_motion = {
     # no motions
     "join": "J",
     # "filter": "=",  # XXX - not sure about how to use this
-    # "put": "p",
     "paste": "p",  # XXX this really have motion
     "undo": "u",  # XXX this really have motion
     "swap case": "~",
     # motions
     "change": "c",
-    # "delete": "d",
-    # "trim": "d",  # XXX - likely replace with clear
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "indent": ">",
     "unindent": "<",
     "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key
-    # NOTE: If you enable this and yank at the same time, some convenience
-    # commands you might setup for automatic copying might get swallowed by
-    # vim.py grammars
-    # "copy": "y",
     "fold": "zf",
     "format": "gq",
     "to upper": "gU",
@@ -261,11 +254,8 @@ visual_commands = {
     # normal overlap
     "change": "c",
     "join": "J",
-    # "delete": "d",
-    # "trim": "d",  # XXX - likely replace with clear
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key
-    # "copy": "y",
     "format": "gq",
     "fold": "zf",
     # some visual differences
@@ -288,10 +278,7 @@ ctx.lists["self.vim_motion_commands"] = list(
 # ones that are already enabled
 vim_motions = {
     "back": "b",
-    # "back word": "b",
     "big back": "B",
-    # "big back word": "B",
-    # "end": "e",  # NOTE - this conflicts with default talon 'end' key pressing
     "tip": "e",
     "big tip": "E",
     "word": "w",
@@ -305,38 +292,24 @@ vim_motions = {
     "down": "j",
     "up": "k",
     "next": "n",
-    # "next reversed": "N",
     "previous": "N",
     "column zero": "0",
     "column": "|",
     "start of line": "^",
     "bend": "^",
-    #"end of line": "$",
     "lend": "$",
-    # "cursor search": "*",
     "curse search": "*",
-    # "cursor search reversed": "#",
     "curse search reversed": "#",
-    # These conflict with general 'search' command
-    # "search under cursor": "*",
-    # "search under cursor reversed": "#",
     # TODO - make easier to remember/say
     "again": ";",
     "again reversed": ",",
-    # TODO - sentence conflicts with talon
-    # "down sentence": ")",
     "tense": ")",
     "up tense": "(",
-    # "down paragraph": "}",
-    "paragraph": "}",
     "graph": "}",
-    "up paragraph": "{",
     "up graph": "{",
-    # "start of next section": "]]",
     # XXX - section, and last section
     # TODO - switch previous to last
     "next section": "]]",
-    # "start of previous section": "[[",
     "previous section": "[[",
     # XXX - next section end??
     "end of next section": "][",
@@ -351,23 +324,10 @@ vim_motions = {
     "down line": "+",
     "up line": "-",
     "first character": "_",
-    # "cursor home": "H",
-    # "curse home": "H",
-    # "cursor top": "H",
     "curse top": "H",
-    # "cursor middle": "M",
     "curse middle": "M",
-    # "cursor last": "L",
     "curse last": "L",
-    # "cursor bottom": "L",
-    "curse bottom": "L",
-    # "start of document": "gg",
-    # "start of file": "gg",
     "loft": "gg",
-    # "top of document": "gg",
-    # "top of file": "gg",
-    # "end of document": "G",
-    # "end of file": "G",
     "gut": "G",
 }
 
@@ -394,19 +354,11 @@ ctx.lists["self.vim_motions_keys"] = {
 
 # all of these motions take a character argument
 vim_motions_with_character = {
-    # "jump to mark": "'",
-    # TODO - clear 'go mark' <mark> is awkward. may want til as well, or just
-    # no go... But double check with Marks in vim.linux.talon
     "go mark": "'",
     "find": "f",
     "fever": "F",
-    # "find reversed": "F",
-    # "find previous": "F",
     "till": "t",
     "tier": "T",
-    "last": "T",
-    # "till reversed": "T",
-    # "till previous": "T",
 }
 
 # NOTE: these will not work with the surround plug in, since they combo
@@ -492,50 +444,24 @@ ctx.lists["self.vim_text_object_select"] = {
 # XXX - should be able to partially mix with earlier list
 ctx.lists["self.vim_surround_targets"] = {
     "stars": "*",
-    # "asterisks": "*",
     "word": "w",
     "big word": "W",
     "block": "b",
     "big block": "B",
-    # "string": '"',
-    # "dub string": '"',
-    # "dub quotes": '"',
     "quotes": '"',
-    # "double quotes": '"',
-    # "quotes": "'",
     "ticks": "'",
-    # "string": "'",
-    # "single quotes": "'",
     "loose parens": "(",
-    # "loose parenthesis": "(",
-    # "loose angle brackets": "<",
     "loose angles": "<",
-    # "loose curly braces": "{",
     "loose braces": "{",
-    # "loose square brackets": "[",
     "loose squares": "[",
-    # "tight parens": ")",
-    # "tight parenthesis": ")",
-    # "tight angle brackets": ">",
-    # "tight curly braces": "}",
-    # "tight braces": "}",
-    # "tight square brackets": "]",
-    # "tight brackets": "]",
     "parens": ")",
-    # "parenthesis": ")",
-    # "angle brackets": ">",
     "angles": ">",
-    # "curly braces": "}",
     "braces": "}",
-    # "square brackets": "]",
     "squares": "]",
-    # "brackets": "]",
-    # "backticks": "`",
     "graves": "`",
     "sentence": "s",
     "paragraph": "p",
-    # "space": "  ",  # double spaces is required because surround gets confused
-    "spaces": "  ",
+    "spaces": "  ",  # double spaces is required because surround gets confused
     "tags": "t",
     "h1 tags": "<h1>",
     "h2 tags": "<h2>",
@@ -650,6 +576,7 @@ mod.list("vim_surround_targets", desc="VIM surround plugin targets")
 
 # Plugin modes
 mod.mode("vim_fugitive", desc="A fugitive mode that exposes git mappings")
+
 
 @mod.capture(rule="{self.vim_arrow}")
 def vim_arrow(m) -> str:

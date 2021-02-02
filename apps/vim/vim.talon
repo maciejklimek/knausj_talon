@@ -39,9 +39,6 @@ tag(): user.tabs
 # Comment out plugins below that you don't use
 # Also see vim_motion_mode.talon for plugin grammars that aren't enabled in 
 # terminal mode
-tag(): user.vim_ale
-tag(): user.vim_change_inside_surroundings
-tag(): user.vim_cscope
 tag(): user.vim_easy_align
 tag(): user.vim_easymotion
 tag(): user.vim_fern
@@ -56,13 +53,11 @@ tag(): user.vim_nerdtree
 tag(): user.vim_obsession
 tag(): user.vim_plug
 tag(): user.vim_signature
-tag(): user.vim_surround
 tag(): user.vim_taboo
 tag(): user.vim_tabular
 tag(): user.vim_taskwiki
 tag(): user.vim_test
 tag(): user.vim_unicode
-tag(): user.vim_ultisnips
 tag(): user.vim_wiki
 tag(): user.vim_you_are_here
 tag(): user.vim_youcompleteme
