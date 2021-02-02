@@ -403,7 +403,7 @@ def refresh_context_command_map(enabled_only=False):
         if short_name in overrides:
             short_name = overrides[short_name]
 
-        if enabled_only and context in active_contexts or not enabled_only:
+        if context in active_contexts or not enabled_only:
             context_command_map[context_name] = {}
             for command_alias, val in context.commands.items():
                 # print(str(val))
@@ -414,11 +414,14 @@ def refresh_context_command_map(enabled_only=False):
                     ] = val.target.code
             # print(short_name)
             # print("length: " + str(len(context_command_map[context_name])))
-            if len(context_command_map[context_name]) == 0:
-                context_command_map.pop(context_name)
-            else:
-                cached_short_context_names[short_name] = context_name
-                context_map[context_name] = context
+
+            #if len(context_command_map[context_name]) == 0:
+            #    context_command_map.pop(context_name)
+            #else:
+            #    cached_short_context_names[short_name] = context_name
+            #    context_map[context_name] = context
+            cached_short_context_names[short_name] = context_name
+            context_map[context_name] = context
 
     refresh_rule_word_map(context_command_map)
 
