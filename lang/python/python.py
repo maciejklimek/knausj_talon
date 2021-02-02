@@ -1,6 +1,6 @@
 import re
 
-from talon import Context, Module, actions, settings
+from talon import Context, Module, actions, settings, clip
 
 mod = Module()
 ctx = Context()
@@ -192,3 +192,14 @@ class module_actions:
             actions.key(f"left:{len(s) - end_pos}")
         else:
             actions.insert(text)
+
+    def insert_cursor_paste(text1: str, text2: str):
+        """Insert a string, . Leave the cursor after text1"""
+        if "[|]" in text1:
+            end_pos = text1.find("[|]")
+            text1 = text1.replace("[|]", "")
+        else:
+            end_pos = len(text1)
+        s = text1 + clip.get() + text2
+        actions.insert(s)
+        actions.key(f"left:{len(s) - end_pos}")

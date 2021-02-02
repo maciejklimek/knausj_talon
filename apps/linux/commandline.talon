@@ -7,12 +7,13 @@ and tag: terminal
 -
 list file: "ls "
 list here: "ls\n"
-lily: "ls -al "
-lily here: "ls -al\n"
+list long: "ls -al "
+list long here: "ls -al\n"
 lydia: "ls -d */\n"
 # TODO - somehow make this scriptable to print anything
 edit latest: "edit $(ls -Art | tail -n1)\n"
 latest: "ls -Art | tail -n1\n"
+file latest: "$(ls -Art | tail -n1)"
 watch latest: "vlc $(ls -Art | tail -n1)"
 
 
@@ -159,16 +160,18 @@ find <user.text> inside (python|pie) files:
 find <user.text> inside (python|pie) files less:
     insert('$(find . -name \"*.py\") | xargs rg -i "{text}\" | less\n')
 
-man: "man "
+man page: "man "
 so do: "sudo "
 d message: "dmesg"
 system log: "journalctl -k --no-pager --no-hostname\n"
 disk usage: "df -h\n"
+sis cuddle: "sysctl "
+sis cuddle set: "sysctl -w "
 
 # extraction
 tar ball: "tar -"
-tar ball extract [zip]: "tar -xvzf "
-tar ball extract bee zip: "tar -xvjf "
+tar ball extract [zip]: "tar -xvaf "
+# tar ball extract bee zip: "tar -xvjf "
 (un zip|extract zip): "unzip "
 
 curl: "curl "
@@ -180,7 +183,7 @@ download clipboard:
 
 # because talent doesn't seem to like me saying ./
 run script: "./"
-reverb:
+run again:
     insert("./")
     key(up enter)
 
@@ -210,6 +213,12 @@ pee kill <user.text>: "pkill {text}"
 kill <number>: "kill -9 {number}"
 kill: "kill -9 "
 reboot system: "sudo reboot -h now"
+
+# hardware
+list memory: "lshw -short -C memory"
+list processor: "lscpu\n"
+list pee bus: "lspci\n"
+list yew bus: "lsusb\n"
 
 # XXX - from the old standard.talon file
 # unsorted

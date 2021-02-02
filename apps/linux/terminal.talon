@@ -21,10 +21,11 @@ tag(): user.make
 #tag(): user.kubectl
 tag(): user.tmux
 tag(): user.git
-#tag(): user.docker
+tag(): user.docker
 tag(): user.service_manager
 tag(): user.timer_manager
 tag(): user.systemd
+tag(): user.pulse_audio
 
 # unset this if you use `bindkey -v`
 tag(): user.shell_edit_emacs

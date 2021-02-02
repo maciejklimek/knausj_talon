@@ -28,9 +28,9 @@ action(user.timer_user_disable): user.insert_cursor("systemctl --user --no-pager
 
 
 # TODO - generic
-timer user list: "systemctl --user list-timers\n"
-timer user all: "systemctl --user --all list-timers\n"
-timer list: "systemctl list-timers\n"
-timer all: "systemctl --all list-timers\n"
+system timer user list: "systemctl --user list-timers\n"
+system timer user all: "systemctl --user --all list-timers\n"
+system timer list: "systemctl list-timers\n"
+system timer all: "systemctl --all list-timers\n"
 
 system cuttle: "systemctl "

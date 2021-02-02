@@ -56,8 +56,8 @@ action(user.code_state_if):
 
 # XXX - redundant with snippet
 call interpreter: "#!/bin/sh\n"
-new sub command: "$()"
-new expression: "$(())"
+(new sub|state) command: "$()"
+(new|state) expression: "$(())"
 # XXX
 parameter:
     insert("${}")
