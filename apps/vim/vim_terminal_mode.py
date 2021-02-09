@@ -60,6 +60,7 @@ def populate_shell_tags(shell_command):
         "ssh": "terminal",
         "gdb": "user.gdb",
         "htop": "user.htop",
+        "taskwarrior-tui": "user.taskwarrior_tui",
     }
     # XXX - there's probably a better way to deal with this
     fuzzy_shell_tags = {

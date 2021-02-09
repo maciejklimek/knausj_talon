@@ -1,5 +1,4 @@
 tag: user.vim_fugitive
-and not tag: user.vim_terminal
 -
 
 (fugitive|git) add (current|this) file: user.vim_command_mode(":G add %\n")

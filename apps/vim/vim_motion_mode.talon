@@ -19,6 +19,13 @@ tag(): user.vim_surround
 tag(): user.vim_ultisnips
 tag(): user.vim_ale
 tag(): user.vim_cscope
+tag(): user.vim_fugitive
+tag(): user.vim_fugitive_summary
+tag(): user.vim_grammarous
+tag(): user.vim_markdown_toc
+tag(): user.vim_youcompleteme
+tag(): user.vim_easy_align
+tag(): user.vim_eunuch
 
 ###
 # File editing and management
@@ -224,6 +231,15 @@ swap [word] on [this] line:
 swap global:
     user.vim_command_mode(":%s///g")
     key(left:3)
+
+global clear:
+    user.vim_command_mode(":g //d")
+    key(left:3)
+
+global inverted clear:
+    user.vim_command_mode(":v //d")
+    key(left:3)
+
 
 ###
 # Macros and registers ''

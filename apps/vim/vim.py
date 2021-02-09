@@ -35,6 +35,7 @@ plugin_tag_list = [
     "vim_cscope",
     "vim_easy_align",
     "vim_easymotion",
+    "vim_eunuch",
     "vim_fern",
     "vim_fern_mapping_fzf",
     "vim_floaterm",
@@ -120,20 +121,13 @@ standard_counted_actions = {
     "undo line": "U",
     # "erase": "x",
     "erase reversed": "X",
-    #    "erase back": "X",
-    #    "put": "p",
-    # "put below": "p",
     "paste": "p",
-    #    "paste below": "p",
-    #    "put before": "P",
-    "paste before": "P",
-    #    "put above": "P",
     "paste above": "P",
     "repeat": ".",
     "indent line": ">>",
     # Warning saying unindent line is painful
     "unindent line": "<<",
-    "delete line": "dd",
+    "delete line": "dd",  # TODO - can we avoid because of clear line?
     "yank line": "Y",
     # "copy line": "Y",
     "scroll left": "zh",
@@ -145,32 +139,20 @@ standard_counted_actions = {
     "upper case line": "gUU",
     "lower case line": "guu",
     # XXX - these work from visual mode and normal mode
-    # "insert before": "I",
     "prefix": "I",
-    # "insert line": "I",
     "play again": "@@",
     "toggle case": "~",
     "repeat last swap": "&",
     # XXX - not sure how to name these
     "clear rest": "D",
-    # "delete remaining": "D",
     "change rest": "C",
-    # "change remaining": "C",
 }
 
 # Standard self.vim_counted_actions key() entries
 standard_counted_actions_control_keys = {
     "redo": "ctrl-r",
-    # "scroll down": "ctrl-f",
     "scroll": "ctrl-f",
-    # "scroll up": "ctrl-b",
     "punk": "ctrl-b",
-    # "page down": "ctrl-f",
-    # "page up": "ctrl-b",
-    # "half page down": "ctrl-d",
-    # "half page up": "ctrl-u",
-    # "half scroll down": "ctrl-d",
-    # "half scroll up": "ctrl-u",
     "skip": "ctrl-d",
     "skate": "ctrl-u",
     "increment": "ctrl-a",
@@ -182,10 +164,7 @@ standard_counted_actions_control_keys = {
 # alias commands from standard_counted_actions above, without replacing them
 # there to prevent merge conflicts.
 custom_counted_action = {
-    # "panic": "u",
-    "dine": "dd",
     "drop": "x",
-    "yine": "Y",
     "ochre": "o",
     "orca": "O",
     "slide left": "<<",

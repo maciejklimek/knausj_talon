@@ -1,6 +1,5 @@
 # XXX - we should have some way to detect the suggestion window was open
 tag: user.vim_youcompleteme
-and not tag: user.vim_terminal
 -
 
 # XXX - these are annoying to say

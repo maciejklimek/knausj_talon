@@ -39,16 +39,11 @@ tag(): user.tabs
 # Comment out plugins below that you don't use
 # Also see vim_motion_mode.talon for plugin grammars that aren't enabled in 
 # terminal mode
-tag(): user.vim_easy_align
 tag(): user.vim_easymotion
 tag(): user.vim_fern
 tag(): user.vim_fern_mapping_fzf
 tag(): user.vim_floaterm
-tag(): user.vim_fugitive
-tag(): user.vim_fugitive_summary
 tag(): user.vim_fzf
-tag(): user.vim_grammarous
-tag(): user.vim_markdown_toc
 tag(): user.vim_nerdtree
 tag(): user.vim_obsession
 tag(): user.vim_plug
@@ -60,7 +55,6 @@ tag(): user.vim_test
 tag(): user.vim_unicode
 tag(): user.vim_wiki
 tag(): user.vim_you_are_here
-tag(): user.vim_youcompleteme
 tag(): user.vim_zoom
 
 
