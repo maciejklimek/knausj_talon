@@ -6,6 +6,8 @@ tag: terminal
 action(user.service): user.insert_cursor("systemctl --no-pager [|].service")
 action(user.service_stop): user.insert_cursor("systemctl --no-pager stop [|].service")
 action(user.service_start): user.insert_cursor("systemctl --no-pager start [|].service")
+action(user.service_restart): user.insert_cursor("systemctl --no-pager restart [|].service")
+
 action(user.service_status): user.insert_cursor("systemctl --no-pager status [|].service")
 action(user.service_enable): user.insert_cursor("systemctl --no-pager enable [|].service")
 action(user.service_disable): user.insert_cursor("systemctl --no-pager disable [|].service")
