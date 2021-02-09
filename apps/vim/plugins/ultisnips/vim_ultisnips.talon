@@ -1,9 +1,9 @@
 tag: user.vim_ultisnips
-and not tag: user.vim_terminal
+
 -
 tag(): user.snippets
-(reload|refresh) snippets: user.vim_normal_mode_exterm(":call UltiSnips#RefreshSnippets()\n")
-add snippets: user.vim_normal_mode_exterm(":UltiSnipsAddFiletypes \n")
+snippets refresh: user.vim_normal_mode_exterm(":call UltiSnips#RefreshSnippets()\n")
+snippets add: user.vim_normal_mode_exterm(":UltiSnipsAddFiletypes \n")
 #show file snippets: user.vim_normal_mode_exterm(":call UltiSnips#SnippetsInCurrentScope()\n")
 #show all file snippets: user.vim_normal_modE_exterm(":call UltiSnips#SnippetsInCurrentScope(1)\n")
 #snip next: key(ctrl-j)
