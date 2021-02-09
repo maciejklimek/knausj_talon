@@ -89,6 +89,7 @@ ctx.lists["user.abbreviation"] = {
     "dupe": "dup",
     "duplicate": "dup",
     "dynamic": "dyn",
+    "elastic": "elast",  # elastdocker, elastalert, etc
     "encode": "enc",
     "end of day": "eod",
     "end of month": "eom",
@@ -112,6 +113,7 @@ ctx.lists["user.abbreviation"] = {
     "file system": "fs",
     "fingerprint": "fp",
     "framework": "fw",
+    "frequency": "freq",
     "function": "func",
     "funny": "lol",
     "generic": "gen",
