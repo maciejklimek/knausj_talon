@@ -46,6 +46,12 @@ mod = Module()
 mod.list(
     "mouse_button", desc="List of mouse button words to mouse_click index parameter"
 )
+setting_mouse_enable_on_startup = mod.setting(
+    "mouse_enable_on_startup",
+    type=int,
+    default=1,
+    desc="Enable the mouse on startup without having to issue command.",
+)
 setting_mouse_enable_pop_click = mod.setting(
     "mouse_enable_pop_click",
     type=int,
@@ -77,6 +83,13 @@ setting_mouse_wake_hides_cursor = mod.setting(
     default=0,
     desc="When enabled, mouse wake will hide the cursor. mouse_wake enables zoom mouse.",
 )
+setting_mouse_control_mouse = mod.setting(
+    "mouse_control_mouse",
+    type=int,
+    default=0,
+    desc="When enabled, mouse wake will automatically cause the cursor to track your eyes",
+)
+
 setting_mouse_hide_mouse_gui = mod.setting(
     "mouse_hide_mouse_gui",
     type=int,
@@ -142,6 +155,14 @@ class MouseTracker(object):
             self.cursor_log.pop(0)
         self.cursor_log.append(ctrl.mouse_pos())
 
+def mouse_wake():
+    """Enable control mouse, zoom mouse, and disables cursor"""
+    eye_zoom_mouse.toggle_zoom_mouse(True)
+    if setting_mouse_control_mouse.get() >= 1:
+        eye_mouse.control_mouse.enable()
+    if setting_mouse_wake_hides_cursor.get() >= 1:
+        show_cursor_helper(False)
+
 
 @mod.action_class
 class Actions:
@@ -165,10 +186,7 @@ class Actions:
 
     def mouse_wake():
         """Enable control mouse, zoom mouse, and disables cursor"""
-        eye_zoom_mouse.toggle_zoom_mouse(True)
-        eye_mouse.control_mouse.enable()
-        if setting_mouse_wake_hides_cursor.get() >= 1:
-            show_cursor_helper(False)
+        mouse_wake()
 
     def mouse_calibrate():
         """Start calibration"""
@@ -436,6 +454,9 @@ def on_pop(active):
 def on_hiss(active):
     print("hissing")
 
+
+if setting_mouse_enable_on_startup.get() >= 1:
+    mouse_wake()
 
 try:
     noise.register("pop", on_pop)
