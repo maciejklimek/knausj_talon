@@ -21,12 +21,9 @@ docker (remove|delete) [container]: "sudo docker rm "
 docker run: "sudo docker run -d "
 docker inspect: "sudo docker inspect "
 docker enter: "sudo ~/bin/docker-enter "
-docker shell: 
-    user.insert_cursor("docker exec -it [|] /bin/bash")
-    key("tab")
-docker compose up: "sudo docker-compose up\n"
-docker compose stop: "sudo docker-compose stop\n"
-docker compose build: "sudo docker-compose build\n"
+docker terminal: 
+    insert("sudo docker ps\n")
+    user.insert_cursor("sudo docker exec -it [|] /bin/bash")
 
 # volumes
 docker volume list:
@@ -37,3 +34,10 @@ docker volume inspect:
     insert("sudo docker volume inspect ")
 docker volume remove:
     insert("sudo docker volume rm ")
+
+## docker Compose
+docker compose up: "sudo docker-compose up\n"
+docker compose stop: "sudo docker-compose stop\n"
+docker compose build: "sudo docker-compose build\n"
+
+
