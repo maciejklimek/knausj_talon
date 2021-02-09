@@ -99,11 +99,12 @@ now grep:
     insert("| grep -i ")
 
 # networking
-net [work] (I P|eye pee): "ip addr\n"
+net [work] I P: "ip addr\n"
 net [work] (route|routes): "ip route\n"
 net stat: "netstat -ant\n"
 net cat: "nc -vv "
 net cat listener: "nc -v -l -p "
+net my I P: "dig +short myip.opendns.com @resolver1.opendns.com\n"
 show hosts file: "cat /etc/hosts\n"
 edit hosts file: "sudo vi /etc/hosts\n"
 tcp dump: "tcpdump "
@@ -162,16 +163,15 @@ find <user.text> inside (python|pie) files less:
 
 man page: "man "
 so do: "sudo "
+so do edit: "sudoedit"
 d message: "dmesg"
-system log: "journalctl -k --no-pager --no-hostname\n"
 disk usage: "df -h\n"
 sis cuddle: "sysctl "
 sis cuddle set: "sysctl -w "
 
 # extraction
-tar ball: "tar -"
-tar ball extract [zip]: "tar -xvaf "
-# tar ball extract bee zip: "tar -xvjf "
+tar ball create: "tar -cvJf"
+tar ball: "tar -xvaf "
 (un zip|extract zip): "unzip "
 
 curl: "curl "

@@ -21,9 +21,13 @@ ctx.lists["user.paths_public"] = {
     "password": "/etc/passwd",
     "shadow": "/etc/shadow",
     "hosts": "/etc/hosts",
-    "resolve": "/etc/resolve.conf",
+    "resolve": "/etc/resolv.conf",
     "null": "/dev/null",
     "zero": "/dev/zero",
+    "vim": "~/.vim/",
+    "shell config": "~/.ohmyzsh",
+    "shell functions": "~/.ohmyzsh/custom/functions/",
+    "dot files": "~/dotfiles",
 }
 
 ctx.lists["user.paths_private"] = {}
