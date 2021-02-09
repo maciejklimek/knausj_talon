@@ -64,7 +64,7 @@ parameter:
     edit.left()
 
 # XXX - check how other talon files invoke variable names
-state empty (variable|var):
+state [empty] (variable|var):
     insert("${}")
     key(left)
 

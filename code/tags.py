@@ -37,7 +37,8 @@ tagList = [
     # commands, see command_line_editing_readline.talon
     "readline",
     "shell_edit_emacs",
-    "htop"
+    "htop",
+    "taskwarrior_tui",
 ]
 
 for entry in tagList:
