@@ -6,7 +6,7 @@
 # you can't imagine doing it, it suits this file over vim.talon
 
 app:vim
-not tag: user.vim_terminal_mode
+not tag: user.vim_terminal
 and not tag: user.vim_command_mode
 -
 
@@ -529,7 +529,6 @@ run as sandbox:
 
 remove trailing white space: user.vim_normal_mode(":%s/\\s\\+$//e\n")
 (remove all|normalize) tabs: user.vim_normal_mode(":%s/\\t/    /eg\n")
-# assumes visual mode
 (delete|trim) empty lines:
     insert(":")
     sleep(100ms)

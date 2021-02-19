@@ -1,6 +1,10 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app
 
 ctx = Context()
+ctx.matches = r"""
+app: microsoft_edge
+"""
+
 mod = Module()
 
 # 1password

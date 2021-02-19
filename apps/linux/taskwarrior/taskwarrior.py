@@ -5,6 +5,9 @@ from talon import Context, Module, actions
 
 mod = Module()
 ctx = Context()
+ctx.matches = r"""
+tag: user.taskwarrior
+"""
 
 ctx.lists["self.task_unmodifiable_verbs"] = {
     "version": "--version",
