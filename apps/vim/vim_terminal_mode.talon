@@ -63,7 +63,7 @@ shadow <number_small> <user.ordinals>:
 echo <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
-    insert("yW")
+    insert("yE")
     insert(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()
@@ -72,7 +72,7 @@ echo <number_small>:
 echo last <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     insert('$T ')
-    insert("yW")
+    insert("yE")
     user.vim_set_insert_mode()
     edit.paste()
     key(space)
@@ -81,7 +81,7 @@ echo <number_small> <user.ordinals>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
     insert("{ordinals-1}W")
-    insert("yW")
+    insert("yE")
     insert(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()

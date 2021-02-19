@@ -28,6 +28,6 @@ literal: key(ctrl-v)
 
 # regex
 # XXX - should be made part of a generic regex grammar
-state non greedy: "\{{-}}"
+state non greedy: "\\{{-}}"
 state greedy: ".*"
-state escaped or: user.insert_cursor("\([|]\|\)")
+state escaped or: user.insert_cursor("\\([|]\\|\\)")

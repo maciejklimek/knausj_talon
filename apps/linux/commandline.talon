@@ -28,7 +28,7 @@ traverse: "../"
 pivot home: "cd\n"
 pivot last: "cd -\n"
 
-make (dur|dear|dir|directory): "mkdir "
+make (dur|dear|dir|directory): "mkdir -p "
 make (dur|dear|dir|directory) <user.text>: "mkdir {text}"
 remove (dur|dear|dir|directory): "rmdir "
 remove (dur|dear|dir|directory) <user.text>: "rmdir {text}"
@@ -36,6 +36,7 @@ remove file: "rm "
 
 # tree
 tree: "tree -L 2\n"
+tree more: "tree -L "
 tree long: "tree -L 2 -p\n"
 tree all: "tree -L 2 -a\n"
 tree folders: "tree -L 2 -d\n"
@@ -171,7 +172,7 @@ sis cuddle set: "sysctl -w "
 
 # extraction
 tar ball create: "tar -cvJf"
-tar ball: "tar -xvaf "
+tar ball [extract]: "tar -xvaf "
 (un zip|extract zip): "unzip "
 
 curl: "curl "
@@ -197,6 +198,7 @@ net man log: "journalctl -u NetworkManager --no-pager --lines 100\n"
 # ssh
 secure shell: "ssh "
 secure shell <user.text>: "ssh {text}\n"
+secure shall key gen: "ssh-keygen -t ed25519\n"
 secure copy [<user.text>]:
     insert("scp -r ")
     insert(text or "")

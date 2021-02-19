@@ -1,43 +1,42 @@
 tag: user.docker
 -
 
-docker: "sudo docker "
+docker: "docker "
 docker build:
-    insert("sudo docker build .")
+    insert("docker build .")
     key("enter")
 docker build (tag|tagged):
-    insert("sudo docker build -t \"\" .")
+    insert("docker build -t \"\" .")
     key("left:3")
 docker list images:
-    insert("sudo docker images\n")
+    insert("docker images\n")
 docker list containers:
-    insert("sudo docker ps -a\n")
+    insert("docker ps -a\n")
 docker running:
-    insert("sudo docker ps\n")
+    insert("docker ps\n")
 docker pull: "docker pull "
-docker stop: "sudo docker stop "
-docker (remove|delete) image: "sudo docker rmi "
-docker (remove|delete) [container]: "sudo docker rm "
-docker run: "sudo docker run -d "
-docker inspect: "sudo docker inspect "
-docker enter: "sudo ~/bin/docker-enter "
-docker terminal: 
-    insert("sudo docker ps\n")
-    user.insert_cursor("sudo docker exec -it [|] /bin/bash")
+docker stop: "docker stop "
+docker (remove|delete) image: "docker rmi "
+docker (remove|delete) [container]: "docker rm "
+docker run: "docker run -d "
+docker (log|logs): "docker logs "
+docker inspect: "docker inspect "
+docker enter: "~/bin/docker-enter "
+docker (terminal|shell): 
+    insert("docker ps\n")
+    user.insert_cursor("docker exec -it [|] /bin/bash")
 
 # volumes
 docker volume list:
-    insert("sudo docker volume ls\n")
+    insert("docker volume ls\n")
 docker volume create:
-    insert("sudo docker volume create ")
+    insert("docker volume create ")
 docker volume inspect:
-    insert("sudo docker volume inspect ")
+    insert("docker volume inspect ")
 docker volume remove:
-    insert("sudo docker volume rm ")
+    insert("docker volume rm ")
 
 ## docker Compose
-docker compose up: "sudo docker-compose up\n"
-docker compose stop: "sudo docker-compose stop\n"
-docker compose build: "sudo docker-compose build\n"
-
-
+docker compose up: "docker-compose up\n"
+docker compose stop: "docker-compose stop\n"
+docker compose build: "docker-compose build\n"

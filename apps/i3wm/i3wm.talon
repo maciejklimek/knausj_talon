@@ -34,7 +34,7 @@ focus parent: user.system_command("i3-msg focus parent")
 focus child: user.system_command("i3-msg focus child")
 
 # resize helpers
-grow window:
+window grow:
     user.system_command('i3-msg mode "resize"')
     key(right:10)
     key(down:10)
@@ -46,7 +46,7 @@ grow window:
 
 
 # resize helpers
-shrink window:
+window shrink:
     user.system_command('i3-msg mode "resize"')
     key(left:10)
     key(up:10)
