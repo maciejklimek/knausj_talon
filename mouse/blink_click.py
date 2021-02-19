@@ -4,7 +4,7 @@ from sys import platform
 from time import sleep, time
 
 from talon import Module, actions, app, ctrl, settings, ui
-from talon.track.geom import Point2d
+from talon.types import Point2d
 from talon_plugins.eye_mouse import menu, tracker
 
 mod = Module()

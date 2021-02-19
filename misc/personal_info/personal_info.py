@@ -33,7 +33,7 @@ def close_personal_info():
     actions.mode.disable("user.personal_info")
 
 
-@imgui.open(y=0, x=main_screen.width / 2.6, software=False)
+@imgui.open(y=0, x=main_screen.width / 2.6)
 def gui(gui: imgui.GUI):
     global personal_info_list
     gui.text("Select an entry")

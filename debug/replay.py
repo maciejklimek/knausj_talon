@@ -65,7 +65,7 @@ def close_replay_picker():
     actions.mode.disable("user.replay_picker_open")
 
 
-@imgui.open(y=0, x=main_screen.width / 2.6, software=False)
+@imgui.open(y=0, x=main_screen.width / 2.6)
 def gui(gui: imgui.GUI):
     gui.text("Select a recording")
     gui.line()
