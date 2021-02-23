@@ -7,9 +7,9 @@ tag(): user.readline
 
 # Keybindings taken from:
 # https://github.com/kdheepak/taskwarrior-tui/blob/master/KEYBINDINGS.md
-exit: key(esc)
-next view: key(])
-last view: key([)
+task list: key(esc)
+view next: key(])
+view lest: key([)
 
 ## task view 
 task (search|filter): key(/)
