@@ -543,13 +543,16 @@ pinch: user.vim_normal_mode("0x")
 prefix <user.unmodified_key>: user.vim_normal_mode("I{unmodified_key}")
 squish: user.vim_command_mode(":s/  / /g\n")
 # XXX - this could be a generic talon thing
-magnet: user.vim_normal_mode("f x")
-magnet back: user.vim_normal_mode("F x")
+magnet: 
+    user.vim_normal_mode("f ")
+    user.vim_normal_mode("x")
+magnet back: 
+    user.vim_normal_mode("F ")
+    user.vim_normal_mode("x")
 
 show unsaved changes:
     user.vim_command_mode(":w !diff % -\n")
 
 swap again:
     key(g &)
-
 
