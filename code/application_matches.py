@@ -138,3 +138,15 @@ apps.windows_power_shell = """
 os: windows
 and app.exe: powershell.exe
 """
+
+apps.remmina = """
+os: linux
+and app.name: "/Remmina/"
+
+"""
+
+apps.drawio = """
+os: linux
+and app.name: "draw.io"
+
+"""

@@ -170,6 +170,7 @@ ctx.lists["user.abbreviation"] = {
     "module": "mod",
     "monitor": "mon",
     "mount": "mnt",
+    "multiple": "multi",
     "nano second": "ns",
     "neo vim": "nvim",
     "new brunswick": "nb",
