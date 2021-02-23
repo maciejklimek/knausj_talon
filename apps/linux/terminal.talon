@@ -28,7 +28,7 @@ tag(): user.systemd
 tag(): user.pulse_audio
 
 # unset this if you use `bindkey -v`
-tag(): user.shell_edit_emacs
+tag(): user.readline
 
 # these are generic linux edit commands that don't need to be part of
 # the shell_edit_ABC.talon specific ones
