@@ -22,6 +22,7 @@ tag(): user.vim_cscope
 tag(): user.vim_fugitive
 tag(): user.vim_fugitive_summary
 tag(): user.vim_grammarous
+tag(): user.vim_markdown
 tag(): user.vim_markdown_toc
 tag(): user.vim_youcompleteme
 tag(): user.vim_easy_align
@@ -249,7 +250,9 @@ play macro <user.letter>: user.vim_any_motion_mode("@{letter}")
 record macro <user.letter>: user.vim_any_motion_mode("q{letter}")
 (finish macro|cancel macro|stop macro|stop recording): user.vim_any_motion_mode("q")
 
-(paste from register|pastor) <user.unmodified_key>: user.vim_any_motion_mode('"{unmodified_key}p')
+[copy] register <user.unmodified_key> [in] to [register] <user.unmodified_key>:
+    user.vim_command_mode(":let@{unmodified_key_2}=@{unmodified_key_1}\n")
+
 yank (into|to) [register] <user.unmodified_key>:
     user.vim_any_motion_mode('"{unmodified_key}y')
 #clear (into|to) register <user.unmodified_key>:

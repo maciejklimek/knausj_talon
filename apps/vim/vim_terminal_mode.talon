@@ -94,3 +94,11 @@ yankee <number_small>:
     insert("y$")
     insert(":set nohls\n")
     user.vim_set_insert_mode()
+    
+yankee <number_small> <user.ordinals>:
+    user.vim_normal_mode_exterm("{number_small}k")
+    key('0')
+    insert("{ordinals-1}W")
+    insert("y$")
+    insert(":set nohls\n")
+    user.vim_set_insert_mode()

@@ -1,5 +1,7 @@
+# XXX - detect were actually specifically in something with a task before
+# triggering the tag?
 tag: user.vim_taskwiki
-and not tag: user.vim_terminal
+and code.language: md
 -
 
 task (annotate|meta): user.vim_command_mode(":TaskWikiAnnotate\n")

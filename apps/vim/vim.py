@@ -43,6 +43,7 @@ plugin_tag_list = [
     "vim_fugitive_summary",
     "vim_fzf",
     "vim_grammarous",
+    "vim_markdown",
     "vim_markdown_toc",
     "vim_nerdtree",
     "vim_obsession",
@@ -1039,6 +1040,7 @@ class VimMode:
         self.nvrpc = NeoVimRPC()
         self.current_mode = self.get_active_mode()
         self.canceled_timeout = settings.get("user.vim_cancel_queued_commands_timeout")
+        self.wait_mode_timeout = settings.get("user.vim_mode_change_timeout")
 
     def dprint(self, s):
         if settings.get("user.vim_debug"):
@@ -1176,13 +1178,13 @@ class VimMode:
             time.sleep(timeout)
 
     def wait_mode_change(self, wanted):
-        timeout = settings.get("user.vim_mode_change_timeout")
+        # XXX - try to force a redraw?
         if self.nvrpc.init_ok:
             while wanted != self.nvrpc.get_active_mode()["mode"][0]:
-                print("%s vs %s" % (wanted, self.nvrpc.get_active_mode()["mode"]))
-                time.sleep(0.01)
+                #print("%s vs %s" % (wanted, self.nvrpc.get_active_mode()["mode"]))
+                time.sleep(0.005)
         else:
-            time.sleep(timeout)
+            time.sleep(self.wait_mode_timeout)
 
     @classmethod
     # We don't want unnecessarily only call this from set_mode() is the user

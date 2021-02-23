@@ -578,8 +578,8 @@ show (register|macro) <user.letter>: user.vim_command_mode(":reg {letter}\n")
     insert("{letter}")
     key(')
 
-[copy] register <user.unmodified_key> [in] to [register] <user.unmodified_key>:
-    user.vim_command_mode(":let@{unmodified_key_2}=@{unmodified_key_1}\n")
+(paste from register|pastor) <user.unmodified_key>: user.vim_any_motion_mode_exterm('"{unmodified_key}p')
+
 
 ###
 # Informational
