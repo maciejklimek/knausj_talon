@@ -19,6 +19,10 @@ watch latest: "vlc $(ls -Art | tail -n1)"
 
 # directory and files
 pivot: "cd "
+pivot clip:
+    insert("cd ")
+    edit.paste()
+    key(enter)
 pivot <user.paths>:
     insert("cd {paths}\n")
     insert("ls\n")
@@ -164,6 +168,10 @@ find <user.text> inside (python|pie) files less:
 
 man page: "man "
 so do: "sudo "
+so do that: 
+    edit.line_start()
+    insert("sudo ")
+    #key(enter)
 so do edit: "sudoedit"
 d message: "dmesg"
 disk usage: "df -h\n"
