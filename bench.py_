@@ -4,7 +4,7 @@ from talon.grammar import Grammar, Rule
 import json
 
 if True:
-    with open('grammar.json', 'r') as f:
+    with open('grammar-fidget1.json', 'r') as f:
         data = json.load(f)
 else:
     from talon import speech_system
@@ -56,10 +56,11 @@ grammar = Grammar('main')
 for name, (rule_text, rule_anchor) in rules.items():
     rule_text = rule_text.replace('self.', 'user.')
     rule = Rule(rule_text, None)
+    rule.anchor = rule_anchor
     grammar.add_rule(name, rule)
 grammar.update_lists(lists)
-main_rule = '({})+'.format('|'.join(f'<{name}>' for name in rules.keys()))
-# main_rule = build_main(grammar)
+# main_rule = '({})+'.format('|'.join(f'<{name}>' for name in rules.keys()))
+main_rule = build_main(grammar)
 grammar.compile(main_rule)
 
 from talon.engines import w2l
@@ -76,12 +77,18 @@ def on_ready():
                  for name, words in lists.items()}
 
     for i in range(5):
-        cfg = w2l._compile(grammar, dfa_lists, tokens, word_model, debug=True)
+        start = time.monotonic()
+        try:
+            cfg = w2l._compile(grammar, dfa_lists, tokens, word_model, debug=True, native=True)
+        except TypeError:
+            cfg = w2l._compile(grammar, dfa_lists, tokens, word_model, debug=True)
+        elapsed = time.monotonic() - start
+        print()
 
     dfa = w2l.cfg_to_dfa(cfg, tokens)
     # print(dfa.ends)
     
-app.register('ready', on_ready)
+# app.register('ready', on_ready)
 
 def on_ready2():
     for i in range(5):
@@ -111,4 +118,12 @@ def on_ready2():
         # print(state_map)
         # print(dfa.perf)
 
-app.register('ready', on_ready2)
+# app.register('ready', on_ready2)
+
+from talon import Module
+mod = Module()
+@mod.action_class
+class Actions:
+    def bench1():
+        "description"
+        on_ready()
