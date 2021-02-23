@@ -28,7 +28,11 @@ ctx.lists["user.paths_public"] = {
     "shell config": "~/.ohmyzsh",
     "shell functions": "~/.ohmyzsh/custom/functions/",
     "dot files": "~/dotfiles",
+    "custom snippets": "~/.vim/plugged/vim-snippets/UltiSnips/",
+    "grub config": "/etc/default/grub"
 }
+
+# Arch Linux
 
 ctx.lists["user.paths_private"] = {}
 
