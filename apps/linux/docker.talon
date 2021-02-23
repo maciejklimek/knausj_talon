@@ -1,24 +1,19 @@
 tag: user.docker
 -
 
-docker: "docker "
+#docker: "docker "
 docker build:
     insert("docker build .")
     key("enter")
 docker build (tag|tagged):
     insert("docker build -t \"\" .")
     key("left:3")
-docker list images:
-    insert("docker images\n")
-docker list containers:
-    insert("docker ps -a\n")
-docker running:
-    insert("docker ps\n")
 docker pull: "docker pull "
 docker stop: "docker stop "
-docker (remove|delete) image: "docker rmi "
+docker kill: "docker kill "
 docker (remove|delete) [container]: "docker rm "
 docker run: "docker run -d "
+docker run interactive: "docker run -it --rm "
 docker (log|logs): "docker logs "
 docker inspect: "docker inspect "
 docker enter: "~/bin/docker-enter "
@@ -26,6 +21,20 @@ docker (terminal|shell):
     insert("docker ps\n")
     user.insert_cursor("docker exec -it [|] /bin/bash")
 
+# images
+docker (image|images) list:
+    insert("docker images\n")
+docker image remove:
+    insert("docker image rm ")
+
+# containers
+docker container prune:
+    insert("docker container prune ")
+docker container list all:
+    insert("docker ps -a\n")
+docker container list:
+    insert("docker ps\n")
+    
 # volumes
 docker volume list:
     insert("docker volume ls\n")
