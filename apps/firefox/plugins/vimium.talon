@@ -1,6 +1,5 @@
 os: linux
-tag: firefox
-tag: browser
+tag: user.firefox
 -
 
 # Navigating the page
@@ -104,9 +103,9 @@ next [result]:
     key("N")
 
 # Navigating history
-[(page|tab)] back:
+page back:
     key("H")
-[(page|tab)] forward:
+page forward:
     key("L")
 
 # Manipulating tabs
