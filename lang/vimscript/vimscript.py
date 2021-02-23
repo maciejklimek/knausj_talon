@@ -2,6 +2,9 @@ from talon import Context, Module, actions, settings
 
 mod = Module()
 ctx = Context()
+ctx.matches = r"""
+code.language: vimscript
+"""
 ctx.lists["self.vimscript_functions"] = {
     "string len": "strlen",
     "get line": "getline",

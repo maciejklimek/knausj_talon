@@ -24,6 +24,8 @@ settings():
     user.screenshot_folder = "/home/aa/images/screenshots/"
     # what command to use for selection based screenshots
     user.screenshot_selection_command = "scrot -s"
+    # the default is now 300ms
+    #speech.timeout = 0.150
 
 # uncomment tag to enable mouse grid
 # tag(): user.mouse_grid_enabled

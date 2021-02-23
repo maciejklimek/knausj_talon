@@ -68,6 +68,6 @@ class Server:
 
 
 # XXX - eventually that's will be replaced with a built-in talon json thing
-global uds_server
-uds_server = None
-uds_server = Server()
+# global uds_server
+# uds_server = None
+# uds_server = Server()
