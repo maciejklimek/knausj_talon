@@ -6,13 +6,17 @@ settings():
     user.i3_mod_key = "super"
 
 
-portal <number_small>: user.system_command("i3-msg workspace {number_small}")
-
+##
+# Workspaces
+##
 portal ten: user.system_command("i3-msg workspace 10")
 (portal flip|flipper): user.system_command("i3-msg workspace back_and_forth")
 portal right: user.system_command("i3-msg workspace next")
 portal left: user.system_command("i3-msg workspace prev")
 
+##
+# Windows
+##
 (win|window) left: user.system_command("i3-msg focus left")
 (win|window) right: user.system_command("i3-msg focus right")
 (win|window) up: user.system_command("i3-msg focus up")
@@ -22,39 +26,22 @@ portal left: user.system_command("i3-msg workspace prev")
 (win|window) default: user.system_command("i3-msg layout toggle split")
 (win|window) tabbed: user.system_command("i3-msg layout tabbed")
 
-reload i three config: user.system_command("i3-msg reload")
-restart i three: user.system_command("i3-msg restart")
-
 (full screen|scuba): user.system_command("i3-msg fullscreen")
-toggle floating: user.system_command("i3-msg floating toggle")
-focus floating: user.system_command("i3-msg focus mode_toggle")
-center window: user.system_command("i3-msg move position center")
-resize mode: user.system_command('i3-msg mode "resize"')
+floating toggle: user.system_command("i3-msg floating toggle")
+floating focus: user.system_command("i3-msg focus mode_toggle")
+window center: user.system_command("i3-msg move position center")
+window resize: user.system_command('i3-msg mode "resize"')
+(win|window) horizontal: user.system_command("i3-msg split h")
+(win|window) vertical: user.system_command("i3-msg split v")
+
+# TODO - rename to add window
 focus parent: user.system_command("i3-msg focus parent")
 focus child: user.system_command("i3-msg focus child")
 
-# resize helpers
 window grow:
-    user.system_command('i3-msg mode "resize"')
-    key(right:10)
-    key(down:10)
-    # escape resize mode
-    key(escape)
-    # center window
-    sleep(200ms)
-    user.system_command("i3-msg move position center")
-
-
-# resize helpers
+    user.i3wm_window_grow(1)
 window shrink:
-    user.system_command('i3-msg mode "resize"')
-    key(left:10)
-    key(up:10)
-    # escape resize mode
-    key(escape)
-    # center window
-    sleep(200ms)
-    user.system_command("i3-msg move position center")
+    user.i3wm_window_shrink(1)
 
 horizontal (shell|terminal):
     user.system_command("i3-msg split h")
@@ -64,18 +51,14 @@ vertical (shell|terminal):
     user.system_command("i3-msg split v")
     user.i3wm_shell()
 
-# XXX - just replace with shuffle eventually?
-# XXX - like also need to match the generic talon commands
-(shuffle|move (win|window) [to] port) <number_small>:  user.system_command("i3-msg move container to workspace {number_small}")
-(shuffle|move (win|window) [to] port ten): user.system_command("i3-msg move container to workspace 10")
-(shuffle|move (win|window) [to] last port): user.system_command("i3-msg move container to workspace back_and_forth")
-(shuffle|move (win|window) left): user.system_command("i3-msg move left")
-(shuffle|move (win|window) right): user.system_command("i3-msg move right")
-(shuffle|move (win|window) up): user.system_command("i3-msg move up")
-(shuffle|move (win|window) down): user.system_command("i3-msg move down")
-
-(win|window) horizontal: user.system_command("i3-msg split h")
-(win|window) vertical: user.system_command("i3-msg split v")
+# XXX - like also need to match the generic talon commands (snap?)
+shuffle <number_small>:  user.system_command("i3-msg move container to workspace {number_small}")
+shuffle [to] port ten): user.system_command("i3-msg move container to workspace 10")
+shuffle [to] last port): user.system_command("i3-msg move container to workspace back_and_forth")
+shuffle: user.system_command("i3-msg move left")
+shuffle: user.system_command("i3-msg move right")
+shuffle: user.system_command("i3-msg move up")
+shuffle: user.system_command("i3-msg move down")
 
 make scratch: user.system_command("i3-msg move scratchpad")
 [(show|hide)] scratch: user.system_command("i3-msg scratchpad show")
@@ -89,12 +72,20 @@ launch <user.text>:
         user.i3wm_launch()
         sleep(100ms)
         insert("{text}")
-lock screen: user.i3wm_launch()
+screen lock: user.i3wm_launch()
 
 term me: user.i3wm_shell()
 
 new scratch (shell|window):
     user.i3wm_shell()
-    sleep(200ms)
+    sleep(100ms)
     user.system_command("i3-msg move scratchpad")
     user.system_command("i3-msg scratchpad show")
+    user.i3wm_window_grow(5)
+
+##
+# Configuration
+##
+reload i three config: user.system_command("i3-msg reload")
+restart i three: user.system_command("i3-msg restart")
+
