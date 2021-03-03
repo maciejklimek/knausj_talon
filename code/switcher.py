@@ -27,7 +27,7 @@ overrides = {}
 
 # a list of the currently running application names
 running_application_dict = {}
-
+last_focused_app = None
 
 mac_application_directories = [
     "/Applications",
@@ -244,7 +244,7 @@ class Actions:
         # We should use the capture result directly if it's already in the list
         # of running applications. Otherwise, name is from <user.text> and we
         # can be a bit fuzzier
-        if name not in running_application_dict:
+        if name not in running_application_dict.keys():
             if len(name) < 3:
                 raise RuntimeError(
                     f'Skipped getting app: "{name}" has less than 3 chars.'
@@ -257,20 +257,27 @@ class Actions:
                 ):
                     name = full_application_name
                     break
-        for app in ui.apps():
-            if app.name == name and not app.background:
-                return app
+        for cur_app in ui.apps():
+            if cur_app.name == name and not cur_app.background:
+                return cur_app
         raise RuntimeError(f'App not running: "{name}"')
+
+    def switch_last_focused():
+        """Focus the last use application"""
+        if last_focused_app is not None:
+            last_focused_app.focus()
 
     def switcher_focus(name: str):
         """Focus a new application by  name"""
-        app = actions.user.get_running_app(name)
-        app.focus()
+        global last_focused_app
+        last_focused_app = ui.active_app()
+        cur_app = actions.user.get_running_app(name)
+        cur_app.focus()
 
         # Hacky solution to do this reliably on Mac.
-        timeout = 5
-        t1 = time.monotonic()
         if talon.app.platform == "mac":
+            timeout = 5
+            t1 = time.monotonic()
             while ui.active_app() != app and time.monotonic() - t1 < timeout:
                 time.sleep(0.1)
 

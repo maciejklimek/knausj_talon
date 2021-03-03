@@ -12,7 +12,10 @@ def monkey_notify(body="", title="", subtitle="", *kwargs):
 
 def monkey_focus(self, *kwargs):
     # subprocess.Popen(["i3-msg", f"'[class=\"(?]){self.name}\"] focus'"])
-    os.system("i3-msg '[class=\"(?)%s\"] focus'" % self.name)
+    if self.active_window.id == -1:
+        os.system("i3-msg '[class=\"(?)%s\"] focus'" % self.name)
+    else:
+        os.system("i3-msg '[id=\"%s\"] focus'" % self.active_window.id)
 
 
 # patch this to use dunst on i3wm
