@@ -26,6 +26,7 @@ settings():
     user.screenshot_selection_command = "scrot -s"
     # the default is now 300ms
     #speech.timeout = 0.150
+    speech.record_all = 1
 
 # uncomment tag to enable mouse grid
 # tag(): user.mouse_grid_enabled

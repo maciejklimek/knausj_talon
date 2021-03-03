@@ -76,8 +76,7 @@ forced_context_language = None
 
 # Files that don't have specific extensions bit that are known to be associated
 # with specific languages. Ex: CMakeLists.txt is cmake
-special_file_map = {"CMakeLists.txt": "cmake", 
-                    "Dockerfile": "docker"}
+special_file_map = {"CMakeLists.txt": "cmake", "Dockerfile": "docker"}
 
 # flag indicates whether or not the title tracking is enabled
 forced_language_mode = False
