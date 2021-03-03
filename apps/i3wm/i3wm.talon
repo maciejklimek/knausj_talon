@@ -9,6 +9,7 @@ settings():
 ##
 # Workspaces
 ##
+portal <number_small>: user.system_command("i3-msg workspace {number_small}")
 portal ten: user.system_command("i3-msg workspace 10")
 (portal flip|flipper): user.system_command("i3-msg workspace back_and_forth")
 portal right: user.system_command("i3-msg workspace next")
@@ -53,12 +54,12 @@ vertical (shell|terminal):
 
 # XXX - like also need to match the generic talon commands (snap?)
 shuffle <number_small>:  user.system_command("i3-msg move container to workspace {number_small}")
-shuffle [to] port ten): user.system_command("i3-msg move container to workspace 10")
-shuffle [to] last port): user.system_command("i3-msg move container to workspace back_and_forth")
-shuffle: user.system_command("i3-msg move left")
-shuffle: user.system_command("i3-msg move right")
-shuffle: user.system_command("i3-msg move up")
-shuffle: user.system_command("i3-msg move down")
+shuffle ten: user.system_command("i3-msg move container to workspace 10")
+shuffle flip: user.system_command("i3-msg move container to workspace back_and_forth")
+shuffle left: user.system_command("i3-msg move left")
+shuffle right: user.system_command("i3-msg move right")
+shuffle up: user.system_command("i3-msg move up")
+shuffle down: user.system_command("i3-msg move down")
 
 make scratch: user.system_command("i3-msg move scratchpad")
 [(show|hide)] scratch: user.system_command("i3-msg scratchpad show")
