@@ -87,6 +87,7 @@ ctx.lists["user.code_libraries"] = {
     "string": "string.h",
     "time": "time.h",
     "standard int": "stdint.h",
+    "unix standard": "unistd.h",
 }
 
 ctx.lists["user.code_functions"] = {
