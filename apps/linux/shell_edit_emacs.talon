@@ -13,7 +13,7 @@ tag: user.shell_edit_emacs
 
 action(edit.word_left): key(shift-left)
 action(edit.word_right): key(shift-right)
-action(edit.line_start): key(ctrl-b)
+action(edit.line_start): key(ctrl-a)
 action(edit.line_end): key(ctrl-e)
 action(edit.delete): key(backspace)
 action(edit.delete_line): key(ctrl-u)
