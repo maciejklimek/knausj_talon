@@ -48,6 +48,7 @@ plugin_tag_list = [
     "vim_nerdtree",
     "vim_obsession",
     "vim_plug",
+    "vim_rooter",
     "vim_signature",
     "vim_surround",
     "vim_taboo",

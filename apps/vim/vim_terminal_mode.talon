@@ -69,7 +69,7 @@ echo <number_small>:
     edit.paste()
     key(space)
 
-echo last <number_small>:
+echo (last <number_small>|<number_small> last):
     user.vim_normal_mode_exterm("{number_small}k")
     insert('$T ')
     insert("yE")
@@ -102,3 +102,12 @@ yankee <number_small> <user.ordinals>:
     insert("y$")
     insert(":set nohls\n")
     user.vim_set_insert_mode()
+
+# this is used for pexpect interactive environments
+# https://pexpect.readthedocs.io/en/stable/api/pexpect.html#spawn-class
+# note that you can't use this from within command line itself, because the
+# terminal may not trigger depending on what the interactive command is. who
+# had actually needs to be global
+python escape: key(ctrl-])
+
+

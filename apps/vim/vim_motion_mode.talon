@@ -48,8 +48,8 @@ refresh file:
 (show|list) current directory: user.vim_command_mode(":pwd\n")
 print working directory: user.vim_command_mode(":pwd\n")
 change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
-reorient: user.vim_command_mode(":lcd %:p:h\n")
-
+reorient file: user.vim_command_mode(":lcd %:p:h\n")
+reorient up: user.vim_command_mode(":lcd ..\n")
 
 # For when the VIM cursor is hovering on a path
 open [this] link: user.vim_normal_mode("gx")
