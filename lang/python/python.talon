@@ -132,10 +132,6 @@ pass: "pass"
 self: "self"
 
 
-call [function] <user.text>:
-    insert(user.formatted_text(text, "snake"))
-    insert("()")
-    key(left)
 
 index <user.word>: '["{word}"]'
 
@@ -157,6 +153,13 @@ raw string: 'r""'
 #^pro static funky <user.text>$: user.code_protected_static_function(text)
 #^pub static funky <user.text>$: user.code_public_static_function(text)
 raise {user.python_exception}: user.insert_cursor("raise {python_exception}([|])")
+
+# function calling
+call print: user.insert_cursor('print("[|]")')
+call [function] <user.text>:
+    insert(user.formatted_text(text, "snake"))
+    insert("()")
+    key(left)
 
 # for annotating function parameters
 is type {user.python_type_list}:
