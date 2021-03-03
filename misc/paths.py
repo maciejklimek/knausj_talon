@@ -63,3 +63,10 @@ def paths_private(m)-> str:
 def paths(m)-> str:
     "One path"
     return m
+
+
+@mod.action_class
+class Actions:
+    def path_traverse(num:int) -> str:
+        """creates a string num path traversal sequences"""
+        return "../"*num
