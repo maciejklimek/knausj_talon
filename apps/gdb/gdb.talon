@@ -72,6 +72,8 @@ break [on] clipboard:
     key(enter)
 
 # Memory inspection
+action(user.debugger_disassemble_here):
+    insert("x/10i $pc\n")
 
 # Type inspection
 
