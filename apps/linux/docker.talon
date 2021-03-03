@@ -1,49 +1,52 @@
 tag: user.docker
 -
 
-#docker: "docker "
+#docker: "sudo docker "
 docker build:
-    insert("docker build .")
+    insert("sudo docker build .")
     key("enter")
 docker build (tag|tagged):
-    insert("docker build -t \"\" .")
+    insert("sudo docker build -t \"\" .")
     key("left:3")
-docker pull: "docker pull "
-docker stop: "docker stop "
-docker kill: "docker kill "
-docker (remove|delete) [container]: "docker rm "
-docker run: "docker run -d "
-docker run interactive: "docker run -it --rm "
-docker (log|logs): "docker logs "
-docker inspect: "docker inspect "
+docker pull: "sudo docker pull "
+docker kill: "sudo docker kill "
+docker run: "sudo docker run -d "
+docker run interactive: "sudo docker run -it --rm "
+docker (log|logs): "sudo docker logs "
+docker inspect: "sudo docker inspect "
 docker enter: "~/bin/docker-enter "
 docker (terminal|shell): 
-    insert("docker ps\n")
-    user.insert_cursor("docker exec -it [|] /bin/bash")
+    insert("sudo docker ps\n")
+    user.insert_cursor("sudo docker exec -it [|] /bin/bash")
 
 # images
 docker (image|images) list:
-    insert("docker images\n")
+    insert("sudo docker images\n")
+docker image prune:
+    insert("sudo docker image prune\n")
 docker image remove:
-    insert("docker image rm ")
+    insert("sudo docker image rm ")
 
 # containers
-docker container prune:
-    insert("docker container prune ")
-docker container list all:
-    insert("docker ps -a\n")
-docker container list:
-    insert("docker ps\n")
-    
+docker [container] prune:
+    insert("sudo docker container prune ")
+docker [container] list all:
+    insert("sudo docker ps -a\n")
+docker [container] list:
+    insert("sudo docker ps\n")
+docker [container] remove:
+    insert("sudo docker rm ")
+docker [container] stop: "sudo docker stop "
+
 # volumes
 docker volume list:
-    insert("docker volume ls\n")
+    insert("sudo docker volume ls\n")
 docker volume create:
-    insert("docker volume create ")
+    insert("sudo docker volume create ")
 docker volume inspect:
-    insert("docker volume inspect ")
+    insert("sudo docker volume inspect ")
 docker volume remove:
-    insert("docker volume rm ")
+    insert("sudo docker volume rm ")
 
 ## docker Compose
 docker compose up: "docker-compose up\n"
