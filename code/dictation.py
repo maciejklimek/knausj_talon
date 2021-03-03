@@ -42,7 +42,6 @@ no_space_after_these = set("-/(")
 class AutoFormat:
     def __init__(self):
         self.reset()
-        self.last_utterance = None
         self.paused = False
         ui.register("app_deactivate", lambda app: self.reset())
         ui.register("win_focus", lambda win: self.reset())
@@ -56,7 +55,6 @@ class AutoFormat:
 
     def format(self, text):
         if self.paused:
-            self.last_utterance = text
             return text
 
         result = ""
@@ -81,7 +79,6 @@ class AutoFormat:
             result += word
             self.space = "\n" not in word and word[-1] not in no_space_after_these
             self.caps = is_sentence_end
-            self.last_utterance = result
 
         return result
 
@@ -95,7 +92,9 @@ mode: dictation
 @ctx.action_class("main")
 class main_action:
     def auto_format(text: str) -> str:
-        return auto_formatter.format(text)
+        text = auto_formatter.format(text)
+        actions.user.add_phrase_to_history(text)
+        return text
 
 
 @mod.action_class
@@ -111,15 +110,3 @@ class Actions:
     def auto_format_reset():
         """Resumes the autoformatter"""
         return auto_formatter.reset()
-
-    def clear_last_utterance():
-        """Resumes the autoformatter"""
-        if auto_formatter.last_utterance:
-            for c in auto_formatter.last_utterance:
-                actions.edit.delete()
-
-    def select_last_utterance():
-        """Selects the last utterance"""
-        if auto_formatter.last_utterance:
-            for c in auto_formatter.last_utterance:
-                actions.edit.extend_left()

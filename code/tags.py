@@ -5,7 +5,6 @@ mod = Module()
 tagList = [
     "debugger",
     "disassembler",
-    "firefox",
     "gdb",
     "libptmalloc",
     "libdlmalloc",

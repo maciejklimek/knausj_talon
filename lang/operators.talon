@@ -44,15 +44,13 @@ cop mod equals: user.code_operator_modulo_assignment()
 
 #bitwise operators
 [op] bitwise and: user.code_operator_bitwise_and()
-(cop | logical | bitwise) and equals: user.code_operator_bitwise_and_equals()
 [op] bitwise or: user.code_operator_bitwise_or()
-(cop | logical | bitwise) or equals: user.code_operator_bitwise_or_equals()
-(cop | logical | bitwise) (ex | exclusive) or: user.code_operator_bitwise_exclusive_or()
-(cop | logical | bitwise) (left shift | shift left): user.code_operator_bitwise_left_shift()
-(cop | logical | bitwise) (right shift | shift right): user.code_operator_bitwise_right_shift()
-(cop | logical | bitwise) (ex | exclusive) or equals: user.code_operator_bitwise_exclusive_or_equals()
-[(cop | logical | bitwise)] (left shift | shift left) equals: user.code_operator_bitwise_left_shift_equals()
-[(cop | logical | bitwise)] (left right | shift right) equals: user.code_operator_bitwise_right_shift_equals()
+(op | logical | bitwise) (ex | exclusive) or: user.code_operator_bitwise_exclusive_or()
+(op | logical | bitwise) (left shift | shift left): user.code_operator_bitwise_left_shift()
+(op | logical | bitwise) (right shift | shift right): user.code_operator_bitwise_right_shift()
+(op | logical | bitwise) (ex | exclusive) or equals: user.code_operator_bitwise_exclusive_or_equals()
+[(op | logical | bitwise)] (left shift | shift left) equals: user.code_operator_bitwise_left_shift_equals()
+[(op | logical | bitwise)] (left right | shift right) equals: user.code_operator_bitwise_right_shift_equals()
 
 #tbd
 (cop | pad) colon: " : "

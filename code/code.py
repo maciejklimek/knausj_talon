@@ -44,6 +44,7 @@ extension_lang_map = {
     "hpp": "cplusplus",
     "ini": "ini",
     "js": "javascript",
+    "jsx": "javascript",
     "json": "json",
     "lua": "lua",
     "md": "markdown",
@@ -59,6 +60,7 @@ extension_lang_map = {
     "talon": "talon",
     "task": "taskwarrior",
     "ts": "typescript",
+    "tsx": "typescript",
     "vba": "vba",
     "vim": "vimscript",
     "vimrc": "vimscript",
@@ -103,11 +105,9 @@ def code_libraries(m) -> str:
 @ctx.action_class("code")
 class code_actions:
     def language():
-        result = ""
         if not forced_language_mode:
             if forced_context_language is not None:
                 return forced_context_language
-
             file_extension = actions.win.file_ext()
             file_name = actions.win.filename()
 
@@ -115,17 +115,8 @@ class code_actions:
             if file_name in special_file_map:
                 return special_file_map[file_name]
 
-            if file_extension != "":
-                result = file_extension
-            # it should always be the last split...
-            elif file_name != "" and "." in file_name:
-                result = file_name.split(".")[-1]
-
-            if result in extension_lang_map:
-                result = extension_lang_map[result]
-
-        # print("code.language: " + result)
-        return result
+            if file_extension and file_extension in extension_lang_map:
+                return extension_lang_map[file_extension]
 
 
 # create a mode for each defined language
