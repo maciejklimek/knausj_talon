@@ -14,6 +14,7 @@ new line: "\\n"
 carriage return: "\\r"
 line feed: "\\r\\n"
 end of file: "EOF"
+parent: "../"
 empty (string|quotes):
     '""'
     key(left)
@@ -29,6 +30,15 @@ empty escaped ticks:
     key(left)
     key(left)
 
+[pair] (parens|args):
+	insert("()")
+[pair] (brackets|braces): "{}"
+[pair] squares: "[]"
+[pair] angles: "<>"
+[pair] graves: "``"
+[pair] percents: "%%"
+[pair] ticks: "''"
+[pair] quotes: '""'
 (inside parens | args):
 	insert("()")
 	key(left)

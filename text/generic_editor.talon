@@ -15,10 +15,10 @@ find <user.unmodified_key>:
 (find last|fever) <user.unmodified_key>:
     user.line_find_backward(unmodified_key)
 
-go word left:
+(go word left|back):
     edit.word_left()
 
-go word right:
+(go word right|word):
     edit.word_right()
 
 go left:
@@ -40,7 +40,6 @@ go down:
     edit.line_end()
 
 go way left:
-    edit.line_start()
     edit.line_start()
 
 go way right:
