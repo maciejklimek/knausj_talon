@@ -9,11 +9,19 @@ list file: "ls "
 list here: "ls\n"
 list long: "ls -al "
 list long here: "ls -al\n"
-lydia: "ls -d */\n"
+list latest: "ls -Art | tail -n1\n"
+list folders: "ls -d */\n"
+
+# TODO - revisit the grammar for $() commands
+call list latest: "$(ls -Art | tail -n1)"
+
 # TODO - somehow make this scriptable to print anything
-edit latest: "edit $(ls -Art | tail -n1)\n"
-latest: "ls -Art | tail -n1\n"
-file latest: "$(ls -Art | tail -n1)"
+file edit latest: "edit $(ls -Art | tail -n1)\n"
+# Linking
+file link: "ln -s "
+file link force: "ln -sf "
+file hard link: "ln "
+
 watch latest: "vlc $(ls -Art | tail -n1)"
 
 
@@ -25,38 +33,39 @@ pivot clip:
     key(enter)
 pivot <user.paths>:
     insert("cd {paths}\n")
-    insert("ls\n")
-pivot up: "cd ../\n"
-(parent|up) dir: "../"
-traverse: "../"
+    insert("ls\n)
+# pivot up doesn't work with talon
+pivot parent: "cd ../\n"
+pivot <number_small> parent: 
+    insert("cd ")
+    insert(user.path_traverse(number_small))
+    key(enter)
 pivot home: "cd\n"
 pivot last: "cd -\n"
+
 
 make (dur|dear|dir|directory): "mkdir -p "
 make (dur|dear|dir|directory) <user.text>: "mkdir {text}"
 remove (dur|dear|dir|directory): "rmdir "
 remove (dur|dear|dir|directory) <user.text>: "rmdir {text}"
 remove file: "rm "
+remove recurse: "rm -rI "
 
 # tree
-tree: "tree -L 2\n"
-tree more: "tree -L "
-tree long: "tree -L 2 -p\n"
-tree all: "tree -L 2 -a\n"
-tree folders: "tree -L 2 -d\n"
+tree: "tree -f -L 2\n"
+tree more: "tree -f -L "
+tree long: "tree -f -L 2 -p\n"
+tree all: "tree -f -L 2 -a\n"
+tree folders: "tree -f -L 2 -d\n"
+tree depth <number_small>: "tree -f -L {number_small}\n"
 
 
-temp (dur|dear|dir|directory): "cd /tmp\n"
 pop (dur|dear|dir|directory): "popd\n"
 
 # permissions
 make executable: "chmod +x "
 change ownership: "chown "
 
-# links
-sim link: "ln -s "
-sim link force: "ln -sf "
-hard link: "ln "
 
 # finds
 list sim links: "find . -maxdepth 1 -type l  -ls\n"
@@ -171,7 +180,7 @@ so do: "sudo "
 so do that: 
     edit.line_start()
     insert("sudo ")
-    #key(enter)
+    key(enter)
 so do edit: "sudoedit"
 d message: "dmesg"
 disk usage: "df -h\n"
