@@ -251,6 +251,7 @@ ctx.lists["user.abbreviation"] = {
     "statement": "stmt",
     "string": "str",
     "structure": "struct",
+    "symbol": "sym",
     "synchronize": "sync",
     "synchronous": "sync",
     "system": "sys",
