@@ -11,16 +11,39 @@ list long: "ls -al "
 list long here: "ls -al\n"
 list latest: "ls -Art | tail -n1\n"
 list folders: "ls -d */\n"
+# finds
+list sim links: "find . -maxdepth 1 -type l  -ls\n"
+list (directories|folders): "find . -maxdepth 1 -type d  -ls\n"
+list files: "find . -maxdepth 1 -type f  -ls\n"
 
 # TODO - revisit the grammar for $() commands
 call list latest: "$(ls -Art | tail -n1)"
 
 # TODO - somehow make this scriptable to print anything
 file edit latest: "edit $(ls -Art | tail -n1)\n"
-# Linking
 file link: "ln -s "
 file link force: "ln -sf "
 file hard link: "ln "
+file move: "mv "
+file touch: "touch "
+file copy: "copy "
+file type: "file "
+file show <user.text>: "cat {text}"
+file show "cat "
+file edit: insert("edit ")
+file edit read me: insert("edit README.md\n")
+file edit here: insert("edit .\n")
+file remove file: "rm "
+file remove recurse: "rm -rI "
+file diff: "diff "
+# find
+file file: "find . -name "
+file fuzzy find
+    insert("find . -name \"**\"")
+    key("left")
+    key("left")
+file hash: "sha256sum "
+file locate: "locate "
 
 watch latest: "vlc $(ls -Art | tail -n1)"
 
@@ -33,7 +56,7 @@ pivot clip:
     key(enter)
 pivot <user.paths>:
     insert("cd {paths}\n")
-    insert("ls\n)
+    insert("ls\n")
 # pivot up doesn't work with talon
 pivot parent: "cd ../\n"
 pivot <number_small> parent: 
@@ -41,6 +64,13 @@ pivot <number_small> parent:
     insert(user.path_traverse(number_small))
     key(enter)
 pivot home: "cd\n"
+pivot next:
+    insert("cd ")
+    key(tab)
+    sleep(100ms)
+    key(enter)
+    insert("ls\n")
+
 pivot last: "cd -\n"
 
 
@@ -48,8 +78,6 @@ make (dur|dear|dir|directory): "mkdir -p "
 make (dur|dear|dir|directory) <user.text>: "mkdir {text}"
 remove (dur|dear|dir|directory): "rmdir "
 remove (dur|dear|dir|directory) <user.text>: "rmdir {text}"
-remove file: "rm "
-remove recurse: "rm -rI "
 
 # tree
 tree: "tree -f -L 2\n"
@@ -66,34 +94,14 @@ pop (dur|dear|dir|directory): "popd\n"
 make executable: "chmod +x "
 change ownership: "chown "
 
-
-# finds
-list sim links: "find . -maxdepth 1 -type l  -ls\n"
-list (directories|folders): "find . -maxdepth 1 -type d  -ls\n"
-list files: "find . -maxdepth 1 -type f  -ls\n"
-
-touch: "touch "
-file: "file "
-# file management
-move file: "mv "
-copy file: "cp "
-
 # file viewing
 less: "less "
 now less [that]:
     edit.up()
     insert("| less\n")
-show me <user.text>: "cat {text}"
-show me: "cat "
 
 clear [screen|page]: "clear\n"
 
-# find
-find file: "find . -name "
-fuzzy find file:
-    insert("find . -name \"**\"")
-    key("left")
-    key("left")
 
 # grepping
 
@@ -139,20 +147,10 @@ pee grep: "pgrep "
 pee kill: "pkill "
 process list: "ps -ef\n"
 process top: "htop\n"
-locate: "locate "
 head: "head "
 head <number_small>: "head -n {number_small} "
 (where am I|print working directory): "pwd\n"
 
-edit here: insert("edit .\n")
-
-#edit <user.text>$:
-#    insert("edit {text}")
-
-edit:
-    insert("edit ")
-edit read me:
-    insert("edit README.md\n")
 
 # XXX - ~/.edit/sessions/<tab>
 edit session:
@@ -190,11 +188,12 @@ sis cuddle set: "sysctl -w "
 # extraction
 tar ball create: "tar -cvJf"
 tar ball [extract]: "tar -xvaf "
+tar ball list: "tar -tf "
 (un zip|extract zip): "unzip "
 
-curl: "curl "
-double you get: "wget "
-download clipboard:
+run curl: "curl "
+run double you get: "wget "
+download clip:
     insert("wget ")
     edit.paste()
     key(enter)
@@ -239,10 +238,6 @@ list processor: "lscpu\n"
 list pee bus: "lspci\n"
 list yew bus: "lsusb\n"
 
-# XXX - from the old standard.talon file
-# unsorted
-zed s h: "zsh"
-diff: "diff "
 
 # XXX - make run commands part of something else?
 run vim: "vim "
@@ -252,8 +247,6 @@ run see make: "cmake "
 (redirect errors|errors to standard out): "2>&1 "
 ignore errors: "2>/dev/null"
 
-# XXX
-collide: "sha256sum "
 
 ###
 # Python
@@ -268,12 +261,10 @@ python module: "python -m "
 ###
 # Screen recording
 ###
-
-record screen: insert("recordmydesktop")
+screen record: insert("recordmydesktop")
 
 ###
 # X11 stuff
 ###
-
 screen dimensions: "xdpyinfo | grep dimensions\n"
 screen resolution: "xdpyinfo | awk '/dimensions/{{print $2}}'\n"
