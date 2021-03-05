@@ -170,6 +170,7 @@ symbol_key_words = {
     "comma": ",",
     "dot": ".",
     "void": " ",
+    "by": " ",
     "semi": ";",
     "tick": "'",
     "lock": "[",
@@ -236,7 +237,7 @@ alternate_keys = {
     "forward delete": "delete",
     "junk": "backspace",
     "nuke": "delete",
-    "boot": "escape",
+    "cape": "escape",
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):
