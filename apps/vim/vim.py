@@ -6,6 +6,8 @@
 #   remote vim sessions via ssh, etc
 # - import and test scenario where the mode isn't listed at all
 # - add test cases
+# - support pasting text instead of insert, requires special overriding of
+# paste for command mode
 
 import time
 
@@ -921,7 +923,13 @@ class Actions:
         """run a given list of commands in command mode, preserve INSERT"""
         v = VimMode()
         v.set_command_mode()
-        actions.insert(cmd)
+        if cmd[0] == ':':
+            actions.user.paste(cmd[1:])
+        else:
+            actions.user.paste(cmd)
+        # pasting a newline doesn't apply it
+        if cmd[-1] == '\n':
+            actions.key("enter")
 
     # technically right now they run in in normal mode, but these calls will
     # ensure that any queued commands are removed
@@ -929,7 +937,13 @@ class Actions:
         """run a given list of commands in command mode, preserve INSERT"""
         v = VimMode()
         v.set_command_mode_exterm()
-        actions.insert(cmd)
+        if cmd[0] == ':':
+            actions.user.paste(cmd[1:])
+        else:
+            actions.user.paste(cmd)
+        # pasting a newline doesn't apply it
+        if cmd[-1] == '\n':
+            actions.key("enter")
 
     # Sometimes the .talon file won't know what mode to run something in, just
     # that it needs to be a mode that supports motions like normal and visual.
@@ -938,6 +952,7 @@ class Actions:
         v = VimMode()
         v.set_any_motion_mode()
         actions.insert(cmd)
+
 
     # Sometimes the .talon file won't know what mode to run something in, just
     # that it needs to be a mode that supports motions like normal and visual.
@@ -1284,9 +1299,7 @@ class VimMode:
             actions.key("escape")
             actions.key("ctrl-v")
         elif wanted_mode == self.COMMAND:
-            # XXX - could check cmd to see if it has the ':' and if not have
-            # this func set it
-            pass
+            actions.key(":")
         elif wanted_mode == self.REPLACE:
             actions.key("R")
         elif wanted_mode == self.VREPLACE:

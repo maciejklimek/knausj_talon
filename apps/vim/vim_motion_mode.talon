@@ -43,7 +43,7 @@ file save as:
     user.vim_command_mode(":wq\n")
 file (close|quite):
     user.vim_command_mode(":q\n")
-refresh file:
+file refresh:
     user.vim_command_mode(":e!\n")
 (show|list) current directory: user.vim_command_mode(":pwd\n")
 print working directory: user.vim_command_mode(":pwd\n")
@@ -79,8 +79,8 @@ matching: user.vim_any_motion_mode_key("%")
 matching <user.symbol_key>: user.vim_any_motion_mode("f{symbol_key}%")
 
 # ctags/symbol
-jump (symbol|tag): user.vim_normal_mode_key("ctrl-]")
-(pop|leave) (symbol|tag): user.vim_normal_mode_key("ctrl-t")
+tag jump: user.vim_normal_mode_key("ctrl-]")
+tag pop: user.vim_normal_mode_key("ctrl-t")
 
 ###
 # Text editing, copying, and manipulation
@@ -144,8 +144,8 @@ forget line:
 
 # copying
 # XXX - are temporarily disabled for speed testing
-#(copy|yank) line (at|number) <number>$:
-#    user.vim_command_mode_exterm(":{number}y\n")
+yank line <number>$:
+    user.vim_command_mode_exterm(":{number}y\n")
 #(copy|yank) <number_small> lines at line <number>$:
 #    user.vim_command_mode_exterm(":{number}\n")
 #    user.vim_normal_mode_exterm("y{number_small}y")
@@ -181,7 +181,7 @@ forget line:
 (dup|duplicate) line: user.vim_normal_mode_np("Yp")
 
 # start ending at end of file
-append file:
+file append:
     user.vim_normal_mode_np("Go")
 
 push:

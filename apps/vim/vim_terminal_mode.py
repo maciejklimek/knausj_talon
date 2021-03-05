@@ -1,6 +1,10 @@
 from talon import Context, Module, actions, settings, ui
 
 ctx = Context()
+ctx.matches = r"""
+tag: user.vim_terminal
+"""
+
 
 def parse_vim_term_title(window):
     """a variety of parsing to gracefully handle various shell commands

@@ -152,7 +152,7 @@ force (close|quit) all:
 
 force (close|quit):
     user.vim_command_mode_exterm(":q!\n")
-edit [file|new]:
+file edit:
     user.vim_command_mode_exterm(":e ")
 reload [vim] config:
     user.vim_command_mode_exterm(":so $MYVIMRC\n")
@@ -178,8 +178,8 @@ reload [vim] config:
 
 
 # jump list
-show jump list: user.vim_command_mode_exterm(":jumps\n")
-clear jump list: user.vim_command_mode_exterm(":clearjumps\n")
+jump list show: user.vim_command_mode_exterm(":jumps\n")
+jump list clear: user.vim_command_mode_exterm(":clearjumps\n")
 go (last|prev|previous) jump [entry]: user.vim_normal_mode_exterm_key("ctrl-o")
 go (next|newer) jump [entry]: user.vim_normal_mode_exterm_key("ctrl-i")
 
