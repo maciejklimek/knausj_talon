@@ -134,7 +134,7 @@ undisplay: "undisplay\n"
 # threads
 info threads: "info threads\n"
 
-(show|info) (inf|inferiors): "info inferiors\n"
+info inferiors: "info inferiors\n"
 inferior <number_small>$: "inferior {number_small}\n"
 inferior: "inferior "
 resume from main:
@@ -155,6 +155,15 @@ show follow (fork|forks) [mode]: "show follow-fork-mode\n"
 show detach on fork: "show detach-on-fork\n"
 set detach on fork: "set detach-on-fork on\n"
 unset detach on fork: "set detach-on-fork off\n"
+
+# info
+info library: "info sharedlibrary\n"
+info file: "info file\n"
+symbol refresh: "sharedlibrary\n"
+
+set remote file: "set remote exec-file "
+show system root: "show sysroot\n"
+set system root: "set sysroot "
 
 # list
 show list size: "show listsize\n"
