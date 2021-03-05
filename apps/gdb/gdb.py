@@ -1,9 +1,10 @@
 from talon import Context, Module, actions, ui
 
+mod = Module()
 ctx = Context()
 
 ctx.matches = r"""
-mode: user.gdb
+tag: user.gdb
 """
 
 
