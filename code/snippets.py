@@ -2,6 +2,10 @@
 from talon import Context, Module, actions, app, imgui, registry
 
 ctx = Context()
+ctx.matches = r"""
+tag: user.snippets
+"""
+
 mod = Module()
 mod.tag("snippets", desc="Tag for enabling code snippet-related commands")
 mod.list("snippets", desc="List of code snippets")
