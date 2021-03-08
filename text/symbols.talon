@@ -14,7 +14,7 @@ new line: "\\n"
 carriage return: "\\r"
 line feed: "\\r\\n"
 end of file: "EOF"
-parent: "../"
+dotty: "../"
 empty (string|quotes):
     '""'
     key(left)
