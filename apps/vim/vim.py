@@ -497,7 +497,7 @@ mod.setting(
 mod.setting(
     "vim_cancel_queued_commands_timeout",
     type=float,
-    default=0.3,
+    default=0.05,
     desc="How long to wait in seconds before issuing the real command after canceling",
 )
 
@@ -1180,6 +1180,7 @@ class VimMode:
             # Trigger / untrigger mode-related talon grammars
             self.set_mode_tag(valid_mode_ids[0])
 
+
     # Often I will say `delete line` and it will trigger `@delete` and `@nine`.
     # This then keys 9. I then say `undo` to fix the bad delete, which does 9
     # undos. Chaos ensues... this seeks to fix that
@@ -1300,6 +1301,7 @@ class VimMode:
             actions.key("ctrl-v")
         elif wanted_mode == self.COMMAND:
             actions.key(":")
+            self.wait_mode_change("c")
         elif wanted_mode == self.REPLACE:
             actions.key("R")
         elif wanted_mode == self.VREPLACE:
