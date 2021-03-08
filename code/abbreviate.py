@@ -119,6 +119,7 @@ ctx.lists["user.abbreviation"] = {
     "frequency": "freq",
     "function": "func",
     "funny": "lol",
+    "fuzzy": "fzy",
     "generic": "gen",
     "generate": "gen",
     "hardware": "hw",
