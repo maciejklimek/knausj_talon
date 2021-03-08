@@ -29,7 +29,7 @@ file touch: "touch "
 file copy: "copy "
 file type: "file "
 file show <user.text>: "cat {text}"
-file show "cat "
+file show: "cat "
 file edit: insert("edit ")
 file edit read me: insert("edit README.md\n")
 file edit here: insert("edit .\n")
@@ -38,7 +38,7 @@ file remove recurse: "rm -rI "
 file diff: "diff "
 # find
 file file: "find . -name "
-file fuzzy find
+file fuzzy find:
     insert("find . -name \"**\"")
     key("left")
     key("left")
@@ -131,7 +131,7 @@ show hosts file: "cat /etc/hosts\n"
 edit hosts file: "sudo vi /etc/hosts\n"
 tcp dump: "tcpdump "
 
-generate see tags: "ctags --recurse *\n"
+generate see tags: "ctags --recurse --exclude=.git --exclude=.pc *"
 generate see scope database:
     insert('find . -name "*.c"')
     insert(' -o -name "*.cpp"')
@@ -246,6 +246,13 @@ run see make: "cmake "
 
 (redirect errors|errors to standard out): "2>&1 "
 ignore errors: "2>/dev/null"
+
+###
+# ELF file
+###
+
+elf header: "eu-readelf -h "
+elf symbols: "eu-readelf -s "
 
 
 ###
