@@ -203,10 +203,8 @@ ctx.lists["self.vim_jumps"] = {
     "last change": ".",
 }
 
-# XXX see about replacing the play word with something that doesn't conflict
-# with an existing global context talon media grammar
 ctx.lists["self.vim_counted_actions_args"] = {
-    "play macro": "@",  # takes char arg
+    "macro play": "@",  # takes char arg
 }
 
 # normal mode commands that require motion, and that are counted

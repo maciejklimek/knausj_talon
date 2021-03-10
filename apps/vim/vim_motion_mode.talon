@@ -27,6 +27,7 @@ tag(): user.vim_markdown_toc
 tag(): user.vim_youcompleteme
 tag(): user.vim_easy_align
 tag(): user.vim_eunuch
+tag(): user.vim_rooter
 
 ###
 # File editing and management
