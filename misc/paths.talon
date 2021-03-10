@@ -1,3 +1,3 @@
 -
 path <user.paths>: "{paths}"
-pivot <user.paths>: "cd {paths}\n"
+pivot <user.folder_paths>: "cd {paths}\n"

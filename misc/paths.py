@@ -4,20 +4,33 @@ from talon import Context, Module, actions
 mod = Module()
 mod.list("paths_public", desc="Common paths")
 mod.list("paths_private", desc="Common private paths")
-
-
-
+mod.list("folder_paths_public", desc="Common paths")
+mod.list("folder_paths_private", desc="Common private paths")
 ctx = Context()
-ctx.lists["user.paths_public"] = {
+
+# paths that will work with pivot command
+linux_folder_paths = {
+
     "user services": "~/.config/systemd/user/",
     "services": "/etc/systemd/system/",
     "sessions": "~/.vim/sessions/",
     "plugins": "~/.vim/plugged/",
-    "temp": "/tmp",
-    "config": "/etc",
-    "user": "/usr",
-    "user lib": "/usr/lib",
-    "log": "/var/log",
+    "temp": "/tmp/",
+    "config": "/etc/",
+    "user": "/usr/",
+    "user bin": "/usr/bin/",
+    "user lib": "/usr/lib/",
+    "user local": "/usr/local/",
+    "user local bin": "/usr/local/bin",
+    "user local lib": "/usr/local/lib",
+    "log": "/var/log/",
+    "shell config": "~/.ohmyzsh/",
+    "shell functions": "~/.ohmyzsh/custom/functions/",
+    "dot files": "~/dotfiles/",
+    "custom snippets": "~/.vim/plugged/vim-snippets/UltiSnips/",
+}
+
+linux_file_paths = {
     "password": "/etc/passwd",
     "shadow": "/etc/shadow",
     "hosts": "/etc/hosts",
@@ -25,11 +38,19 @@ ctx.lists["user.paths_public"] = {
     "null": "/dev/null",
     "zero": "/dev/zero",
     "vim": "~/.vim/",
-    "shell config": "~/.ohmyzsh",
-    "shell functions": "~/.ohmyzsh/custom/functions/",
-    "dot files": "~/dotfiles",
-    "custom snippets": "~/.vim/plugged/vim-snippets/UltiSnips/",
     "grub config": "/etc/default/grub"
+}
+
+# this is used for specific commands like pivot
+ctx.lists["user.folder_paths_public"] = {
+    **linux_folder_paths,
+}
+
+# this is used for any path based commands that don't care of about files or
+# folder difference
+ctx.lists["user.paths_public"] = {
+    **linux_folder_paths,
+    **linux_file_paths
 }
 
 # Arch Linux
@@ -47,21 +68,30 @@ windows_paths = {
     "programs": "%PROGRAMFILES%",
 }
 
+@mod.capture(rule="{user.folder_paths_public}")
+def folder_paths_public(m)-> str:
+    "One path representing a public folder"
+    return m.paths_public
 
 @mod.capture(rule="{user.paths_public}")
 def paths_public(m)-> str:
+    "One public path representing a file or folder"
     return m.paths_public
 
 
 @mod.capture(rule="{user.paths_private}")
 def paths_private(m)-> str:
-    "One private path"
+    "One private path representing a file or folder"
     return m.paths_private
 
+@mod.capture(rule="<user.folder_paths_public>|<user.folder_paths_private>")
+def folder_paths(m)-> str:
+    "One public or private path that represents a folder"
+    return m
 
 @mod.capture(rule="<user.paths_public>|<user.paths_private>")
 def paths(m)-> str:
-    "One path"
+    "One public or private path that represents a file or folder"
     return m
 
 
