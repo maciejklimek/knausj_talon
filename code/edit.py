@@ -1,4 +1,5 @@
 import time
+import subprocess
 from talon import Context, Module, actions, clip, ui
 
 ctx = Context()
@@ -21,8 +22,15 @@ class Actions:
     def paste(text: str):
         """Pastes text and preserves clipboard"""
 
-        with clip.revert():
-            clip.set_text(text)
-            actions.edit.paste()
-            # sleep here so that clip.revert doesn't revert the clipboard too soon
-            actions.sleep("150ms")
+        #with clip.revert():
+        #    clip.set_text(text)
+        #    actions.edit.paste()
+        #    # sleep here so that clip.revert doesn't revert the clipboard too soon
+        #    actions.sleep("150ms")
+
+        # TODO: qt clipboard is bugged, do it manually
+        old = subprocess.check_output(['xclip', '-o', '-sel', 'clip'])
+        clip.set_text(text)
+        actions.edit.paste()
+        actions.sleep("100ms")
+        clip.set_text(old.decode("utf-8"))
