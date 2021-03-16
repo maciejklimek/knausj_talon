@@ -50,10 +50,9 @@ go <user.ordinals> (hex value|address):
 
 # relative
 copy line <number> (hex value|address):
-    user.vim_normal_mode_exterm("{number}k")
-    key('0')
+    user.vim_normal_mode_exterm("{number}k0")
     user.vim_command_mode(":call search(\"0x\", 'c', line('.'))\n")
-    insert("yw")
+    user.vim_normal_mode("yw")
     user.vim_command_mode(":set nohls\n")
 
 
@@ -62,7 +61,7 @@ copy line <number> (hex value|address):
 glitter:
     user.vim_normal_mode_exterm("k0")
     user.vim_command_mode(":call search(\"0x\", 'c', line('.'))\n")
-    insert("yw")
+    user.vim_normal_mode("yw")
     user.vim_command_mode(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()
@@ -72,7 +71,7 @@ glitter:
 glitter <number>:
     user.vim_normal_mode_exterm("{number}k0")
     user.vim_command_mode(":call search(\"0x\", 'c', line('.'))\n")
-    insert("yw")
+    user.vim_normal_mode("yw")
     user.vim_command_mode(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()
@@ -82,8 +81,7 @@ glitter <number>:
 # note for numbers like 70 actual individual digits really fast is more
 # accurate
 glitter <number> <user.ordinals>$:
-    user.vim_normal_mode_exterm("{number}k")
-    key('0')
+    user.vim_normal_mode_exterm("{number}k0")
     # set the search pattern for 'n' usage
     insert("/\\c0x\n")
     key('0')
