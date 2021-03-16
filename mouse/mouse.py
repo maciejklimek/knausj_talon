@@ -406,6 +406,28 @@ class Actions:
         rect = ui.active_window().rect
         ctrl.mouse_move(rect.left + (rect.width / 2), rect.top + (rect.height / 2))
 
+    # https://github.com/okonomichiyaki/knausj_talon/commit/fc3d95059d14c547e245b38692942cefd7f4a269
+    def mouse_zoom():
+        """an abstracted generic zoom mouse for using with pop"""
+        if gaze_job or scroll_job:
+            if setting_mouse_enable_pop_stops_scroll.get() >= 1:
+                stop_scroll()
+        elif (
+            not eye_zoom_mouse.zoom_mouse.enabled
+            and eye_mouse.mouse.attached_tracker is not None
+        ):
+            if setting_mouse_enable_pop_click.get() >= 1:
+                ctrl.mouse_click(button=0, hold=16000)
+        else:
+            # We call directly into the eye zoom function. This relies on us
+            # disabling the default `pop` noise registration in
+            # resources/talon_plugins/eye_zoom_mouse.py
+            eye_zoom_mouse.zoom_mouse.on_pop(0)
+
+    def pop():
+        """pop action overrideable by contexts"""
+        actions.user.mouse_zoom()
+
 
 def show_cursor_helper(show):
     """Show/hide the cursor"""
@@ -441,18 +463,8 @@ def show_cursor_helper(show):
     else:
         ctrl.cursor_visible(show)
 
-
 def on_pop(active):
-    if gaze_job or scroll_job:
-        if setting_mouse_enable_pop_stops_scroll.get() >= 1:
-            stop_scroll()
-    elif (
-        not eye_zoom_mouse.zoom_mouse.enabled
-        and eye_mouse.mouse.attached_tracker is not None
-    ):
-        if setting_mouse_enable_pop_click.get() >= 1:
-            ctrl.mouse_click(button=0, hold=16000)
-
+    actions.user.pop()
 
 def on_hiss(active):
     print("hissing")
