@@ -230,6 +230,7 @@ ctx.lists["user.abbreviation"] = {
     "sequence": "seq",
     "scuzzy": "scsi",
     "samba": "smb",
+    "select": "sel",
     "service pack": "sp",
     "session id": "sid",
     "shell": "sh",
