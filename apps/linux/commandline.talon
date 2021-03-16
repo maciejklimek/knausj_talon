@@ -38,7 +38,7 @@ file remove recurse: "rm -rI "
 file diff: "diff "
 # find
 file file: "find . -name "
-file fuzzy find:
+file fuzzy [find]:
     insert("find . -name \"**\"")
     key("left")
     key("left")
@@ -58,8 +58,8 @@ pivot <user.paths>:
     insert("cd {paths}\n")
     insert("ls\n")
 # pivot up doesn't work with talon
-pivot parent: "cd ../\n"
-pivot <number_small> parent: 
+pivot back: "cd ../\n"
+pivot <number_small> back: 
     insert("cd ")
     insert(user.path_traverse(number_small))
     key(enter)
@@ -71,7 +71,7 @@ pivot next:
     key(enter)
     insert("ls\n")
 
-pivot last: "cd -\n"
+pivot (last|flip): "cd -\n"
 
 
 make (dur|dear|dir|directory): "mkdir -p "
@@ -246,6 +246,14 @@ run see make: "cmake "
 
 (redirect errors|errors to standard out): "2>&1 "
 ignore errors: "2>/dev/null"
+
+###
+# Wallpaper
+###
+
+wallpaper set: "feh --bg-scale "
+wallpaper set latest: "feh --bg-scale $(find ~/images/wallpaper/ -name $(ls -Art ~/images/wallpaper/ | tail -n1))\n"
+
 
 ###
 # ELF file
