@@ -36,6 +36,7 @@ extension_lang_map = {
     "bat": "batch",
     "c": "c",
     "cmake": "cmake",
+    "codeql": "ql",
     "cpp": "cplusplus",
     "cs": "csharp",
     "gdb": "gdb",
