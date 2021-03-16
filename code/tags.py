@@ -39,6 +39,7 @@ tagList = [
     "shell_edit_emacs",
     "htop",
     "taskwarrior_tui",
+    "vimium",
 ]
 
 for entry in tagList:
