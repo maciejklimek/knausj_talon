@@ -64,6 +64,8 @@ git stash apply: "git stash apply\n"
 git stash list: "git stash list\n"
 git stash show: "git stash show"
 git status: "git status\n"
+git switch: "git switch -"
+git switch branch: "git switch -c"
 git submodule add:  "git submodule add "
 git tag: "git tag "
 
