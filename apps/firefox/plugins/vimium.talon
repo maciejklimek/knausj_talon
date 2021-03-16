@@ -1,5 +1,5 @@
 os: linux
-tag: user.firefox
+tag: user.vimium
 -
 
 # Navigating the page
