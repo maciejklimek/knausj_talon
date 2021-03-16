@@ -45,6 +45,11 @@ linux_file_paths = {
 ctx.lists["user.folder_paths_public"] = {
     **linux_folder_paths,
 }
+# this is used for specific commands like pivot
+ctx.lists["user.folder_paths_private"] = {
+    **linux_folder_paths,
+}
+
 
 # this is used for any path based commands that don't care of about files or
 # folder difference
@@ -71,7 +76,13 @@ windows_paths = {
 @mod.capture(rule="{user.folder_paths_public}")
 def folder_paths_public(m)-> str:
     "One path representing a public folder"
-    return m.paths_public
+    return m.folder_paths_public
+
+@mod.capture(rule="{user.folder_paths_private}")
+def folder_paths_private(m)-> str:
+    "One path representing a public folder"
+    return m.folder_paths_private
+
 
 @mod.capture(rule="{user.paths_public}")
 def paths_public(m)-> str:
