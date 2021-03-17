@@ -596,10 +596,8 @@ command mode: user.vim_any_motion_mode_exterm_key(":")
 (replace mode|overwrite): user.vim_set_replace_mode()
 visual replace mode: user.vim_set_visual_replace_mode()
 visual mode: user.vim_set_visual_mode()
-visual line mode: user.vim_set_visual_line_mode()
-# visual block mode: user.vim_set_vblock_mode()
-# XXX - This will perserve INSERT atm, so not really a proper mode switch
-visual block mode: user.vim_any_motion_mode_exterm_key("ctrl-v")
+[visual] line mode: user.vim_set_visual_line_mode()
+[visual] block mode: user.vim_set_visual_block_mode()
 
 ###
 # Searching
@@ -717,6 +715,26 @@ force last:
 # space delimited list you can paste into the command line
 remove newlines from register <user.unmodified_key>:
     user.vim_command_mode_exterm(":let @{unmodified_key}=substitute(strtrans(@{unmodified_key}),'\\^@',' ','g')\n")
+
+# this assumes you have some sort of visual block selection that you want to
+# become a single line. a good example of this would be something like a list
+# of git changed files that you want to select and then all run an operation on
+# ex:
+# 
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#         both modified:   libheap/frontend/commands/gdb/ptchunk.py
+#         both modified:   libheap/frontend/frontend_gdb.py
+#         both modified:   libheap/ptmalloc/malloc_chunk.py
+#         both modified:   libheap/ptmalloc/ptmalloc.py
+yank as line:
+    insert("y")
+    user.vim_command_mode_exterm(":let @+=substitute(strtrans(@+),'\\^@',' ','g')\n")
+
+paste as line:
+    user.vim_command_mode_exterm(":let @+=substitute(strtrans(@+),'\\^@',' ','g')\n")
+    sleep(200ms)
+    edit.paste()
 
 ###
 # Custom

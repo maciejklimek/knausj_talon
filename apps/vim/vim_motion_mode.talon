@@ -28,6 +28,8 @@ tag(): user.vim_youcompleteme
 tag(): user.vim_easy_align
 tag(): user.vim_eunuch
 tag(): user.vim_rooter
+tag(): user.vim_treesitter
+tag(): user.vim_treesitter_textobjects
 
 ###
 # File editing and management

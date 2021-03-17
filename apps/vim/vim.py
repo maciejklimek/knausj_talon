@@ -7,6 +7,7 @@
 # - import and test scenario where the mode isn't listed at all
 # - add test cases
 # - support pasting text instead of insert, requires special overriding of
+# - add VISUAL_BLOCK versions of all of the selection commands
 # paste for command mode
 
 import time
@@ -57,6 +58,8 @@ plugin_tag_list = [
     "vim_tabular",
     "vim_taskwiki",
     "vim_test",
+    "vim_treesitter",
+    "vim_treesitter_textobjects",
     "vim_unicode",
     "vim_ultisnips",
     "vim_wiki",
@@ -287,20 +290,15 @@ vim_motions = {
     "tense": ")",
     "up tense": "(",
     "graph": "}",
-    "up graph": "{",
-    # XXX - section, and last section
-    # TODO - switch previous to last
-    "next section": "]]",
-    "previous section": "[[",
-    # XXX - next section end??
-    "end of next section": "][",
-    # XXX - previous section end??
-    "end of previous section": "[]",
+    "last graph": "{",
+    "section": "]]",
+    "last section": "[[",
+    "end section": "][",
+    "end last section": "[]",
     # XXX - not sure about naming - don't seem to work yet
     "block end": "]}",
     "block start": "[{",
-    # XXX - last block
-    "previous block": "[}",
+    "last block": "[}",
     "matching": "%",
     "down line": "+",
     "up line": "-",
