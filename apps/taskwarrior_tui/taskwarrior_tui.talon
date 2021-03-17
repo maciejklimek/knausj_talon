@@ -9,7 +9,7 @@ tag(): user.readline
 # https://github.com/kdheepak/taskwarrior-tui/blob/master/KEYBINDINGS.md
 task list: key(esc)
 view next: key(])
-view lest: key([)
+view list: key([)
 
 ## task view 
 task (search|filter): key(/)
