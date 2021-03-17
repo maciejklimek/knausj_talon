@@ -203,11 +203,17 @@ run script: "./"
 run again:
     insert("./")
     key(up enter)
+sub command:
+    insert("$()")
+    key(left)
+
+parameter:
+    insert("${}")
+    edit.left()
+
 
 # bash convenience stuff
 history: "history\n"
-for file loop:
-    insert("for FILE in $(ls \"*\"); do $FILE; done")
 
 net man log: "journalctl -u NetworkManager --no-pager --lines 100\n"
 
