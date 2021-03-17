@@ -189,6 +189,7 @@ ctx.lists["user.abbreviation"] = {
     "password": "passwd",
     "pico second": "ps",
     "pie": "py",
+    "ping": "png",
     "pixel": "px",
     "performance": "perf",
     "point": "pt",
