@@ -229,6 +229,7 @@ ctx.lists["user.abbreviation"] = {
     "saskatchewan": "sk",
     "sequel": "sql",
     "sequence": "seq",
+    "segment": "seg",
     "scuzzy": "scsi",
     "samba": "smb",
     "select": "sel",
