@@ -1277,7 +1277,7 @@ class VimMode:
             self.wait_mode_change("n")
 
         # switch to explicit mode if necessary. we will be normal mode here
-        if wanted_mode == self.INSERT:
+        if wanted_mode == self.INSERT or wanted_mode == self.TERMINAL:
             actions.key("i")
         # or just let the original 'mode' command run from this point
         elif wanted_mode == self.VISUAL:

@@ -48,15 +48,11 @@ file (close|quite):
     user.vim_command_mode(":q\n")
 file refresh:
     user.vim_command_mode(":e!\n")
-(show|list) current directory: user.vim_command_mode(":pwd\n")
 print working directory: user.vim_command_mode(":pwd\n")
-change (buffer|current) directory: user.vim_command_mode(":lcd %:p:h\n")
 pivot file: 
     user.vim_command_mode(":lcd %:p:h\n")
-    user.vim_command_mode(":pwd\n")
-pivot parent: 
+pivot (parent|back): 
     user.vim_command_mode(":lcd ..\n")
-    user.vim_command_mode(":pwd\n")
 pivot select: 
     user.vim_command_mode(":lcd ")
 
@@ -394,7 +390,7 @@ set auto write all: user.vim_command_mode(":set autowriteall\n")
 man page this: user.vim_normal_mode("K")
 file info: user.vim_normal_mode_key(ctrl-g)
 # shows buffer number by pressing 2
-extra file info:
+file extra info:
     user.vim_normal_mode_key("2 ctrl-g")
 vim help: user.vim_command_mode_exterm(":help ")
 show ask e code:

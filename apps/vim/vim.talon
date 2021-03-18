@@ -591,6 +591,7 @@ open man page: user.vim_command_mode_exterm(":Man ")
 ###
 normal mode: user.vim_set_normal_mode_np()
 insert mode: user.vim_set_insert_mode()
+terminal mode: user.vim_set_terminal_mode()
 # command mode: user.vim_set_command_mode()
 command mode: user.vim_any_motion_mode_exterm_key(":")
 (replace mode|overwrite): user.vim_set_replace_mode()
