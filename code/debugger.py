@@ -197,6 +197,6 @@ class Actions:
         debugger.cycle_architecture()
 
     def debugger_current_architecture():
-        """Switch to the next architecture mode"""
+        """displayed the current architecture mode"""
         global debugger
         debugger.current_architecture()

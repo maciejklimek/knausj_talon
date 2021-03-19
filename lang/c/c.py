@@ -1,4 +1,4 @@
-from talon import Context, Module, actions, settings
+from talon import Context, Module, actions, settings, app
 
 mod = Module()
 mod.setting(
@@ -10,7 +10,6 @@ mod.setting(
 
 ctx = Context()
 ctx.matches = r"""
-mode: user.c
 mode: command
 and code.language: c
 """
@@ -20,15 +19,19 @@ ctx.lists["self.c_pointers"] = {
     "pointer to pointer": "**",
 }
 
-ctx.lists["self.stdint_signed"] = {
+c_stdint_signed = {
     "signed": "",
     "unsigned": "u",
 }
+ctx.lists["self.c_stdint_signed"] = c_stdint_signed
 
-ctx.lists["self.c_signed"] = {
+c_basic_signed = {
     "signed": "signed ",
     "unsigned": "unsigned ",
 }
+ctx.lists["user.c_basic_signed"] = c_basic_signed
+
+ctx.lists["user.c_signed"] = {}
 
 common_types = {
     "static": "static",
@@ -36,7 +39,8 @@ common_types = {
     "register": "register",
 }
 
-ctx.lists["self.stdint_types"] = {
+ctx.lists["user.c_types"] = {}
+c_stdint_types = {
     "character": "int8_t",
     "char": "int8_t",
     "short": "int16_t",
@@ -53,7 +57,9 @@ ctx.lists["self.stdint_types"] = {
     "float": "float",
 }
 
-ctx.lists["self.c_types"] = {
+ctx.lists["user.c_stdint_types"] = c_stdint_types
+
+c_basic_types = {
     "character": "char",
     "char": "char",
     "short": "short",
@@ -68,6 +74,7 @@ ctx.lists["self.c_types"] = {
     "union": "union",
     "float": "float",
 }
+ctx.lists["user.c_basic_types"] = c_basic_types
 
 ctx.lists["user.code_libraries"] = {
     "assert": "assert.h",
@@ -137,13 +144,38 @@ ctx.lists["user.code_functions"] = {
 mod.list("c_pointers", desc="Common C pointers")
 mod.list("c_signed", desc="Common C datatype signed modifiers")
 mod.list("c_types", desc="Common C types")
-mod.list("stdint_types", desc="Common stdint C types")
-mod.list("stdint_signed", desc="Common stdint C datatype signed modifiers")
+mod.list("c_basic_signed", desc="A list of default C signed operators")
+mod.list("c_basic_types", desc="A list of default C datatypes")
+mod.list("c_stdint_signed", desc="Common stdint C datatype signed modifiers")
+mod.list("c_stdint_types", desc="A list of stdint.h C datatypes")
 
 
-@mod.capture
-def c_cast(m) -> str:
-    "Returns a string"
+class CLangState:
+    def __init__(self, mod):
+        self.datatype_index = 0
+        self.datatypes = ["c_basic_datatypes", "c_stdint_datatypes"]
+        # XXX - add settings check
+        for datatype in self.datatypes:
+            mod.tag(datatype, desc="Tag for enabling {datatype} datatype")
+        self.datatype = self.datatypes[self.datatype_index]
+
+    def cycle_datatype(self):
+        """Switch between supported datatypes"""
+        # actions.mode.disable(f"user.{self.architecture}")
+        self.datatype_index += 1
+        if self.datatype_index == len(self.datatypes):
+            self.datatype_index = 0
+        self.datatype = self.datatypes[self.datatype_index]
+        ctx.tags = [f"user.{self.datatype}"]
+        app.notify(subtitle=f"Cycled to C lang datatype: {self.datatype}")
+
+    def current_datatype(self):
+        """Display the current datatype"""
+        app.notify(subtitle=f"Current C lang datatype: {self.datatype}")
+
+
+c_lang_state = CLangState(mod)
+
 
 
 @mod.capture(rule="{self.c_pointers}")
@@ -163,18 +195,26 @@ def c_types(m) -> str:
     "Returns a string"
     return m.c_types
 
-
-@mod.capture(rule="{self.stdint_types}")
-def stdint_types(m) -> str:
+@mod.capture(rule="{self.c_basic_types}")
+def c_basic_types(m) -> str:
     "Returns a string"
-    return m.stdint_types
+    return m.c_basic_types
 
-
-@mod.capture(rule="{self.stdint_signed}")
-def stdint_signed(m) -> str:
+@mod.capture(rule="{self.c_stdint_types}")
+def c_stdint_types(m) -> str:
     "Returns a string"
-    return m.stdint_signed
+    return m.c_stdint_types
 
+
+@mod.capture(rule="{self.c_basic_signed}")
+def c_basic_signed(m) -> str:
+    "Returns a string"
+    return m.c_basic_signed
+
+@mod.capture(rule="{self.c_stdint_signed}")
+def c_stdint_signed(m) -> str:
+    "Returns a string"
+    return m.c_stdint_signed
 
 # NOTE: we purposely we don't have a space after signed, to faciltate stdint
 # style uint8_t constructions
@@ -186,7 +226,15 @@ def c_cast(m) -> str:
 
 # NOTE: we purposely we don't have a space after signed, to faciltate stdint
 # style uint8_t constructions
-@mod.capture(rule="[<self.stdint_signed>]<self.stdint_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.c_basic_signed>]<self.c_basic_types> [<self.c_pointers>+]")
+def c_basic_cast(m) -> str:
+    "Returns a string"
+    return "(" + " ".join(list(m)) + ")"
+
+
+# NOTE: we purposely we don't have a space after signed, to faciltate stdint
+# style uint8_t constructions
+@mod.capture(rule="[<self.c_stdint_signed>]<self.c_stdint_types> [<self.c_pointers>+]")
 def c_stdint_cast(m) -> str:
     "Returns a string"
     return "(" + "".join(list(m)) + ")"
@@ -209,7 +257,7 @@ class user_actions:
         actions.user.paste(text)
         actions.edit.left()
 
-    # TODO - it would be nice that you integrate that types from c_cast
+    # TODO - it would be nice that you integrate that types from c_basic_cast
     # instead of defaulting to void
     def code_private_function(text: str):
         """Inserts private function declaration"""
@@ -234,3 +282,15 @@ class user_actions:
     def code_insert_library(text: str, selection: str):
         actions.user.paste("#include <{}>".format(selection))
 
+
+@mod.action_class
+class Actions:
+    def cycle_c_datatype():
+        """Switch to the next datatype mode"""
+        global c_lang_state
+        c_lang_state.cycle_datatype()
+
+    def current_c_datatype():
+        """display next datatype mode"""
+        global c_lang_state
+        c_lang_state.current_datatype()

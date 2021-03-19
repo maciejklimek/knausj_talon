@@ -128,8 +128,6 @@ state default: "default:\nbreak;"
 #if so uncomment the two lines and comment out the rest accordingly
 push brackets:
     edit.line_end()
-    #insert("{")
-    #key(enter)
     insert("{}")
     edit.left()
     key(enter)
@@ -147,11 +145,13 @@ push brackets:
 
 # Ex. (int *)
 cast to <user.c_cast>: "{c_cast}"
-standard cast to <user.stdint_cast>: "{stdint_cast}"
+basic cast to <user.c_basic_cast>: "{c_basic_cast}"
+standard cast to <user.c_stdint_cast>: "{c_stdint_cast}"
 <user.c_types>: "{c_types}"
 <user.c_pointers>: "{c_pointers}"
 <user.c_signed>: "{c_signed}"
-standard <user.stdint_types>: "{stdint_types}"
+basic <user.c_basic_types>: "{c_basic_types}"
+standard <user.c_stdint_types>: "{c_stdint_types}"
 int main:
     insert("int main()")
     edit.left()
@@ -160,3 +160,6 @@ toggle includes: user.code_toggle_libraries()
 include <user.code_libraries>:
     user.code_insert_library("", code_libraries)
     key(end enter)
+
+cycle data type: user.cycle_c_datatype()
+show data type: user.current_c_datatype()
