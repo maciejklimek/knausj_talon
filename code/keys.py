@@ -237,7 +237,9 @@ alternate_keys = {
     "forward delete": "delete",
     "junk": "backspace",
     "nuke": "delete",
+    "chomp": "delete",
     "cape": "escape",
+    "tabby": "tab",
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):
