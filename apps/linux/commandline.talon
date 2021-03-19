@@ -217,6 +217,11 @@ history: "history\n"
 
 net man log: "journalctl -u NetworkManager --no-pager --lines 100\n"
 
+core dump list: "coredumpctl\n"
+core dump info: "coredumpctl info\n"
+core dump dump: "coredumpctl dump\n"
+core dump debug: "coredumpctl debug\n"
+
 # ssh
 secure shell: "ssh "
 secure shell <user.text>: "ssh {text}\n"
