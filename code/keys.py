@@ -169,7 +169,6 @@ symbol_key_words = {
     "grave": "`",
     "comma": ",",
     "dot": ".",
-    "void": " ",
     "by": " ",
     "semi": ";",
     "tick": "'",
