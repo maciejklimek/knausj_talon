@@ -307,7 +307,9 @@ vim_motions = {
     "curse middle": "M",
     "curse last": "L",
     "loft": "gg",
+    "file top": "gg",
     "gut": "G",
+    "file ent": "G",
 }
 
 vim_motions_custom = {
