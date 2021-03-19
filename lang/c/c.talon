@@ -133,13 +133,16 @@ push brackets:
     key(enter)
     edit.up()
 
-# Declare variables or structs etc.
-# Ex. * int myList
-<user.c_variable> <phrase>:
+declare <user.c_variable>:
     insert("{c_variable} ")
-    insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE,NO_SPACES"))
 
-<user.c_variable> <user.letter>:
+# Declare variables or structs etc.
+# Ex: int * myList
+#declare <user.c_variable> <phrase>:
+#    insert("{c_variable} ")
+#    insert(user.formatted_text(phrase, "PRIVATE_CAMEL_CASE,NO_SPACES"))
+
+declare <user.c_variable> <user.letter>:
     insert("{c_variable} {letter} ")
 
 # Ex. (int *)

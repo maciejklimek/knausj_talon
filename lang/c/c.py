@@ -42,11 +42,11 @@ basic_types = {
     "float": "float",
 }
 basic_signed = {
-    "signed": "signed ",
-    "unsigned": "unsigned ",
+    "un signed": "unsigned",
 }
 basic_ctx.lists["user.c_types"] = basic_types
-basic_ctx.lists["user.c_basic_signed"] = basic_signed
+basic_ctx.lists["user.c_signed"] = basic_signed
+ctx.lists["user.c_basic_signed"] = basic_signed
 
 
 stdint_ctx = Context()
@@ -69,12 +69,12 @@ stdint_types = {
     "float": "float",
 }
 stdint_signed = {
-    "signed": "",
-    "unsigned": "u",
+    "un signed": "u",
 }
 
 stdint_ctx.lists["user.c_types"] = stdint_types
-stdint_ctx.lists["user.c_stdint_signed"] = stdint_signed
+stdint_ctx.lists["user.c_signed"] = stdint_signed
+ctx.lists["user.c_stdint_signed"] = stdint_signed
 
 
 ctx.lists["self.c_pointers"] = {
@@ -238,34 +238,31 @@ def c_stdint_signed(m) -> str:
     return m.c_stdint_signed
 
 
-# NOTE: we purposely we don't have a space after signed, to faciltate stdint
-# style uint8_t constructions
-@mod.capture(rule="[<self.c_signed>]<self.c_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<user.c_signed>] <user.c_types> [<self.c_pointers>+]")
 def c_cast(m) -> str:
     "Returns a string"
     return "(" + " ".join(list(m)) + ")"
 
 
-# NOTE: we purposely we don't have a space after signed, to faciltate stdint
-# style uint8_t constructions
-@mod.capture(rule="[<self.c_basic_signed>]<self.c_basic_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.c_basic_signed>] <self.c_basic_types> [<self.c_pointers>+]")
 def c_basic_cast(m) -> str:
     "Returns a string"
     return "(" + " ".join(list(m)) + ")"
 
 
-# NOTE: we purposely we don't have a space after signed, to faciltate stdint
-# style uint8_t constructions
-@mod.capture(rule="[<self.c_stdint_signed>]<self.c_stdint_types> [<self.c_pointers>+]")
+@mod.capture(rule="[<self.c_stdint_signed>] <self.c_stdint_types> [<self.c_pointers>+]")
 def c_stdint_cast(m) -> str:
     "Returns a string"
     return "(" + "".join(list(m)) + ")"
 
 
-@mod.capture(rule="[<self.c_signed>]<self.c_types>[<self.c_pointers>]")
+@mod.capture(rule="[<user.c_signed>] <user.c_types>[<self.c_pointers>]")
 def c_variable(m) -> str:
     "Returns a string"
-    return " ".join(list(m))
+    if hasattr(m, 'c_signed') and len(m.c_signed) == 1:
+        return m.c_signed + " ".join(list(m[1:]))
+    else:
+        return " ".join(list(m))
 
 
 @ctx.action_class("user")
