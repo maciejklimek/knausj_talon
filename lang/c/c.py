@@ -162,13 +162,22 @@ ctx.lists["user.code_functions"] = {
 
 class CLangState:
     def __init__(self, mod):
-        self.datatype_index = 0
         self.datatypes = ["c_basic_datatypes", "c_stdint_datatypes"]
-        # XXX - add settings check
+
+        default = "c_basic_datatypes"
+        if settings.get("user.use_stdint_datatypes"):
+            default = "c_stdint_datatypes"
+
+        index = 0
+        for type in self.datatypes:
+            if default == type:
+                break
+            index += 1
+        self.datatype_index = index
+
         for datatype in self.datatypes:
             mod.tag(datatype, desc="Tag for enabling {datatype} datatype")
         self.datatype = self.datatypes[self.datatype_index]
-        print(ctx.tags)
         ctx.tags = [f"user.{self.datatype}"]
 
     def cycle_datatype(self):
