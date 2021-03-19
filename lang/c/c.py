@@ -7,6 +7,14 @@ mod.setting(
     default=1,
     desc="Use the stdint datatype naming in commands by default",
 )
+mod.list("c_pointers", desc="Common C pointers")
+mod.list("c_signed", desc="Common C datatype signed modifiers")
+mod.list("c_types", desc="Common C types")
+mod.list("c_basic_signed", desc="A list of default C signed operators")
+mod.list("c_basic_types", desc="A list of default C datatypes")
+mod.list("c_stdint_signed", desc="Common stdint C datatype signed modifiers")
+mod.list("c_stdint_types", desc="A list of stdint.h C datatypes")
+
 
 ctx = Context()
 ctx.matches = r"""
@@ -39,7 +47,6 @@ common_types = {
     "register": "register",
 }
 
-ctx.lists["user.c_types"] = {}
 c_stdint_types = {
     "character": "int8_t",
     "char": "int8_t",
@@ -141,13 +148,6 @@ ctx.lists["user.code_functions"] = {
     "free": "free",
 }
 
-mod.list("c_pointers", desc="Common C pointers")
-mod.list("c_signed", desc="Common C datatype signed modifiers")
-mod.list("c_types", desc="Common C types")
-mod.list("c_basic_signed", desc="A list of default C signed operators")
-mod.list("c_basic_types", desc="A list of default C datatypes")
-mod.list("c_stdint_signed", desc="Common stdint C datatype signed modifiers")
-mod.list("c_stdint_types", desc="A list of stdint.h C datatypes")
 
 
 class CLangState:
@@ -158,6 +158,8 @@ class CLangState:
         for datatype in self.datatypes:
             mod.tag(datatype, desc="Tag for enabling {datatype} datatype")
         self.datatype = self.datatypes[self.datatype_index]
+        print(ctx.tags)
+        ctx.tags = [f"user.{self.datatype}"]
 
     def cycle_datatype(self):
         """Switch between supported datatypes"""
@@ -184,13 +186,13 @@ def c_pointers(m) -> str:
     return m.c_pointers
 
 
-@mod.capture(rule="{self.c_signed}")
+@mod.capture(rule="{user.c_signed}")
 def c_signed(m) -> str:
     "Returns a string"
     return m.c_signed
 
 
-@mod.capture(rule="{self.c_types}")
+@mod.capture(rule="{user.c_types}")
 def c_types(m) -> str:
     "Returns a string"
     return m.c_types
@@ -289,6 +291,7 @@ class Actions:
         """Switch to the next datatype mode"""
         global c_lang_state
         c_lang_state.cycle_datatype()
+        print(ctx.lists)
 
     def current_c_datatype():
         """display next datatype mode"""

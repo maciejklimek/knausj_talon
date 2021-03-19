@@ -1,4 +1,3 @@
-mode: user.c
 mode: command
 and code.language: c
 -
