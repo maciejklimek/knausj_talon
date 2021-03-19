@@ -146,14 +146,11 @@ push brackets:
 cast to <user.c_cast>: "{c_cast}"
 basic cast to <user.c_basic_cast>: "{c_basic_cast}"
 standard cast to <user.c_stdint_cast>: "{c_stdint_cast}"
-<user.c_types>: "{c_types}"
+state <user.c_types>: "{c_types}"
 <user.c_pointers>: "{c_pointers}"
 <user.c_signed>: "{c_signed}"
 basic <user.c_basic_types>: "{c_basic_types}"
 standard <user.c_stdint_types>: "{c_stdint_types}"
-int main:
-    insert("int main()")
-    edit.left()
 
 toggle includes: user.code_toggle_libraries()
 include <user.code_libraries>:

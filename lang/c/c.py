@@ -36,9 +36,8 @@ basic_types = {
     "integer": "int",
     "void": "void",
     "double": "double",
-    "struct": "struct",
     "struck": "struct",
-    "num": "enum",
+    "enumerate": "enum",
     "union": "union",
     "float": "float",
 }
@@ -64,9 +63,8 @@ stdint_types = {
     "integer": "int32_t",
     "void": "void",
     "double": "double",
-    "struct": "struct",
     "struck": "struct",
-    "num": "enum",
+    "enumerate": "enum",
     "union": "union",
     "float": "float",
 }
