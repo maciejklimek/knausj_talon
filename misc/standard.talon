@@ -1,4 +1,3 @@
-(numb|number) <number>: insert("{number}")
 shock: key(enter)
 
 (jay son | jason ): "json"
