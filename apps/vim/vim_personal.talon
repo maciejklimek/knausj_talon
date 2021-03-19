@@ -19,6 +19,8 @@ open python snippets:
     user.vim_command_mode_exterm(":e ~/.vim/plugged/vim-snippets/UltiSnips/python.snippets\n")
 open bash snippets:
     user.vim_command_mode_exterm(":e ~/.vim/plugged/vim-snippets/UltiSnips/sh.snippets\n")
+open see snippets:
+    user.vim_command_mode_exterm(":e ~/.vim/plugged/vim-snippets/UltiSnips/c.snippets\n")
 open talon plugins:
     user.vim_command_mode_exterm(":e ~/source/talon/releases/latest/resources/talon_plugins\n")
 open talon python:
