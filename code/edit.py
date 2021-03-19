@@ -29,7 +29,8 @@ class Actions:
         #    actions.sleep("150ms")
 
         # TODO: qt clipboard is bugged, do it manually
-        old = subprocess.check_output(['xclip', '-o', '-sel', 'clip'])
+        #old = subprocess.check_output(['xclip', '-o', '-sel', 'clip'])
+        old = subprocess.check_output(['xsel', '-o', '-b'])
         clip.set_text(text)
         actions.edit.paste()
         actions.sleep("100ms")
