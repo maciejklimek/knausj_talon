@@ -74,8 +74,7 @@ def gui(gui: imgui.GUI):
     # we do this because this code is called in a refresh loop
     if not rr.gui_open:
         rr.gui_open = True
-        rr.recordings_list.clear()
-        rr.recordings_list.extend(rr.last_recordings())
+        rr.recordings_list = rr.last_recordings()
 
     for path in rr.recordings_list:
         gui.text("Pick {}: {} ".format(index, path.name))
@@ -104,7 +103,6 @@ class Actions:
         """Hides the replay_picker display"""
         global rr
 
-        #rr.recordings_list.extend(rr.last_recordings())
         rr.play_file(rr.recordings_list[choice-1])
 
     def replay_last_recording():
