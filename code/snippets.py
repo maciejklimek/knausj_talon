@@ -13,8 +13,6 @@ mod.list("snippets", desc="List of code snippets")
 
 ctx.lists["user.snippets"] = {}
 
-
-
 @imgui.open()
 def gui(gui: imgui.GUI):
     gui.text("snippets")

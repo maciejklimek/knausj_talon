@@ -43,7 +43,12 @@ setting_imgui_limit = mod.setting(
     default=20,
     desc="Maximum number of files/folders to display in the imgui",
 )
-
+setting_imgui_string_limit = mod.setting(
+    "file_manager_string_limit",
+    type=int,
+    default=20,
+    desc="Maximum like of string to display in the imgui",
+)
 cached_path = None
 file_selections = folder_selections = []
 current_file_page = current_folder_page = 1
@@ -284,7 +289,15 @@ def gui_folders(gui: imgui.GUI):
     current_index = (current_folder_page - 1) * setting_imgui_limit.get()
 
     while index <= setting_imgui_limit.get() and current_index < len(folder_selections):
-        gui.text("{}: {} ".format(index, folder_selections[current_index]))
+        name = (
+            (
+                folder_selections[current_index][: setting_imgui_string_limit.get()]
+                + ".."
+            )
+            if len(folder_selections[current_index]) > setting_imgui_string_limit.get()
+            else folder_selections[current_index]
+        )
+        gui.text("{}: {} ".format(index, name))
         current_index += 1
         index = index + 1
 
@@ -309,7 +322,13 @@ def gui_files(gui: imgui.GUI):
     current_index = (current_file_page - 1) * setting_imgui_limit.get()
 
     while index <= setting_imgui_limit.get() and current_index < len(file_selections):
-        gui.text("{}: {} ".format(index, file_selections[current_index]))
+        name = (
+            (file_selections[current_index][: setting_imgui_string_limit.get()] + "..")
+            if len(file_selections[current_index]) > setting_imgui_string_limit.get()
+            else file_selections[current_index]
+        )
+
+        gui.text("{}: {} ".format(index, name))
         current_index = current_index + 1
         index = index + 1
 
@@ -407,5 +426,5 @@ def register_events():
 
 # prevent scary errors in the log by waiting for talon to be fully loaded
 # before registering the events
-app.register("launch", register_events)
+app.register("ready", register_events)
 

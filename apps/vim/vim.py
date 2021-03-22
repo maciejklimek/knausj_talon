@@ -95,10 +95,10 @@ class win_actions:
             return result
         return ""
 
-    def file_ext():
-        ext = actions.win.filename().split(".")[-1]
-        # print(ext)
-        return ext
+#    def file_ext():
+#        ext = actions.win.filename().split(".")[-1]
+#        # print(ext)
+#        return ext
 
 
 ctx.lists["self.vim_arrow"] = {

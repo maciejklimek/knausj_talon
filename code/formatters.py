@@ -264,7 +264,9 @@ class Actions:
         if actions.user.get_last_phrase() != last_phrase_formatted:
             # The last thing we inserted isn't the same as the last thing we
             # formatted, so abort.
-            logging.warning("formatters_reformat_last(): Last phrase wasn't a formatter!")
+            logging.warning(
+                "formatters_reformat_last(): Last phrase wasn't a formatter!"
+            )
             return
         actions.user.clear_last_phrase()
         actions.user.insert_formatted(last_phrase, formatters)

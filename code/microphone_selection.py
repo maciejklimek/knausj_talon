@@ -61,9 +61,9 @@ class Actions:
 ctx.register("devices_changed", devices_changed)
 
 
-def on_launch():
+def on_ready():
     update_microphone_list()
 
 
-app.register("launch", on_launch)
+app.register("ready", on_ready)
 

@@ -7,6 +7,3 @@ This is also developed around beta version of Talon so may result in errors rela
 ## Dependencies
 notify-send.sh
 In order to use dunst for notifications, this repo monkey patches talon notifications to call notify-send.sh instead of qt notifications
-
-Python libraries as specified in "requirements.txt"
-You can run `pip install -f requirements.txt`
