@@ -221,14 +221,14 @@ ctx.lists["self.arrow_key"] = {
 
 simple_keys = [
     "end",
-    "enter",
+#    "enter",
     "escape",
     "home",
     "insert",
     "pagedown",
     "pageup",
-    "space",
-    "tab",
+#    "space",
+#    "tab",
 ]
 
 alternate_keys = {
@@ -236,7 +236,7 @@ alternate_keys = {
     "forward delete": "delete",
     "junk": "backspace",
     "nuke": "delete",
-    "chomp": "delete",
+    "suck": "delete",
     "cape": "escape",
     "tabby": "tab",
 }
@@ -250,7 +250,6 @@ ctx.lists["self.special_key"] = keys
 ctx.lists["self.function_key"] = {
     f"F {default_f_digits[i]}": f"f{i + 1}" for i in range(12)
 }
-
 
 @mod.action_class
 class Actions:
