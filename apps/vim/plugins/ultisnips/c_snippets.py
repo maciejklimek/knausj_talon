@@ -27,6 +27,8 @@ ultisnips_snippets = {
 private_snippets = {
     "success": "printfs",
     "failure": "printff",
+    "exit success": "exits",
+    "exit failure": "exitf",
 }
 
 ctx.lists["user.snippets"] = {**ultisnips_snippets, **private_snippets}

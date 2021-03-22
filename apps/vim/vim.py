@@ -260,7 +260,7 @@ ctx.lists["self.vim_motion_commands"] = list(
 # note that some of these are disabled to reduce the rule explosion to make
 # things faster, where you can enable some if your detection is bad for the
 # ones that are already enabled
-vim_motions = {
+motions = {
     "back": "b",
     "big back": "B",
     "tip": "e",
@@ -312,7 +312,7 @@ vim_motions = {
     "file ent": "G",
 }
 
-vim_motions_custom = {
+motions_custom = {
     "function start": "[[",
     "funk start": "[[",
     "next function": "]]",
@@ -320,8 +320,8 @@ vim_motions_custom = {
 }
 
 ctx.lists["self.vim_motions"] = {
-    **vim_motions,
-    **vim_motions_custom,
+    **motions,
+    **motions_custom,
 }
 
 
