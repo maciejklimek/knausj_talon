@@ -223,24 +223,24 @@ ctx.lists["self.arrow_key"] = {
 
 simple_keys = [
     "end",
-#    "enter",
+    "enter",
     "escape",
     "home",
     "insert",
     "pagedown",
     "pageup",
-#    "space",
-#    "tab",
+    "space",
+    "tab",
 ]
 
 alternate_keys = {
     "backspace": "backspace",
     "forward delete": "delete",
     "junk": "backspace",
+    # conflicts with look
     "nuke": "delete",
     "suck": "delete",
     "cape": "escape",
-    "tabby": "tab",
     "page up": "pageup",
     "page down": "pagedown",
 }
