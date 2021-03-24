@@ -15,23 +15,36 @@ carriage return: "\\r"
 line feed: "\\r\\n"
 end of file: "EOF"
 dotty: "../"
+
 empty (string|quotes):
-    '""'
+    insert('""')
     key(left)
 empty escaped (string|quotes):
-    '\\"\\"'
+    insert('\\"\\"')
     key(left)
     key(left)
 empty ticks:
     "''"
     key(left)
 empty escaped ticks:
-    "\\'\\'"
+    insert("\\'\\'")
     key(left)
+    key(left)
+(empty parens | args):
+    insert("()")
+    key(left)
+empty (squares | list):
+    insert("[]")
+    key(left)
+empty (bracket | braces):
+    insert("{}")
+    key(left)
+empty percent:
+    insert("%%")
     key(left)
 
 [pair] (parens|args):
-	insert("()")
+    insert("()")
 [pair] (brackets|braces): "{}"
 [pair] squares: "[]"
 [pair] angles: "<>"
@@ -39,21 +52,8 @@ empty escaped ticks:
 [pair] percents: "%%"
 [pair] ticks: "''"
 [pair] quotes: '""'
-(inside parens | args):
-	insert("()")
-	key(left)
-inside (squares | list):
-	insert("[]")
-	key(left)
-inside (bracket | braces):
-	insert("{}")
-	key(left)
-inside percent:
-	insert("%%")
-	key(left)
-inside quotes:
-	insert('""')
-	key(left)
+
+# XXX - add support for additional text navigation options?
 angle that:
     text = edit.selected_text()
     user.paste("<{text}>")
