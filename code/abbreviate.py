@@ -155,6 +155,7 @@ ctx.lists["user.abbreviation"] = {
     "language": "lang",
     "length": "len",
     "library": "lib",
+    "lycanthrope": "lycan",
     "mail": "smtp",
     "make": "mk",
     "manitoba": "mb",
