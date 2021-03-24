@@ -150,7 +150,6 @@ formatters_dict = {
     ),
     "SPACE_SURROUNDED_STRING": (SEP, surround(" ")),
 }
-
 # This is the mapping from spoken phrases to formatters
 formatters_words = {
     "allcaps": formatters_dict["ALL_CAPS"],
@@ -158,7 +157,7 @@ formatters_words = {
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "dotted": formatters_dict["DOT_SEPARATED"],
     "dunder": formatters_dict["DOUBLE_UNDERSCORE"],
-    "folder": formatters_dict["FOLDER_SEPARATED"],
+    "as path": formatters_dict["FOLDER_SEPARATED"],
     "hammer": formatters_dict["PUBLIC_CAMEL_CASE"],
     "kebab": formatters_dict["DASH_SEPARATED"],
     "long arg": formatters_dict["LONG_ARG"],
