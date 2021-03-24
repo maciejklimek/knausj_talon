@@ -103,6 +103,13 @@ yankee <number_small> <user.ordinals>:
     insert(":set nohls\n")
     user.vim_set_insert_mode()
 
+yankee (last <number_small>|<number_small> last):
+    user.vim_normal_mode_exterm("{number_small}k")
+    insert('$T ')
+    insert("yE")
+    user.vim_set_insert_mode()
+
+
 # this is used for pexpect interactive environments
 # https://pexpect.readthedocs.io/en/stable/api/pexpect.html#spawn-class
 # note that you can't use this from within command line itself, because the
