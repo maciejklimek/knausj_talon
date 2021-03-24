@@ -1,16 +1,15 @@
-import glob
 import os
 import pathlib
-import subprocess
-import sys
-from typing import List, Set
+import shutil
+from typing import List
 
-from talon import Context, Module, actions, app, fs, imgui, settings, ui
+from talon import Module, actions, app, clip, imgui, settings, ui
 from talon_init import TALON_HOME
 
 mod = Module()
 mod.mode("replay_picker_open")
 
+saved_recording_directory = pathlib.Path("~/talon/documents/conformer_problem_recordings/")
 
 class _RecordingReplayer(object):
     """A class that manages finding the most recent recordings, in making them available for replay"""
@@ -58,6 +57,7 @@ main_screen = ui.main_screen()
 
 rr = _RecordingReplayer()
 
+
 def close_replay_picker():
     global rr
     rr.gui_open = False
@@ -68,6 +68,11 @@ def close_replay_picker():
 @imgui.open(y=0, x=main_screen.width / 2.6)
 def gui(gui: imgui.GUI):
     gui.text("Select a recording")
+    gui.line()
+    gui.text("Commands:")
+    gui.text("pick <number>")
+    gui.text("replay save <number>")
+    gui.text("replay yank <number>")
     gui.line()
     index = 1
     global rr
@@ -103,7 +108,23 @@ class Actions:
         """Hides the replay_picker display"""
         global rr
 
-        rr.play_file(rr.recordings_list[choice-1])
+        rr.play_file(rr.recordings_list[choice - 1])
+
+    def replay_save(choice: int):
+        """Saves the selected recording to a preconfigured directory"""
+        global rr
+
+        file_name = rr.recordings_list[choice - 1]
+        print(f"{file_name}")
+        shutil.copy(file_name, saved_recording_directory)
+
+    def replay_copy_name(choice: int):
+        """Copy the name of the selected replay file"""
+        global rr
+
+        file_name = rr.recordings_list[choice - 1]
+        pathlib.Path(file_name)
+        clip.set_text(file_name)
 
     def replay_last_recording():
         """Insert some info from the last self.count recordings"""

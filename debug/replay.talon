@@ -6,3 +6,4 @@
 # replay one of the last 10 audio recordings
 replay last: user.replay_last_recording()
 replay select: user.replay_recording_choose()
+replay save: user.replay_recording_save()
