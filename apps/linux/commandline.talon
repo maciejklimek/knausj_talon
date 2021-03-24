@@ -294,3 +294,10 @@ screen record: insert("recordmydesktop")
 ###
 screen dimensions: "xdpyinfo | grep dimensions\n"
 screen resolution: "xdpyinfo | awk '/dimensions/{{print $2}}'\n"
+
+###
+# Arch Linux
+# https://wiki.archlinux.org/index.php/Arch_Build_System#Retrieve_PKGBUILD_source_using_Git
+###
+arch source check out: "asp checkout "
+arch source export: "asp export "

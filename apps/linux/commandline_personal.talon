@@ -23,7 +23,6 @@ edit markdown snippets:
 edit python snippets:
     "vim ~/.vim/plugged/vim-snippets/UltiSnips/python.snippets\n"
 new talon pull branch: "new_talon_pull_repo.sh "
-edit talon lexicon: "vim ~/.talon/w2l/en_US/lexicon.txt && rm ~/.talon/w2l/en_US/lexicon_flat.bin\n"
 
 
 fuzzy vimdiff:
