@@ -9,12 +9,12 @@ from talon_init import TALON_HOME
 mod = Module()
 mod.mode("replay_picker_open")
 
-saved_recording_directory = pathlib.Path("~/talon/documents/conformer_problem_recordings/")
+saved_recording_directory = pathlib.Path(f"{pathlib.Path.home()}/talon/documents/conformer_problem_recordings/")
 
 class _RecordingReplayer(object):
     """A class that manages finding the most recent recordings, in making them available for replay"""
 
-    def __init__(self, count=10):
+    def __init__(self, count=20):
         """Specify the number of default recording to list in the picker"""
         self.gui_open = False
         self.recordings_list = []
@@ -82,7 +82,7 @@ def gui(gui: imgui.GUI):
         rr.recordings_list = rr.last_recordings()
 
     for path in rr.recordings_list:
-        gui.text("Pick {}: {} ".format(index, path.name))
+        gui.text(f"{index}: {path.name} ")
         index = index + 1
 
     if gui.button("Hide"):
@@ -111,20 +111,30 @@ class Actions:
         rr.play_file(rr.recordings_list[choice - 1])
 
     def replay_save(choice: int):
-        """Saves the selected recording to a preconfigured directory"""
+        """Save the selected recording to a preconfigured directory"""
         global rr
 
         file_name = rr.recordings_list[choice - 1]
         print(f"{file_name}")
         shutil.copy(file_name, saved_recording_directory)
+        pathlib.Path(file_name)
+        clip.set_text(file_name.name)
+
+    def replay_save_last():
+        """Save the last recording to a preconfigured directory"""
+        global rr
+        file_name = rr.recordings_list[-1]
+        shutil.copy(file_name, saved_recording_directory)
+        pathlib.Path(file_name)
+        clip.set_text(file_name.name)
 
     def replay_copy_name(choice: int):
-        """Copy the name of the selected replay file"""
+        """Copy the file name of the selected replay file"""
         global rr
 
         file_name = rr.recordings_list[choice - 1]
         pathlib.Path(file_name)
-        clip.set_text(file_name)
+        clip.set_text(file_name.name)
 
     def replay_last_recording():
         """Insert some info from the last self.count recordings"""
