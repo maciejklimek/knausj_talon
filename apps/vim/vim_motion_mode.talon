@@ -335,7 +335,7 @@ spell last: user.vim_normal_mode('[s')
 (go|jump) [to] last insert: user.vim_normal_mode("`^")
 # differences this puts you into insert mode
 # TODO - change the way you say this?
-continue last insert:user.vim_normal_mode("gi")
+(continue|continue last insert):user.vim_normal_mode("gi")
 jump last curse: user.vim_normal_mode("``")
 jump last line: user.vim_normal_mode("''")
 (go|jump) [to] last change: user.vim_normal_mode("g;")
@@ -351,9 +351,10 @@ vim grep:
     key(left:6)
 
 quick [fix] next: user.vim_command_mode(":cn\n")
-quick [fix] (prev|previous): user.vim_command_mode(":cp\n")
+quick [fix] (back|last|prev|previous): user.vim_command_mode(":cp\n")
 quick [fix] (show|hide): user.vim_command_mode(":cw\n")
 quick [fix] close: user.vim_command_mode(":ccl\n")
+# XXX - top?
 quick [fix] bottom: user.vim_command_mode(":cbo\n")
 quick [fix] do:
     user.vim_command_mode(":cdo | update")
@@ -537,6 +538,7 @@ run as sandbox:
 
 remove trailing white space: user.vim_normal_mode(":%s/\\s\\+$//e\n")
 (remove all|normalize) tabs: user.vim_normal_mode(":%s/\\t/    /eg\n")
+normalize spaces: user.vim_normal_mode(":%s/\S\zs\s\+/ /g")
 (delete|trim) empty lines:
     insert(":")
     sleep(100ms)

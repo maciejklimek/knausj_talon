@@ -1,4 +1,6 @@
 tag: user.vim_fugitive
+# XXX - it doesn't currently work if you are in a vim terminal and sitting in a
+# folder that is a git repo
 -
 
 (fugitive|git) add (current|this) file: user.vim_command_mode(":G add %\n")
@@ -10,10 +12,11 @@ tag: user.vim_fugitive
 (fugitive|git) diff staged: user.vim_command_mode(":G! diff --staged\n")
 (fugitive|git) diff: user.vim_command_mode(":Gdiffsplit\n")
 (fugitive|git) vertical diff: user.vim_command_mode(":Gvdiffsplit!\n")
+(fugitive|git) diff last: user.vim_command_mode(":Gdiff !~1\n")
 (fugitive|git) fetch: user.vim_command_mode(":G fetch ")
 (fugitive|git) force write: user.vim_command_mode(":Gwrite!")
 (fugitive|git) grep: user.vim_command_mode(":G grep ")
-(fugitive|git) log: user.vim_command_mode(":G Log")
+(fugitive|git) log: user.vim_command_mode(":Glog\n")
 (fugitive|git) merge: user.vim_command_mode(":G fallmerge")
 (fugitive|git) merge tool: user.vim_command_mode(":G mergetool")
 (fugitive|git) move: user.vim_command_mode(":G Move ")

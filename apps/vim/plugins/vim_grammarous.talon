@@ -8,13 +8,30 @@ tag: user.vim_grammarous
 
 -
 grammar check:
-    user.vim_normal_mode_exterm(':GrammarousCheck\n')
+    user.vim_command_mode(':GrammarousCheck\n')
 
 grammar help:
-    user.vim_normal_mode_exterm(':GrammarousCheck --help\n')
+    user.vim_command_mode(':GrammarousCheck --help\n')
 
 grammar reset:
-    user.vim_normal_mode_exterm(':GrammarousReset\n')
+    user.vim_command_mode(':GrammarousReset\n')
 
 grammar fix:
-    user.vim_command_mode_exterm(':execute "normal \\<Plug>(grammarous-fixit)"\n')
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-fixit)"\n')
+
+grammar fix all:
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-fixall)"\n')
+
+grammar next:
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-move-to-next-error)"\n')
+
+grammar last:
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-move-to-previous-error)"\n')
+
+grammar disable:
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-disable-rule)"\n')
+
+
+grammar close:
+    user.vim_command_mode(':execute "normal \\<Plug>(grammarous-close-info-window)"\n')
+
