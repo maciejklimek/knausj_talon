@@ -4,7 +4,7 @@ mode: user.replay_picker_open
 -
 
 hide: user.replay_picker_hide()
-pick <number_small>:
+(replay|pick) <number_small>:
     user.replay_picker_hide()
     user.replay_pick(number_small)
 replay save <number_small>:
