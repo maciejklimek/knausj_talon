@@ -278,7 +278,7 @@ elf symbols: "eu-readelf -s "
 # Python
 ###
 
-new (pie|python) (env|environment): "python -m venv env"
+(pie|python) new [virtual] (env|environment): "python -m venv env"
 python module: "python -m "
 (activate|enter python environment): "source env/bin/activate\n"
 (deactivate|leave python environment): "deactivate\n"
