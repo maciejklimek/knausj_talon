@@ -46,7 +46,7 @@ file save as:
     user.vim_command_mode(":wq\n")
 file (close|quite):
     user.vim_command_mode(":q\n")
-file refresh:
+file (refresh|reload):
     user.vim_command_mode(":e!\n")
 print working directory: user.vim_command_mode(":pwd\n")
 pivot file: 

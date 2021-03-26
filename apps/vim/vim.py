@@ -288,7 +288,7 @@ motions = {
     "again": ";",
     "again reversed": ",",
     "tense": ")",
-    "up tense": "(",
+    "last tense": "(",
     "graph": "}",
     "last graph": "{",
     "section": "]]",
