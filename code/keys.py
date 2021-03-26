@@ -98,21 +98,29 @@ def any_alphanumeric_key(m) -> str:
 
 @mod.capture(
     rule="( <self.letter> | <self.number_key> | <self.symbol_key> "
-    "| <self.arrow_key> | <self.function_key> | <self.special_key> )"
+    "| <self.arrow_key> | <self.special_key> )"
 )
 def unmodified_key(m) -> str:
     "A single key with no modifiers"
     return str(m)
 
+@mod.capture(
+    rule="( <self.letter> | <self.number_key> | <self.symbol_key> "
+    "| <self.arrow_key> | <self.function_key> | <self.special_key> )"
+)
+def all_unmodified_key(m) -> str:
+    "A single key including F keys with no modifiers"
+    return str(m)
 
-@mod.capture(rule="{self.modifier_key}* <self.unmodified_key>")
+
+@mod.capture(rule="{self.modifier_key}* <self.all_unmodified_key>")
 def key(m) -> str:
     "A single key with optional modifiers"
     try:
         mods = m.modifier_key_list
     except AttributeError:
         mods = []
-    return "-".join(mods + [m.unmodified_key])
+    return "-".join(mods + [m.all_unmodified_key])
 
 
 @mod.capture(rule="<self.key>+")
@@ -171,7 +179,7 @@ symbol_key_words = {
     "grave": "`",
     "comma": ",",
     "dot": ".",
-    "by": " ",
+    "blank": " ",
     "semi": ";",
     "tick": "'",
     "lock": "[",
@@ -235,11 +243,9 @@ simple_keys = [
 
 alternate_keys = {
     "backspace": "backspace",
-    "forward delete": "delete",
     "junk": "backspace",
-    # conflicts with look
     "nuke": "delete",
-    "suck": "delete",
+    "delhi": "delete",
     "cape": "escape",
     "page up": "pageup",
     "page down": "pagedown",
