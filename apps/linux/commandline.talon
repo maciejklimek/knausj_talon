@@ -26,7 +26,7 @@ file link force: "ln -sf "
 file hard link: "ln "
 file move: "mv "
 file touch: "touch "
-file copy: "copy "
+file copy: "cp "
 file type: "file "
 file show <user.text>: "cat {text}"
 file show: "cat "
@@ -193,6 +193,7 @@ tar ball [extract]: "tar -xvaf "
 tar ball list: "tar -tf "
 (un zip|extract zip): "unzip "
 
+run <word>: "{word}"
 run curl: "curl "
 run double you get: "wget "
 download clip:
@@ -205,6 +206,11 @@ run script: "./"
 run again:
     insert("./")
     key(up enter)
+run top: "htop\n"
+run vim: "vim "
+run make: "make\n"
+run see make: "cmake "
+
 sub command:
     insert("$()")
     key(left)
@@ -239,7 +245,6 @@ terminate session:
     key(enter ~ .)
 
 # process management
-run top: "htop\n"
 pee kill <user.text>: "pkill {text}"
 kill <number>: "kill -9 {number}"
 kill: "kill -9 "
@@ -251,12 +256,6 @@ list processor: "lscpu\n"
 list pee bus: "lspci\n"
 list yew bus: "lsusb\n"
 
-
-# XXX - make run commands part of something else?
-run vim: "vim "
-run make: "make\n"
-run see make: "cmake "
-run echo: "echo "
 
 (redirect errors|errors to standard out): "2>&1 "
 ignore errors: "2>/dev/null"
