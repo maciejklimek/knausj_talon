@@ -47,6 +47,7 @@ ctx.lists["user.abbreviation"] = {
     "command": "cmd",
     "comment": "cmt",
     "compare": "cmp",
+    "condition": "cond",
     "conference": "conf",
     "config": "cfg",
     "configuration": "config",
