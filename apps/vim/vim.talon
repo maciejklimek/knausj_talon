@@ -570,8 +570,8 @@ force (make|save) session: user.vim_command_mode_exterm(":mksession! ")
 # Macros and registers ''
 ###
 (register|registers|macros) list: user.vim_command_mode_exterm(":reg\n")
-show (register|macro) <user.letter>: user.vim_command_mode(":reg {letter}\n")
-(edit|modify) [register|macro] <user.letter>:
+(register|macro) show <user.letter>: user.vim_command_mode(":reg {letter}\n")
+(register|macro) (edit|modify) <user.letter>:
     user.vim_command_mode(":let @{letter}='")
     key(ctrl-r)
     key(ctrl-r)
