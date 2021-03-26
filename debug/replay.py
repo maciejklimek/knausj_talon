@@ -1,6 +1,7 @@
 import os
 import pathlib
 import shutil
+import subprocess
 from typing import List
 
 from talon import Module, actions, app, clip, imgui, settings, ui
@@ -9,17 +10,21 @@ from talon_init import TALON_HOME
 mod = Module()
 mod.mode("replay_picker_open")
 
-saved_recording_directory = pathlib.Path(f"{pathlib.Path.home()}/talon/documents/conformer_problem_recordings/")
+saved_recording_directory = pathlib.Path(
+    f"{pathlib.Path.home()}/talon/documents/conformer_problem_recordings/"
+)
+
 
 class _RecordingReplayer(object):
-    """A class that manages finding the most recent recordings, in making them available for replay"""
+    """Manages recent recordings and make them available for replay"""
 
-    def __init__(self, count=20):
+    def __init__(self, count=30):
         """Specify the number of default recording to list in the picker"""
         self.gui_open = False
         self.recordings_list = []
         self.count = count
         self.recordings = pathlib.Path(TALON_HOME, "recordings/")
+        self.last_saved_recording = None
         if settings.get("speech.record_all") != 1:
             app.notify("Recording appears to be disabled")
 
@@ -39,16 +44,20 @@ class _RecordingReplayer(object):
 
     def play_last(self):
         """Play the last recording (before the replay command itself) """
-        # actions.speech.disable()
         last_recordings = self.last_recordings()
         last = last_recordings[-1:][0]
         self.play_file(last)
+
+    def play_last_saved(self):
+        """Play the last saved recording """
+        if self.last_saved_recording is not None:
+            self.play_file(self.last_saved_recording)
 
     def play_file(self, recording: pathlib.Path):
         """Play the recording file passed in. """
         actions.speech.disable()
         # TODO - make this a python command
-        os.system(f'mplayer "{recording}"')
+        subprocess.run(["mplayer", recording])
         actions.speech.enable()
 
 
@@ -67,10 +76,9 @@ def close_replay_picker():
 
 @imgui.open(y=0, x=main_screen.width / 2.6)
 def gui(gui: imgui.GUI):
-    gui.text("Select a recording")
     gui.line()
     gui.text("Commands:")
-    gui.text("pick <number>")
+    gui.text("replay <number>")
     gui.text("replay save <number>")
     gui.text("replay yank <number>")
     gui.line()
@@ -118,6 +126,7 @@ class Actions:
         print(f"{file_name}")
         shutil.copy(file_name, saved_recording_directory)
         pathlib.Path(file_name)
+        rr.last_saved_recording = file_name
         clip.set_text(file_name.name)
 
     def replay_save_last():
@@ -140,3 +149,8 @@ class Actions:
         """Insert some info from the last self.count recordings"""
         global rr
         rr.play_last()
+
+    def replay_last_saved():
+        """Insert some info from the last self.count recordings"""
+        global rr
+        rr.play_last_saved()
