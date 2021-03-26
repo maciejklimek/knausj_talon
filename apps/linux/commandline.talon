@@ -31,10 +31,9 @@ file type: "file "
 file show <user.text>: "cat {text}"
 file show: "cat "
 file edit: insert("edit ")
-file edit read me: insert("edit README.md\n")
 file edit here: insert("edit .\n")
-file remove file: "rm "
-file remove recurse: "rm -rI "
+file remove: "rm "
+(file|folder) remove recurse: "rm -rI "
 file diff: "diff "
 # find
 file file: "find . -name "
@@ -44,6 +43,9 @@ file fuzzy [find]:
     key("left")
 file hash: "sha256sum "
 file locate: "locate "
+
+file edit read me: insert("edit README.md\n")
+file edit make file: insert("edit Makefile\n")
 
 watch latest: "vlc $(ls -Art | tail -n1)"
 
@@ -254,6 +256,7 @@ list yew bus: "lsusb\n"
 run vim: "vim "
 run make: "make\n"
 run see make: "cmake "
+run echo: "echo "
 
 (redirect errors|errors to standard out): "2>&1 "
 ignore errors: "2>/dev/null"

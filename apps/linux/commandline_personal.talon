@@ -3,7 +3,6 @@ mode: command
 and tag: terminal
 -
 
-
 edit (vim|them) config: "vim ~/.vimrc\n"
 edit shell config: "vim ~/.zshrc\n"
 resource shell: "source ~/.zshrc"
@@ -22,6 +21,8 @@ edit markdown snippets:
     "vim ~/.vim/plugged/vim-snippets/UltiSnips/markdown.snippets\n"
 edit python snippets:
     "vim ~/.vim/plugged/vim-snippets/UltiSnips/python.snippets\n"
+edit latest talon log:
+    "vim ~/talon/logs/$(ls -rt | tail -n1)"
 new talon pull branch: "new_talon_pull_repo.sh "
 
 
@@ -63,3 +64,5 @@ run talon shell: insert("~/.talon/bin/repl\n")
 
 # markdown to docx
 generate dock: user.insert_cursor("pandoc [|].md --self-contained --highlight-style=tango -o .docx")
+
+
