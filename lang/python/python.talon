@@ -125,7 +125,7 @@ big dock string:
 # Keywords
 ####
 return: "return "
-none: "None"
+state none: "None"
 true: "True"
 false: "False"
 pass: "pass"
@@ -140,6 +140,7 @@ state pass: "pass"
 # for things like None comparsion
 state is not: " is not "
 state is: " is "
+state is none: " is None"
 state as string: '.decode("utf-8")'
 state as bytes: '.encode("utf-8")'
 F string: 'f""'
@@ -162,19 +163,19 @@ call [function] <user.text>:
     key(left)
 
 # for annotating function parameters
-is type {user.python_type_list}:
+is type <user.python_type_list>:
     insert(": {python_type_list}")
-returns [type] {user.python_type_list}:
+returns [type] <user.python_type_list>:
     insert(" -> {python_type_list}")
 # for generic reference of types
-type {user.python_type_list}:
+type <user.python_type_list>:
     insert("{python_type_list}")
-dock {user.python_docstring_fields}:
+dock <user.python_docstring_fields>:
     insert("{python_docstring_fields}")
     edit.left()
-dock type {user.python_type_list}:
+dock type <user.python_type_list>:
     user.insert_cursor(":type [|]: {python_type_list}")
-dock returns type {user.python_type_list}:
+dock returns type <user.python_type_list>:
     user.insert_cursor(":rtype [|]: {python_type_list}")
 
 toggle imports: user.code_toggle_libraries()

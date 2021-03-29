@@ -5,9 +5,9 @@ from talon import Context, Module, actions, settings, clip
 mod = Module()
 ctx = Context()
 ctx.matches = r"""
-tag: user.python
-mode: user.python
-and not tag: user.python
+mode: command
+and tag: user.python
+
 mode: command
 and code.language: python
 """
@@ -146,6 +146,15 @@ ctx.lists["user.python_decorator"] = {
     for decorator in decorator_list
 }
 
+@mod.capture(rule="{self.python_type_list}")
+def python_type_list(m) -> str:
+    "Returns a string"
+    return m.python_type_list
+
+@mod.capture(rule="{self.python_docstring_fields}")
+def python_docstring_fields(m) -> str:
+    "Returns a string"
+    return m.python_docstring_fields
 
 @ctx.action_class("user")
 class user_actions:
