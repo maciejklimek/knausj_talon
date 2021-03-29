@@ -42,6 +42,9 @@ empty (bracket | braces):
 empty percent:
     insert("%%")
     key(left)
+empty coals:
+    insert("::")
+    key(left)
 
 [pair] (parens|args):
     insert("()")
