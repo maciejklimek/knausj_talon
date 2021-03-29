@@ -103,6 +103,7 @@ change line: user.vim_normal_mode("cc")
 swap characters:
     user.vim_normal_mode("x")
     user.vim_normal_mode("p")
+# XXX - the word swap doesn't actually work
 swap words:
     user.vim_normal_mode("dww")
     user.vim_normal_mode("P")
@@ -112,9 +113,9 @@ swap lines:
 swap paragraph:
     user.vim_normal_mode("d}}")
     user.vim_normal_mode("p")
-replace <user.unmodified_key>:
+patch <user.unmodified_key>:
     user.vim_any_motion_mode("r{unmodified_key}")
-replace (ship|upper|upper case) <user.letters>:
+patch (ship|upper|upper case) <user.letters>:
     user.vim_any_motion_mode_key("r")
     user.insert_formatted(letters, "ALL_CAPS")
 

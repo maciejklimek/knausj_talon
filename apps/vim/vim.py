@@ -152,7 +152,7 @@ standard_counted_actions = {
     "repeat last swap": "&",
     # XXX - not sure how to name these
     "clear rest": "D",
-    "change rest": "C",
+    "change rest": "\"_C",  # NOTE: we purposely use the black hole register
 }
 
 # Standard self.vim_counted_actions key() entries
@@ -220,7 +220,7 @@ commands_with_motion = {
     "undo": "u",  # XXX this really have motion
     "swap case": "~",
     # motions
-    "change": "c",
+    "change": "\"_c",  # NOTE: we purposely use the black hole register
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "indent": ">",
     "unindent": "<",
@@ -236,7 +236,7 @@ commands_with_motion = {
 # some characters differ, and also in visual mode they don't have motions
 visual_commands = {
     # normal overlap
-    "change": "c",
+    "change": "\"_c",  # NOTE: we purposely use the black hole register
     "join": "J",
     "clear": "d",  # this is to be consistent with talon generic_editor.talon
     "yank": "y",  # NOTE: conflicts with talon 'yank' alphabet for 'y' key

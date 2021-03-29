@@ -23,7 +23,7 @@ exit terminal:
     key(ctrl-n)
     insert("ZQ")
 
-# shadow are commands are for copying the entire line from a given point
+# shadow are commands are for copying and pasting the entire line from a given point
 shadow <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
@@ -64,7 +64,11 @@ echo <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
     insert("yE")
-    insert(":set nohls\n")
+    user.vim_command_mode(":set nohls\n")
+    # See `:help pattern`
+    # \_s   - match single white space
+    # \{2,} - at least two in a row
+    user.vim_command_mode(":let @+=substitute(strtrans(@+), '\\_s\\{{2,}}', '', 'g')\n")
     user.vim_set_insert_mode()
     edit.paste()
     key(space)
@@ -83,18 +87,20 @@ echo <number_small> <user.ordinals>:
     insert("{ordinals-1}W")
     insert("yE")
     insert(":set nohls\n")
+
     user.vim_set_insert_mode()
     edit.paste()
     key(space)
 
-# yankee are commands are for copying the entire line from a given point
+# yankee are commands are for copying the remaining line from a given point
 yankee <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
     insert("y$")
-    insert(":set nohls\n")
+    user.vim_command_mode(":set nohls\n")
+    user.vim_command_mode(":let @+=substitute(strtrans(@+), '\\_s\\{{2,}}', '', 'g')\n")
     user.vim_set_insert_mode()
-    
+
 yankee <number_small> <user.ordinals>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
@@ -116,5 +122,3 @@ yankee (last <number_small>|<number_small> last):
 # terminal may not trigger depending on what the interactive command is. who
 # had actually needs to be global
 python escape: key(ctrl-])
-
-
