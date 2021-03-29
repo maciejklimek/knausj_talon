@@ -270,6 +270,7 @@ ctx.lists["user.abbreviation"] = {
     "temperature": "temp",
     "temporary": "tmp",
     "temp": "tmp",
+    "terminal": "term",
     "text": "txt",
     "time of check time of use": "toctou",
     "time format": "hh:mm:ss",
