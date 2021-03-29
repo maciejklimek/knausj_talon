@@ -193,7 +193,7 @@ tar ball [extract]: "tar -xvaf "
 tar ball list: "tar -tf "
 (un zip|extract zip): "unzip "
 
-run <word>: "{word}"
+run <word>: "{word} "
 run curl: "curl "
 run double you get: "wget "
 download clip:
