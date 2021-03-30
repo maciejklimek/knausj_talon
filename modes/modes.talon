@@ -1,26 +1,8 @@
-#defines the various mode commands
+
+not mode: sleep
 not mode: user.presentation
 -
-#welcome back:
-#    user.mouse_wake()
-#    user.history_enable()
-#    speech.enable()
-sleep all:
-    user.switcher_hide_running()
-    user.history_disable()
-    user.homophones_hide()
-    user.help_hide()
-    user.mouse_sleep()
-    speech.disable()
-    app.notify("Talon Sleep All Mode")
-(talon|talent) sleep:
-    speech.disable()
-    user.talon_sleep_callback()
-    app.notify("Talon Sleep")
-talon wake:
-    speech.enable()
-    app.notify("Talon Awake")
-    user.talon_wake_callback()
+>>>>>>> upstream/master
 ^dictation mode$:
     mode.disable("sleep")
     mode.disable("command")
@@ -44,3 +26,4 @@ talon wake:
     speech.disable()
     app.notify("Presentation Mode")
     mode.enable("user.presentation")
+

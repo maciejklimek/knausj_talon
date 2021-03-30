@@ -166,6 +166,9 @@ class user_actions:
         actions.user.paste(text)
         actions.edit.left()
 
+    def code_default_function(text: str):
+        actions.user.code_public_function(text)
+
     def code_private_function(text: str):
         """Inserts private function declaration"""
         result = "def _{}():".format(
