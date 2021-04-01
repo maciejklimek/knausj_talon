@@ -28,7 +28,6 @@ shadow <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
     insert("y$")
-    insert(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()
     key(space)
@@ -54,7 +53,6 @@ shadow <number_small> <user.ordinals>:
     key('0')
     insert("{ordinals-1}W")
     insert("y$")
-    insert(":set nohls\n")
     user.vim_set_insert_mode()
     edit.paste()
     key(space)
@@ -86,7 +84,6 @@ echo <number_small> <user.ordinals>:
     key('0')
     insert("{ordinals-1}W")
     insert("yE")
-    insert(":set nohls\n")
 
     user.vim_set_insert_mode()
     edit.paste()
@@ -97,7 +94,6 @@ yankee <number_small>:
     user.vim_normal_mode_exterm("{number_small}k")
     key('0')
     insert("y$")
-    user.vim_command_mode(":set nohls\n")
     user.vim_command_mode(":let @+=substitute(strtrans(@+), '\\_s\\{{2,}}', '', 'g')\n")
     user.vim_set_insert_mode()
 
@@ -106,7 +102,6 @@ yankee <number_small> <user.ordinals>:
     key('0')
     insert("{ordinals-1}W")
     insert("y$")
-    insert(":set nohls\n")
     user.vim_set_insert_mode()
 
 yankee (last <number_small>|<number_small> last):
