@@ -104,6 +104,7 @@ def unmodified_key(m) -> str:
     "A single key with no modifiers"
     return str(m)
 
+
 @mod.capture(
     rule="( <self.letter> | <self.number_key> | <self.symbol_key> "
     "| <self.arrow_key> | <self.function_key> | <self.special_key> )"
@@ -143,7 +144,7 @@ modifier_keys = {
     "shift": "shift",  #'sky':     'shift',
     "super": "super",
 }
-if app.platform  == "mac":
+if app.platform == "mac":
     modifier_keys["command"] = "cmd"
     modifier_keys["option"] = "alt"
 ctx.lists["self.modifier_key"] = modifier_keys
@@ -254,12 +255,13 @@ if app.platform in ("windows", "linux"):
     alternate_keys["menu key"] = "menu"
     alternate_keys["print screen"] = "printscr"
 
-keys = {k: k for k in simple_keys}
-keys.update(alternate_keys)
-ctx.lists["self.special_key"] = keys
+special_keys = {k: k for k in simple_keys}
+special_keys.update(alternate_keys)
+ctx.lists["self.special_key"] = special_keys
 ctx.lists["self.function_key"] = {
     f"F {default_f_digits[i]}": f"f{i + 1}" for i in range(12)
 }
+
 
 @mod.action_class
 class Actions:
