@@ -65,6 +65,7 @@ def populate_shell_tags(shell_command):
         "gdb": "user.gdb",
         "htop": "user.htop",
         "taskwarrior-tui": "user.taskwarrior_tui",
+        "~/.talon/bin/repl": "user.talon_repl",
     }
     # XXX - there's probably a better way to deal with this
     fuzzy_shell_tags = {
