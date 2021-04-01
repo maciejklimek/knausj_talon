@@ -5,16 +5,17 @@ mode: user.terminal
 mode: command
 and tag: terminal
 -
-list file: "ls "
-list here: "ls\n"
-list long: "ls -al "
-list long here: "ls -al\n"
-list latest: "ls -Art | tail -n1\n"
-list folders: "ls -d */\n"
-# finds
-list sim links: "find . -maxdepth 1 -type l  -ls\n"
-list (directories|folders): "find . -maxdepth 1 -type d  -ls\n"
-list files: "find . -maxdepth 1 -type f  -ls\n"
+file list: "ls "
+file list here: "ls\n"
+file list long: "ls -al "
+file list long here: "ls -al\n"
+file list latest: "ls -Art | tail -n1\n"
+file list folders: "ls -d */\n"
+
+# find command
+file find all links: "find . -maxdepth 1 -type l  -ls\n"
+file find all folders: "find . -maxdepth 1 -type d  -ls\n"
+file fine all files: "find . -maxdepth 1 -type f  -ls\n"
 
 # TODO - revisit the grammar for $() commands
 call list latest: "$(ls -Art | tail -n1)"
@@ -36,7 +37,7 @@ file remove: "rm "
 (file|folder) remove recurse: "rm -rI "
 file diff: "diff "
 # find
-file file: "find . -name "
+file find: "find . -name "
 file fuzzy [find]:
     insert("find . -name \"**\"")
     key("left")
@@ -82,15 +83,14 @@ remove (dur|dear|dir|directory): "rmdir "
 remove (dur|dear|dir|directory) <user.text>: "rmdir {text}"
 
 # tree
-tree: "tree -f -L 2\n"
-tree more: "tree -f -L "
-tree long: "tree -f -L 2 -p\n"
-tree all: "tree -f -L 2 -a\n"
-tree folders: "tree -f -L 2 -d\n"
-tree depth <number_small>: "tree -f -L {number_small}\n"
+file tree: "tree -f -L 2\n"
+file tree more: "tree -f -L "
+file tree long: "tree -f -L 2 -p\n"
+file tree all: "tree -f -L 2 -a\n"
+file tree folders: "tree -f -L 2 -d\n"
+file tree depth <number_small>: "tree -f -L {number_small}\n"
 
-
-pop (dur|dear|dir|directory): "popd\n"
+folder pop: "popd\n"
 
 # permissions
 make executable: "chmod +x "
