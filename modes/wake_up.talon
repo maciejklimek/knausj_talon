@@ -1,11 +1,7 @@
 #defines the commands that sleep/wake Talon
 mode: all
 -
-^welcome back$:
-    user.mouse_wake()
-    user.history_enable()
-    user.talon_mode()
-^sleep all$:
+sleep all:
     user.switcher_hide_running()
     user.history_disable()
     user.homophones_hide()
@@ -13,6 +9,12 @@ mode: all
     user.mouse_sleep()
     speech.disable()
     user.engine_sleep()
-^talon sleep$: speech.disable()
-^talon wake$: speech.enable()
-
+    app.notify("Talon Sleep All Mode")
+(talon|talent) sleep:
+    speech.disable()
+    user.talon_sleep_callback()
+    app.notify("Talon Sleep")
+talon wake:
+    speech.enable()
+    app.notify("Talon Awake")
+    user.talon_wake_callback()

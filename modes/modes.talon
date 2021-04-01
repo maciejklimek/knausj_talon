@@ -2,7 +2,6 @@
 not mode: sleep
 not mode: user.presentation
 -
->>>>>>> upstream/master
 ^dictation mode$:
     mode.disable("sleep")
     mode.disable("command")
