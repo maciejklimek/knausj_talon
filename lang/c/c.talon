@@ -108,17 +108,15 @@ action(user.code_block_comment_suffix): "*/"
 ^static funky <user.text>$: user.code_private_static_function(text)
 
 
-# XXX - make these generic in programming, as they will match cpp, etc
 state define: "#define "
 state undefine: "#undef "
 state if define: "#ifdef "
 
-# XXX - preprocessor instead of pre?
-state pre if: "#if "
-state error: "#error "
-state pre else if: "#elif "
-state pre end: "#endif "
-state pragma: "#pragma "
+state hash if: "#if "
+state hash error: "#error "
+state hash else if: "#elif "
+state hash end end: "#endif "
+state hash pragma: "#pragma "
 state default: "default:\nbreak;"
 
 #control flow
