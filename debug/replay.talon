@@ -3,7 +3,7 @@
 #tag: user.record_replay
 -
 
-replay last file: user.replay_last_recording()
+replay last (file|recording): user.replay_last_recording()
 replay last saved: user.replay_last_saved()
 replay (pick|select): user.replay_recording_choose()
 replay save last: user.replay_save_last()

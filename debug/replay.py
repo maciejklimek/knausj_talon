@@ -106,6 +106,8 @@ def raise_replay_picker():
 class Actions:
     def replay_recording_choose():
         """Opens an UI for picking a recording to replay """
+        # XXX - make this system generic and configurable
+        os.system("playerctl pause")
         raise_replay_picker()
 
     def replay_picker_hide():
