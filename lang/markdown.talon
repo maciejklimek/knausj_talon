@@ -1,4 +1,6 @@
-mode: user.markdown
+mode: command
+and user.markdown: user.markdown
+
 mode: command
 and code.language: markdown
 -
@@ -14,3 +16,4 @@ link clip:
 
 # XXX - turn the word under the cursor into a link
 # link this:
+
