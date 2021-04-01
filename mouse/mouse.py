@@ -434,11 +434,6 @@ class Actions:
             # resources/talon_plugins/eye_zoom_mouse.py
             eye_zoom_mouse.zoom_mouse.on_pop(0)
 
-    def pop():
-        """pop action overrideable by contexts"""
-        actions.user.mouse_zoom()
-
-
 def show_cursor_helper(show):
     """Show/hide the cursor"""
     if app.platform == "windows":
@@ -473,23 +468,10 @@ def show_cursor_helper(show):
     else:
         ctrl.cursor_visible(show)
 
-def on_pop(active):
-    actions.user.pop()
-
-def on_hiss(active):
-    print("hissing")
-
 
 if setting_mouse_enable_on_startup.get() >= 1:
     mouse_wake()
 
-try:
-    noise.register("pop", on_pop)
-    # noise.register("hiss", on_hiss)
-except talon.lib.cubeb.CubebError as e:
-    app.notify("Failed to register pop. Is possible audio error")
-    print("Failed to register pop. Is possible audio error")
-    print(e)
 
 
 def mouse_scroll(amount):
