@@ -103,9 +103,12 @@ change line: user.vim_normal_mode("cc")
 swap characters:
     user.vim_normal_mode("x")
     user.vim_normal_mode("p")
-# XXX - the word swap doesn't actually work
+
+# NOTE: this handles spaces
 swap words:
-    user.vim_normal_mode("dww")
+    user.vim_normal_mode("de")
+    user.vim_normal_mode('"_xw')
+    user.vim_insert_mode(" ")
     user.vim_normal_mode("P")
 swap lines:
     user.vim_normal_mode("dd")
@@ -539,7 +542,7 @@ run as sandbox:
 
 remove trailing white space: user.vim_normal_mode(":%s/\\s\\+$//e\n")
 (remove all|normalize) tabs: user.vim_normal_mode(":%s/\\t/    /eg\n")
-normalize spaces: user.vim_normal_mode(":%s/\S\zs\s\+/ /g")
+normalize spaces: user.vim_normal_mode(":%s/\\S\\zs\\s\\+/ /g")
 (delete|trim) empty lines:
     insert(":")
     sleep(100ms)
