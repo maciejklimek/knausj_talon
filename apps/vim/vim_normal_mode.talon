@@ -1,6 +1,6 @@
 win.title: /VIM MODE:n/
 -
-tag: user.vim_normal_mode()
+tag: user.vim_normal_mode
 
 # These differ slightly if we're in normal mode versus visual mode. in normal
 # mode we select up we want to select the current line in the one above, as
