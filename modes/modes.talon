@@ -10,11 +10,6 @@ not mode: user.presentation
     user.code_clear_language_mode()
     mode.disable("user.gdb")
 
-^talon mode$:
-    mode.disable("sleep")
-    mode.disable("dictation")
-    mode.enable("command")
-    app.notify("Command Mode")
 
 ^presentation mode$:
     user.switcher_hide_running()
