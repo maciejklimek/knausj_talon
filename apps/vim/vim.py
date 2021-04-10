@@ -1054,13 +1054,13 @@ class VimMode:
             print(s)
 
     def is_normal_mode(self):
-        return self.current_mode == "n"
+        return self.current_mode in ["n", "niI"]
 
     def is_visual_mode(self):
         return self.current_mode in ["v", "V", "^V"]
 
     def is_insert_mode(self):
-        return self.current_mode == "i"
+        return self.current_mode in ["i", "ic"]
 
     def is_terminal_mode(self):
         return self.current_mode == "t"
