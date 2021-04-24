@@ -22,10 +22,12 @@ call list latest: "$(ls -Art | tail -n1)"
 
 # TODO - somehow make this scriptable to print anything
 file edit latest: "edit $(ls -Art | tail -n1)\n"
+file latest: "$(ls -Art | tail -n1)"
 file link: "ln -s "
 file link force: "ln -sf "
 file hard link: "ln "
 file move: "mv "
+file open: "vim "
 file touch: "touch "
 file copy: "cp "
 file type: "file "
@@ -33,8 +35,8 @@ file show <user.text>: "cat {text}"
 file show: "cat "
 file edit: insert("edit ")
 file edit here: insert("edit .\n")
-file remove: "rm "
-(file|folder) remove recurse: "rm -rI "
+file remove: "rm -I "
+(file|folder) remove recurse: "rm -rIf "
 file diff: "diff "
 # find
 file find: "find . -name "
@@ -75,6 +77,7 @@ pivot next:
     insert("ls\n")
 
 pivot (last|flip): "cd -\n"
+pivot latest: "cd $(ls -Art | tail -n1)\n"
 
 
 make (dur|dear|dir|directory): "mkdir -p "
@@ -91,6 +94,8 @@ file tree folders: "tree -f -L 2 -d\n"
 file tree depth <number_small>: "tree -f -L {number_small}\n"
 
 folder pop: "popd\n"
+# pwd | tr -d \\n\\r | xclip -sel clipboard
+folder yank path: "pwd | tr -d \\\\n\\\\r | xclip -sel clipboard\n"
 
 # permissions
 make executable: "chmod +x "
@@ -196,6 +201,7 @@ tar ball list: "tar -tf "
 run <word>: "{word} "
 run curl: "curl "
 run double you get: "wget "
+web get: "wget "
 download clip:
     insert("wget ")
     edit.paste()
@@ -210,6 +216,7 @@ run top: "htop\n"
 run vim: "vim "
 run make: "make\n"
 run see make: "cmake "
+run configure make: "./configure && make\n"
 
 sub command:
     insert("$()")
