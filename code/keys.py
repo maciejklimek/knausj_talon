@@ -174,7 +174,7 @@ punctuation_words = {
     "percent sign": "%",
     "at sign": "@",
     "and sign": "&",
-    "ampersand": "&",
+    "amper": "&",
 }
 symbol_key_words = {
     "grave": "`",
@@ -231,15 +231,15 @@ ctx.lists["self.arrow_key"] = {
 
 
 simple_keys = [
-    "backspace",
+#    "backspace",
     "end",
     "enter",
     "escape",
     "home",
-    "insert",
-    "pagedown",
-    "pageup",
-    "space",
+#    "insert",
+#    "pagedown",
+#    "pageup",
+#    "space",
     "tab",
 ]
 
