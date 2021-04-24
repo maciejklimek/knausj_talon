@@ -46,6 +46,7 @@ tag(): user.vim_fern
 tag(): user.vim_fern_mapping_fzf
 tag(): user.vim_floaterm
 tag(): user.vim_fzf
+tag(): user.vim_mkdx
 tag(): user.vim_nerdtree
 tag(): user.vim_obsession
 tag(): user.vim_plug
@@ -119,7 +120,7 @@ settings():
     user.vim_use_rpc = 1
 
     # Adds debug output to the talon log
-    user.vim_debug = 0
+    user.vim_debug = 1
 
 
 ###
@@ -392,6 +393,18 @@ split (move to|make) tab:
     key(ctrl-w)
     key(=)
 
+# this is for easily isolating a split in the middle of a window to make it
+# easier to read well full screen
+# XXX - we can calculate this automatically using the trick here:
+# https://stackoverflow.com/questions/12952479/how-to-center-horizontally-the-contents-of-the-open-file-in-vim
+split zen mode:
+    user.vim_set_normal_mode_exterm()
+    insert(":topleft vnew\n")
+    insert(":botright vnew\n")
+    key(ctrl-w)
+    key(=)
+    key(ctrl-w h)
+
 # atm comboing these with ordinals is best, but may add number support
 split taller:
     user.vim_set_normal_mode_exterm()
@@ -555,10 +568,10 @@ set file format unix:
 ###
 # Session
 ###
-(make|save) session: user.vim_command_mode_exterm(":mksession ")
-force (make|save) session: user.vim_command_mode_exterm(":mksession! ")
-# XXX - this should be made into a setting
-(load|open) session: user.vim_command_mode_exterm(":source ~/.vim/sessions/")
+session save: user.vim_command_mode_exterm(":mksession ")
+session force save: user.vim_command_mode_exterm(":mksession! ")
+# XXX - this path could be made into a setting
+session load: user.vim_command_mode_exterm(":source ~/.vim/sessions/")
 
 ###
 # Macros and registers ''

@@ -77,12 +77,16 @@ pivot (parent|back):
     user.vim_command_mode(":lcd ..\n")
 pivot select: 
     user.vim_command_mode(":lcd ")
+file yank path: 
+    user.vim_command_mode(":let @+ = expand('%:p')\n")
+
+
 
 # For when the VIM cursor is hovering on a path
 open [this] link: user.vim_normal_mode("gx")
 open this file: user.vim_normal_mode("gf")
 open this file offset: user.vim_normal_mode("gF")
-open this file in [split|window]:
+(river this|open this file in [split|window]):
     user.vim_set_normal_mode()
     key(ctrl-w)
     key(f)
@@ -90,6 +94,7 @@ open this file in vertical [split|window]:
     user.vim_command_mode(":vertical wincmd f\n")
 pillar this:
     user.vim_command_mode(":vertical wincmd f\n")
+
 
 ###
 # Navigation, movement and jumping
@@ -122,7 +127,7 @@ change line: user.vim_normal_mode("cc")
 # XXX - technically these might be doable in command line mode, but life should
 # become default talon and actions
 # XXX - this might be suited for some automatic motion thing in vim.py
-swap characters:
+swap (char|characters):
     user.vim_normal_mode("x")
     user.vim_normal_mode("p")
 
@@ -204,6 +209,10 @@ yank line <number>$:
     user.vim_command_mode(":{number}y\n")
     user.vim_command_mode("p")
 (dup|duplicate) line: user.vim_normal_mode_np("Yp")
+
+paste below:
+    user.vim_normal_mode_np("o")
+    user.vim_normal_mode("p")
 
 # start ending at end of file
 file append:

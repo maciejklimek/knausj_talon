@@ -1,14 +1,12 @@
 # see doc/vim.md
 # TODO:
-# - define all the lists separately and then update ctx.lists only once
+# - define all the lists separately and then, update ctx.lists only once
 # - document that visual selection mode implies terminal escape
 # - add setting for disabling local terminal escape when running inside
 #   remote vim sessions via ssh, etc
 # - import and test scenario where the mode isn't listed at all
 # - add test cases
-# - support pasting text instead of insert, requires special overriding of
 # - add VISUAL_BLOCK versions of all of the selection commands
-# paste for command mode
 
 import time
 import enum
@@ -49,6 +47,7 @@ plugin_tag_list = [
     "vim_grammarous",
     "vim_markdown",
     "vim_markdown_toc",
+    "vim_mkdx",
     "vim_nerdtree",
     "vim_obsession",
     "vim_plug",
@@ -271,11 +270,13 @@ ctx.lists["self.vim_motion_commands"] = list(
 motions = {
     "back": "b",
     "big back": "B",
+    "backie": "B",
     "tip": "e",
     "big tip": "E",
     "word": "w",
     # "words": "w",
     "big word": "W",
+    "biggie": "W",
     # "big words": "W",
     "tail": "ge",
     "big tail": "gE",
@@ -1026,11 +1027,21 @@ class VimMode:
     VISUAL_BLOCK = 4
     INSERT = 5
     TERMINAL = 6
-    COMMAND = 7
+    COMMAND = 7  # XXX - technically this should be called COMMAND_LINE
     REPLACE = 8
-    VREPLACE = 9
+    VREPLACE = 9  # XXX - call this VISUAL_REPLACE to be consistent
 
-    # XXX - not really necessary here, but just used to sanity check for now
+    # This is replicated from :help mode()
+    vim_modes_new = {
+        "NORMAL": {
+            "mode": "n",
+            "desc": "Normal"
+        }
+    }
+
+    #modes = enum.Enum("NORMAL VISUAL")
+
+    # XXX - incomplete see :help mode
     vim_modes = {
         "n": "Normal",
         "no": "N Operator Pending",
@@ -1171,7 +1182,7 @@ class VimMode:
         cur = self.current_mode_id()
         if type(valid_mode_ids) != list:
             valid_mode_ids = [valid_mode_ids]
-        self.dprint(f"from {cur} to {valid_mode_ids}")
+        self.dprint(f"Want to adjust from from {cur} to one of {valid_mode_ids}")
         if cur not in valid_mode_ids:
             # Just favor the first mode match
             self.set_mode(
