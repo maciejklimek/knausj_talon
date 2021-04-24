@@ -291,8 +291,8 @@ class Actions:
 
 ctx.lists["self.formatters"] = formatters_words.keys()
 ctx.lists["self.prose_formatter"] = {
-    "say": "NOOP",
-    "speak": "NOOP",
+    "phrase": "NOOP",
+    #"speak": "NOOP",
     "sentence": "CAPITALIZE_FIRST_WORD",
 }
 
