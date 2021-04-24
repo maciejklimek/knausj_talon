@@ -39,6 +39,7 @@ extension_lang_map = {
     ".codeql": "ql",
     ".cpp": "cplusplus",
     ".cs": "csharp",
+    ".elm": "elm",
     ".gdb": "gdb",
     ".go": "go",
     ".h": "c",
@@ -68,6 +69,7 @@ extension_lang_map = {
     ".vimrc": "vimscript",
     ".yaml": "yaml",
     ".yml": "yaml",
+    ".zsh": "zsh",
 }
 
 # This list can be indirectly updated by othher modules when they know at some
