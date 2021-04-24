@@ -24,8 +24,20 @@ docker (image|images) list:
     insert("sudo docker images\n")
 docker image prune:
     insert("sudo docker image prune\n")
+docker image prune label:
+    insert("sudo docker image prune --filter label=")
 docker image remove:
     insert("sudo docker image rm ")
+docker image inspect:
+    insert("sudo docker images\n")
+    insert("sudo docker image inspect ")
+docker image build:
+    insert("sudo docker image build ")
+docker image label:
+    insert("sudo docker images -f label=")
+docker image label <user.text>:
+    insert("sudo docker images -f label={text}\n")
+
 
 # containers
 docker [container] prune:
@@ -37,6 +49,12 @@ docker [container] list:
 docker [container] remove:
     insert("sudo docker rm ")
 docker [container] stop: "sudo docker stop "
+docker [container] copy:
+    insert("sudo docker cp ")
+docker [container] inspect:
+    insert("sudo docker ps\n")
+    insert("sudo docker inspect ")
+
 
 # volumes
 docker volume list:
