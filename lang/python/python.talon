@@ -143,7 +143,7 @@ state is: " is "
 state is none: " is None"
 state as string: '.decode("utf-8")'
 state as bytes: '.encode("utf-8")'
-F string: 'f""'
+form string: 'f""'
 raw string: 'r""'
 
 
