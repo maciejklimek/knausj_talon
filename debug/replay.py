@@ -101,13 +101,12 @@ def raise_replay_picker():
     actions.mode.enable("user.replay_picker_open")
     gui.freeze()
 
-
 @mod.action_class
 class Actions:
     def replay_recording_choose():
         """Opens an UI for picking a recording to replay """
         # XXX - make this system generic and configurable
-        os.system("playerctl pause")
+        # os.system("playerctl pause")
         raise_replay_picker()
 
     def replay_picker_hide():
@@ -124,12 +123,15 @@ class Actions:
         """Save the selected recording to a preconfigured directory"""
         global rr
 
+        # XXX - this should use a cash list from the gui, because
+        # sometimes it seems out of sync
         file_name = rr.recordings_list[choice - 1]
         print(f"{file_name}")
         shutil.copy(file_name, saved_recording_directory)
         pathlib.Path(file_name)
         rr.last_saved_recording = file_name
         clip.set_text(file_name.name)
+        actions.edit.paste()
 
     def replay_save_last():
         """Save the last recording to a preconfigured directory"""
