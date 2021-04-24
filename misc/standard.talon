@@ -22,10 +22,8 @@ file save: edit.save()
 #(undo that | skunks): edit.undo()
 #redo that: edit.redo()
 
-
+# XXX - should be part of some networking thing
 local host: "127.0.0.1"
-(hex|hexadecimal) [(num|number)] <number>: "0x{number}"
-#hex (num|number) <number>: "0x{number}"
 hyper:
     edit.copy()
     edit.paste()
@@ -50,6 +48,7 @@ add to do: "# XXX - "
 ###
 # Chat
 ###
+# XXX - these could be part of brief
 smiley: ":)"
 sad face: ":("
 big smiley: ":D"
