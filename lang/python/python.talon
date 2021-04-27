@@ -1,5 +1,8 @@
 mode: command
 and code.language: python
+
+mode: command
+tag: user.python_repl
 -
 tag(): user.code_operators
 tag(): user.code_comment
