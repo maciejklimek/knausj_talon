@@ -1261,7 +1261,6 @@ class VimMode:
                 settings.get("user.vim_escape_terminal_mode") is True
                 or escape_terminal is True
             ):
-                # print("escaping")
                 # break out of terminal mode
                 actions.key("ctrl-\\")
                 actions.key("ctrl-n")
@@ -1278,8 +1277,10 @@ class VimMode:
                 # set vim_escape_terminal_mode to 1
                 actions.key("escape")
                 # NOTE: do not wait on mode change here, as we
-                # cannot detect it for the inner thing
+                # cannot detect it
         elif self.is_insert_mode():
+            # XXX - this might need to be a or for no_preserve and
+            # settings.get?
             if (
                 wanted_mode == self.NORMAL
                 and no_preserve is False

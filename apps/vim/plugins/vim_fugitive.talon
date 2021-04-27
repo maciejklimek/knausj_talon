@@ -1,6 +1,7 @@
 tag: user.vim_fugitive
-# XXX - it doesn't currently work if you are in a vim terminal and sitting in a
-# folder that is a git repo
+# NOTE: if you use the git versions of the commands in a terminal
+# that's already inside of a git repo, then the terminal versions will override
+# these ones
 -
 
 (fugitive|git) add (current|this) file: user.vim_command_mode(":G add %\n")
@@ -28,7 +29,10 @@ tag: user.vim_fugitive
 (fugitive|git) split diff: user.vim_command_mode(":Gdiffsplit!")
 (fugitive|git) status: user.vim_command_mode(":G\n")
 (fugitive|git) write: user.vim_command_mode(":G write")
+(fugitive|git) read: user.vim_command_mode(":Gread")
 
+# XXX - they should be somewhere specific to knowing were inside of the
+# diff window
 # merge conflict resolution
 keep (target|left): user.vim_command_mode(":diffget //2\n")
 keep (merge|right): user.vim_command_mode(":diffget //3\n")
