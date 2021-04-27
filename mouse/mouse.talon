@@ -101,7 +101,8 @@ log mouse clicks: user.mouse_log_clicks()
 cancel zoom: user.mouse_cancel_zoom_mouse()
 
 # zoom single click - auto clicks if enabled
-(kiff|eagle): user.mouse_zoom_single_click()
+#(kiff|eagle): user.mouse_zoom_single_click()
+eagle: user.mouse_zoom_single_click()
 
 # zoom single click - auto click even if autoclick setting disabled
 #kick: user.mouse_zoom_auto_single_click()

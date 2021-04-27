@@ -44,6 +44,11 @@ file fuzzy [find]:
     insert("find . -name \"**\"")
     key("left")
     key("left")
+file fuzzy [find] today:
+    insert("find . -mtime -1 -name \"**\"")
+    key("left")
+    key("left")
+
 file hash: "sha256sum "
 file locate: "locate "
 
@@ -135,7 +140,7 @@ net cat: "nc -vv "
 net cat listener: "nc -v -l -p "
 net my I P: "dig +short myip.opendns.com @resolver1.opendns.com\n"
 show hosts file: "cat /etc/hosts\n"
-edit hosts file: "sudo vi /etc/hosts\n"
+edit hosts file: "sudoedit /etc/hosts\n"
 tcp dump: "tcpdump "
 
 generate see tags: "ctags --recurse --exclude=.git --exclude=.pc *"
@@ -186,7 +191,7 @@ so do that:
     edit.line_start()
     insert("sudo ")
     key(enter)
-so do edit: "sudoedit"
+so do edit: "sudoedit "
 d message: "dmesg"
 disk usage: "df -h\n"
 sis cuddle: "sysctl "

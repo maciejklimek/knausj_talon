@@ -1,4 +1,3 @@
-
 # work auto-commands
 (start working|open active work space|load active work session):
     user.system_command_nb("/home/aa/scripts/workflow/work_workspace.sh")
@@ -22,6 +21,7 @@ talon kill:
 pauly restart:
     user.system_command_nb("/home/aa/.config/polybar/launch.sh")
 
+# bluetooth
 blue tooth open:
     user.system_command_nb("rofi-bluetooth")
 
@@ -36,5 +36,8 @@ blue tooth connect:
     key(enter)
     sleep(400ms)
     key(enter)
+
+blue tooth fix audio:
+    user.system_command_nb("/usr/local/bin/a2dp-fix")
 
 over: skip()
