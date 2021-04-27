@@ -8,7 +8,7 @@ settings():
     #set the max number of command lines per page in help
     user.help_max_command_lines_per_page = 50
     # set the max number of contexts display per page in help
-    user.help_max_contexts_per_page = 20
+    user.help_max_contexts_per_page = 40
     # The default amount used when scrolling continuously
     user.mouse_continuous_scroll_amount = 80
     #stop continuous scroll/gaze scroll with a pop
@@ -28,6 +28,8 @@ settings():
     # the default is now 300ms
     speech.timeout = 0.150
     speech.record_all = 1
+    #speech.gain = 100
+    speech.normalize = 1
 
     # Adjust how sensitive picking up commands are.
     # XXX - what is the default?
