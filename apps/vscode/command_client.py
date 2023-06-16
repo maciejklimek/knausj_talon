@@ -356,7 +356,10 @@ class Actions:
         """Issue keystroke to trigger command server to execute command that
         was written to the file.  For internal use only"""
         print("trigger_command_server_command_execution")
-        actions.key("ctrl-shift-alt-q")
+        actions.key("alt-f7")
+        # actions.key("a")
+                # actions.key("ctrl-shift-alt-p")""
+
 
 
 @mac_ctx.action_class("user")

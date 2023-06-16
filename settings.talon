@@ -1,5 +1,6 @@
 -
 settings():
+    key_wait = 2.0
     user.rango_direct_clicking =1
     #adjust the scale of the imgui to my liking
     imgui.scale = 1.3
