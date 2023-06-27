@@ -3,7 +3,7 @@ app: obsidian
 #todo: some sort of plugin, consolidate with teams or something?
 -
 #It would be nice to have  one file both for linux and mac.
-search [<user.text>]$: 
+[go] search [<user.text>]$: 
     key(cmd-u)
     sleep(50ms)
     insert(text or "")
@@ -12,8 +12,8 @@ bullet:
     insert("- ")
 # bullet: user.obsidian_run_command("Toggle bullet list")
 
-dock [<user.text>]$:
-    key(cmd-o)
+lion [<user.text>]$:
+    key(cmd-p)
     sleep(50ms)
     insert(text or "")
 
@@ -23,16 +23,24 @@ create[note] [<user.text>]$:
     insert(text or "")
 
 please [<user.text>]$: 
-    key(cmd-p
+    key(alt-p)
     sleep(50ms)
     insert(text or "")
 
+###############################################################################
+### code block
+###############################################################################
 code block:
     insert('```\n')
-    insert('```')
-    key(left left left)
-    insert('\n')
-    key(up)
+code block sql:
+    insert('```sql\n')
+code block python:
+    insert('```python\n')
+code block typescript:
+    insert('```typescript\n')
+code block css:
+    insert('```css\n')
+
 
 # Daily notes:
 daily show:
@@ -52,25 +60,8 @@ dev tools:
 inspect:
     key(cmd-shift-c)
     
-code python:
-    insert('```python\n')
-    insert('```')
-    key(left left left)
-    insert('\n')
-    key(up)
-    
-code typescript:
-    insert('```typescript\n')
-    insert('```')
-    key(left left left)
-    insert('\n')
-    key(up) 
-code css:
-    insert('```css\n')
-    insert('```')
-    key(left left left)
-    insert('\n')
-    key(up) 
+
+
 
 
     

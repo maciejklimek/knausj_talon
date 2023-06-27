@@ -6,6 +6,9 @@ mod = Module()
 
 @mod.action_class
 class Actions:
+    def go_back():
+        """this is out as description"""
+
     def focus_puppy():
         """this is out as description"""
         window = actions.user.find_window(
@@ -13,7 +16,7 @@ class Actions:
             window_name_regex="Talon-Kitty-Window",
             negate_regex=True,
         )
-        print(window)
+        # print(window)
         if window is not None:
             actions.user.switcher_focus_window(window)
 
@@ -24,7 +27,7 @@ class Actions:
             window_name_regex="Talon-Kitty-Window",
             negate_regex=False,
         )
-        print(window)
+        # print(window)
         if window is not None:
             actions.user.switcher_focus_window(window)
 
