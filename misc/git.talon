@@ -13,20 +13,22 @@ git branch <user.text>: "git branch {text}"
 git checkout: "git checkout "
 git checkout master: "git checkout master\n"
 git checkout main: "git checkout main\n"
+git checkout new: "git checkout -b "
 git checkout <user.text>: "git checkout {text}"
 git cherry pick: "git cherry-pick "
 git cherry pick continue: "git cherry-pick --continue "
 git cherry pick abort: "git cherry-pick --abort "
 git cherry pick skip: "git cherry-pick --skip "
 git clone: "git clone "
-git clone (that|clipboard): 
+git clone (that|clipboard):
     insert("git clone ")
     edit.paste()
     key(enter)
 # Leave \n out for confirmation since the operation is destructive
 git clean everything: "git clean -dfx"
 git commit message <user.text>: "git commit -m '{text}'"
-git commit: "git commit\n"
+git commit: 'git commit -m ""'
+git commit fix: 'git commit -m "fix"\n'
 git diff (colour|color) words: "git diff --color-words "
 git diff: "git diff "
 git diff cached: "git diff --cached\n"
@@ -55,6 +57,9 @@ git push tags: "git push --tags\n"
 git rebase: "git rebase\n"
 git rebase continue: "git rebase --continue"
 git rebase skip: "git rebase --skip"
+git rebase master: "git rebase master\n"
+git rebase main: "git rebase main\n"
+git rebase abort: "git rebase --abort\n"
 git remove: "git rm "
 git (remove|delete) branch: "git branch -d "
 git (remove|delete) remote branch: "git push --delete origin "
@@ -103,4 +108,3 @@ git commit highlighted:
     edit.paste()
     insert("\ngit commit\n")
 
-    

@@ -1,5 +1,3 @@
-os:mac
-mode: user.terminal
 mode: command
 and tag: terminal
 -
@@ -34,7 +32,7 @@ describe: insert("tldr ")
 talon play latest: insert("talon-play-latest\n")
 
 lisa: insert("ls\n")
-    
+
 ###############################################################################
 ### file operations
 ###############################################################################
@@ -45,7 +43,7 @@ file copy: "cp "
 dir copy: "cp -r "
 file type: "file "
 file show: "cat "
-file stat: "stat " 
+file stat: "stat "
 file which: "which "
 get link: insert("readlink -f ")
 
@@ -53,7 +51,7 @@ get link: insert("readlink -f ")
 ###############################################################################
 ### directory navigation
 ###############################################################################
-  
+
 pivot that:
     insert("cd ")
     edit.paste()
@@ -63,12 +61,12 @@ pivot <user.paths>:
     insert("ls\n")
 # pivot up doesn't work with talon
 go parent: "cd ../\n"
-pivot <number_small> back: 
+pivot <number_small> back:
     insert("cd ")
     insert(user.path_traverse(number_small))
     key(enter)
 
-make dir: "mkdir -p"  
+make dir: "mkdir -p"
 go home: "cd\n"
 folder path copy : insert("pwd | tr -d \\\\n\\\\r | pbcopy\n")
 clipboard that:
@@ -79,7 +77,7 @@ clipboard that:
 ###############################################################################
 ### projects directory
 ###############################################################################
-projects go: 
+projects go:
     insert("cd ~/projects\n")
     user.fzf_cd_directory_single_level()
 
@@ -103,7 +101,7 @@ code run: "code "
 
 current folder: "pwd\n"
 
-fish reload: 
+fish reload:
     insert("fish-config-reload\n")
 fish config:
     insert("fish-config\n")
@@ -115,19 +113,19 @@ s q lite browser:
 ###############################################################################
 dotfiles add: insert("yadm add ")
 dotfiles status: insert("yadm status\n")
-dotfiles sync: 
+dotfiles sync:
     insert("yadm add -u\n")
     insert("yadm commit -m 'Changes'\n")
     insert("yadm push -u origin master\n")
 
 # npm stuff
-npm test: 
+npm test:
     insert("npm run test\n")
 copy paste:
     edit.copy()
     edit.paste()
 
-talon repl:insert("talon-repl\n")     
+talon repl:insert("talon-repl\n")
 
 which [<user.text>]:
     insert("which ")
@@ -135,22 +133,23 @@ which [<user.text>]:
 
 cube nine: insert("k9s\n")
 # cluster control:
-#     insert("k0sctrl ")    
+#     insert("k0sctrl ")
 
 vars show: "env\n"
 # Taskfile
-task: insert("task \t")
+task: insert("task \t"|define side)
 
 # vd command
-# vidi: insert("vd ") 
+# vidi: insert("vd ")
 ###############################################################################
 ### ssh stuff
 ###############################################################################
 remote shell: insert("ssh ")
 pink google: insert("ping www.google.com\n")
 pink google d n s: "ping 8.8.8.8\n"
-    
+
 remote shell tesla:
+    key("ctrl-c")
     insert("ssh tesla.maciejk.dev\n")
     sleep(1000ms)
     insert("fish\n")
@@ -158,7 +157,7 @@ remote shell pie|raspberry:
     insert("ssh raspberry.maciejk.dev\n")
     sleep(1000ms)
     # insert("fish\n")
-    
+
 shell logout: insert("exit\n")
 
 
@@ -167,18 +166,23 @@ rsync: insert("rsync -avz ")
 brick: insert("br -h\n")
 brick home: insert("br -h ~/\n")
 brick root: insert("br -h /\n")
-    
+
+pie test: "pytest "
+pie test all:
+    key("ctrl-c")
+    insert("pytest . -s\n")
+
 
 git ui: "gitui\n"
 
 oxy: insert("zi\n")
 
-gitignore: insert(".gitignore ") 
+gitignore: insert(".gitignore ")
 sudo: insert("sudo ")
 unzip: insert("unzip ")
 z f s: insert("zfs \t")
 z pool: insert("zpool \t")
-add sudo: 
+add sudo:
     key(home)
     insert("sudo ")
 add help: insert(" --help ")
@@ -215,7 +219,7 @@ g util copy: insert("gsutil cp ")
 g util move: insert("gsutil mv ")
 
 list: insert("ls ")
- 
+
 ###############################################################################
 ### python stuff
 ###############################################################################

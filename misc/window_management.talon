@@ -6,17 +6,19 @@ focus <user.running_applications>: user.switcher_focus(running_applications)
 running list: user.switcher_toggle_running()
 launch <user.launch_applications>: user.switcher_launch(launch_applications)
 
-snap <user.window_snap_position>: user.snap_window(window_snap_position)
+snap <user.window_snap_position>$: user.snap_window(window_snap_position)
 snap full|sol for|snap for:
     user.snap_window_full()
-snap next full:
+snap next full$:
     user.move_window_next_screen()
+    sleep(100ms)
     user.snap_window_full()
-snap last full:
+snap last full$:
     user.move_window_previous_screen()
+    sleep(100ms)
     user.snap_window_full()
 
-# fido: user.snap_window() 
+# fido: user.snap_window()
 (snap|star|nap|slap) next [screen]: user.move_window_next_screen()
 (snap|star|nap|slap) last [screen]: user.move_window_previous_screen()
 (snap|star|nap|slap) one: user.move_window_to_screen(1)

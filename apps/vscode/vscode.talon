@@ -16,12 +16,13 @@ window close: user.vscode("workbench.action.closeWindow")
 settings():
     speech.timeout = 0.400
     key_wait = 2
-coder <user.vscode_project_names>:
+
+coder <user.vscode_project_names>$:
     user.vscode_open_project(vscode_project_names)
 please [<user.text>]$:
     user.vscode("workbench.action.showCommands")
     insert(user.text or "")
-    
+
 ###############################################################################
 ### Side Bar
 ###############################################################################
@@ -45,8 +46,8 @@ find that$:
     sleep(50ms)
     edit.paste()
     key(enter)
-    
-    
+
+
 replace: user.vscode("editor.action.startFindReplaceAction")
 
 
@@ -61,13 +62,9 @@ panel (close|hide): user.vscode("workbench.action.closePanel")
 
 
 
-deploy:
-    user.vscode("workbench.action.terminal.focus")
-    sleep(150ms)
-    key("ctrl-c")
-    insert("task deploy\n")
-    
-    
+
+
+
 focus side: user.vscode("workbench.action.focusSideBar")
 
 # focus editor: user.vscode("workbench.action.focusActiveEditorGroup")
@@ -99,7 +96,7 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
     user.vscode("workbench.action.quickOpen")
     sleep(100ms)
     insert(text or "")
-    
+
     # # TODO: we would like to limit user.text only to the words appearing in open editors
     # tab [<user.text>]:
     #     user.vscode("workbench.action.showAllEditors")
@@ -107,14 +104,14 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
     #     insert(text or "")
     #     sleep(300ms)
     #     key(enter)
-    
+
 pop (lion|dock) [<user.text>]:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
     user.maybe_sleep(50, text or "")
     key(enter)
-    
-    
+
+
 file duplicate: user.vscode("fileutils.duplicateFile")
 file copy path: user.vscode("copyFilePath")
 file copy relative: user.vscode("copyRelativeFilePath")
@@ -144,14 +141,14 @@ pop symbol:
     user.vscode("workbench.action.showAllSymbols")
     sleep(200ms)
     key(enter)
-    
+
 symbol:
     user.vscode("workbench.action.showAllSymbols")
 symbol find [<user.text>]$:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
     insert(text or "")
-    
+
 symbol search [<user.text>]$:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
@@ -160,7 +157,7 @@ sense [<user.text>]$:
     insert(user.text or "")
     sleep(10ms)
     user.vscode("editor.action.triggerSuggest")
-# ^sense param$:              user.vscode("editor.action.triggerParameterHints")    
+# ^sense param$:              user.vscode("editor.action.triggerParameterHints")
 hint: user.vscode("editor.action.triggerParameterHints")
 
 follow: user.vscode("editor.action.revealDefinition")
@@ -169,14 +166,15 @@ follow: user.vscode("editor.action.revealDefinition")
 (peek|def peek): user.vscode("editor.action.peekDefinition")
 # refs peek: user.vscode("editor.action.referenceSearch.trigger")
 
-(dev side|def side): user.vscode("editor.action.revealDefinitionAside")
+(dev side|def side|define side): user.vscode("editor.action.revealDefinitionAside")
+define: user.vscode("editor.action.revealDefinition")
 type show: user.vscode("editor.action.peekTypeDefinition")
 refs: user.vscode("editor.action.goToReferences")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # open side: user.vscode("search.action.openResultToSide")
 open side: key(ctrl-enter)
-format that: user.vscode("editor.action.formatDocument")
+format doc: user.vscode("editor.action.formatDocument")
 format selection: user.vscode("editor.action.formatSelection")
 imports fix: user.vscode("editor.action.organizeImports")
 problem next: user.vscode("editor.action.marker.nextInFiles")
@@ -211,13 +209,13 @@ go recent [<user.text>]:
     sleep(50ms)
     insert(text or "")
     sleep(250ms)
-    
+
     # Bookmarks. Requires Bookmarks plugin
     # go marks: user.vscode("workbench.view.extension.bookmarks")
     # toggle mark: user.vscode("bookmarks.toggle")
     # go next mark: user.vscode("bookmarks.jumpToNext")
     # go last mark: user.vscode("bookmarks.jumpToPrevious")
-    
+
     # Folding
     # fold that: user.vscode("editor.fold")
     # unfold that: user.vscode("editor.unfold")
@@ -226,7 +224,7 @@ go recent [<user.text>]:
     # fold all: user.vscode("editor.foldAll")
     # unfold all: user.vscode("editor.unfoldAll")
     # fold comments: user.vscode("editor.foldAllBlockComments")
-    
+
     # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 
 ###############################################################################
@@ -235,14 +233,14 @@ go recent [<user.text>]:
 lense branches: user.vscode("gitlens.showBranchesView")
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
-git checkout [<user.text>]:
-    user.vscode("git.checkout")
-    sleep(50ms)
-    insert(text or "")
-git commit [<user.text>]:
-    user.vscode("git.commitStaged")
-    sleep(100ms)
-    user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+# git checkout [<user.text>]:
+#     user.vscode("git.checkout")
+#     sleep(50ms)
+#     insert(text or "")
+# git commit [<user.text>]:
+#     user.vscode("git.commitStaged")
+#     sleep(100ms)
+#     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git commit undo: user.vscode("git.undoCommit")
 git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
@@ -251,10 +249,10 @@ git discard all: user.vscode("git.cleanAll")
 git ignore: user.vscode("git.ignore")
 git merge: user.vscode("git.merge")
 git output: user.vscode("git.showOutput")
-git pull: user.vscode("git.pullRebase")
-git push: user.vscode("git.push")
-git push focus: user.vscode("git.pushForce")
-git rebase: user.vscode("git.rebase")
+# git pull: user.vscode("git.pullRebase")
+# git push: user.vscode("git.push")
+git push force: user.vscode("git.pushForce")
+# git rebase: user.vscode("git.rebase")
 git fetch all: user.vscode("git.fetchAll")
 git rebase abort: user.vscode("git.rebaseAbort")
 git reveal: user.vscode("git.revealInExplorer")
@@ -262,7 +260,7 @@ git revert: user.vscode("git.revertChange")
 revert range: user.vscode("git.revertSelectedRanges")
 git stash: user.vscode("git.stash")
 git stash pop: user.vscode("git.stashPop")
-git status: user.vscode("workbench.scm.focus")
+# git status: user.vscode("workbench.scm.focus")
 (git stage|stage this): user.vscode("git.stage")
 git stage all: user.vscode("git.stageAll")
 git unstage: user.vscode("git.unstage")
@@ -312,7 +310,7 @@ console new:
     user.vscode("workbench.action.createTerminalEditor")
 console side new:
     user.vscode("workbench.action.createTerminalEditorSide")
-    
+
     # Find a better way to switch to terminal in editor tab.
 console switch:
     user.vscode("workbench.action.quickOpen")
@@ -320,9 +318,9 @@ console switch:
     insert("fish")
     sleep(50ms)
     key(enter)
-    
-    
-    
+
+
+
 #Expand/Shrink AST Selection
 select less: user.vscode("editor.action.smartSelect.shrink")
 select (more|this): user.vscode("editor.action.smartSelect.expand")
@@ -336,7 +334,7 @@ keep editor: user.vscode("workbench.action.keepEditor")
 replace here:
     user.replace("")
     key(cmd-alt-l)
-    
+
 hover [show]: user.vscode("editor.action.showHover")
 
 join lines: user.vscode("editor.action.joinLines")
@@ -374,30 +372,31 @@ go line <number>: edit.jump_line(number)
 go line <number> end:
     edit.jump_line(number)
     edit.line_end()
-    
+
     # lend: edit.line_end()
     # bend: edit.line_start()
-    
+
 ###############################################################################
 ### Coping, cutting, cloning, selecting stuff
 ###############################################################################
 copy line down: user.vscode("editor.action.copyLinesDownAction")
 copy line up: user.vscode("editor.action.copyLinesUpAction")
+scratchpad: user.vscode("extension.openScratchpad")
 
 # take <number> line:
 #     user.select_next_lines(number)
-    
+
 # cut <number> line:
 #     user.select_next_lines(number)
 #     sleep(10ms)
 #     key(cmd-x)
-    
+
 # copy <number> line:
 #     user.select_next_lines(number)
 #     key(cmd-c)
 #     sleep(100ms)
 #     key(esc)
-    
+
 # clone <number> line:
 #     user.select_next_lines(number)
 #     key(cmd-c)
@@ -407,17 +406,17 @@ copy line up: user.vscode("editor.action.copyLinesUpAction")
 # (clear|wipe) <number> line:
 #     user.select_next_lines(number)
 #     key(delete)
-    
-    
+
+
     # indentation stuff
 justify:
     key(up end)
     insert("\n")
-    
+
 indent <number> line:
     user.select_next_lines(number)
     edit.indent_more()
-    
+
 dis dent <number> line:
     user.select_next_lines(number)
     edit.indent_less()
@@ -427,18 +426,18 @@ toast accept:
     sleep(100ms)
     key(tab)
     key(enter)
-    
+
 toast focus:
     user.vscode("notifications.focusToasts")
     sleep(100ms)
     key(tab)
-    
-    
+
+
     # is it better to use vscode commands or just keyboard shortcuts?
     # Or I could hide these details and create talon actions and only call these here.
 take this$:
     key(cmd-d)
-    
+
 ###############################################################################
 ### Searching within editor or whole workspace
 ###############################################################################
@@ -452,7 +451,7 @@ take this$:
     user.vscode("workbench.action.findInFiles")
     sleep(50ms)
     edit.paste()
-    
+
 (go search|search) <user.format_text>$:
     user.vscode("workbench.action.findInFiles")
     sleep(50ms)
@@ -467,23 +466,23 @@ take this$:
     key(cmd-d)
     key(cmd-f)
     key(enter)
-    
+
 ###############################################################################
 ### Commenting stuff
 ###############################################################################
 to do [<phrase>]$:
     insert("# TODO(maciejk): ")
     user.dictation_mode(phrase or "")
-    
+
 comment new [<phrase>]$:
     code.toggle_comment()
     user.dictation_mode(phrase or "")
-    
+
 comment <number> line:
     user.select_next_lines(number)
     sleep(10ms)
     user.vscode("editor.action.commentLine")
-    
+
 comment this: code.toggle_comment()
 
 
@@ -494,14 +493,14 @@ proj|project [<user.text>]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")
-    
+
 pop (proj|project) [<user.text>]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")
     user.maybe_sleep(100, text or "")
     key(enter)
-    
+
     # This is for github copilot
 (take it|accept):
     key(tab)
@@ -526,12 +525,12 @@ index:
 call this:
     insert("()")
     key(left)
-    
+
 context:
     key(shift-f10)
-    
-    
-    
+
+
+
 snippets go: user.vscode("snippetExplorer.open")
 snippet create: user.vscode("easySnippet.run")
 command copy id: user.command_copy_id()
@@ -541,10 +540,10 @@ command copy id: user.command_copy_id()
 ###############################################################################
 ^[result] next: key(f4)
     # user.vscode("search.action.focusNextSearchResult")
-    
+
     # TODO: there was a program with command "search limit talon" it was mis recognized.
     # I had to change to "limit search talon" it is a wider problem
-    
+
 limit search talon: user.vscode_lbimit_search("talon")
 limit search python: user.vscode_limit_search("python")
 limit search none: user.vscode_limit_sort("")
@@ -552,7 +551,7 @@ limit search none: user.vscode_limit_sort("")
 ^jump {user.file_shortcuts}$: user.vscode_quick_open(user.file_shortcuts)
 
 bracket jump: user.vscode("editor.action.jumpToBracket")
-# zoom out:user.vscode("workbench.action.zoomOut") 
+# zoom out:user.vscode("workbench.action.zoomOut")
 # zoom in:user.vscode("workbench.action.zoomIn")
 font smaller:user.vscode("editor.action.fontZoomOut")
 font bigger:user.vscode("editor.action.fontZoomIn")
@@ -561,7 +560,7 @@ font bigger:user.vscode("editor.action.fontZoomIn")
 ###############################################################################
 ### split
 ###############################################################################
-# this is taken mainly from andreas, 
+# this is taken mainly from andreas,
 group focus: user.vscode("workbench.action.toggleEditorWidths")
 group one: user.vscode("workbench.action.focusFirstEditorGroup")
 group two: user.vscode("workbench.action.focusSecondEditorGroup")
@@ -569,13 +568,15 @@ group three: user.vscode("workbench.action.focusThirdEditorGroup")
 group next:user.vscode("workbench.action.focusNextGroup")
 group last:user.vscode("workbench.action.focusPreviousGroup")
 
+split new: user.vscode("workbench.action.splitEditor")
 split flip:              user.vscode("workbench.action.toggleEditorGroupLayout")
 split clear:             user.vscode("workbench.action.joinTwoGroups")
+
 split up:                user.vscode("workbench.action.moveEditorToAboveGroup")
 split down:              user.vscode("workbench.action.moveEditorToBelowGroup")
 split left:              user.vscode("workbench.action.moveEditorToLeftGroup")
 split right:             user.vscode("workbench.action.moveEditorToRightGroup")
-split open: 
+copilot split:
     key(ctrl-enter)
     sleep(100ms)
 
@@ -598,22 +599,23 @@ group last: user.vscode("workbench.action.focusPreviousGroup")
 
 
 
-###############################################################################
-### KeyPad shortcuts
-###############################################################################
-key(shift-cmd-alt-ctrl-9):
-    key(cmd-alt-right)
-key(shift-cmd-alt-ctrl-8):
-    key(cmd-alt-left)
-    # asterisk
-key(shift-cmd-alt-ctrl-a):
-    key(cmd-pagedown)
-    # user.vscode("workbench.action.nextEditorInGroup")
-key(shift-cmd-alt-ctrl-/):
-    key(cmd-pageup)
-    # user.vscode("workbench.action.previousEditorInGroup")
-    # hyphen
-key(shift-cmd-alt-ctrl-m):
-    key(cmd-w)
-key(keypad_5):
-    key(ctrl-`)
+
+# ###############################################################################
+# ### KeyPad shortcuts
+# ###############################################################################
+# key(shift-cmd-alt-ctrl-9):
+#     key(cmd-alt-right)
+# key(shift-cmd-alt-ctrl-8):
+#     key(cmd-alt-left)
+#     # asterisk
+# key(shift-cmd-alt-ctrl-a):
+#     key(cmd-pagedown)
+#     # user.vscode("workbench.action.nextEditorInGroup")
+# key(shift-cmd-alt-ctrl-/):
+#     key(cmd-pageup)
+#     # user.vscode("workbench.action.previousEditorInGroup")
+#     # hyphen
+# key(shift-cmd-alt-ctrl-m):
+#     key(cmd-w)
+# key(keypad_5):
+#     key(ctrl-`)

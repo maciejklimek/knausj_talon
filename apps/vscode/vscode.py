@@ -44,6 +44,9 @@ vscode_projects = {
     "cube": "my-kubernetes",
     "updater": "dns-updater",
     "andreas": "andreas",
+    'back': 'backend',
+    'front': 'frontend',
+    'infra': 'infra-dev',
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()

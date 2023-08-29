@@ -1,19 +1,19 @@
 version: "3"
 
 tasks:
-  
+
   upload-cheatsheet:
     desc: '.'
     cmds:
-      - echo "mimic('wake up')" |/Users/maciek/.talon/.venv/bin/repl 
-      - echo "mimic('cheat sheet')" |/Users/maciek/.talon/.venv/bin/repl 
-      - algolia indices clear talon -y 
+      - echo "mimic('wake up')" |/Users/maciek/.talon/.venv/bin/repl
+      - echo "mimic('cheat sheet')" |/Users/maciek/.talon/.venv/bin/repl
+      - algolia indices clear talon -y
       - algolia objects import talon -F /Users/maciek/.talon/user/knausj_talon/maciek/cheatsheet.ndjson
       # Algolia blocked my application due to no usage. I had to create a new profile with the following command
       # algolia profile add --name "my-profile" --app-id "A1H5XIVUQ6" --admin-api-key "XXXXXXXXXXXXXXXXXXXXXXXXX" --default
-      # Previous CLI I was using is DEPRECATED 
-      # - algolia deleteindicespattern -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej` -r 'talon' -x false 
-      # - algolia i -s /Users/maciek/.talon/user/knausj_talon/maciek/cheatsheet.json  -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej`  -n talon 
+      # Previous CLI I was using is DEPRECATED
+      # - algolia deleteindicespattern -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej` -r 'talon' -x false
+      # - algolia i -s /Users/maciek/.talon/user/knausj_talon/maciek/cheatsheet.json  -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej`  -n talon
 
   deploy:
     desc: "."
@@ -23,12 +23,16 @@ tasks:
   deploy-windows:
     desc: "."
     cmds:
-      -  robocopy 'C:\Users\maciej.klimek\projects\knausj_talon' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\' /e /xf .git /xf maciek/experimental /xf .venv
-  pandoc:
+      -  cmd: robocopy 'C:\Users\maciej.klimek\projects\knausj_talon' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon' /e /xf .git /xf maciek/experimental /xf .venv /MIR
+         ignore_error: true
+      -  cmd: robocopy 'C:\Users\maciej.klimek\projects\cursorless-talon' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\cursorless-talon' /e /xf .git /xf maciek/experimental /xf .venv /MIR
+         ignore_error: true
+      -  robocopy 'C:\Users\maciej.klimek\projects\knausj_talon\cursorless-settings' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\cursorless-settings' /e /xf .git /xf maciek/experimental /xf .venv /MIR
+  pandoc-win:
     desc: "."
     cmds:
-      - pandoc -s ~/.talon/user/knausj_talon/maciek/cheatsheet.md -c maciek/cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html
-      - pandoc -s ~/.talon/user/knausj_talon/maciek/cheatsheet_shorter.md -c maciek/cheatsheet.css -f markdown-raw_html -t html -o cheatsheet_shorter.html
+      - pandoc -s 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon\maciek\cheatsheet.md' -c maciek\cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html
+      - pandoc -s 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon\maciek\cheatsheet_shorter.md' -c maciek\cheatsheet.css -f markdown-raw_html -t html -o cheatsheet_shorter.html
   show-cheatsheet:
     desc: "."
     cmds:

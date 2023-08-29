@@ -17,10 +17,11 @@ settings():
 dunder in it: "__init__"
 state (def | deaf | deft): "def "
 self taught: "self."
-pie test: "pytest"
+
 state past: "pass"
 
 ^funky <user.text>$: user.code_default_function(text)
+# ^funky that$: user.code_default_function(text)
 #^pro funky <user.text>$: user.code_protected_function(text)
 ^pub funky <user.text>$: user.code_public_function(text)
 #^static funky <user.text>$: user.code_private_static_function(text)
@@ -47,7 +48,7 @@ toggle imports: user.code_toggle_libraries()
 import <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
     key(end enter)
-    
+
     # print [<user.text>]:
     #     insert("print()")
     #     key(left)
@@ -77,6 +78,6 @@ insert {user.snippets}:
     sleep(30ms)
     insert("{user.snippets}")
     key(enter)
-    
-    
+
+
 run this: user.vscode("python.execInTerminal")
