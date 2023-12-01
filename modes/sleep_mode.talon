@@ -1,12 +1,15 @@
-mode: sleep
-and not mode: user.deep_sleep
+mode: all
+# and not mode: user.deep_sleep
 -
 settings():
     #stop continuous scroll/gaze scroll with a pop
-    user.mouse_enable_pop_stops_scroll = 0
+    
 	#enable pop click with 'control mouse' mode
-	user.mouse_enable_pop_click = 0
+    
+    # Commented because of the WARNING
+    # user.mouse_enable_pop_stops_scroll = 0
+	# user.mouse_enable_pop_click = 0
 
-^wake up  [<phrase>]$: 
-    speech.enable()
+^wake up [<phrase>]$: 
+    user.talon_wake_up()
     user.rephrase(phrase or "")

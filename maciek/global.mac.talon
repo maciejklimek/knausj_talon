@@ -15,7 +15,9 @@ coder [<phrase>]:
     user.rephrase(phrase or "")
 
 puppy [<phrase>]$:
-    user.focus_puppy()
+    key("ctrl-3")
+    user.switcher_focus_and_wait("kitty", 0.5)
+    sleep(100ms)
     user.rephrase(phrase or "")
 
 code search:
@@ -70,8 +72,10 @@ raindrop search [<user.text>]:
 raindrop recent:
      key(cmd-shift-f5)
 
-talon play:user.run_in_fish_shell("talon-play-pre-last")
+talon play: user.run_in_fish_shell("osascript -e 'tell app \"Terminal\" to activate' -e 'tell app \"Terminal\" to do script \"talon-play-latest\"'")
+talon play last:user.run_in_fish_shell("talon-play-pre-last")
 talon restart: user.run_in_fish_shell("talon-restart")
+
 puppy talon: user.focus_talon_window()
 
 ###########################################
@@ -138,19 +142,21 @@ anki basic:
     key(cmd-down)
     key(enter)
 
-insert email: insert("maciej.klimek@gmail.com")
-insert fake email: insert("waldemar.bajka@gmail.com")
-insert full name: insert("Maciej Klimek")
-
+###############################################################################
+### app management
+###############################################################################
 windows: key(ctrl-down)
 all windows: key(ctrl-up)
+switch: key(cmd-tab)
 
 # input method
 input maciek:
     user.system_command("/opt/homebrew/bin/im-select casadelmaciek.inputmethod.MaciekInputMethod")
 input polish:
-    user.system_command("/opt/homebrew/bin/im-select com.apple.keylayout.PolishPro")
-# vimac
+
+###############################################################################
+### vimac
+###############################################################################
 links: key(cmd-alt-shift-f1)
 
 

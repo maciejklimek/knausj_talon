@@ -14,7 +14,7 @@ window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
 settings():
-    speech.timeout = 0.400
+    speech.timeout = 0.300
     key_wait = 2
 
 coder <user.vscode_project_names>$:
@@ -470,21 +470,24 @@ take this$:
 ###############################################################################
 ### Commenting stuff
 ###############################################################################
-to do [<phrase>]$:
+^to do [<phrase>]$:
     insert("# TODO(maciejk): ")
     user.dictation_mode(phrase or "")
 
-comment new [<phrase>]$:
+^comment new [<phrase>]$:
     code.toggle_comment()
     user.dictation_mode(phrase or "")
 
-comment <number> line:
+^comment <number> line:
     user.select_next_lines(number)
     sleep(10ms)
     user.vscode("editor.action.commentLine")
 
 comment this: code.toggle_comment()
 
+comment clone|clomment: 
+    edit.selection_clone()
+    code.toggle_comment()
 
 ###############################################################################
 ### project navigation
@@ -619,3 +622,14 @@ group last: user.vscode("workbench.action.focusPreviousGroup")
 #     key(cmd-w)
 # key(keypad_5):
 #     key(ctrl-`)
+
+###############################################################################
+### Image clicking  
+###############################################################################
+confirm apply:
+        user.mouse_helper_position_save()
+        user.mouse_helper_move_image_relative("2023-11-24_12.05.56.094647.png", 0)
+        sleep(0.05)
+        mouse_click(0)
+        sleep(0.05)
+        user.mouse_helper_position_restore()

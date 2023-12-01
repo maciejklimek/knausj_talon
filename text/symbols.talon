@@ -28,10 +28,10 @@ empty escaped string:
     "\\'\\'"
     key(left)
     key(left)
-(inside parens | args):
+(inside parens | args) | parens:
 	insert("()")
 	key(left)
-inside (squares | list): 
+(inside (squares | list)) | empty list: 
 	insert("[]") 
 	key(left)
 inside (bracket | braces): 

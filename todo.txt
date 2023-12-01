@@ -1,0 +1,6 @@
+snap full sometimes does not work
+x deep sleep does not work
+sound of clicking with mouth, parrot, there is a problem with running `python settings.py`
+print new cheatsheet
+make searching with raycast work again
+

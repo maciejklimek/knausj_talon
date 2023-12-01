@@ -41,6 +41,7 @@ class BrowserActions:
         actions.key("cmd-l")
 
     def copy_address():
+        print('kurwa!!')
         actions.key("cmd-l")
         actions.editor.copy()
 

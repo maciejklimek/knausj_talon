@@ -32,7 +32,10 @@ fuzzy var: key(ctrl-v)
 
 cancel|fucker: key(ctrl-c)
 
-go dir:
+go (dir|dear) [<user.text>]: 
+    user.fzf_cd_directory_single_level()
+
+^go (dir|dear) deep$:
     user.fzf_cd_directory_multi_level()
 
 go dir home:

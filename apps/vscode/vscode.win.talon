@@ -1,4 +1,5 @@
 app: vscode
+os: windows
 -
 deploy:
     user.vscode("workbench.action.terminal.focus")

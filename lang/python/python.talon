@@ -59,6 +59,8 @@ import <user.code_libraries>:
 print:
     insert("print()")
     key(left)
+print fuck:
+    insert("print('kurwa!!')")
 return: insert("return ")
 await: insert("await ")
 a sync: insert("async ")
@@ -79,5 +81,6 @@ insert {user.snippets}:
     insert("{user.snippets}")
     key(enter)
 
-
+import pandas: insert("import pandas as pd\n")
+import os: insert("import os\n")
 run this: user.vscode("python.execInTerminal")
