@@ -1,7 +1,4 @@
-code.language: javascript
-code.language: typescript
-code.language: javascriptreact
-code.language: typescriptreact
+code.language: scala
 -
 tag(): user.code_imperative
 tag(): user.code_object_oriented
@@ -11,8 +8,6 @@ tag(): user.code_comment_block_c_like
 tag(): user.code_data_bool
 tag(): user.code_data_null
 tag(): user.code_functions
-tag(): user.code_functions_common
-tag(): user.code_keywords
 tag(): user.code_libraries
 tag(): user.code_operators_array
 tag(): user.code_operators_assignment
@@ -28,29 +23,17 @@ settings():
     user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
     user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
 
-(op | is) strict equal: " === "
-(op | is) strict not equal: " !== "
-op null else: " ?? "
+state {user.scala_modifier}: insert("{user.scala_modifier} ")
 
-state const: "const "
+state {user.scala_keyword}: insert("{scala_keyword} ")
 
-state let: "let "
+op right arrow: " -> "
+op left arrow: " <- "
+op plus plus: " ++ "
+op subtype: " <: "
 
-state var: "var "
+state match: user.code_state_switch()
 
-state export: "export "
-
-state async: "async "
-
-state await: "await "
-
-dot {user.code_common_member_function}:
-    user.insert_between(".{code_common_member_function}(", ")")
-
-state map: app.notify('ERROR: Command deprecated; please use "dot map"')
-state filter: app.notify('ERROR: Command deprecated; please use "dot filter"')
-state reduce: app.notify('ERROR: Command deprecated; please use "dot reduce"')
-
-state spread: "..."
-
-from import: user.insert_between(' from  "', '"')
+block string:
+    insert('""""""')
+    key("left left left")
