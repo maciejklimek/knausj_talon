@@ -1,6 +1,6 @@
-snap full sometimes does not work
+x snap full sometimes does not work, this is not entirely fixed because I removed window_snap_full function
 x deep sleep does not work
 sound of clicking with mouth, parrot, there is a problem with running `python settings.py`
 print new cheatsheet
-make searching with raycast work again
-
+x make searching with raycast work again
+KeyError: "Action 'user.switcher_focus_and_wait' is not declared."

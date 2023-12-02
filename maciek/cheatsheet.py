@@ -1,7 +1,7 @@
 import re
 from time import sleep
 import uuid
-# import ndjson
+import ndjson
 from talon import Module, actions, registry
 import sys, os
 from talon import Context
@@ -188,7 +188,7 @@ class user_actions:
 
         this_dir = os.path.dirname(os.path.realpath(__file__))
         md_file_path = os.path.join(this_dir, "cheatsheet.md")
-        # ndjson_file_path = os.path.join(this_dir, "cheatsheet.ndjson")
+        ndjson_file_path = os.path.join(this_dir, "cheatsheet.ndjson")
         file_shorter_path = os.path.join(this_dir, "cheatsheet_shorter.md")
         print(md_file_path)
         file = open(md_file_path, "w")
@@ -263,20 +263,18 @@ class user_actions:
                 if create_short_name(key) not in interesting_contexts:
                     omitted.append(create_short_name(key))
                 else:
-
                     pretty_print_context_name(file_shorter, key)
                     write_context_commands(file_shorter, commands)
 
         print("omitted")
         print(omitted)
-        print("all commands")
-        # print(all_commands)
+        print("len all commands from all contexts", len(all_commands))
 
-        # with open(ndjson_file_path, "w") as f:
-        #     writer = ndjson.writer(f, ensure_ascii=False)
+        with open(ndjson_file_path, "w") as f:
+            writer = ndjson.writer(f, ensure_ascii=False)
 
-        #     for command in all_commands:
-        #         writer.writerow(command)
+            for command in all_commands:
+                writer.writerow(command)
         #     # ndjson.dump(all_commands, f)
 
         print(100 * "\n")
