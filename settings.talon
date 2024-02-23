@@ -53,7 +53,7 @@ settings():
     # and input volume on macOS settings is 50%
     # But when I set it to = 0.25  the sound of keyboard clicks is being picked up as activity
     # speech.threshold = 0.1
-    speech.threshold = 0.3 
+    # speech.threshold = .0
 
     speech.timeout = 0.300
     speech.debug = 1

@@ -147,12 +147,12 @@ anki basic:
 ###############################################################################
 windows: key(ctrl-down)
 all windows: key(ctrl-up)
-switch: key(cmd-tab)
+switch: key(cmd-`)
 
 # input method
-input maciek:
-    user.system_command("/opt/homebrew/bin/im-select casadelmaciek.inputmethod.MaciekInputMethod")
-input polish:
+# input maciek:
+#     user.system_command("/opt/homebrew/bin/im-select casadelmaciek.inputmethod.MaciekInputMethod")
+# input polish:
 
 ###############################################################################
 ### vimac
@@ -174,9 +174,9 @@ click up task$:
 polo help coder: user.raycast_talon_search("vscode")
 ^coder project [<user.text>]$: user.raycast_coder_project(text or "")
 ^polo search [<user.text>]$: user.raycast_talon_search(text or "")
-github repo [<user.text>]:
+# github repo [<user.text>]:
 
-
+create note: key("cmd-shift-f8")
 
 lend|(line end): key(cmd-right)
 

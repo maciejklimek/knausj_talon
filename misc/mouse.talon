@@ -1,6 +1,7 @@
 control mouse: user.mouse_toggle_control_mouse()
 zoom mouse: user.mouse_toggle_zoom_mouse()
 camera overlay: user.mouse_toggle_camera_overlay()
+mouse jump: user.teleport_and_track_head()
 run calibration: user.mouse_calibrate()	
 touchy: 
 	mouse_click(0)

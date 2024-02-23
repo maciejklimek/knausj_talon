@@ -1,5 +1,20 @@
 URL,Spoken name
+
 https://www.amazon.pl/,amazon
+https://allegro.pl/,allegro
+https://photos.google.com/,photos
+https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
+https://twitter.com/nexta_tv,nexta
+https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
+https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
+https://www.theverge.com/,the verge
+https://allegro.pl/koszyk,allegro cart
+https://www.frisco.pl/,frisco
+https://libgen.is/,genesis
+https://allegrolokalnie.pl/, allegro local
+https://1337x.to/,torrents
+https://www.youtube.com/,youtube
+
 https://dropbox.com/,dropbox
 https://www.google.com/,google
 https://docs.google.com/document/u/0/,docs
@@ -11,28 +26,13 @@ https://mail.google.com/,gmail
 https://github.com/,github
 https://gist.github.com/,gist
 https://en.wikipedia.org/,wikipedia
-https://www.youtube.com/,youtube
-https://allegro.pl/,allegro
 https://translate.google.com/,translate
-https://photos.google.com/,photos
-https://twitter.com/nexta_tv,nexta
-https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
-https://www.pepper.pl/,pepper
-https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
-https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
-https://1337x.to/,torrents
-https://www.theverge.com/,the verge
-https://allegro.pl/koszyk,allegro cart
 https://ha.maciejk.dev/,home assistant
 https://talon.wiki/unofficial_talon_docs/#/,talon wiki
 https://search.talonvoice.com/search/,polo search
+https://search.talonvoice.com/search/,talon search
 https://scholar.google.com/,google cool
-https://libgen.is/,libgen
-https://libgen.is/,genesis
-https://search.brave.com/,brave search
-https://www.frisco.pl/,frisco
 https://console.cloud.google.com/home/dashboard, cloud
 https://console.cloud.google.com/home/dashboard, console cloud
 https://redminebci.pit.lukasiewicz.gov.pl/, redmine
 https://repobci.pit.lukasiewicz.gov.pl/, gitlab
-https://allegrolokalnie.pl/, allegro local

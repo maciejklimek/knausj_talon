@@ -1,0 +1,12 @@
+{
+  "cluck": {
+    "sounds": ["cyk click"],
+    "threshold": {
+      ">power": 10,
+      ">probability": 0.98
+    },
+    "throttle": {
+      "cluck": 0.12
+    }
+  }
+}

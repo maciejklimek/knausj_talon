@@ -1,5 +1,5 @@
 mode: all
-# and not mode: user.deep_sleep
+and not mode: user.deep_sleep
 -
 settings():
     #stop continuous scroll/gaze scroll with a pop

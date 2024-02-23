@@ -208,9 +208,10 @@ pip|peep:insert("python -m pip ")
 (pip|peep) freeze: insert("python -m pip freeze\n")
 (pip|peep) install: insert("python -m pip install ")
 
-virtual env: insert("python -m venv ")
-virtual activate: insert("source .venv/bin/activate")
-virtual activate fish: insert("source .venv/bin/activate.fish")
+virtual create: insert("python -m venv ./.venv\n")
+virtual: insert("python -m venv ")
+virtual activate bash: insert("source .venv/bin/activate\n")
+virtual activate: insert("source .venv/bin/activate.fish\n")
 
 tar decompress: insert("tar -xvf ")
 

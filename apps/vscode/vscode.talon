@@ -26,7 +26,7 @@ please [<user.text>]$:
 ###############################################################################
 ### Side Bar
 ###############################################################################
-bar switch$: user.vscode("workbench.action.toggleSidebarVisibility")
+bar toggle$: user.vscode("workbench.action.toggleSidebarVisibility")
 # what is the difference with workbench.view.explorer vs action.focusFilesExplorer?
 explore$: user.vscode("workbench.view.explorer")
 bar project$: user.vscode("workbench.view.extension.project-manager")
@@ -161,6 +161,14 @@ sense [<user.text>]$:
 hint: user.vscode("editor.action.triggerParameterHints")
 
 follow: user.vscode("editor.action.revealDefinition")
+
+
+
+follow dumb:
+    edit.select_word()
+    user.vscode("workbench.action.findInFiles")
+    sleep(50ms)
+    insert(text or "")
 
 
 (peek|def peek): user.vscode("editor.action.peekDefinition")
@@ -518,7 +526,14 @@ scratchpad new: user.vscode("scratchpads.newScratchpad")
 folders collapse:
     user.vscode("workbench.files.action.collapseExplorerFolders")
 fix this: user.vscode("editor.action.quickFix")
+
+###############################################################################
+### cursorless
+###############################################################################
 cursorless record: user.vscode("cursorless.recordTestCase")
+cursorless toggle: user.vscode("cursorless.toggleDecorations")
+
+vim toggle: user.vscode("toggleVim")
 
 code time dashboard: user.vscode("codetime.viewDashboard")
 

@@ -6,7 +6,11 @@ mod = Module()
 ctx = Context()
 
 digit_list = "zero one two three four five six seven eight nine".split()
-teens = "ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+# teens = "ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+# I removed "ten" from the teens list because random noises are sometimes recognized as "ten"
+teens = "DOESNOTEXIST eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+# INFO: The above teens list is a hack to prevent the word "ten" from being recognized, because random noises are sometimes recognized as "ten".
+
 tens = "twenty thirty forty fifty sixty seventy eighty ninety".split()
 scales = "hundred thousand million billion trillion quadrillion quintillion sextillion septillion octillion nonillion decillion".split()
 
