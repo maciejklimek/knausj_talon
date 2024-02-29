@@ -28,7 +28,8 @@ please [<user.text>]$:
 ###############################################################################
 bar toggle$: user.vscode("workbench.action.toggleSidebarVisibility")
 # what is the difference with workbench.view.explorer vs action.focusFilesExplorer?
-explore$: user.vscode("workbench.view.explorer")
+# explore$: user.vscode("workbench.view.explorer")
+explore$: user.vscode("filetree.focus")
 bar project$: user.vscode("workbench.view.extension.project-manager")
 ^extensions [focus]$: user.vscode("workbench.view.extensions")
 ^outline [focus]$: user.vscode("outline.focus")
