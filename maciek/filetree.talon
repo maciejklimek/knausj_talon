@@ -8,7 +8,7 @@ chair <user.letters>:
     user.run_rpc_command("talon-filetree.toggleDirectoryOrOpenFile", letters)
 chair parent <user.letters>:
     user.run_rpc_command("talon-filetree.closeParent", letters)
-chair <user.letters> <number>:3
+chair <user.letters> <number>:
     user.run_rpc_command("talon-filetree.expandDirectory", letters, number)
 chair collapse <user.letters>:
     user.run_rpc_command("talon-filetree.expandDirectory", letters, 0)
