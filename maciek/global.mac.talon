@@ -81,12 +81,12 @@ puppy talon: user.focus_talon_window()
 ###########################################
 # Open specific files in knausj_talon
 ###########################################
-polo mac o s:
-    user.vscode_open_project("knausj_talon")
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/macOS.talon")
-    user.switcher_focus_and_wait("code", 0.5)
-    key(cmd-down)
-    key(enter)
+# polo mac o s:
+#     user.vscode_open_project("knausj_talon")
+#     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/macOS.talon")
+#     user.switcher_focus_and_wait("code", 0.5)
+#     key(cmd-down)
+#     key(enter)
 polo obsidian:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/apps/obsidian/obsidian.mac.talon")
     user.switcher_focus_and_wait("code", 0.5)
@@ -171,9 +171,10 @@ click up task$:
     key(t)
 
 
-polo help coder: user.raycast_talon_search("vscode")
+# polo help coder: user.raycast_talon_search("vscode")
+
 ^coder project [<user.text>]$: user.raycast_coder_project(text or "")
-^polo search [<user.text>]$: user.raycast_talon_search(text or "")
+^helmet|polo search [<user.text>]$: user.raycast_talon_search(text or "")
 # github repo [<user.text>]:
 
 create note: key("cmd-shift-f8")
@@ -185,7 +186,9 @@ zoom out: edit.zoom_out()
 post$:
     sleep(1ms)
 
-
+#com.axissecurity.client.ui
+# focus atmos:
+    
 
 
 

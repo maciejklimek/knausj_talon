@@ -41,12 +41,6 @@ mod.list("vscode_file_shortcuts", desc="VSCode file shortcuts")
 vscode_projects = {
     "knaus": "knausj_talon",
     "fish": "fish-config",
-    "cube": "my-kubernetes",
-    "updater": "dns-updater",
-    "andreas": "andreas",
-    'back': 'backend',
-    'front': 'frontend',
-    'infra': 'infra-dev',
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()

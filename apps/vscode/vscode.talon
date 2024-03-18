@@ -28,9 +28,10 @@ please [<user.text>]$:
 ###############################################################################
 bar toggle$: user.vscode("workbench.action.toggleSidebarVisibility")
 # what is the difference with workbench.view.explorer vs action.focusFilesExplorer?
-# explore$: user.vscode("workbench.view.explorer")
+explorer$: user.vscode("workbench.view.explorer")
 explore$: user.vscode("filetree.focus")
 bar project$: user.vscode("workbench.view.extension.project-manager")
+bar testing$: user.vscode("workbench.view.extension.test")
 ^extensions [focus]$: user.vscode("workbench.view.extensions")
 ^outline [focus]$: user.vscode("outline.focus")
 debug$: user.vscode("workbench.view.debug")
@@ -185,6 +186,7 @@ refs: user.vscode("editor.action.goToReferences")
 open side: key(ctrl-enter)
 format doc: user.vscode("editor.action.formatDocument")
 format selection: user.vscode("editor.action.formatSelection")
+format that: user.vscode("editor.action.formatSelection.multiple")
 imports fix: user.vscode("editor.action.organizeImports")
 problem next: user.vscode("editor.action.marker.nextInFiles")
 problem last: user.vscode("editor.action.marker.prevInFiles")
@@ -239,6 +241,10 @@ go recent [<user.text>]:
 ###############################################################################
 ### Git
 ###############################################################################
+open changes: user.vscode("gitlens.diffWithPrevious")
+open changes revision: user.vscode("gitlens.diffWithRevision")
+
+
 lense branches: user.vscode("gitlens.showBranchesView")
 git branch: user.vscode("git.branchFrom")
 git branch this: user.vscode("git.branch")
@@ -293,6 +299,7 @@ debug stop: user.vscode("workbench.action.debug.stop")
 debug continue: user.vscode("workbench.action.debug.continue")
 debug restart: user.vscode("workbench.action.debug.restart")
 debug console: user.vscode("workbench.debug.action.toggleRepl")
+debug shell: user.vscode("workbench.debug.action.toggleRepl")
 
 ###############################################################################
 ### Terminal panel

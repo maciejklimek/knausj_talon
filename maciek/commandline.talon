@@ -175,7 +175,7 @@ pie test all:
 
 git ui: "gitui\n"
 
-oxy: insert("zi\n")
+# oxy: insert("zi\n")
 
 gitignore: insert(".gitignore ")
 sudo: insert("sudo ")
@@ -185,7 +185,7 @@ z pool: insert("zpool \t")
 add sudo:
     key(home)
     insert("sudo ")
-add help: insert(" --help ")
+append|add help: insert(" --help ")
 pager: " | less "
 run last:
     key(up)
