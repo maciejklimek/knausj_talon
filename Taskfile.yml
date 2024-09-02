@@ -20,19 +20,6 @@ tasks:
     cmds:
       - rsync -avz --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon/ ~/.talon/user/knausj_talon
       - rsync -avz --delete --exclude=.git cursorless-settings ~/.talon/user/
-  deploy-windows:
-    desc: "."
-    cmds:
-      -  cmd: robocopy 'C:\Users\maciej.klimek\projects\knausj_talon' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon' /e /xf .git /xf maciek/experimental /xf .venv /MIR
-         ignore_error: true
-      -  cmd: robocopy 'C:\Users\maciej.klimek\projects\cursorless-talon' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\cursorless-talon' /e /xf .git /xf maciek/experimental /xf .venv /MIR
-         ignore_error: true
-      -  robocopy 'C:\Users\maciej.klimek\projects\knausj_talon\cursorless-settings' 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\cursorless-settings' /e /xf .git /xf maciek/experimental /xf .venv /MIR
-  pandoc-win:
-    desc: "."
-    cmds:
-      - pandoc -s 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon\maciek\cheatsheet.md' -c maciek\cheatsheet.css -f markdown-raw_html -t html -o cheatsheet.html
-      - pandoc -s 'C:\Users\maciej.klimek\AppData\Roaming\talon\user\knausj_talon\maciek\cheatsheet_shorter.md' -c maciek\cheatsheet.css -f markdown-raw_html -t html -o cheatsheet_shorter.html
   show-cheatsheet:
     desc: "."
     cmds:

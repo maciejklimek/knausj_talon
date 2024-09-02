@@ -5,6 +5,10 @@ tag(): user.line_commands
 tag(): user.multiple_cursors
 tag(): user.splits
 tag(): user.tabs
+
+tag(): terminal
+tag(): user.git
+tag(): user.fish
 # multiple_cursors.py support end
 
 # Auto complete
@@ -19,7 +23,7 @@ grab <number>: user.idea_grab(number)
 (action | please) <user.text>:
     user.idea("action GotoAction")
     insert(text)
-    # Refactoring
+# Refactoring
 refactor: user.idea("action Refactorings.QuickListPopupAction")
 refactor <user.text>:
     user.idea("action Refactorings.QuickListPopupAction")
@@ -46,10 +50,19 @@ go back: user.idea("action Back")
 go forward: user.idea("action Forward")
 # Search
 find (everywhere | all): user.idea("action SearchEverywhere")
-find (everywhere | all) <user.text> [over]:
+
+[go] search this$:
+    key(cmd-d)
+    key(cmd-c)
     user.idea("action SearchEverywhere")
     sleep(500ms)
-    insert(text)
+    insert(cmd-v)
+
+[go] search <user.format_text>$:
+    user.idea("action SearchEverywhere")
+    sleep(500ms)
+    insert(format_text)
+
 (search | find) class: user.idea("action GotoClass")
 (search | find) file: user.idea("action GotoFile")
 (search | find) path: user.idea("action FindInPath")
@@ -64,7 +77,7 @@ surround [this] with <user.text> [over]:
     idea("action SurroundWith")
     sleep(500ms)
     insert(text)
-    # Making these longer to reduce collisions with real code dictation.
+# Making these longer to reduce collisions with real code dictation.
 insert generated <user.text> [over]:
     user.idea("action Generate")
     sleep(500ms)
@@ -73,7 +86,7 @@ insert template <user.text> [over]:
     idea("action InsertLiveTemplate")
     sleep(500ms)
     insert(text)
-create (template|snippet): user.idea("action SaveAsTemplate")
+create (template | snippet): user.idea("action SaveAsTemplate")
 # Recording
 toggle recording: user.idea("action StartStopMacroRecording")
 change (recording | recordings): user.idea("action EditMacros")
@@ -83,7 +96,7 @@ play recording <user.text> [over]:
     insert(text)
     sleep(500ms)
     Key("enter")
-    # Marks
+# Marks
 go mark: user.idea("action ShowBookmarks")
 toggle mark: user.idea("action ToggleBookmark")
 go next mark: user.idea("action GotoNextBookmark")
@@ -115,7 +128,7 @@ create file <user.text> [over]:
     user.idea("action NewElement")
     sleep(500ms)
     insert(text)
-    # Task Management
+# Task Management
 go task: user.idea("action tasks.goto")
 go browser task: user.idea("action tasks.open.in.browser")
 switch task: user.idea("action tasks.switch")
@@ -129,7 +142,8 @@ git log: user.idea("action Vcs.ShowTabbedFileHistory")
 git browse: user.idea("action Github.Open.In.Browser")
 git (gets | gist): user.idea("action Github.Create.Gist")
 git (pull request | request): user.idea("action Github.Create.Pull.Request")
-git (view | show | list) (requests | request): user.idea("action Github.View.Pull.Request")
+git (view | show | list) (requests | request):
+    user.idea("action Github.View.Pull.Request")
 git (annotate | blame): user.idea("action Annotate")
 git menu: user.idea("action Vcs.QuickListPopupAction")
 # Tool windows:
@@ -209,9 +223,9 @@ fix next (error | air):
 fix last (error | air):
     user.idea("action GotoPreviousError")
     user.idea("action ShowIntentionActions")
-    # Special Selects
+# Special Selects
 select less: user.idea("action EditorUnSelectWord")
-select (more|this): user.idea("action EditorSelectWord")
+select (more | this): user.idea("action EditorSelectWord")
 #jet brains-specific line commands. see line_commands.talon for generic ones
 expand <number> until <number>:
     user.select_range(number_1, number_2)
@@ -230,14 +244,20 @@ clone <number>: user.line_clone(number)
 #find/replace
 clear last <user.text> [over]: user.idea("find prev {text}, action EditorBackSpace")
 clear next <user.text> [over]: user.idea("find next {text}, action EditorBackSpace")
-comment last <user.text> [over]: user.idea("find prev {text}, action CommentByLineComment")
-comment next <user.text> [over]: user.idea("find next {text}, action CommentByLineComment")
+comment last <user.text> [over]:
+    user.idea("find prev {text}, action CommentByLineComment")
+comment next <user.text> [over]:
+    user.idea("find next {text}, action CommentByLineComment")
 go last <user.text> [over]: user.idea("find prev {text}, action EditorRight")
 go next <user.text> [over]: user.idea("find next {text}, action EditorRight")
-paste last <user.text> [over]: user.idea("find prev {text}, action EditorRight, action EditorPaste")
-paste next <user.text> [over]: user.idea("find next {text}, action EditorRight, action EditorPaste")
-refactor last <user.text> [over]: user.idea("find prev {text}, action Refactorings.QuickListPopupAction")
-refactor next <user.text> [over]: user.idea("find next {text}, action Refactorings.QuickListPopupAction")
+paste last <user.text> [over]:
+    user.idea("find prev {text}, action EditorRight, action EditorPaste")
+paste next <user.text> [over]:
+    user.idea("find next {text}, action EditorRight, action EditorPaste")
+refactor last <user.text> [over]:
+    user.idea("find prev {text}, action Refactorings.QuickListPopupAction")
+refactor next <user.text> [over]:
+    user.idea("find next {text}, action Refactorings.QuickListPopupAction")
 replace last <user.text> [over]: user.idea("find prev {text}, action EditorPaste")
 replace next <user.text> [over]: user.idea("find next {text}, action EditorPaste")
 select last <user.text> [over]: user.idea("find prev {text}")

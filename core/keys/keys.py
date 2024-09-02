@@ -212,7 +212,8 @@ symbol_key_words = {
     "star": "*",
     "hash": "#",
     "percent": "%",
-    "caret": "^",
+    # NOTE: I'm removing caret Because its conflicting with "chair" 
+    #"caret": "^",
     "amper": "&",
     "pipe": "|",
     "dub quote": '"',

@@ -233,6 +233,7 @@ class Actions:
         # We should use the capture result directly if it's already in the list
         # of running applications. Otherwise, name is from <user.text> and we
         # can be a bit fuzzier
+        print(running_application_dict)
         if name not in running_application_dict:
             if len(name) < 3:
                 raise RuntimeError(
@@ -258,6 +259,13 @@ class Actions:
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
         actions.user.switcher_focus_app(app)
+
+    def switcher_focus_and_wait(name: str, wait_time_in_seconds: float = 0.0):
+        """Focus a new application by name"""
+        app = actions.user.get_running_app(name)
+        actions.user.switcher_focus_app(app)
+        actions.sleep(wait_time_in_seconds)
+        
 
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""

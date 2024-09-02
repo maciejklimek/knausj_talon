@@ -64,5 +64,6 @@ class Actions:
 
     def search_with_search_engine(search_template: str, search_text: str):
         """Search a search engine for given text"""
+        
         url = search_template.replace("%s", quote_plus(search_text))
         webbrowser.open(url)

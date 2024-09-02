@@ -10,14 +10,10 @@ znak zapytania: "?"
 myślnik: "-"
 # (skończ|kończ|kończy) [<phrase>]$:   user.command_mode(phrase or "")
 
-(post|Post)$:
-    mode.disable("dictation")
-    mode.disable("user.polish")
-    mode.enable("command")
+(post|Post)$: user.webspeech_polish_dictation_mode_disable()
 
 
 # (post|Post) [<phrase>]$w,h
-h  
 #      user.command_mode(phrase or "")
 masował m: auto_insert("masowałem")
 

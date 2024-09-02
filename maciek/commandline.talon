@@ -93,7 +93,7 @@ now rip that:
     insert("| rg -i ")
 
 
-make executable: "chmod +x "
+make executable|exec: "chmod +x "
 
 top run: "top\n"
 vim run: "vim "
@@ -101,7 +101,7 @@ code run: "code "
 
 current folder: "pwd\n"
 
-fish reload:
+fish config reload:
     insert("fish-config-reload\n")
 fish config:
     insert("fish-config\n")

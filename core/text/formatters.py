@@ -132,11 +132,13 @@ formatters_dict = {
         if i == 0 or word not in words_to_keep_lowercase
         else word,
     ),
+    "UNDERSCORE_SEPARATED_ALL_CAPS": (NOSEP, first_vs_rest(lambda w: w.upper(), lambda w: "_" + w.upper())),
 }
 
 # This is the mapping from spoken phrases to formatters
 formatters_words = {
     "all cap": formatters_dict["ALL_CAPS"],
+    "var cap": formatters_dict["UNDERSCORE_SEPARATED_ALL_CAPS"],
     "all down": formatters_dict["ALL_LOWERCASE"],
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "dotted": formatters_dict["DOT_SEPARATED"],

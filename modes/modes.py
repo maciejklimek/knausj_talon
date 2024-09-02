@@ -1,51 +1,72 @@
-from talon import Context, Module, app, actions, speech_system
+from talon import Module, actions, cron
+from talon.grammar import Phrase
+from typing import Union
 
 mod = Module()
-
-modes = {
-    "admin": "enable extra administration commands terminal (docker, etc)",
-    "debug": "a way to force debugger commands to be loaded",
-    "gdb": "a way to force gdb commands to be loaded",
-    "ida": "a way to force ida commands to be loaded",
-    "presentation": "a more strict form of sleep where only a more strict wake up command works",
-    "windbg": "a way to force windbg commands to be loaded",
-    "deep_sleep": "a mode from which it is much harder to wake up",
-    "webspeech_polish_dictation": "polish dictation mode",
-    "webspeech_english_dictation": "dictation using web speech engine",
-    "text_field": "This is for commands like 'go_search', where we are in a text field and want to press enter  upon word 'go'",
-}
-
-for key, value in modes.items():
-    mod.mode(key, value)
 
 
 @mod.action_class
 class Actions:
-    def talon_mode():
-        """For windows and Mac with Dragon, enables Talon commands and Dragon's command mode."""
-        actions.speech.enable()
+    def text_field_mode(phrase: Union[Phrase, str] = None):
+        """Enter dictation mode and re-evaluate phrase"""
+        # We should get the current mode instead of the "command" mode here.
+        actions.mode.disable("command")
+        actions.mode.enable("user.text_field")
 
-        engine = speech_system.engine.name
-        # app.notify(engine)
-        if "dragon" in engine:
-            if app.platform == "mac":
-                actions.user.engine_sleep()
-            elif app.platform == "windows":
-                actions.user.engine_wake()
-                # note: this may not do anything for all versions of Dragon. Requires Pro.
-                actions.user.engine_mimic("switch to command mode")
+        if phrase:
+            actions.user.rephrase(phrase, run_async=True)
 
-    def dragon_mode():
-        """For windows and Mac with Dragon, disables Talon commands and exits Dragon's command mode"""
-        engine = speech_system.engine.name
-        # app.notify(engine)
+    def command_mode(phrase: Union[Phrase, str] = None):
+        """Enter command mode and re-evaluate phrase"""
+        # I checked and I couldn't find a method to get the current mode. so as a hack we are disabling all possible modes.
+        print("Entering command mode")
+        actions.mode.disable("dictation")
+        actions.mode.disable("user.webspeech_polish_dictation")
+        actions.mode.disable("user.whisper")
+        actions.mode.disable("user.text_field")
 
-        if "dragon" in engine:
-            # app.notify("dragon mode")
-            actions.speech.disable()
-            if app.platform == "mac":
-                actions.user.engine_wake()
-            elif app.platform == "windows":
-                actions.user.engine_wake()
-                # note: this may not do anything for all versions of Dragon. Requires Pro.
-                actions.user.engine_mimic("start normal mode")
+        actions.mode.enable("command")
+        if phrase:
+            actions.user.rephrase(phrase, run_async=True)
+
+    def dictation_mode(phrase: Union[Phrase, str] = None):
+        """Enter dictation mode and re-evaluate phrase"""
+        print("Entering dictation mode")
+        actions.mode.disable("command")
+        actions.mode.enable("dictation")
+        if phrase:
+            actions.user.rephrase(phrase, run_async=True)
+            
+    def whisper_mode():
+        """Enter whisper mode"""
+        print("Entering whisper mode")
+        actions.mode.disable("command")
+        actions.mode.enable("user.whisper")
+        
+
+    def webspeech_polish_dictation_mode_enable():
+        """Enter dictation mode and re-evaluate phrase"""
+        print("Entering webspeech polish dictation mode")
+        actions.mode.disable("command")
+        actions.mode.enable("user.polish")
+        actions.mode.enable("dictation")
+        print("turning on polish dictation")
+
+        # if phrase:
+            # actions.user.rephrase(phrase, run_async=False)
+
+    def webspeech_polish_dictation_mode_disable():
+        """Enter dictation mode and re-evaluate phrase""" 
+        print("Exiting webspeech polish dictation mode")
+        actions.mode.disable("dictation")
+        actions.mode.disable("user.polish")
+        actions.mode.enable("command")
+        print("turning off polish dictation")
+
+    def webspeech_english_dictation_mode(phrase: Union[Phrase, str] = None):
+        """Enter webspeech dictation mode and re-evaluate phrase"""
+        print("Entering english dictation mode")
+        actions.mode.disable("command")
+        actions.mode.enable("user.webspeech_english_dictation")
+        if phrase:
+            actions.user.rephrase(phrase, run_async=False)

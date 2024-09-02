@@ -7,6 +7,7 @@ mod.mode("deep_sleep", desc="sleep mode, but deeper")
 class Actions:
     def talon_sleep_toggle():
         """test."""
+        print("talon_sleep_toggle")
         actions.speech.toggle()
     
     def talon_sleep():

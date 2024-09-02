@@ -13,7 +13,8 @@ page last: insert("[[")
 page crown: key("cmd-up")
 scroll:key(n)
 scroll up:key(u)
-page refresh: key("cmd-r")
+^refresh|reload$: key("cmd-r")
+
 
 show links: key("f")
 link: key("f")
@@ -51,9 +52,11 @@ jump [<user.text>]:
     sleep(100ms)
     insert(text or "")
 
-close:
+[tab] close:
     app.tab_close()
     sleep(40ms)
+    user.set_next_action("close")
+
 go front: browser.go_forward()
 
 next$: app.tab_next()
@@ -72,13 +75,13 @@ tab open [<user.text>]$:
 
 
 
-find [<user.text>]$:
+[go] find [<user.text>]$:
     key(cmd-f)
     sleep(200ms)
     insert(text or "")
     # user.text_field_mode(phrase or "")
 
-find this:
+[go] find this:
     key(cmd-c)
     key(cmd-f)
     sleep(200ms)

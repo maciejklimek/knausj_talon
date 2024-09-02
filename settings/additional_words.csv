@@ -87,7 +87,6 @@ vim
 anki
 VPN
 file,fire
-vscode,visual
 yaml
 yamls
 treesitter
@@ -148,6 +147,8 @@ quicklink,quick link
 reddit
 crunchbase,crunch base
 vscode, visual studio
+vscode,visual
+vscode, v s code
 kinesis
 kubectl, cube c t l
 Dockerfile,docker file
@@ -214,3 +215,11 @@ pytest, pie test
 pytest-mock, pie test mock
 pytest-mock, pie test monk
 debugger, the bugger
+FastAPI, fast api
+git subtree, git subtree
+git merge, git merge
+does, thus
+merge, merch
+filter-repo, filter repo
+sulu
+pydantic

@@ -20,7 +20,9 @@ copy that: edit.copy()
 cut that: edit.cut()
 paste it: edit.paste()
 
-nope: edit.undo()
+nope: 
+    edit.undo()
+    user.set_next_action("nope")
 redo that: edit.redo()
 paste match: edit.paste_match_style()
 

@@ -34,9 +34,28 @@ https://search.talonvoice.com/search/,talon search
 https://scholar.google.com/,google cool
 https://console.cloud.google.com/home/dashboard, cloud
 https://console.cloud.google.com/home/dashboard, console cloud 
-
-https://sulu.lingarogroup.com/, sulu
-https://lingaro.sharepoint.com/, sharepoint
-https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot/,azure dev
 https://app.asana.com/0/1206793937365873/1206794044750309, asana
 https://app.clickup.com/24347079/v/l/li/901201885102, click up
+https://keep.google.com/u/0/, keep
+https://keep.google.com/u/0/, google keep
+
+# Job search
+https://nofluffjobs.com/pl, no fluff jobs
+https://justjoin.it/, just join
+https://www.linkedin.com/in/maciejklimek1/, linkedin
+
+
+# lingaro
+https://sulu.lingarogroup.com/, sulu
+https://lingaro.sharepoint.com/, sharepoint
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wiki/1516/NA-Autopilot-Projects, auto wiki
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/autopilot_wiki/2059/Landscape-overview, auto landscape
+https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot, auto dev
+https://portal.azure.com.rproxy.goskope.com/#home, azure portal
+https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w dev
+https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_git/autopilot, auto repos
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipelines
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_release?_a=releases&view=mine&definitionId=33, auto release
+https://dev.azure.com/pg-warehousing/NA%20Autopilot/_sprints/taskboard/Allocation%20algorithm/NA%20Autopilot/Sprint%2056, auto sprint
+https://docs.google.com/spreadsheets/d/100LnxQIzMHvvEWvCYhR2XEWlSX2k2dg9rg63pjDW_RU/edit?gid=0#gid=0, auto timesheet

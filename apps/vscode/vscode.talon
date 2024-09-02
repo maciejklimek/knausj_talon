@@ -28,39 +28,22 @@ please [<user.text>]$:
 ###############################################################################
 bar toggle$: user.vscode("workbench.action.toggleSidebarVisibility")
 # what is the difference with workbench.view.explorer vs action.focusFilesExplorer?
-explorer$: user.vscode("workbench.view.explorer")
-explore$: user.vscode("filetree.focus")
-bar project$: user.vscode("workbench.view.extension.project-manager")
-bar testing$: user.vscode("workbench.view.extension.test")
-^extensions [focus]$: user.vscode("workbench.view.extensions")
+explore$: user.vscode("workbench.view.explorer")
+# explore$: user.vscode("filetree.focus")
+bar|ba project$: user.vscode("workbench.view.extension.project-manager")
+bar|ba testing|test$: user.vscode("workbench.view.extension.test")
+^bar|ba extensions$: user.vscode("workbench.view.extensions")
 ^outline [focus]$: user.vscode("outline.focus")
-debug$: user.vscode("workbench.view.debug")
+[bar|ba] debug$: user.vscode("workbench.view.debug")
+
 editor$: user.vscode("workbench.action.focusActiveEditorGroup")
 git focus$: user.vscode("workbench.view.scm")
-
-
-find [<user.text>]$:
-    user.vscode("actions.find")
-    sleep(50ms)
-    insert(text or "")
-find that$:
-    user.vscode("actions.find")
-    sleep(50ms)
-    edit.paste()
-    key(enter)
 
 
 replace: user.vscode("editor.action.startFindReplaceAction")
 
 
 
-# Panels
-panel debug: user.vscode("workbench.panel.repl.view.focus")
-panel output: user.vscode("workbench.panel.output.focus")
-panel problems: user.vscode("workbench.panel.markers.view.focus")
-panel switch: user.vscode("workbench.action.togglePanel")
-panel terminal: user.vscode("workbench.panel.terminal.focus")
-panel (close|hide): user.vscode("workbench.action.closePanel")
 
 
 
@@ -91,6 +74,18 @@ fullscreen switch: user.vscode("workbench.action.toggleFullScreen")
 theme switch: user.vscode("workbench.action.selectTheme")
 wrap switch: user.vscode("editor.action.toggleWordWrap")
 zen switch: user.vscode("workbench.action.toggleZenMode")
+
+
+###############################################################################
+### Tests
+###############################################################################
+test run all: 
+    user.vscode("workbench.view.extension.test")
+    user.vscode("testing.runAll")
+
+test debug all: 
+    user.vscode("workbench.view.extension.test")
+    user.vscode("testing.debugAll")
 
 # File Commands bash
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -139,6 +134,7 @@ save ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
 ###############################################################################
 ### Language Features
 ###############################################################################
+bracket match: user.vscode("editor.action.jumpToBracket")
 pop symbol:
     user.vscode("workbench.action.showAllSymbols")
     sleep(200ms)
@@ -172,21 +168,21 @@ follow dumb:
     sleep(50ms)
     insert(text or "")
 
-
-(peek|def peek): user.vscode("editor.action.peekDefinition")
+def peek: user.vscode("editor.action.peekDefinition")
 # refs peek: user.vscode("editor.action.referenceSearch.trigger")
 
 (dev side|def side|define side): user.vscode("editor.action.revealDefinitionAside")
 define: user.vscode("editor.action.revealDefinition")
 type show: user.vscode("editor.action.peekTypeDefinition")
-refs: user.vscode("editor.action.goToReferences")
+^refs$: user.vscode("editor.action.goToReferences")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # open side: user.vscode("search.action.openResultToSide")
 open side: key(ctrl-enter)
 format doc: user.vscode("editor.action.formatDocument")
 format selection: user.vscode("editor.action.formatSelection")
-format that: user.vscode("editor.action.formatSelection.multiple")
+format that choice: user.vscode("editor.action.formatSelection.multiple")
+format that: user.vscode("editor.action.formatSelection")
 imports fix: user.vscode("editor.action.organizeImports")
 problem next: user.vscode("editor.action.marker.nextInFiles")
 problem last: user.vscode("editor.action.marker.prevInFiles")
@@ -257,7 +253,7 @@ git branch this: user.vscode("git.branch")
 #     sleep(100ms)
 #     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
 git commit undo: user.vscode("git.undoCommit")
-git commit amend: user.vscode("git.commitStagedAmend")
+# git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
 (git discard|go discard): user.vscode("git.clean")
 git discard all: user.vscode("git.cleanAll")
@@ -317,6 +313,19 @@ terminal scroll down: upser.vscode("workbench.action.terminal.scrollDown")
 terminal <number_small>: user.vscode_terminal(number_small)
 terminal: user.vscode("workbench.action.terminal.toggleTerminal")
 shell|console: user.vscode("workbench.action.terminal.focus")
+
+###############################################################################
+### Panel
+###############################################################################
+panel maximize|max: user.vscode("workbench.action.toggleMaximizedPanel")
+
+# Panels
+panel debug: user.vscode("workbench.panel.repl.view.focus")
+panel output: user.vscode("workbench.panel.output.focus")
+panel problems: user.vscode("workbench.panel.markers.view.focus")
+panel switch: user.vscode("workbench.action.togglePanel")
+panel terminal: user.vscode("workbench.panel.terminal.focus")
+panel (close|hide): user.vscode("workbench.action.closePanel")
 
 
 ###############################################################################
@@ -459,35 +468,71 @@ take this$:
 ###############################################################################
 # show recent: user.vscode("work55bench.action.showAllEditorsByMostRecentlyUsed")
 
-(go search|search) [<user.text>]$:
+[go] search [<user.text>]$:
     user.vscode("workbench.action.findInFiles")
     sleep(50ms)
     insert(text or "")
-(go search|search) that$:
+    user.set_next_action("next")
+
+[go] search that$:
     user.vscode("workbench.action.findInFiles")
     sleep(50ms)
     edit.paste()
+    user.set_next_action("next")
 
-(go search|search) <user.format_text>$:
+
+[go] search <user.format_text>$:
     user.vscode("workbench.action.findInFiles")
     sleep(50ms)
     insert(format_text)
+    user.set_next_action("next")
 
-(go search|search) this$:
+
+[go] search this$:
     key(cmd-d)
     key(cmd-shift-f)
     key(enter)
+    user.set_next_action("next")
 
-(go find|find) this$:
+
+[go] find [<user.text>]$:
+    print("go find")
+    user.vscode("actions.find")
+    sleep(50ms)
+    insert(text or "")
+    user.set_next_action("go")
+
+[go] find that$:
+    user.vscode("actions.find")
+    sleep(50ms)
+    edit.paste()
+    key(enter)
+    user.set_next_action("go")
+
+[go] find this$:
     key(cmd-d)
     key(cmd-f)
     key(enter)
+    user.set_next_action("go")
 
 ###############################################################################
-### Commenting stuff
+### Commenting stuff & TODOs
 ###############################################################################
-^to do [<phrase>]$:
+
+^to do create [<phrase>]$:
+    insert("# TODO: ")
+    user.dictation_mode(phrase or "")
+
+^to do create me [<phrase>]$:
     insert("# TODO(maciejk): ")
+    user.dictation_mode(phrase or "")
+
+^note create [<phrase>]$:
+    insert("# NOTE: ")
+    user.dictation_mode(phrase or "")
+
+^note create me [<phrase>]$:
+    insert("# NOTE(maciejk): ")
     user.dictation_mode(phrase or "")
 
 ^comment new [<phrase>]$:
@@ -527,13 +572,18 @@ folder new:
     user.vscode("explorer.newFolder")
 finder show: user.vscode("revealFileInOS")
 ###############################################################################
-### Misc
+### Uncategorised
 ###############################################################################
 scratchpad new: user.vscode("scratchpads.newScratchpad")
-
+scratchpad open: user.vscode("scratchpads.openScratchpad")
+record keys: user.vscode("keybindings.editor.recordSearchKeys")
 folders collapse:
     user.vscode("workbench.files.action.collapseExplorerFolders")
 fix this: user.vscode("editor.action.quickFix")
+^funk|funky refs$: 
+    user.engine_mimic("take funk name this")
+    sleep(50ms)
+    user.engine_mimic("refs")
 
 ###############################################################################
 ### cursorless
@@ -543,7 +593,7 @@ cursorless toggle: user.vscode("cursorless.toggleDecorations")
 
 vim toggle: user.vscode("toggleVim")
 
-code time dashboard: user.vscode("codetime.viewDashboard")
+# code time dashboard: user.vscode("codetime.viewDashboard")
 
 index:
     insert("[]")
@@ -629,6 +679,24 @@ group last: user.vscode("workbench.action.focusPreviousGroup")
 # ###############################################################################
 # ### KeyPad shortcuts
 # ###############################################################################
+# NOTE: keypad_period, keypad_asterisk does not work, keypad_enter is working
+# In the past mapped the keypad keys to some strange shortcuts But I'm not sure which application I was using to do that
+
+key(keypad_3): key(cmd-right)
+key(keypad_7): key(cmd-`)
+key(keypad_enter): key(tab)
+#key(keypad_multiply): key(cmd-right) 
+
+# this is a workaround for the keypad_0, keypad_period not working
+# for this to work there has to be a mapping in Karabiner. 
+# NOTE: this is not working
+key(shift-alt-cmd-ctrl-0): user.engine_mimic("twice")
+key(shift-alt-cmd-ctrl-p): key(cmd-right)
+
+
+# key(keypad_0): insert("ok"))
+# key(keypad_0): key(cmd-right)
+
 # key(shift-cmd-alt-ctrl-9):
 #     key(cmd-alt-right)
 # key(shift-cmd-alt-ctrl-8):

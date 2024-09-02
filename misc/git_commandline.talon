@@ -4,13 +4,14 @@ and tag: user.git
 # Standard commands
 git add patch: "git add . -p\n"
 git add: "git add "
-git add everything: "git add -u\n"
+git add everything|all: "git add -u\n"
 git bisect: "git bisect "
 git blame: "git blame "
 git branch: "git branch "
 git remote branches: "git branch --remote\n"
 git branch <user.text>: "git branch {text}"
-git checkout: "git checkout "
+^git|go checkout$: "git branch -a | grep -v "^\*" | fzf --height=60% --reverse --info=inline | xargs git checkout\n"
+# git checkout: "git checkout \t"
 git checkout master: "git checkout master\n"
 git checkout main: "git checkout main\n"
 git checkout new: "git checkout -b "
@@ -27,8 +28,11 @@ git clone (that|clipboard):
 # Leave \n out for confirmation since the operation is destructive
 git clean everything: "git clean -dfx"
 git commit message <user.text>: "git commit -m '{text}'"
-git commit: 'git commit -m ""'
+git commit: 
+    'git commit -m ""'
+    key(left)
 git commit fix: 'git commit -m "fix"\n'
+git commit amend: "git commit --amend\n"
 git diff (colour|color) words: "git diff --color-words "
 git diff: "git diff "
 git diff cached: "git diff --cached\n"
@@ -54,12 +58,12 @@ git push origin: "git push origin "
 git push up stream origin: "git push -u origin"
 git push <user.text>: "git push {text} "
 git push tags: "git push --tags\n"
-git rebase: "git rebase\n"
+git rebase: "git rebase"
 git rebase continue: "git rebase --continue"
 git rebase skip: "git rebase --skip"
-git rebase master: "git rebase master\n"
-git rebase main: "git rebase main\n"
-git rebase abort: "git rebase --abort\n"
+git rebase master: "git rebase master"
+git rebase main: "git rebase main"
+git rebase abort: "git rebase --abort"
 git remove: "git rm "
 git (remove|delete) branch: "git branch -d "
 git (remove|delete) remote branch: "git push --delete origin "
@@ -78,6 +82,8 @@ git stash list: "git stash list\n"
 git stash show: "git stash show"
 git status: "git status\n"
 git submodule add:  "git submodule add "
+git subtree add: "git subtree add "
+git subtree: "git subtree "
 git tag: "git tag "
 
 

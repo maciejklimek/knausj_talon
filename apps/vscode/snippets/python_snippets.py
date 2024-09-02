@@ -11,20 +11,22 @@ mode: command
 and code.language: python
 """
 # short name -> ide clip name
-ctx.lists["user.snippets"] = {
-    "class funky": "def(class method)",
-    "class static funky": "def(class static method)",
-    "class": "class",
-    "else if": "elif",
-    "for": "for",
-    "funky": "def",
-    "if else": "if/else",
-    "if": "if",
-    "lambda": "lambda",
-    "try except": "try/except",
-    "while": "while",
-    "with": "with",
-}
+
+# XXX: no matching declarations error
+# ctx.lists["user.snippets"] = {
+#     "class funky": "def(class method)",
+#     "class static funky": "def(class static method)",
+#     "class": "class",
+#     "else if": "elif",
+#     "for": "for",
+#     "funky": "def",
+#     "if else": "if/else",
+#     "if": "if",
+#     "lambda": "lambda",
+#     "try except": "try/except",
+#     "while": "while",
+#     "with": "with",
+# }
 
 
 # def update_list(watch_list):

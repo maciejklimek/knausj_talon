@@ -5,7 +5,7 @@ bring, replaceWithTarget
 call, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
-chuck, remove
+drop, remove
 clear, clearAndSetSelection
 clone, insertCopyAfter
 clone up, insertCopyBefore
@@ -15,7 +15,6 @@ crown, scrollToTop
 dedent, outdentLine
 define, revealDefinition
 cheer, editNewLineBefore
-drop, insertEmptyLineBefore
 extract, extractVariable
 float, insertEmptyLineAfter
 fold, foldRegion
@@ -43,3 +42,4 @@ unfold, unfoldRegion
 wrap, wrapWithPairedDelimiter
 
 -sort, sortTargets
+-drop, insertEmptyLineBefore

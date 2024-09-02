@@ -164,7 +164,7 @@ paste match: edit.paste_match_style()
 (pace | paste) word: user.paste_word()
 
 # Duplication
-clone that: edit.selection_clone()
+clone this: edit.selection_clone()
 clone line: edit.line_clone()
 
 # Insert new line

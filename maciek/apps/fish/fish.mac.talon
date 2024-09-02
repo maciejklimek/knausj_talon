@@ -7,29 +7,29 @@ tag(): user.kubectl
 tag(): user.git
 
 fuzzy [<user.text>]:
-    key(cmd-e)
+    key(ctrl-e)
     sleep(100ms)
     insert(text or "")
     
 fuzzy root [<user.text>]:
     insert("/")
-    key(cmd-e)
+    key(ctrl-e)
     sleep(100ms)
     insert(text or "")
 fuzzy home [<user.text>]:
     insert("~/")
-    key(cmd-e)
+    key(ctrl-e)
     sleep(100ms)
     insert(text or "")
     
     
     # star is here because of misrecognition
 (history|story) [<user.text>]:
-    key(cmd-r)
+    key(ctrl-r)
     sleep(100ms)
     insert(text or "")
     
-fuzzy var: key(ctrl-v)
+# fuzzy var: key(ctrl-v)
 
 cancel|fucker: key(ctrl-c)
 

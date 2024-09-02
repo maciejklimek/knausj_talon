@@ -39,6 +39,10 @@ mod.list("vscode_projects", desc="VSCode projects")
 mod.list("vscode_file_shortcuts", desc="VSCode file shortcuts")
 
 vscode_projects = {
+    # NOTE: this is here because of misrecognition. 
+    "crowns": "knausj_talon",
+    "nous": "knausj_talon",
+    
     "knaus": "knausj_talon",
     "fish": "fish-config",
 }
@@ -167,30 +171,35 @@ class user_actions:
     def command_palette():
         actions.key("cmd-shift-p")
 
+    # XXX: no matching declarations error
     # snippet.py support beginHelp close
-    def snippet_search(text: str):
-        actions.user.vscode("editor.action.insertSnippet")
-        actions.insert(text)
+    # def snippet_search(text: str):
+    #     actions.user.vscode("editor.action.insertSnippet")
+    #     actions.insert(text)
 
-    def snippet_insert(text: str):
-        """Inserts a snippet"""
-        actions.user.vscode("editor.action.insertSnippet")
-        actions.insert(text)
-        actions.key("enter")
+    # XXX: no matching declarations error
+    # def snippet_insert(text: str):
+    #     """Inserts a snippet"""
+    #     actions.user.vscode("editor.action.insertSnippet")
+    #     actions.insert(text)
+    #     actions.key("enter")
 
-    def snippet_create():
-        """Triggers snippet creation"""
-        actions.user.vscode("workbench.action.openSnippets")
+    # XXX: no matching declarations error
+    # def snippet_create():
+    #     """Triggers snippet creation"""
+    #     actions.user.vscode("workbench.action.openSnippets")
 
     # snippet.py support end
-    def tab_next(number: int):
-        print(number)
-        for i in range(number):
-            actions.user.vscode("workbench.action.nextEditorInGroup")
+    # XXX: no matching declarations error
+    # def tab_next(number: int):
+    #     print(number)
+    #     for i in range(number):
+    #         actions.user.vscode("workbench.action.nextEditorInGroup")
 
-    def tab_previous(number: int):
-        for i in range(number):
-            actions.user.vscode("workbench.action.previousEditorInGroup")
+    # XXX: no matching declarations error
+    # def tab_previous(number: int):
+    #     for i in range(number):
+    #         actions.user.vscode("workbench.action.previousEditorInGroup")
 
     def tab_jump(number: int):
         if number < 10:
