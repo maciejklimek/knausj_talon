@@ -5,7 +5,7 @@ bring, replaceWithTarget
 call, callAsFunction
 carve, cutToClipboard
 center, scrollToCenter
-drop, remove
+drop|chuck, remove
 clear, clearAndSetSelection
 clone, insertCopyAfter
 clone up, insertCopyBefore

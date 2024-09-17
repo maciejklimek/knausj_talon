@@ -5,13 +5,6 @@ os: mac
 ###############################################################################
 
 key(f6): user.talon_sleep_toggle()
-key(f7): 
-    user.webspeech_polish_dictation_mode_disable()
-    user.command_mode()
-key(f8): user.webspeech_polish_dictation_mode_enable()
-key(f9): 
-    user.webspeech_polish_dictation_mode_disable()
-    user.dictation_mode()
 
 
 ###############################################################################
@@ -19,13 +12,13 @@ key(f9):
 ###############################################################################
 
 key(keypad_8): user.talon_sleep_toggle()
-key(keypad_7): user.webspeech_polish_dictation_mode_enable()
+# key(keypad_7): user.webspeech_polish_dictation_mode_enable()
 key(keypad_9): 
-    user.webspeech_polish_dictation_mode_disable()
+    # user.webspeech_polish_dictation_mode_disable()
     user.command_mode()
-key(keypad_5): 
-    user.webspeech_polish_dictation_mode_disable()
-    user.dictation_mode()    
+# key(keypad_5): 
+#     user.webspeech_polish_dictation_mode_disable()
+#     user.dictation_mode()    
 #
 # key(keypad_): user.save_bad_recognition()
 
@@ -70,8 +63,8 @@ key(keypad_1:up):
 ###############################################################################
 deck(pedal_middle:down): 
     print("pedal_middle:down")
-    user.whisper_mode()
-    user.whisper_start_dictation()
+    user.start_whisper_mode_and_start_dictation()
+
 # key(cmd-f17:down):
 #     print("cmd-f17:down")
 #     user.webspeech_polish_dictation_mode_enable()

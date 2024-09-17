@@ -1,6 +1,7 @@
 -
 settings():
-    
+    # Whether to show the mode indicator from the plugins
+    user.mode_indicator_show = false
 
     #adjust the scale of the imgui to my liking
     imgui.scale = 1.3

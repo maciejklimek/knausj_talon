@@ -15,7 +15,6 @@ webspeech english [<phrase>]$:   user.webspeech_english_dictation_mode(phrase or
     mode.enable("dictation")
     mode.enable("command")
 
-
+# Kinesis Keyboard Shortcut
 key(cmd-shift-f18):
-    user.whisper_mode()
-    user.whisper_start_dictation()
+    user.start_whisper_mode_and_start_dictation()

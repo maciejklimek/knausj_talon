@@ -11,8 +11,13 @@ class Actions:
         if len(text) > 0:
             time.sleep(miliseconds / 1000)
 
+    def maybe_enter(text: str):
+        """this description is mandatory"""
+        if len(text) > 0:
+            actions.key("enter")
+
     def go_up(n: int):
-        """This description is mandatory"""
+        """This description is mhndatory"""
         for i in range(n):
             actions.edit.up()
 

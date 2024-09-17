@@ -91,9 +91,9 @@ tab open [<user.text>]$:
 ###############################################################################
 ### Keyboard shortcuts
 ###############################################################################
-key(cmd-g):
-    text = edit.selected_text()
-    user.search_with_search_engine("https://www.google.com/search?q=%s", text)
+# key(cmd-g):
+#     text = edit.selected_text()
+#     user.search_with_search_engine("https://www.google.com/search?q=%s", text)
 
 ###############################################################################
 ### KeyPad shortcuts

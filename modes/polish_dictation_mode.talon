@@ -14,7 +14,7 @@ myślnik: "-"
 
 
 # (post|Post) [<phrase>]$w,h
-#      user.command_mode(phrase or "")
+70#      user.command_mode(phrase or "")
 masował m: auto_insert("masowałem")
 
 # Everything here should call auto_insert to preserve the state to correctly auto-capitalize/auto-space.

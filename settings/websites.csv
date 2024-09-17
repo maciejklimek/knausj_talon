@@ -2,18 +2,19 @@ URL,Spoken name
 
 https://www.amazon.pl/,amazon
 https://allegro.pl/,allegro
-https://photos.google.com/,photos
+https://allegrolokalnie.pl/, allegro local
 https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
-https://twitter.com/nexta_tv,nexta
-https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
 https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
-https://www.theverge.com/,the verge
 https://allegro.pl/koszyk,allegro cart
 https://www.frisco.pl/,frisco
+
+# Misc
+https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
+https://www.theverge.com/,the verge
 https://libgen.is/,genesis
-https://allegrolokalnie.pl/, allegro local
 https://1337x.to/,torrents
 https://www.youtube.com/,youtube
+https://photos.google.com/,photos
 
 https://dropbox.com/,dropbox
 https://www.google.com/,google
@@ -27,10 +28,8 @@ https://github.com/,github
 https://gist.github.com/,gist
 https://en.wikipedia.org/,wikipedia
 https://translate.google.com/,translate
-https://ha.maciejk.dev/,home assistant
-https://talon.wiki/unofficial_talon_docs/#/,talon wiki
-https://search.talonvoice.com/search/,polo search
-https://search.talonvoice.com/search/,talon search
+
+
 https://scholar.google.com/,google cool
 https://console.cloud.google.com/home/dashboard, cloud
 https://console.cloud.google.com/home/dashboard, console cloud 
@@ -38,6 +37,13 @@ https://app.asana.com/0/1206793937365873/1206794044750309, asana
 https://app.clickup.com/24347079/v/l/li/901201885102, click up
 https://keep.google.com/u/0/, keep
 https://keep.google.com/u/0/, google keep
+https://sourcegraph.com/search, sourcegraph
+
+# Talon
+https://talon.wiki/unofficial_talon_docs/#/,talon wiki
+https://search.talonvoice.com/search/,polo search
+https://search.talonvoice.com/search/,talon search
+https://github.com/talonhub/community, talon community
 
 # Job search
 https://nofluffjobs.com/pl, no fluff jobs
@@ -51,6 +57,7 @@ https://lingaro.sharepoint.com/, sharepoint
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wiki/1516/NA-Autopilot-Projects, auto wiki
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/autopilot_wiki/2059/Landscape-overview, auto landscape
 https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot, auto dev
+https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot, auto def
 https://portal.azure.com.rproxy.goskope.com/#home, azure portal
 https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w dev
 https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev

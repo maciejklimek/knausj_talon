@@ -18,11 +18,13 @@ smart: user.idea("action SmartTypeCompletion")
 (done | finish): user.idea("action EditorCompleteStatement")
 # Copying
 grab <number>: user.idea_grab(number)
+
 # Actions
-(action | please): user.idea("action GotoAction")
+please: user.idea("action GotoAction")
 (action | please) <user.text>:
     user.idea("action GotoAction")
     insert(text)
+
 # Refactoring
 refactor: user.idea("action Refactorings.QuickListPopupAction")
 refactor <user.text>:
@@ -46,10 +48,19 @@ go implementation: user.idea("action GotoImplementation")
 go usage: user.idea("action FindUsages")
 go type: user.idea("action GotoTypeDeclaration")
 go test: user.idea("action GotoTest")
-go back: user.idea("action Back")
-go forward: user.idea("action Forward")
+
+back: 
+    user.idea("action Back")
+    user.set_next_action("back")
+forward: 
+    user.idea("action Forward")
+    user.set_next_action("forward")
 # Search
 find (everywhere | all): user.idea("action SearchEverywhere")
+
+###############################################################################
+### Search & find
+###############################################################################
 
 [go] search this$:
     key(cmd-d)
@@ -62,6 +73,52 @@ find (everywhere | all): user.idea("action SearchEverywhere")
     user.idea("action SearchEverywhere")
     sleep(500ms)
     insert(format_text)
+
+[go] search <user.text>$:
+    user.idea("action SearchEverywhere")
+    sleep(500ms)
+    insert()
+    
+[go] find this$:
+    key(cmd-d)
+    key(cmd-c)
+    user.idea("action FindInPath")
+    sleep(500ms)
+    insert(cmd-v)
+
+[go] find <user.format_text>$:
+    user.idea("action FindInPath")
+    sleep(500ms)
+    insert(format_text)
+
+[go] find <user.text>$:
+    user.idea("action FindInPath")
+    sleep(500ms)
+    insert()
+
+
+take next$:
+    key(cmd-d)
+    user.set_next_action("take next")
+
+close everything: user.idea("action CloseAllEditors")
+close others: user.idea("action CloseAllEditorsButActive")
+
+###############################################################################
+### project management
+###############################################################################
+proj|project [<user.text>] wait:
+    key(cmd-shift-ctrl-p)
+    sleep(50ms)
+    insert(text or "")
+
+proj|project [<user.text>] :
+    key(cmd-shift-ctrl-p)
+    sleep(50ms)
+    insert(text or "")
+    sleep(50ms)
+    user.maybe_enter(text or "")
+
 
 (search | find) class: user.idea("action GotoClass")
 (search | find) file: user.idea("action GotoFile")
@@ -135,6 +192,10 @@ switch task: user.idea("action tasks.switch")
 clear task: user.idea("action tasks.close")
 configure servers: user.idea("action tasks.configure.servers")
 # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
+
+###############################################################################
+### Git
+###############################################################################
 git pull: user.idea("action Vcs.UpdateProject")
 git commit: user.idea("action CheckinProject")
 git push: user.idea("action CheckinProject")
@@ -146,6 +207,8 @@ git (view | show | list) (requests | request):
     user.idea("action Github.View.Pull.Request")
 git (annotate | blame): user.idea("action Annotate")
 git menu: user.idea("action Vcs.QuickListPopupAction")
+
+
 # Tool windows:
 # Toggling various tool windows
 toggle project: user.idea("action ActivateProjectToolWindow")
@@ -153,7 +216,9 @@ toggle find: user.idea("action ActivateFindToolWindow")
 toggle run: user.idea("action ActivateRunToolWindow")
 toggle debug: user.idea("action ActivateDebugToolWindow")
 toggle events: user.idea("action ActivateEventLogToolWindow")
-toggle terminal: user.idea("action ActivateTerminalToolWindow")
+
+shell: user.idea("action ActivateTerminalToolWindow")
+
 toggle git: user.idea("action ActivateVersionControlToolWindow")
 toggle structure: user.idea("action ActivateStructureToolWindow")
 toggle database: user.idea("action ActivateDatabaseToolWindow")

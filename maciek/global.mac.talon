@@ -14,7 +14,6 @@ print modes:
     user.rephrase(phrase or "")
 
 ^panda$:
-    print("chat")
     key("ctrl-3")
     sleep(100ms)
     user.rephrase(phrase or "")
@@ -46,8 +45,6 @@ print modes:
     sleep(100ms)
     user.rephrase(phrase or "")
 
-code search:
-    user.open_url("https://sourcegraph.com/search")
 
 # switcher_focus_and_wait wait u, 0.5ntil ui.active_app() == app,
 # But does this mean that talon made the context switch,  so that we can use rephrase?
@@ -69,6 +66,10 @@ wipe | thrash: key(alt-backspace)
     edit.delete()
 
 down: key(down)
+
+###############################################################################
+### menu
+###############################################################################
 menu help: key(cmd-shift-/)
 menu show:
     key(ctrl-shift-f2)
@@ -90,12 +91,14 @@ spot [<user.text>]:
 
 spot clipboard: user.raycast_clipboard()
 spot close: key(cmd-w)
-raindrop search [<user.text>]:
-    user.raycast_raindrop_search(text or "")
-raindrop recent:
-    key(cmd-shift-f5)
+
+# raindrop search [<user.text>]:
+#     user.raycast_raindrop_search(text or "")
+# raindrop recent:
+#     key(cmd-shift-f5)
 
 talon play: user.run_in_fish_shell("osascript -e 'tell app \"Terminal\" to activate' -e 'tell app \"Terminal\" to do script \"talon-play-latest\"'")
+
 talon play last: user.run_in_fish_shell("talon-play-pre-last")
 talon restart: user.run_in_fish_shell("talon-restart")
 
@@ -111,43 +114,52 @@ puppy talon: user.focus_talon_window()
 #     key(cmd-down)
 #     key(enter)
 # TODO(maciejk): a introduce kanusj_talon Say Base Path.
-^polo obsidian:
+^coder files obsidian:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/apps/obsidian/obsidian.mac.talon")
     user.switcher_focus_and_wait("code", 0.5)
     key(cmd-down)
     key(enter)
 #punctuation_words
 
-^polo coder additional:
+^coder files additional:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/additional_words.csv")
     user.switcher_focus_and_wait("code", 0.5)
     sleep(500ms)
     key(cmd-down)
     key(enter)
 
-^polo coder vs:
+^coder files vs:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/apps/vscode/vscode.talon")
     user.switcher_focus_and_wait("code", 0.5)
     key(cmd-down)
     key(enter)
 
-^polo coder command line:
+^coder files command line$:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/commandline.talon")
     user.switcher_focus_and_wait("code", 0.5)
     key(cmd-down)
     key(enter)
-^polo coder chrome:
+
+^coder files chrome$:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/chrome_mac.talon")
     user.switcher_focus_and_wait("code", 0.5)
     key(cmd-down)
     key(enter)
-^polo coder websites:
+
+^coder files jetbrains$:
+    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/apps/jetbrains/jetbrains.talon")
+    user.switcher_focus_and_wait("code", 0.5)
+    key(cmd-down)
+    key(enter)
+
+^coder files websites$:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/websites.csv")
     user.switcher_focus_and_wait("code", 0.5)
     key(cmd-down)
     key(enter)
 
-^polo coder replace:
+
+^coder files replace:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/words_to_replace.csv")
     user.switcher_focus_and_wait("code", 0.5)
     user.engine_mimic("pour file")
@@ -193,7 +205,7 @@ links: key(cmd-alt-shift-f1)
 # ^polo help coder: user.raycast_talon_search("vscode")
 
 ^coder project [<user.text>]$: user.raycast_coder_project(text or "")
-^helmet | ^polo search [<user.text>] $: user.raycast_talon_search(text or "")
+^helmet | polo search [<user.text>] $: user.raycast_talon_search(text or "")
 # github repo [<user.text>]:
 
 create note: key("cmd-shift-f8")
@@ -225,3 +237,6 @@ coder <user.vscode_project_names>:
     user.switcher_focus_and_wait("code", 0.5)
     sleep(100ms)
     user.vscode_open_project(vscode_project_names)
+
+modes print:
+    print(scope.get("mode"))

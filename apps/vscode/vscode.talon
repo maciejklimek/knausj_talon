@@ -19,6 +19,7 @@ settings():
 
 coder <user.vscode_project_names>$:
     user.vscode_open_project(vscode_project_names)
+    
 please [<user.text>]$:
     user.vscode("workbench.action.showCommands")
     insert(user.text or "")
@@ -198,9 +199,13 @@ refactor (this|that): user.vscode("editor.action.refactor")
 
 #code navigation
 # (go declaration | follow): user.vscode("editor.action.revealDefinition")
-back$: user.vscode("workbench.action.navigateBack")
+back$: 
+    user.vscode("workbench.action.navigateBack")
+    user.set_next_action("back")
 
-front$: user.vscode("workbench.action.navigateForward")
+front$: 
+    user.vscode("workbench.action.navigateForward")
+    user.set_next_action("front")
 
 # implementation: user.vscode("editor.action.goToImplementation")
 # type: user.vscode("editor.action.goToTypeDefinition")
@@ -252,6 +257,7 @@ git branch this: user.vscode("git.branch")
 #     user.vscode("git.commitStaged")
 #     sleep(100ms)
 #     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
+
 git commit undo: user.vscode("git.undoCommit")
 # git commit amend: user.vscode("git.commitStagedAmend")
 git diff: user.vscode("git.openChange")
@@ -312,7 +318,7 @@ terminal scroll up: user.vscode("workbench.action.terminal.scrollUp")
 terminal scroll down: upser.vscode("workbench.action.terminal.scrollDown")
 terminal <number_small>: user.vscode_terminal(number_small)
 terminal: user.vscode("workbench.action.terminal.toggleTerminal")
-shell|console: user.vscode("workbench.action.terminal.focus")
+shell: user.vscode("workbench.action.terminal.focus")
 
 ###############################################################################
 ### Panel
@@ -336,7 +342,7 @@ console new:
 console side new:
     user.vscode("workbench.action.createTerminalEditorSide")
 
-    # Find a better way to switch to terminal in editor tab.
+# Find a better way to switch to terminal in editor tab.
 console switch:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
@@ -377,7 +383,7 @@ skip word: user.vscode("editor.action.moveSelectionToNextFindMatch")
 # cell run above: user.vscode("jupyter.runallcellsabove.palette")
 # cell run: user.vscode("jupyter.runcurrentcell")
 
-install local: user.vscode("workbench.extensions.action.installVSIX")
+# install local: user.vscode("workbench.extensions.action.installVSIX")
 
 ###############################################################################
 ### Navigation between editors
@@ -406,7 +412,7 @@ go line <number> end:
 ###############################################################################
 copy line down: user.vscode("editor.action.copyLinesDownAction")
 copy line up: user.vscode("editor.action.copyLinesUpAction")
-scratchpad: user.vscode("extension.openScratchpad")
+# scratchpad: user.vscode("extension.openScratchpad")
 
 # take <number> line:
 #     user.select_next_lines(number)
@@ -428,12 +434,15 @@ scratchpad: user.vscode("extension.openScratchpad")
 #     sleep(10ms)
 #     key(right cmd-v)
 #     sleep(10ms)
+
 # (clear|wipe) <number> line:
 #     user.select_next_lines(number)
 #     key(delete)
 
 
-    # indentation stuff
+###############################################################################
+### Indentation
+###############################################################################
 justify:
     key(up end)
     insert("\n")
@@ -445,6 +454,7 @@ indent <number> line:
 dis dent <number> line:
     user.select_next_lines(number)
     edit.indent_less()
+
 toast close: user.vscode("notifications.clearAll")
 toast accept:
     user.vscode("notifications.focusToasts")
@@ -458,10 +468,10 @@ toast focus:
     key(tab)
 
 
-    # is it better to use vscode commands or just keyboard shortcuts?
-    # Or I could hide these details and create talon actions and only call these here.
-take this$:
+take next$:
     key(cmd-d)
+    user.set_next_action("take next")
+
 
 ###############################################################################
 ### Searching within editor or whole workspace
@@ -553,17 +563,17 @@ comment clone|clomment:
 ###############################################################################
 ### project navigation
 ###############################################################################
-proj|project [<user.text>]:
+proj|project [<user.text>] wait:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")
 
-pop (proj|project) [<user.text>]:
+(proj|project) [<user.text>]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")
     user.maybe_sleep(100, text or "")
-    key(enter)
+    user.maybe_enter(text or "")
 
     # This is for github copilot
 (take it|accept):
@@ -571,6 +581,7 @@ pop (proj|project) [<user.text>]:
 folder new:
     user.vscode("explorer.newFolder")
 finder show: user.vscode("revealFileInOS")
+
 ###############################################################################
 ### Uncategorised
 ###############################################################################
@@ -620,7 +631,7 @@ command copy id: user.command_copy_id()
     # TODO: there was a program with command "search limit talon" it was mis recognized.
     # I had to change to "limit search talon" it is a wider problem
 
-limit search talon: user.vscode_lbimit_search("talon")
+limit search talon: user.vscode_limit_search("talon")
 limit search python: user.vscode_limit_search("python")
 limit search none: user.vscode_limit_sort("")
 
@@ -662,6 +673,7 @@ close others: user.vscode("workbench.action.closeOtherEditors")
 close all others:
     user.vscode("workbench.action.closeOtherEditors")
     user.vscode("workbench.action.closeEditorsInOtherGroups")
+
 move left: user.vscode("workbench.action.moveEditorLeftInGroup")
 move right: user.vscode("workbench.action.moveEditorRightInGroup")
 move last: user.vscode("workbench.action.moveEditorToPreviousGroup")
@@ -717,10 +729,11 @@ key(shift-alt-cmd-ctrl-p): key(cmd-right)
 ###############################################################################
 ### Image clicking  
 ###############################################################################
-confirm apply:
-        user.mouse_helper_position_save()
-        user.mouse_helper_move_image_relative("2023-11-24_12.05.56.094647.png", 0)
-        sleep(0.05)
-        mouse_click(0)
-        sleep(0.05)
-        user.mouse_helper_position_restore()
+
+# confirm apply:
+#         user.mouse_helper_position_save()
+#         user.mouse_helper_move_image_relative("2023-11-24_12.05.56.094647.png", 0)
+#         sleep(0.05)
+#         mouse_click(0)
+#         sleep(0.05)
+#         user.mouse_helper_position_restore()

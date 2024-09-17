@@ -19,7 +19,9 @@ tasks:
     desc: "."
     cmds:
       - rsync -avz --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon/ ~/.talon/user/knausj_talon
-      - rsync -avz --delete --exclude=.git cursorless-settings ~/.talon/user/
+      - rsync -avz --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/
+      - rsync -avz --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/talon-gaze-ocr
+
   show-cheatsheet:
     desc: "."
     cmds:
@@ -29,4 +31,3 @@ tasks:
     desc: "."
     cmds:
       - rsync -avz --delete --exclude=.git ~/projects/cursorless-talon ~/.talon/user/
-      # - rsync -avz src/cursorless_trimmed.talon ~/.talon/user/cursorless-talon/src/cursorless.talon

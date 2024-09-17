@@ -39,12 +39,15 @@ mod.list("vscode_projects", desc="VSCode projects")
 mod.list("vscode_file_shortcuts", desc="VSCode file shortcuts")
 
 vscode_projects = {
-    # NOTE: this is here because of misrecognition. 
+    # NOTE: this is here because of misrecognition.
     "crowns": "knausj_talon",
     "nous": "knausj_talon",
-    
     "knaus": "knausj_talon",
     "fish": "fish-config",
+    "auto": "autopilot",
+    "auto helm": "autopilot-helm",
+    "community": "community",
+    "whisper": "talon-whisper",
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()

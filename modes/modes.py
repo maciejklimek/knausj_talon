@@ -4,6 +4,11 @@ from typing import Union
 
 mod = Module()
 
+def disable_all_modes_except(mode):
+    modes = ["command", "dictation", "user.webspeech_polish_dictation", "user.whisper", "user.text_field"]
+    for m in modes:
+        if m != mode:
+            actions.mode.disable(m)
 
 @mod.action_class
 class Actions:
@@ -20,11 +25,7 @@ class Actions:
         """Enter command mode and re-evaluate phrase"""
         # I checked and I couldn't find a method to get the current mode. so as a hack we are disabling all possible modes.
         print("Entering command mode")
-        actions.mode.disable("dictation")
-        actions.mode.disable("user.webspeech_polish_dictation")
-        actions.mode.disable("user.whisper")
-        actions.mode.disable("user.text_field")
-
+        disable_all_modes_except("command")
         actions.mode.enable("command")
         if phrase:
             actions.user.rephrase(phrase, run_async=True)
