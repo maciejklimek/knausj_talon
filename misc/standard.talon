@@ -28,7 +28,7 @@ paste match: edit.paste_match_style()
 
 # TODO(maciejk): at one word command, like disk but I can't use this because it conflicts with dish in my alphabet
 file save: edit.save()
-go$:
+go:
 	key(enter)
    
   

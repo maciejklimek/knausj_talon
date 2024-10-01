@@ -47,7 +47,7 @@ key(keypad_4):
 
 key(keypad_1:down):
     user.whisper_mode()
-    user.whisper_start_dictation()
+    user.start_whisper_mode_and_start_dictation()
 
 key(keypad_1:up):
     res = user.whisper_stop_dictation()
@@ -71,12 +71,12 @@ deck(pedal_middle:down):
 # key(cmd-f17:up):
 #     print("cmd-f17:up")
 #     user.webspeech_polish_dictation_mode_disable()
+
 deck(pedal_middle:up): 
     print("pedal_middle:up")
     res = user.whisper_stop_dictation()
-    print("got")
-    print(res)
-    insert(res)
+    print('Response')
+    user.paste(res)
     user.command_mode()
 
 deck(pedal_left:down):

@@ -1,6 +1,6 @@
 talon debug running:
     user.switcher_toggle_running()
-talon debug app:
+talon debug active app:
     print("-------DEBUG APP-------")
     print(app.name())
     print(app.executable())

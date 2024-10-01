@@ -2,14 +2,11 @@ app: vscode
 -
 tag(): user.multiple_cursors
 
-tag(): user.snippets
+# tag(): user.snippets # TODO: fix this
 tag(): user.splits
 tag(): user.tabs
 
-# TODO(maciejk): this is temporary until we are able to report if terminal is active in vscode to talon
-tag(): terminal
-tag(): user.git
-tag(): user.fish
+
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
 #multiple_cursor.py support end
@@ -38,18 +35,10 @@ bar|ba testing|test$: user.vscode("workbench.view.extension.test")
 [bar|ba] debug$: user.vscode("workbench.view.debug")
 
 editor$: user.vscode("workbench.action.focusActiveEditorGroup")
-git focus$: user.vscode("workbench.view.scm")
+[bar|ba] source$: user.vscode("workbench.view.scm")
 
 
 replace: user.vscode("editor.action.startFindReplaceAction")
-
-
-
-
-
-
-
-
 
 focus side: user.vscode("workbench.action.focusSideBar")
 
@@ -109,7 +98,9 @@ pop (lion|dock) [<user.text>]:
     user.maybe_sleep(50, text or "")
     key(enter)
 
-
+###############################################################################
+### File Commands
+###############################################################################
 file duplicate: user.vscode("fileutils.duplicateFile")
 file copy path: user.vscode("copyFilePath")
 file copy relative: user.vscode("copyRelativeFilePath")
@@ -123,7 +114,6 @@ file rename:
     sleep(150ms)
     # Why do I have  all this sleeps here
 folder new: user.vscode_and_wait("explorer.newFolder")
-
 file move:
     user.vscode("fileutils.moveFile")
     sleep(150ms)
@@ -132,6 +122,7 @@ file remove:
 file open folder: user.vscode("revealFileInOS")
 (file reveal|show in tree): user.vscode("workbench.files.action.showActiveFileInExplorer")
 save ugly: user.vscode("workbench.action.files.saveWithoutFormatting")
+
 ###############################################################################
 ### Language Features
 ###############################################################################
@@ -239,50 +230,7 @@ go recent [<user.text>]:
 
     # Git / Github (not using verb-noun-adjective pattern, mirroring terminal commands.)
 
-###############################################################################
-### Git
-###############################################################################
-open changes: user.vscode("gitlens.diffWithPrevious")
-open changes revision: user.vscode("gitlens.diffWithRevision")
 
-
-lense branches: user.vscode("gitlens.showBranchesView")
-git branch: user.vscode("git.branchFrom")
-git branch this: user.vscode("git.branch")
-# git checkout [<user.text>]:
-#     user.vscode("git.checkout")
-#     sleep(50ms)
-#     insert(text or "")
-# git commit [<user.text>]:
-#     user.vscode("git.commitStaged")
-#     sleep(100ms)
-#     user.insert_formatted(text or "", "CAPITALIZE_FIRST_WORD")
-
-git commit undo: user.vscode("git.undoCommit")
-# git commit amend: user.vscode("git.commitStagedAmend")
-git diff: user.vscode("git.openChange")
-(git discard|go discard): user.vscode("git.clean")
-git discard all: user.vscode("git.cleanAll")
-git ignore: user.vscode("git.ignore")
-git merge: user.vscode("git.merge")
-git output: user.vscode("git.showOutput")
-# git pull: user.vscode("git.pullRebase")
-# git push: user.vscode("git.push")
-git push force: user.vscode("git.pushForce")
-# git rebase: user.vscode("git.rebase")
-git fetch all: user.vscode("git.fetchAll")
-git rebase abort: user.vscode("git.rebaseAbort")
-git reveal: user.vscode("git.revealInExplorer")
-git revert: user.vscode("git.revertChange")
-revert range: user.vscode("git.revertSelectedRanges")
-git stash: user.vscode("git.stash")
-git stash pop: user.vscode("git.stashPop")
-# git status: user.vscode("workbench.scm.focus")
-(git stage|stage this): user.vscode("git.stage")
-git stage all: user.vscode("git.stageAll")
-git unstage: user.vscode("git.unstage")
-git unstage all: user.vscode("git.unstageAll")
-pull request: user.vscode("pr.create")
 
 change next: key(alt-f5)
 change last: key(shift-alt-f5)

@@ -5,7 +5,7 @@
 
 ^whisper$:  
     user.whisper_mode()
-    user.whisper_start_dictation()
+    user.start_whisper_mode_and_start_dictation()
 
 webspeech english [<phrase>]$:   user.webspeech_english_dictation_mode(phrase or "")
 ^command mode [<phrase>]$:   user.command_mode(phrase or "")

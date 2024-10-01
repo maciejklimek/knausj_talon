@@ -1,10 +1,6 @@
 os: mac
 tag: user.fish
 -
-tag(): user.brew
-tag(): user.poetry
-tag(): user.kubectl
-tag(): user.git
 
 fuzzy [<user.text>]:
     key(ctrl-e)

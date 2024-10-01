@@ -12,6 +12,7 @@ commands = {
     "info": "info",
     "install": "install",
     "search": "search",
+    "find": "search",
 }
 ctx = Context()
 ctx.matches = r"""

@@ -1,18 +1,20 @@
-from talon import Context, actions, clip
+# defines the default edit actions for windows
+
+from talon import Context, actions
 
 ctx = Context()
 ctx.matches = r"""
-os: mac
+os: windows
 """
 
 
 @ctx.action_class("edit")
 class EditActions:
     def copy():
-        actions.key("cmd-c")
+        actions.key("ctrl-c")
 
     def cut():
-        actions.key("cmd-x")
+        actions.key("ctrl-x")
 
     def delete():
         actions.key("backspace")
@@ -36,10 +38,10 @@ class EditActions:
         actions.key("shift-down")
 
     def extend_file_end():
-        actions.key("cmd-shift-down")
+        actions.key("shift-ctrl-end")
 
     def extend_file_start():
-        actions.key("cmd-shift-up")
+        actions.key("shift-ctrl-home")
 
     def extend_left():
         actions.key("shift-left")
@@ -49,19 +51,19 @@ class EditActions:
         actions.key("shift-down")
 
     def extend_line_end():
-        actions.key("cmd-shift-right")
+        actions.key("shift-end")
 
     def extend_line_start():
-        actions.key("cmd-shift-left")
+        actions.key("shift-home")
 
     def extend_line_up():
         actions.key("shift-up")
 
     def extend_page_down():
-        actions.key("cmd-shift-pagedown")
+        actions.key("shift-pagedown")
 
     def extend_page_up():
-        actions.key("cmd-shift-pageup")
+        actions.key("shift-pageup")
         # action(edit.extend_paragraph_end):
         # action(edit.extend_paragraph_next()):
         # action(edit.extend_paragraph_previous()):
@@ -78,33 +80,33 @@ class EditActions:
         actions.key("shift-up")
 
     def extend_word_left():
-        actions.key("shift-alt-left")
+        actions.key("ctrl-shift-left")
 
     def extend_word_right():
-        actions.key("shift-alt-right")
+        actions.key("ctrl-shift-right")
 
     def file_end():
-        actions.key("cmd-down")
+        actions.key("ctrl-end")
 
     def file_start():
-        actions.key("cmd-up")
+        actions.key("ctrl-home")
 
     def find(text: str = None):
-        if text is not None:
-            clip.set_text(text, mode="find")
-        actions.key("cmd-f")
-
-    def find_next():
-        actions.key("cmd-g")
+        actions.key("ctrl-f")
+        if text:
+            actions.insert(text)
 
     def find_previous():
-        actions.key("cmd-shift-g")
+        actions.key("shift-f3")
+
+    def find_next():
+        actions.key("f3")
 
     def indent_less():
-        actions.key("cmd-left delete")
+        actions.key("home delete")
 
     def indent_more():
-        actions.key("cmd-left tab")
+        actions.key("home tab")
         # action(edit.jump_column(n: int)
         # action(edit.jump_line(n: int)
 
@@ -115,16 +117,16 @@ class EditActions:
         actions.key("down home")
 
     def line_end():
-        actions.key("cmd-right")
+        actions.key("end")
 
     def line_insert_up():
-        actions.key("cmd-left enter up")
+        actions.key("home enter up")
 
     def line_start():
-        actions.key("cmd-left")
+        actions.key("home")
 
     def line_up():
-        actions.key("up cmd-left")
+        actions.key("up home")
         # action(edit.move_again):
 
     def page_down():
@@ -138,33 +140,31 @@ class EditActions:
         # action(edit.paragraph_start):
 
     def paste():
-        actions.key("cmd-v")
-
-    def paste_match_style():
-        actions.key("cmd-alt-shift-v")
+        actions.key("ctrl-v")
+        # action(paste_match_style):
 
     def print():
-        actions.key("cmd-p")
+        actions.key("ctrl-p")
 
     def redo():
-        actions.key("cmd-shift-z")
+        actions.key("ctrl-y")
 
     def right():
         actions.key("right")
 
     def save():
-        actions.key("cmd-s")
+        actions.key("ctrl-s")
 
     def save_all():
-        actions.key("cmd-alt-s")
+        actions.key("ctrl-shift-s")
 
     def select_all():
-        actions.key("cmd-a")
+        actions.key("ctrl-a")
 
     def select_line(n: int = None):
         if n is not None:
             actions.edit.jump_line(n)
-        actions.key("cmd-right cmd-shift-left")
+        actions.key("end shift-home")
         # action(edit.select_lines(a: int, b: int)):
 
     def select_none():
@@ -173,22 +173,22 @@ class EditActions:
         # action(edit.select_sentence):
 
     def undo():
-        actions.key("cmd-z")
+        actions.key("ctrl-z")
 
     def up():
         actions.key("up")
 
     def word_left():
-        actions.key("alt-left")
+        actions.key("ctrl-left")
 
     def word_right():
-        actions.key("alt-right")
+        actions.key("ctrl-right")
 
     def zoom_in():
-        actions.key("cmd-=")
+        actions.key("ctrl-+")
 
     def zoom_out():
-        actions.key("cmd--")
+        actions.key("ctrl--")
 
     def zoom_reset():
-        actions.key("cmd-0")
+        actions.key("ctrl-0")

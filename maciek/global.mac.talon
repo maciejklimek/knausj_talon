@@ -30,10 +30,10 @@ print modes:
     sleep(100ms)
     user.rephrase(phrase or "")
 
-# ^puppy$:
-#     key("ctrl-3")
-#     sleep(100ms)
-#     user.rephrase(phrase or "")
+^puppy$:
+    key("ctrl-7")
+    sleep(100ms)
+    user.rephrase(phrase or "")
 
 # ^obsidian$:
 #     key("ctrl-6")
@@ -89,13 +89,14 @@ spot [<user.text>]:
     sleep(50ms)
     insert(text or "")
 
-spot clipboard: user.raycast_clipboard()
+clipboard: user.raycast_clipboard()
 spot close: key(cmd-w)
 
 # raindrop search [<user.text>]:
 #     user.raycast_raindrop_search(text or "")
 # raindrop recent:
 #     key(cmd-shift-f5)
+
 
 talon play: user.run_in_fish_shell("osascript -e 'tell app \"Terminal\" to activate' -e 'tell app \"Terminal\" to do script \"talon-play-latest\"'")
 
@@ -121,7 +122,7 @@ puppy talon: user.focus_talon_window()
     key(enter)
 #punctuation_words
 
-^coder files additional:
+^coder [files] additional:
     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/additional_words.csv")
     user.switcher_focus_and_wait("code", 0.5)
     sleep(500ms)
@@ -226,15 +227,19 @@ take save screenshot:
 
 # Insertion of my data
 insert email: insert("maciej.klimek@gmail.com")
-insert bajka email: insert("waldemar.bajka@gmail.com")
+insert waldemar|bajka email: insert("waldemar.bajka@gmail.com")
 insert work email: insert("maciej.klimek@lingarogroup.com")
 insert full|my name: insert("Maciej Klimek")
 insert surname: insert("Klimek")
 insert phone [number]: insert("519 354 695")
 
+
+insert piotr: insert("Piotr Czechowicz")
+insert paula: insert("Carvajal, Paula")
+
 # vscode
 coder <user.vscode_project_names>:
-    user.switcher_focus_and_wait("code", 0.5)
+    user.switcher_focus_and_wait("cursor", 0.5)
     sleep(100ms)
     user.vscode_open_project(vscode_project_names)
 

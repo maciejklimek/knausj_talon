@@ -11,6 +11,10 @@ os: mac
 and app.bundle: com.microsoft.VSCode
 """
 mod.apps.vscode = """
+os: mac
+and app.bundle: com.todesktop.230313mzl4w4u92
+"""
+mod.apps.vscode = """
 os: linux
 and app.name: Code
 os: linux
@@ -45,7 +49,7 @@ vscode_projects = {
     "knaus": "knausj_talon",
     "fish": "fish-config",
     "auto": "autopilot",
-    "auto helm": "autopilot-helm",
+    "helm": "autopilot-helm",
     "community": "community",
     "whisper": "talon-whisper",
 }

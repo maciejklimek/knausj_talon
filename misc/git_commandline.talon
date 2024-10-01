@@ -4,18 +4,27 @@ and tag: user.git
 # Standard commands
 git add patch: "git add . -p\n"
 git add: "git add "
+git add this:
+    insert("git add ")
+    text = edit.selected_text()
+    print('text')
+    print(text)
+    insert(text)
+    key(enter)
 git add everything|all: "git add -u\n"
 git bisect: "git bisect "
 git blame: "git blame "
 git branch: "git branch "
 git remote branches: "git branch --remote\n"
 git branch <user.text>: "git branch {text}"
-^git|go checkout$: "git branch -a | grep -v "^\*" | fzf --height=60% --reverse --info=inline | xargs git checkout\n"
+# ^git|go checkout$: "git branch -a | grep -v "^\*" | fzf --height=60% --reverse --info=inline | xargs git checkout\n"
 # git checkout: "git checkout \t"
 git checkout master: "git checkout master\n"
-git checkout main: "git checkout main\n"
+git checkout main$: "git checkout main\n"
 git checkout new: "git checkout -b "
-git checkout <user.text>: "git checkout {text}"
+git checkout:
+    insert("fbr\n")
+# git checkout <user.text>: "git checkout {text}"
 git cherry pick: "git cherry-pick "
 git cherry pick continue: "git cherry-pick --continue "
 git cherry pick abort: "git cherry-pick --abort "
@@ -57,6 +66,7 @@ git push: "git push\n"
 git push origin: "git push origin "
 git push up stream origin: "git push -u origin"
 git push <user.text>: "git push {text} "
+git push force: "git push --force\n"
 git push tags: "git push --tags\n"
 git rebase: "git rebase"
 git rebase continue: "git rebase --continue"

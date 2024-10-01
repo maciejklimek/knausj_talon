@@ -80,9 +80,10 @@ echo param <user.text>:
 
 get link:
     insert("readlink -f ")
+
 # directory and files
 pivot: "cd "
-pivot clip:
+pivot clip|that:
     insert("cd ")
     edit.paste()
     key(enter)

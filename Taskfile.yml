@@ -20,7 +20,8 @@ tasks:
     cmds:
       - rsync -avz --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon/ ~/.talon/user/knausj_talon
       - rsync -avz --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/
-      - rsync -avz --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/talon-gaze-ocr
+      - rsync -avz --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/
+      - rsync -avz --delete --exclude=.git /Users/maciek/projects/cursorless-talon ~/.talon/user/
 
   show-cheatsheet:
     desc: "."

@@ -47,7 +47,7 @@ class Actions:
                 transcription = data['transcription']
                 transcription = transcription.rstrip('\n')
                 return transcription
-                
             # print(response.text)
+            
         else:
             print(f"Failed with status code: {response.status_code}")

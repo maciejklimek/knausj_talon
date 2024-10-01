@@ -39,6 +39,8 @@ lisa: insert("ls\n")
 file list: "ls "
 file link: "ln -s "
 file move: "mv "
+file open: "vim "
+file touch: "touch "
 file copy: "cp "
 dir copy: "cp -r "
 file type: "file "
@@ -148,21 +150,22 @@ remote shell: insert("ssh ")
 pink google: insert("ping www.google.com\n")
 pink google d n s: "ping 8.8.8.8\n"
 
-remote shell tesla:
-    key("ctrl-c")
-    insert("ssh tesla.maciejk.dev\n")
-    sleep(1000ms)
-    insert("fish\n")
-remote shell pie|raspberry:
-    insert("ssh raspberry.maciejk.dev\n")
-    sleep(1000ms)
-    # insert("fish\n")
+# remote shell tesla:
+#     key("ctrl-c")
+#     insert("ssh tesla.maciejk.dev\n")
+#     sleep(1000ms)
+#     insert("fish\n")
+# remote shell pie|raspberry:
+#     insert("ssh raspberry.maciejk.dev\n")
+#     sleep(1000ms)
+#     # insert("fish\n")
 
 shell logout: insert("exit\n")
 
 
-# this is for broot
 rsync: insert("rsync -avz ")
+
+# this is for broot
 brick: insert("br -h\n")
 brick home: insert("br -h ~/\n")
 brick root: insert("br -h /\n")
@@ -180,8 +183,8 @@ git ui: "gitui\n"
 gitignore: insert(".gitignore ")
 sudo: insert("sudo ")
 unzip: insert("unzip ")
-z f s: insert("zfs \t")
-z pool: insert("zpool \t")
+# z f s: insert("zfs \t")
+# z pool: insert("zpool \t")
 add sudo:
     key(home)
     insert("sudo ")
@@ -193,20 +196,28 @@ run last:
 manual: "man "
 (take it|accept):
     key(right)
-    key(enter)
+    # key(enter)
 
 navi: insert("navi\n")
 command copy:key(cmd-alt-shift-c)
 lazy docker: "lazydocker\n"
 sudo reboot: "sudo reboot"
-run it:
+run that:
     edit.paste()
     key(enter)
 
+# opening files
+code this:
+    insert("code ")
+    text = edit.selected_text()
+    print(text)
+    insert(text)
+    key(enter)
 
 pip|peep:insert("python -m pip ")
 (pip|peep) freeze: insert("python -m pip freeze\n")
 (pip|peep) install: insert("python -m pip install ")
+
 
 virtual create: insert("python -m venv ./.venv\n")
 virtual: insert("python -m venv ")
