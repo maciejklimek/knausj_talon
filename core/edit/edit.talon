@@ -93,7 +93,7 @@ clear way down:
     edit.delete()
 
 # Copy
-copy that: edit.copy()
+copy that|this: edit.copy()
 copy word left: user.copy_word_left()
 copy word right: user.copy_word_right()
 

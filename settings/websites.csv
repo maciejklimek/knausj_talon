@@ -7,6 +7,8 @@ https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
 https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
 https://allegro.pl/koszyk,allegro cart
 https://www.frisco.pl/,frisco
+https://konto.infakt.pl/zaloguj/,infakt
+https://online.mbank.pl/pl/Login,mbank
 
 # Misc
 https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
@@ -15,6 +17,7 @@ https://libgen.is/,genesis
 https://1337x.to/,torrents
 https://www.youtube.com/,youtube
 https://photos.google.com/,photos
+https://www.theguardian.com/europe, guardian
 
 https://dropbox.com/,dropbox
 https://www.google.com/,google
@@ -54,17 +57,28 @@ https://www.linkedin.com/in/maciejklimek1/, linkedin
 # lingaro
 https://sulu.lingarogroup.com/, sulu
 https://lingaro.sharepoint.com/, sharepoint
+
+# auto pilot
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wiki/1516/NA-Autopilot-Projects, auto wiki
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/autopilot_wiki/2059/Landscape-overview, auto landscape
-https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot, auto dev
-https://dev.azure.com.rproxy.goskope.com/pg-warehousing/NA%20Autopilot, auto def
+https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto dev
+https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto def
 https://portal.azure.com.rproxy.goskope.com/#home, azure portal
-https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w dev
+https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w devknausj_talon
 https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev
 https://dap-edge-stg.warehousing.pg.com/argo/, argo w stage
+https://dap-edge-nemc-dev.warehousing.pg.com/argo/, argo n dev
+
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_git/autopilot, auto repos
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipelines
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipeline
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_release?_a=releases&view=mine&definitionId=33, auto release
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_sprints/taskboard/Allocation%20algorithm/NA%20Autopilot/Sprint%2056, auto sprint
 https://docs.google.com/spreadsheets/d/100LnxQIzMHvvEWvCYhR2XEWlSX2k2dg9rg63pjDW_RU/edit?gid=0#gid=0, auto timesheet
+
+# smart yard
+https://smartyard.pg.com/, smartyard
+https://smartyard.pg.com/, smart yard
+https://dev.azure.com/pg-warehousing/Smart%20Yard, smart dev
+https://github.com/procter-gamble/, p g github
+https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/126/Project-Overview, smart wiki

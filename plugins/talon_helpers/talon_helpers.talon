@@ -5,7 +5,7 @@ talon home: menu.open_talon_home()
 talon copy context pie: user.talon_add_context_clipboard_python()
 talon copy context: user.talon_add_context_clipboard()
 talon copy name:
-    name = app.name()
+    name = app.name
     clip.set_text(name)
 talon copy executable:
     executable = app.executable()

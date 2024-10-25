@@ -15,10 +15,12 @@ zoom out: edit.zoom_out()
 scroll up: edit.page_up()
 scroll down: edit.page_down()
 
-copy that: edit.copy()
+copy that|this: edit.copy()
 
-cut that: edit.cut()
-paste it: edit.paste()
+cut that|this: edit.cut()
+paste it: 
+    edit.paste()
+    user.set_next_action("paste it")
 
 nope: 
     edit.undo()

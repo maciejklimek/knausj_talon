@@ -52,6 +52,8 @@ vscode_projects = {
     "helm": "autopilot-helm",
     "community": "community",
     "whisper": "talon-whisper",
+    "talon": "talon-user", 
+    "actions": "action-app-api",
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()

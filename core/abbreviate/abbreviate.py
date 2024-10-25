@@ -445,6 +445,7 @@ abbreviations = {
     "window": "win",
     "windows kernel": "ntoskrnl",
     "work in progress": "wip",
+    "user story": "US#",
 }
 
 # This variable is also considered exported for the create_spoken_forms module

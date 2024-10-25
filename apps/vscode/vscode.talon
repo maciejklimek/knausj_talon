@@ -9,6 +9,9 @@ tag(): user.tabs
 
 window reload: user.vscode("workbench.action.reloadWindow")
 window close: user.vscode("workbench.action.closeWindow")
+close:
+    user.tab_close_wrapper()
+
 #multiple_cursor.py support end
 settings():
     speech.timeout = 0.300
@@ -543,6 +546,8 @@ fix this: user.vscode("editor.action.quickFix")
     user.engine_mimic("take funk name this")
     sleep(50ms)
     user.engine_mimic("refs")
+accept:
+    key("cmd-enter")
 
 ###############################################################################
 ### cursorless

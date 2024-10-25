@@ -4,25 +4,54 @@ print modes:
     print(user.list_modes())
 
 ^horse$:
-    key("ctrl-1")
-    sleep(100ms)
-    user.rephrase(phrase or "")
+    user.focus_app_by_bundle("com.google.Chrome")
+    #key("ctrl-1")
+    #sleep(100ms)
+    #user.rephrase(phrase or "")
 
 ^coder$:
-    key("ctrl-2")
-    sleep(100ms)
-    user.rephrase(phrase or "")
+    user.focus_app_by_bundle("com.todesktop.230313mzl4w4u92")
+    #sleep(100ms)
+    #user.rephrase(phrase or "")
 
 ^panda$:
-    key("ctrl-3")
+    user.focus_app_by_bundle("com.openai.chat")
+    #key("ctrl-3")
     sleep(100ms)
-    user.rephrase(phrase or "")
+
+panda this:
+    edit.copy()
+    user.focus_app_by_bundle("com.openai.chat")
+    sleep(100ms)
+    edit.paste()
 
 ^teams$:
-    print("teams")
-    key("ctrl-4")
-    sleep(100ms)
-    user.rephrase(phrase or "")
+    user.focus_app_by_bundle("com.microsoft.teams2")
+    #sleep(100ms)
+    #user.rephrase(phrase or "")
+
+^tango$:
+    user.focus_app_by_bundle("com.google.Chrome.app.fmpnliohjhemenmnlpbfagaolkdacoja")
+    #sleep(100ms)
+    #user.rephrase(phrase or "")
+
+^tango this$:
+    edit.copy()
+    user.focus_app_by_bundle("com.google.Chrome.app.fmpnliohjhemenmnlpbfagaolkdacoja")
+    sleep(200ms)
+    edit.delete_all()
+    edit.paste()
+
+^tango explain this$:
+    edit.copy()
+    user.focus_app_by_bundle("com.google.Chrome.app.fmpnliohjhemenmnlpbfagaolkdacoja")
+    sleep(200ms)
+    edit.delete_all()
+    insert("explain this:   ")
+    edit.paste()
+
+^thomas$:
+    user.focus_app_by_bundle("com.microsoft.teams2")
 
 ^tiger$:
     print("intelij")
@@ -31,9 +60,10 @@ print modes:
     user.rephrase(phrase or "")
 
 ^puppy$:
-    key("ctrl-7")
-    sleep(100ms)
-    user.rephrase(phrase or "")
+    user.focus_app_by_bundle("net.kovidgoyal.kitty")
+    #key("ctrl-7")
+    #sleep(100ms)
+    #user.rephrase(phrase or "")
 
 # ^obsidian$:
 #     key("ctrl-6")
@@ -44,7 +74,6 @@ print modes:
     key("ctrl-6")
     sleep(100ms)
     user.rephrase(phrase or "")
-
 
 # switcher_focus_and_wait wait u, 0.5ntil ui.active_app() == app,
 # But does this mean that talon made the context switch,  so that we can use rephrase?
@@ -76,11 +105,6 @@ menu show:
     sleep(100ms)
     key(enter)
 
-spotlight [<user.text>]:
-    key(cmd-alt-space)
-    sleep(50ms)
-    insert(text or "")
-
 ###############################################################################
 ### raycast
 ###############################################################################
@@ -97,7 +121,6 @@ spot close: key(cmd-w)
 # raindrop recent:
 #     key(cmd-shift-f5)
 
-
 talon play: user.run_in_fish_shell("osascript -e 'tell app \"Terminal\" to activate' -e 'tell app \"Terminal\" to do script \"talon-play-latest\"'")
 
 talon play last: user.run_in_fish_shell("talon-play-pre-last")
@@ -105,64 +128,72 @@ talon restart: user.run_in_fish_shell("talon-restart")
 
 puppy talon: user.focus_talon_window()
 
+^(run this)|(puppy this)$:
+    edit.copy()
+    user.focus_app_by_bundle("net.kovidgoyal.kitty")
+    sleep(1000ms)
+    key(ctrl-u)
+    sleep(50ms)
+    edit.paste()
+    key(enter)
+
 ###########################################
 # Open specific files in knausj_talon
 ###########################################
 # ^polo mac o s:
-#     user.vscode_open_project("knausj_talon")
+#     user.vscode_projects(vscode_open_project)("knausj_talon")
 #     user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/macOS.talon")
 #     user.switcher_focus_and_wait("code", 0.5)
 #     key(cmd-down)
 #     key(enter)
 # TODO(maciejk): a introduce kanusj_talon Say Base Path.
 ^coder files obsidian:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/apps/obsidian/obsidian.mac.talon")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/maciek/apps/obsidian/obsidian.mac.talon")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 #punctuation_words
 
 ^coder [files] additional:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/additional_words.csv")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/settings/additional_words.csv")
+    user.switcher_focus_and_wait("cursor", 0.5)
     sleep(500ms)
     key(cmd-down)
     key(enter)
 
 ^coder files vs:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/apps/vscode/vscode.talon")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/apps/vscode/vscode.talon")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 
 ^coder files command line$:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/commandline.talon")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/maciek/commandline.talon")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 
 ^coder files chrome$:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/chrome_mac.talon")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/maciek/chrome_mac.talon")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 
 ^coder files jetbrains$:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/maciek/apps/jetbrains/jetbrains.talon")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/maciek/apps/jetbrains/jetbrains.talon")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 
 ^coder files websites$:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/websites.csv")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/settings/websites.csv")
+    user.switcher_focus_and_wait("cursor", 0.5)
     key(cmd-down)
     key(enter)
 
-
 ^coder files replace:
-    user.run_in_fish_shell("code /Users/maciek/projects/knausj_talon/settings/words_to_replace.csv")
-    user.switcher_focus_and_wait("code", 0.5)
+    user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/settings/words_to_replace.csv")
+    user.switcher_focus_and_wait("cursor", 0.5)
     user.engine_mimic("pour file")
 # anki
 anki vscode:
@@ -206,7 +237,7 @@ links: key(cmd-alt-shift-f1)
 # ^polo help coder: user.raycast_talon_search("vscode")
 
 ^coder project [<user.text>]$: user.raycast_coder_project(text or "")
-^helmet | polo search [<user.text>] $: user.raycast_talon_search(text or "")
+^ helmet | polo search [<user.text>] $: user.raycast_talon_search(text or "")
 # github repo [<user.text>]:
 
 create note: key("cmd-shift-f8")
@@ -224,18 +255,6 @@ take save screenshot:
     key(shift-cmd-4)
 #com.axissecurity.client.ui
 # focus atmos:
-
-# Insertion of my data
-insert email: insert("maciej.klimek@gmail.com")
-insert waldemar|bajka email: insert("waldemar.bajka@gmail.com")
-insert work email: insert("maciej.klimek@lingarogroup.com")
-insert full|my name: insert("Maciej Klimek")
-insert surname: insert("Klimek")
-insert phone [number]: insert("519 354 695")
-
-
-insert piotr: insert("Piotr Czechowicz")
-insert paula: insert("Carvajal, Paula")
 
 # vscode
 coder <user.vscode_project_names>:

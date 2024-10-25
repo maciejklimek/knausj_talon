@@ -37,17 +37,33 @@ lisa: insert("ls\n")
 ### file operations
 ###############################################################################
 file list: "ls "
+file list that:
+    insert("ls ")
+    edit.paste()
+    key(enter)
+
 file link: "ln -s "
 file move: "mv "
-file open: "vim "
+# file open: "vim "
+file edit: "vim "
+
+file edit that:
+    insert("vim ")
+    edit.paste()
+    key(enter)
+
 file touch: "touch "
 file copy: "cp "
-dir copy: "cp -r "
+file dir copy: "cp -r "
 file type: "file "
 file show: "cat "
+file show that:
+    insert("cat ")
+    edit.paste()
+    key(enter)
 file stat: "stat "
 file which: "which "
-get link: insert("readlink -f ")
+file get link: insert("readlink -f ")
 
 
 ###############################################################################
@@ -98,7 +114,6 @@ now rip that:
 make executable|exec: "chmod +x "
 
 top run: "top\n"
-vim run: "vim "
 code run: "code "
 
 current folder: "pwd\n"
@@ -147,8 +162,8 @@ task: insert("task \t"|define side)
 ### ssh stuff
 ###############################################################################
 remote shell: insert("ssh ")
-pink google: insert("ping www.google.com\n")
-pink google d n s: "ping 8.8.8.8\n"
+pink|ping google: insert("ping www.google.com\n")
+pink|ping google dns: insert("ping 8.8.8.8\n")
 
 # remote shell tesla:
 #     key("ctrl-c")
@@ -190,8 +205,17 @@ add sudo:
     insert("sudo ")
 append|add help: insert(" --help ")
 pager: " | less "
+
+# Running commands
 run last:
     key(up)
+    key(enter)
+
+run that:
+    # Clear the line does not work
+    key('ctrl-c')
+    sleep(300ms)
+    edit.paste()
     key(enter)
 manual: "man "
 (take it|accept):

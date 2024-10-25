@@ -11,8 +11,13 @@ key(cmd-shift-s):
 page next: insert("]]")
 page last: insert("[[")
 page crown: key("cmd-up")
-scroll:key(n)
-scroll up:key(u)
+scroll:
+    key(n)
+    user.set_next_action("scroll")
+scroll up:
+    key(u)
+    user.set_next_action("scroll up")
+
 ^refresh|reload$: key("cmd-r")
 
 
@@ -67,6 +72,8 @@ front$: browser.go_forward()
 google [<user.text>]$:
 password fill:
     key(cmd-shift-l)
+    sleep(200ms)
+    key(enter)
 
 tab open [<user.text>]$:
     app.tab_open()

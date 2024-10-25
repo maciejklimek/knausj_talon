@@ -12,9 +12,7 @@ key(f6): user.talon_sleep_toggle()
 ###############################################################################
 
 key(keypad_8): user.talon_sleep_toggle()
-# key(keypad_7): user.webspeech_polish_dictation_mode_enable()
 key(keypad_9): 
-    # user.webspeech_polish_dictation_mode_disable()
     user.command_mode()
 # key(keypad_5): 
 #     user.webspeech_polish_dictation_mode_disable()
@@ -41,21 +39,69 @@ key(keypad_9):
 #     sleep(100ms)
 #     user.rephrase(phrase or "")
 
+
+# key(ctrl-shift-b:down):
+#     user.maybe_talon_sleep()
+#     print("ctrl-shift-b:down")
+#     # key(b:down
+#     # key(ctrl-shift-b:down)
+
+# key(ctrl-shift-b:up):
+#     user.maybe_talon_wake_up()
+#     print("ctrl-shift-b:up")
+    # key(ctrl-shift-b:up)
+
+# key(keypad_1:down):
+#     user.maybe_talon_sleep()
+
+# key(keypad_1:up):
+#     user.maybe_talon_wake_up()
+
+
+
 key(keypad_4):
     print("execute_next_action")
     user.execute_next_action()
 
-key(keypad_1:down):
-    user.whisper_mode()
-    user.start_whisper_mode_and_start_dictation()
+    
 
-key(keypad_1:up):
-    res = user.whisper_stop_dictation()
-    print("got")
-    print(res)
-    insert(res)
-    user.command_mode()
+# key(keypad_1:down):
+#     user.whisper_mode()
+#     user.start_whisper_mode_and_start_dictation()
 
+# key(keypad_1:up):
+#     res = user.whisper_stop_dictation()
+#     print("got")
+#     print(res)
+#     insert(res)
+#     user.command_mode()
+
+# key(f5:down):
+#     user.maybe_talon_sleep()
+#     user.start_flow()
+
+# key(f5:up):
+#     user.maybe_talon_wake_up()
+#     user.stop_flow()
+    
+
+key(f7:down):
+    print("f7:down")
+    user.maybe_talon_sleep()
+    user.start_flow()
+
+key(f7:up):
+    print("f7:up")
+    user.maybe_talon_wake_up()
+    user.stop_flow()
+
+# key(f4:down): 
+#     user.maybe_talon_sleep()
+#     user.start_whisper_mode_and_start_dictation()
+
+# key(f3:down):
+#     user.maybe_talon_sleep()
+#     user.start_whisper_mode_and_start_dictation()
 
 
 ###############################################################################
@@ -63,7 +109,8 @@ key(keypad_1:up):
 ###############################################################################
 deck(pedal_middle:down): 
     print("pedal_middle:down")
-    user.start_whisper_mode_and_start_dictation()
+    user.maybe_talon_sleep()
+    key(ctrl-shift-b:down)
 
 # key(cmd-f17:down):
 #     print("cmd-f17:down")
@@ -74,10 +121,8 @@ deck(pedal_middle:down):
 
 deck(pedal_middle:up): 
     print("pedal_middle:up")
-    res = user.whisper_stop_dictation()
-    print('Response')
-    user.paste(res)
-    user.command_mode()
+    user.maybe_talon_wake_up()
+    key(ctrl-shift-b:up)
 
 deck(pedal_left:down):
     print("pedal_left:down")

@@ -228,6 +228,13 @@ def update_overrides(name, flags):
 
 @mod.action_class
 class Actions:
+    def focus_app_by_bundle(bundle_id: str):
+        """Focus application by its bundle ID"""
+        for app in ui.apps():
+            if app.bundle == bundle_id:
+                app.focus()
+                break
+            
     def get_running_app(name: str) -> ui.App:
         """Get the first available running app with `name`."""
         # We should use the capture result directly if it's already in the list
