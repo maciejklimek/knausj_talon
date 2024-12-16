@@ -18,31 +18,31 @@ tasks:
         if [ ! -d ~/projects/knausj_talon ]; then
           echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: ~/projects/knausj_talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
         else
-          rsync -rq --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon ~/.talon/user/
+          rsync -rq --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon ~/.talon/user/ && echo -e "\033[1;32m✓ knausj_talon copied successfully\033[0m"
         fi
       - |
         if [ ! -d ~/projects/knausj_talon/cursorless-settings ]; then
           echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: ~/projects/knausj_talon/cursorless-settings directory does not exist!\n⚠️  ==========================================\n\033[0m"
         else
-          rsync -rq --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/
+          rsync -rq --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/ && echo -e "\033[1;32m✓ cursorless-settings copied successfully\033[0m"
         fi
       - |
         if [ ! -d /Users/maciek/projects/talon-gaze-ocr ]; then
           echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/talon-gaze-ocr directory does not exist!\n⚠️  ==========================================\n\033[0m"
         else
-          rsync -rq --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/ && echo -e "\033[1;32m✓ talon-gaze-ocr copied successfully\033[0m"
         fi
       - |
         if [ ! -d /Users/maciek/projects/cursorless-talon ]; then
           echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/cursorless-talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
         else
-          rsync -rq --delete --exclude=.git /Users/maciek/projects/cursorless-talon ~/.talon/user/
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/cursorless-talon ~/.talon/user/ && echo -e "\033[1;32m✓ cursorless-talon copied successfully\033[0m"
         fi
       - |
         if [ ! -d /Users/maciek/projects/rango-talon ]; then
           echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/rango-talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
         else
-          rsync -rq --delete --exclude=.git /Users/maciek/projects/rango-talon ~/.talon/user/
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/rango-talon ~/.talon/user/ && echo -e "\033[1;32m✓ rango-talon copied successfully\033[0m"
         fi
 
   show-cheatsheet:
