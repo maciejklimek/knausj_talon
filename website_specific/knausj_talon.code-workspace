@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../rango-talon"
+		}
+	],
+    "settings": {
+        "workbench.colorCustomizations": {
+            "commandCenter.border": "#e7e7e799",
+            "sash.hoverBorder": "#c22b9f",
+            "titleBar.activeBackground": "#98227d",
+            "titleBar.activeForeground": "#e7e7e7",
+            "titleBar.inactiveBackground": "#98227d99",
+            "titleBar.inactiveForeground": "#e7e7e799"
+        },
+        "peacock.color": "#98227d"
+    }
+}

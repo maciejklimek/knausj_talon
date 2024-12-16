@@ -38,6 +38,7 @@ sleep = actions.sleep
 key = actions.key
 repeat = actions.repeat
 insert = actions.insert
+
 global_ctx = Context()
 mod.list("vscode_projects", desc="VSCode projects")
 mod.list("vscode_file_shortcuts", desc="VSCode file shortcuts")
@@ -54,6 +55,9 @@ vscode_projects = {
     "whisper": "talon-whisper",
     "talon": "talon-user", 
     "actions": "action-app-api",
+    'smart yard': "smartyard-fa",
+    'anthropic': "anthropic-quickstarts",
+    'd a p': 'decision-automation-api'
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()
@@ -147,6 +151,14 @@ class Actions:
         key("backspace")
         insert(query)
         key("enter")
+    
+    def vscode_open_file(filepath: str):
+        """Open a file in VSCode"""
+        actions.user.vscode(f"workbench.action.quickOpen")
+        actions.sleep("50ms")
+        actions.insert(filepath)
+        actions.sleep("200ms")
+        actions.key("enter")
 
     def vscode_terminal(number: int):
         """Activate a terminal by number"""

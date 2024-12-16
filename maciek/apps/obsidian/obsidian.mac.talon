@@ -10,6 +10,10 @@ app: obsidian
 bullet: 
     edit.line_start()
     insert("- ")
+
+insert task:
+    insert("- [ ] ")
+    ,
 # bullet: user.obsidian_run_command("Toggle bullet list")
 
 lion [<user.text>]$:
@@ -40,7 +44,11 @@ code block typescript:
     insert('```typescript\n')
 code block css:
     insert('```css\n')
-
+        
+code insert:
+    insert('``')
+    key(left)
+    
 
 # Daily notes:
 daily show:
@@ -50,9 +58,6 @@ anki sync:
 settings go:
     user.obsidian_run_command("Open settings")
 
-code insert:
-    insert('``')
-    key(left)
 
 dev tools:
     key(cmd-alt-i)
@@ -118,6 +123,7 @@ hash tag bug: insert("#bug ")
 close:
     key(cmd-w)
 
+# headers
 header one  [<user.text>]$:
     insert("# ")
     insert(user.formatted_text(text or "", "CAPITALIZE_FIRST_WORD"))

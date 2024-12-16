@@ -29,10 +29,10 @@ class user_actions:
         """."""
         actions.key("cmd-shift-f7")
 
-    def raycast_coder_project(project_name: str):
-        """."""
-        actions.key("cmd-shift-f2")
-        wait_for_raycast()
-        actions.insert(project_name)
-        if project_name:
-            actions.key("enter")
+    # def raycast_coder_project(project_name: str):
+    #     """."""
+    #     actions.key("cmd-shift-f2")
+    #     wait_for_raycast()
+    #     actions.insert(project_name)
+    #     if project_name:
+    #         actions.key("enter")

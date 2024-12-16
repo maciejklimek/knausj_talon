@@ -480,6 +480,16 @@ take next$:
 ### Commenting stuff & TODOs
 ###############################################################################
 
+^comment info$:
+    insert("# INFO: ")
+
+^comment warn$:
+    insert("# WARN: ")
+
+^comment error$:
+    insert("# ERROR: ")
+
+
 ^to do create [<phrase>]$:
     insert("# TODO: ")
     user.dictation_mode(phrase or "")
@@ -505,7 +515,7 @@ take next$:
     sleep(10ms)
     user.vscode("editor.action.commentLine")
 
-comment this: code.toggle_comment()
+# comment this: code.toggle_comment()
 
 comment clone|clomment: 
     edit.selection_clone()
@@ -514,12 +524,12 @@ comment clone|clomment:
 ###############################################################################
 ### project navigation
 ###############################################################################
-proj|project [<user.text>] wait:
+project [<user.text>] wait:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")
 
-(proj|project) [<user.text>]:
+project [<user.text>]:
     user.vscode("workbench.action.openRecent")
     sleep(50ms)
     insert(text or "")

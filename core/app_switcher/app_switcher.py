@@ -227,14 +227,100 @@ def update_overrides(name, flags):
 
 
 @mod.action_class
+class SpecificAppActions:
+    def focus_cursor_app(project_name: str = None, filepath: str = None):
+        """Focus Cursor app"""
+        actions.user.focus_app_by_bundle("com.todesktop.230313mzl4w4u92")
+        if project_name:
+            actions.sleep("500ms")
+            actions.user.vscode_open_project(project_name)
+        if filepath:
+            actions.sleep("100ms")
+            actions.user.vscode_open_file(filepath)
+
+    def focus_chrome_app():
+        """Focus Chrome app"""
+        actions.user.focus_app_by_bundle("com.google.Chrome")
+
+    def focus_claude_app():
+        """Focus Claude app"""
+        actions.user.focus_app_by_bundle(
+            "com.anthropic.claudefordesktop"
+        )
+        
+    def focus_obsidian_app():
+        """Focus Obsidian app"""
+        actions.user.focus_app_by_bundle("md.obsidian")
+
+    def focus_teams_app():
+        """Focus Teams app"""
+        actions.user.focus_app_by_bundle("com.microsoft.teams2")
+
+    def focus_chatgpt_app():
+        """Focus ChatGPT app"""
+        actions.user.focus_app_by_bundle("com.openai.chat")
+
+    def focus_kitty_app():
+        """Focus Kitty app"""
+        actions.user.focus_app_by_bundle("net.kovidgoyal.kitty")
+        
+    def focus_outlook_app():
+        """Focus Outlook app"""
+        actions.user.focus_app_by_bundle("com.microsoft.Outlook")   
+    
+    def focus_sublime_app():
+        """Focus Sublime app"""
+        actions.user.focus_app_by_bundle("com.sublimetext.4")
+
+    def focus_or_launch_chrome_app(profile_name: str|None = None):
+        """Focus or launch Chrome app with a specific profile"""
+        if profile_name is None:
+            profile_name = "Maciej Klimek - normal profile"
+        
+        print(f"Attempting to focus/launch Chrome with profile: {profile_name}")
+        
+        # XXX
+        profile_name_directory_matching = {
+            "Maciej Klimek - normal profile": 'Default',
+            "Maciej Klimek - deepsense.ai profile": 'Profile 4'
+        }
+        
+        # Check if profile exists in mapping
+        if profile_name not in profile_name_directory_matching:
+            print(f"Warning: Profile '{profile_name}' not found in directory mapping")
+            return
+
+        for app in ui.apps():
+            if app.bundle == "com.google.Chrome":
+                print(f"Found Chrome instance with name: {app.name}")
+                if profile_name in app.name:
+                    print(f"Focusing existing Chrome window with profile: {profile_name}")
+                    app.focus()
+                    return
+     
+        # If the profile is not found, launch Chrome with the specified profile
+        profile_path = f"--profile-directory={profile_name_directory_matching[profile_name]}"
+        print(f"Launching new Chrome instance with profile path: {profile_path}")
+        subprocess.Popen(["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", profile_path])
+
+
+@mod.action_class
 class Actions:
     def focus_app_by_bundle(bundle_id: str):
         """Focus application by its bundle ID"""
         for app in ui.apps():
             if app.bundle == bundle_id:
                 app.focus()
-                break
+                return app
+        return None
+                
             
+    def focus_or_run_app_by_bundle(bundle_id: str):
+        """Focus application by its bundle ID, or run it if not running"""
+        app = actions.user.focus_app_by_bundle(bundle_id)
+        if not app:
+            actions.user.switcher_launch(bundle_id)
+
     def get_running_app(name: str) -> ui.App:
         """Get the first available running app with `name`."""
         # We should use the capture result directly if it's already in the list
@@ -272,7 +358,6 @@ class Actions:
         app = actions.user.get_running_app(name)
         actions.user.switcher_focus_app(app)
         actions.sleep(wait_time_in_seconds)
-        
 
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""

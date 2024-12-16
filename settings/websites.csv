@@ -1,5 +1,6 @@
 URL,Spoken name
 
+# Shopping
 https://www.amazon.pl/,amazon
 https://allegro.pl/,allegro
 https://allegrolokalnie.pl/, allegro local
@@ -7,32 +8,34 @@ https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
 https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
 https://allegro.pl/koszyk,allegro cart
 https://www.frisco.pl/,frisco
+https://www.olx.pl/, olx
+
+# Banking
 https://konto.infakt.pl/zaloguj/,infakt
-https://online.mbank.pl/pl/Login,mbank
+https://online.mbank.pl/pl/Login,mban
 
 # Misc
 https://www.reddit.com/r/UkrainianConflict/,reddit Ukraine
 https://www.theverge.com/,the verge
 https://libgen.is/,genesis
 https://1337x.to/,torrents
-https://www.youtube.com/,youtube
-https://photos.google.com/,photos
 https://www.theguardian.com/europe, guardian
-
 https://dropbox.com/,dropbox
-https://www.google.com/,google
-https://docs.google.com/document/u/0/,docs
-https://docs.google.com/document/u/0/,google docs
-https://calendar.google.com,calendar
-https://maps.google.com/,maps
-https://scholar.google.com/,google scholar
-https://mail.google.com/,gmail
 https://github.com/,github
 https://gist.github.com/,gist
 https://en.wikipedia.org/,wikipedia
+
+# Google
+https://www.youtube.com/,youtube
+https://photos.google.com/,photos
+https://docs.google.com/document/u/0/,docs
+https://www.google.com/,google
+https://docs.google.com/document/u/0/,google docs
+https://calendar.google.com,calendar
+https://scholar.google.com/,google scholar
+https://maps.google.com/,maps
+https://mail.google.com/,gmail
 https://translate.google.com/,translate
-
-
 https://scholar.google.com/,google cool
 https://console.cloud.google.com/home/dashboard, cloud
 https://console.cloud.google.com/home/dashboard, console cloud 
@@ -43,7 +46,7 @@ https://keep.google.com/u/0/, google keep
 https://sourcegraph.com/search, sourcegraph
 
 # Talon
-https://talon.wiki/unofficial_talon_docs/#/,talon wiki
+https://talon.wiki/Customization/basic_customization,talon wiki
 https://search.talonvoice.com/search/,polo search
 https://search.talonvoice.com/search/,talon search
 https://github.com/talonhub/community, talon community
@@ -57,6 +60,7 @@ https://www.linkedin.com/in/maciejklimek1/, linkedin
 # lingaro
 https://sulu.lingarogroup.com/, sulu
 https://lingaro.sharepoint.com/, sharepoint
+https://lingarogroup.csod.com/login/render.aspx?id=defaultclp, cornerstone
 
 # auto pilot
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wiki/1516/NA-Autopilot-Projects, auto wiki
@@ -68,7 +72,6 @@ https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/over
 https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev
 https://dap-edge-stg.warehousing.pg.com/argo/, argo w stage
 https://dap-edge-nemc-dev.warehousing.pg.com/argo/, argo n dev
-
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_git/autopilot, auto repos
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipelines
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipeline
@@ -79,6 +82,15 @@ https://docs.google.com/spreadsheets/d/100LnxQIzMHvvEWvCYhR2XEWlSX2k2dg9rg63pjDW
 # smart yard
 https://smartyard.pg.com/, smartyard
 https://smartyard.pg.com/, smart yard
-https://dev.azure.com/pg-warehousing/Smart%20Yard, smart dev
+https://dev.azure.com/pg-warehousing/Smart%20Yard, smartyard dev
 https://github.com/procter-gamble/, p g github
-https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/126/Project-Overview, smart wiki
+https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/126/Project-Overview, smartyard wiki
+
+# Dap, e-carriers
+https://dev.azure.com/pg-warehousing/Decision%20Automation, dap dev  
+https://dev.azure.com/pg-warehousing/Decision%20Automation, d a p dev  
+
+# perplexity
+https://www.perplexity.ai/, perplexity
+
+

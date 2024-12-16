@@ -112,29 +112,17 @@ deck(pedal_middle:down):
     user.maybe_talon_sleep()
     key(ctrl-shift-b:down)
 
-# key(cmd-f17:down):
-#     print("cmd-f17:down")
-#     user.webspeech_polish_dictation_mode_enable()
-# key(cmd-f17:up):
-#     print("cmd-f17:up")
-#     user.webspeech_polish_dictation_mode_disable()
-
 deck(pedal_middle:up): 
     print("pedal_middle:up")
     user.maybe_talon_wake_up()
     key(ctrl-shift-b:up)
 
 deck(pedal_left:down):
-    print("pedal_left:down")
-    user.dictation_mode()
-
-deck(pedal_left:up):
-    print("pedal_left:up")
-    user.command_mode()
+    key(enter)
 
 deck(pedal_right):
     "middle right"
-
+    
 # key(keypad_1):
 #     key("ctrl-1") 
 #     user.switcher_focus_and_wait("google chrome")
@@ -159,3 +147,4 @@ deck(pedal_right):
 
 # key(ctrl-f):
 #     key(cmd-alt-shift-f1)
+v
