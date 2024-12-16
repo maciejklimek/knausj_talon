@@ -9,28 +9,53 @@ tasks:
       - echo "mimic('cheat sheet')" |/Users/maciek/.talon/.venv/bin/repl
       - algolia indices clear talon -y
       - algolia objects import talon -F /Users/maciek/.talon/user/knausj_talon/maciek/cheatsheet.ndjson
-      # Algolia blocked my application due to no usage. I had to create a new profile with the following command
-      # algolia profile add --name "my-profile" --app-id "A1H5XIVUQ6" --admin-api-key "XXXXXXXXXXXXXXXXXXXXXXXXX" --default
-      # Previous CLI I was using is DEPRECATED
-      # - algolia deleteindicespattern -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej` -r 'talon' -x false
-      # - algolia i -s /Users/maciek/.talon/user/knausj_talon/maciek/cheatsheet.json  -a TSMFGMK167 -k `doppler secrets get --plain ALGOLIA_API_KEY -p casa-del-maciek -c dev_maciej`  -n talon
 
   deploy:
     desc: "."
     cmds:
-      - rsync -avz --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon ~/.talon/user/
-      - rsync -avz --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/
-      - rsync -avz --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/
-      - rsync -avz --delete --exclude=.git /Users/maciek/projects/cursorless-talon ~/.talon/user/
-      - rsync -avz --delete --exclude=.git /Users/maciek/projects/rango-talon ~/.talon/user/
-
+      - echo -e "\033[1;32m\n🚀 ==========================================\n🚀 Starting Talon configuration deployment\n🚀 ==========================================\n\033[0m"
+      - |
+        if [ ! -d ~/projects/knausj_talon ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: ~/projects/knausj_talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git --exclude=maciek/experimental --exclude=.venv --exclude="/image_templates" ~/projects/knausj_talon ~/.talon/user/
+        fi
+      - |
+        if [ ! -d ~/projects/knausj_talon/cursorless-settings ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: ~/projects/knausj_talon/cursorless-settings directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git ~/projects/knausj_talon/cursorless-settings ~/.talon/user/
+        fi
+      - |
+        if [ ! -d /Users/maciek/projects/talon-gaze-ocr ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/talon-gaze-ocr directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/talon-gaze-ocr ~/.talon/user/
+        fi
+      - |
+        if [ ! -d /Users/maciek/projects/cursorless-talon ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/cursorless-talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/cursorless-talon ~/.talon/user/
+        fi
+      - |
+        if [ ! -d /Users/maciek/projects/rango-talon ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: /Users/maciek/projects/rango-talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git /Users/maciek/projects/rango-talon ~/.talon/user/
+        fi
 
   show-cheatsheet:
     desc: "."
     cmds:
       - /opt/homebrew/bin/fish -c "google-chrome cheatsheet.html"
-  version: "3"
+
   deploy-cursorless:
     desc: "."
     cmds:
-      - rsync -avz --delete --exclude=.git ~/projects/cursorless-talon ~/.talon/user/
+      - |
+        if [ ! -d ~/projects/cursorless-talon ]; then
+          echo -e "\033[1;31m\n⚠️  ==========================================\n⚠️  WARNING: ~/projects/cursorless-talon directory does not exist!\n⚠️  ==========================================\n\033[0m"
+        else
+          rsync -rq --delete --exclude=.git ~/projects/cursorless-talon ~/.talon/user/
+        fi
