@@ -358,6 +358,7 @@ class Actions:
 @mac_ctx.action_class("user")
 class MacUserActions:
     def trigger_command_server_command_execution():
+        print("triggering command server command execution key: cmd-shift-f17")
         actions.key("cmd-shift-f17")
 
 

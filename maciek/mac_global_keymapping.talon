@@ -84,7 +84,7 @@ key(keypad_4):
 #     user.maybe_talon_wake_up()
 #     user.stop_flow()
     
-
+  
 key(f7:down):
     print("f7:down")
     user.maybe_talon_sleep()
@@ -147,4 +147,3 @@ deck(pedal_right):
 
 # key(ctrl-f):
 #     key(cmd-alt-shift-f1)
-v

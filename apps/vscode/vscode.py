@@ -15,6 +15,10 @@ os: mac
 and app.bundle: com.todesktop.230313mzl4w4u92
 """
 mod.apps.vscode = """
+os: mac
+and app.bundle: com.exafunction.windsurf
+"""
+mod.apps.vscode = """
 os: linux
 and app.name: Code
 os: linux
@@ -57,7 +61,9 @@ vscode_projects = {
     "actions": "action-app-api",
     'smart yard': "smartyard-fa",
     'anthropic': "anthropic-quickstarts",
-    'd a p': 'decision-automation-api'
+    'd a p': 'decision-automation-api',
+    'ragbits': 'ragbits',
+    
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()
