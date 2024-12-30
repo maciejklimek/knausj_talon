@@ -1,5 +1,4 @@
-from talon import Context, Module, actions, imgui, settings, ui
-import os
+from talon import Context, actions
 
 ctx = Context()
 ctx.matches = r"""

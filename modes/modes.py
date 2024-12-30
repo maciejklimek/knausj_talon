@@ -1,4 +1,4 @@
-from talon import Module, actions, cron
+from talon import Module, actions
 from talon.grammar import Phrase
 from typing import Union
 

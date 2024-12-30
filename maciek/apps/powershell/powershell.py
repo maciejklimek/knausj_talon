@@ -1,5 +1,4 @@
-import json
-from talon import Context, actions, ui, Module, app, clip
+from talon import Context, actions, Module
 
 mod = Module()
 mod.apps.powershell = """

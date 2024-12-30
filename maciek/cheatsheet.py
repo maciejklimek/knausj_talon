@@ -1,16 +1,15 @@
 import re
-from time import sleep
 import uuid
 import ndjson
 from talon import Module, actions, registry
-import sys, os
+import os
 from talon import Context
 
 def list_to_markdown_table(file, list_name):
 
     file.write(f"# {list_name} \n\n")
     command_list = registry.lists[list_name][0].items()
-    file.write(f">\n")
+    file.write(">\n")
     file.write(f"> command word  {list_name}   \n\n")
     for key, value in command_list:
         file.write("> **" + key + "** *" + value + "*\n>\n")
@@ -51,7 +50,7 @@ def write_function(file):
 
 
 def write_formatters(file):
-    file.write(f"# formatters \n\n")
+    file.write("# formatters \n\n")
     command_list = registry.lists["user.formatters"][0].items()
     file.write("> command word  user.formatters  \n")
     #    file.write("|------|-----|\n")
@@ -124,7 +123,7 @@ def get_context_commands(commands):
             print(d["objectID"])
             results.append(d)
 
-        except Exception as e:
+        except Exception:
             print("exception")
             continue
     return results

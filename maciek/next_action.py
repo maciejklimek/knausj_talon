@@ -1,5 +1,4 @@
-from time import sleep
-from talon import Context, actions, ui, Module, app, speech_system
+from talon import Module, speech_system
 
 mod = Module()
 

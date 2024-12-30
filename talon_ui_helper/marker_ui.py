@@ -5,12 +5,9 @@ point on the screen by name.
 
 from typing import List, NamedTuple, Optional
 
-import re
 
-from talon import screen, canvas, ui, ctrl
-from talon import cron
+from talon import canvas, ui
 from talon.types import Rect
-from talon.skia.bitmap import Bitmap
 from talon.skia.typeface import Typeface
 
 

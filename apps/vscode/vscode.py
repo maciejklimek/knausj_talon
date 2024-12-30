@@ -1,5 +1,5 @@
 import json
-from talon import Context, actions, ui, Module, app, clip
+from talon import Context, actions, Module, app
 
 is_mac = app.platform == "mac"
 
@@ -160,7 +160,7 @@ class Actions:
     
     def vscode_open_file(filepath: str):
         """Open a file in VSCode"""
-        actions.user.vscode(f"workbench.action.quickOpen")
+        actions.user.vscode("workbench.action.quickOpen")
         actions.sleep("50ms")
         actions.insert(filepath)
         actions.sleep("200ms")

@@ -1,4 +1,4 @@
-from talon import Context, actions, ui, Module, app, clip
+from talon import Context, actions, Module, app
 
 mod = Module()
 
@@ -29,7 +29,7 @@ def on_mac():
 class user_actions:
     def tab_jump(number: int):
         if number < 0 or number > 9:
-            raise RuntimeError(f"number should be in range 1-9")
+            raise RuntimeError("number should be in range 1-9")
         actions.key(f"{ckey()}-{number}")
 
 
