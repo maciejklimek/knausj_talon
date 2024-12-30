@@ -1,5 +1,5 @@
 from .utils import run_cmd
-from talon import Context, actions, ui, Module, app
+from talon import Module
 import os
 import glob
 

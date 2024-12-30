@@ -1,5 +1,4 @@
-from talon import Context, Module, actions
-from subprocess import call
+from talon import Module, actions
 
 mod = Module()
 mod.list("playback_device", "Playback devices")

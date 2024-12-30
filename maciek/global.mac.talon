@@ -12,10 +12,9 @@ print modes:
 ^monkey$:
     user.focus_or_launch_chrome_app("Maciej Klimek - deepsense.ai profile")
 
+
 ^coder$:
-    user.focus_cursor_app("", "")
-    #sleep(100ms)
-    #user.rephrase(phrase or "")
+    user.focus_or_launch_windsurf_app("", "")
 
 ^panda$:
     user.focus_chatgpt_app()
@@ -141,13 +140,13 @@ puppy talon: user.focus_talon_window()
 #     key(enter)
 
 ^coder files additional:
-    user.focus_cursor_app("knausj_talon", "settings/additional_words.csv")
+    user.focus_windsurf_app("knausj_talon", "settings/additional_words.csv")
 
 ^coder files vs code:
-    user.focus_cursor_app("knausj_talon", "apps/vscode/vscode.talon")
+    user.focus_windsurf_app("knausj_talon", "apps/vscode/vscode.talon")
 
 ^coder files command line$:
-    user.focus_cursor_app("knausj_talon", "maciek/commandline.talon")
+    user.focus_windsurf_app("knausj_talon", "maciek/commandline.talon")
 
 # ^coder files chrome$:
 #     user.run_in_fish_shell("cursor /Users/maciek/projects/knausj_talon/maciek/chrome_mac.talon")
@@ -155,16 +154,13 @@ puppy talon: user.focus_talon_window()
 #     key(cmd-down)
 #     key(enter)
 
-^coder files jetbrains$:
-    user.focus_cursor_app("knausj_talon", "apps/jetbrains/jetbrains.talon")
-
 ^coder files websites$:
-    user.focus_cursor_app("knausj_talon", "settings/websites.csv")
+    user.focus_windsurf_app("knausj_talon", "settings/websites.csv")
     sleep(500ms)
     user.engine_mimic("slap file")
 
 ^coder files replace:
-    user.focus_cursor_app("knausj_talon", "settings/words_to_replace.csv")
+    user.focus_windsurf_app("knausj_talon", "settings/words_to_replace.csv")
     user.switcher_focus_and_wait("cursor", 0.5)
     user.engine_mimic("slap file")
 
@@ -229,7 +225,7 @@ take save screenshot:
 
 # vscode
 coder <user.vscode_project_names>:
-    user.focus_cursor_app(vscode_project_names)
+    user.focus_or_launch_windsurf_app(vscode_project_names)
 
 modes print:
     print(scope.get("mode"))

@@ -4,9 +4,8 @@ from ..code.window_snap import (
     get_app_window,
     get_screen_number,
     move_to_screen,
-    sorted_screens,
 )
-from talon import Context, Module, actions, app, ui
+from talon import Context, Module, actions, ui
 
 
 Layout = List[tuple[str, int, RelativeScreenPos]]
@@ -52,7 +51,7 @@ class Actions:
             try:
                 actions.user.move_app_to_screen(app_name, screen_idx)
                 actions.user.snap_app(app_name, relative_screen_pos)
-            except Exception as e:
+            except Exception:
                 continue
 
     def exchange_windows(app_name: str):

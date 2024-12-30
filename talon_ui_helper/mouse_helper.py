@@ -4,15 +4,13 @@ Useful actions related to moving the mouse
 
 import os
 import math
-import subprocess
 from typing import Union, Optional, List
 
-from talon import actions, ui, clip, screen, Module
+from talon import actions, ui, screen, Module
 from talon.types import Rect as TalonRect
 from talon.experimental import locate
 
 from .blob_detector import calculate_blob_rects
-from .marker_ui import MarkerUi
 
 
 mod = Module()

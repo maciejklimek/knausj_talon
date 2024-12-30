@@ -1,5 +1,4 @@
-from talon import Context, actions, ui, Module, app
-import time
+from talon import actions, Module
 
 mod = Module()
 

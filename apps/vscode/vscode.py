@@ -1,5 +1,5 @@
 import json
-from talon import Context, actions, ui, Module, app, clip
+from talon import Context, actions, Module, app
 
 is_mac = app.platform == "mac"
 
@@ -13,6 +13,10 @@ and app.bundle: com.microsoft.VSCode
 mod.apps.vscode = """
 os: mac
 and app.bundle: com.todesktop.230313mzl4w4u92
+"""
+mod.apps.vscode = """
+os: mac
+and app.bundle: com.exafunction.windsurf
 """
 mod.apps.vscode = """
 os: linux
@@ -57,7 +61,9 @@ vscode_projects = {
     "actions": "action-app-api",
     'smart yard': "smartyard-fa",
     'anthropic': "anthropic-quickstarts",
-    'd a p': 'decision-automation-api'
+    'd a p': 'decision-automation-api',
+    'ragbits': 'ragbits',
+    
 }
 
 global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()
@@ -154,7 +160,7 @@ class Actions:
     
     def vscode_open_file(filepath: str):
         """Open a file in VSCode"""
-        actions.user.vscode(f"workbench.action.quickOpen")
+        actions.user.vscode("workbench.action.quickOpen")
         actions.sleep("50ms")
         actions.insert(filepath)
         actions.sleep("200ms")

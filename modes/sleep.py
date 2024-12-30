@@ -22,7 +22,7 @@ class Actions:
         """talon wakeup"""
         
         actions.speech.enable()
-
+  
     def maybe_talon_sleep():
         """Make Talon sleep if it is in command mode."""
         global should_wake_up, microphone_active

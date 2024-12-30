@@ -1,4 +1,3 @@
-from talon import Module, Context, ui, actions, clip, app, grammar
 
 # Use the dictation formatter in dictation mode.
 # dictation_ctx = Context()

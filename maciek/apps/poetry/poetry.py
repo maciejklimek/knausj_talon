@@ -1,4 +1,4 @@
-from talon import Context, actions, ui, Module, app
+from talon import Context, Module
 
 mod = Module()
 mod.tag("poetry", desc="Tag for enabling generic terminal commands")

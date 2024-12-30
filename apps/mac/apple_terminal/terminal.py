@@ -1,4 +1,4 @@
-from talon import Context, Module, actions, imgui, settings, ui
+from talon import Context, actions, ui
 import os
 
 ctx = Context()

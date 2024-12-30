@@ -1,12 +1,12 @@
 # courtesy of https://github.com/timo/
 # see https://github.com/timo/talon_scripts
-from talon import Module, Context, app, canvas, screen, settings, ui, ctrl, cron
-from talon.skia import Shader, Color, Paint, Rect
+from talon import Module, Context, canvas, screen, settings, ui, ctrl, cron
+from talon.skia import Paint, Rect
 from talon.types.point import Point2d
 from talon_plugins import eye_mouse, eye_zoom_mouse
 from typing import Union
 
-import math, time
+import math
 
 import typing
 

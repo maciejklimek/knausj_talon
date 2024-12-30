@@ -3,7 +3,7 @@ import os.path
 import requests
 import time
 from pathlib import Path
-from talon import ctrl, ui, Module, Context, actions, clip
+from talon import ui, Module, Context, actions, clip
 import tempfile
 
 # Courtesy of https://github.com/anonfunc/talon-user/blob/master/apps/jetbrains.py
@@ -61,12 +61,12 @@ def _get_nonce(port, file_prefix):
     try:
         with open(os.path.join(tempfile.gettempdir(), file_name), "r") as fh:
             return fh.read()
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         try:
             home = str(Path.home())
             with open(os.path.join(home, file_name), "r") as fh:
                 return fh.read()
-        except FileNotFoundError as eb:
+        except FileNotFoundError:
             print(f"Could not find {file_name} in tmp or home")
             return None
     except IOError as e:

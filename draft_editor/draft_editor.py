@@ -1,5 +1,4 @@
 from talon import Module, actions, ui, app
-import time
 
 mod = Module()
 mod.mode("draft_editor", "Indicates whether the draft editor has been activated")

@@ -117,7 +117,7 @@ def handle_blob_detect_builder(result):
         "",
         ":",
         f'    bounding_rectangle = user.mouse_helper_calculate_relative_rect("{offsets}", "active_window")',
-        f'    user.mouse_helper_blob_picker(bounding_rectangle)',
+        '    user.mouse_helper_blob_picker(bounding_rectangle)',
     ])
     actions.clip.set_text(command)
     actions.app.notify("Copied new command to clipboard")

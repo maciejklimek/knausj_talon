@@ -1,7 +1,6 @@
 from typing import Union
-from talon import Module, actions, speech_system, cron
+from talon import Module, speech_system, cron
 from talon.grammar import Phrase
-import time
 
 mod = Module()
 
@@ -19,7 +18,6 @@ def on_post_phrase(d):
 speech_system.register("pre:phrase", on_pre_phrase)
 speech_system.register("post:phrase", on_post_phrase)
 
-from typing import Union
 
 
 def extract_samples(phrase):

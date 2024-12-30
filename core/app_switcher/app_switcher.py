@@ -238,6 +238,17 @@ class SpecificAppActions:
             actions.sleep("100ms")
             actions.user.vscode_open_file(filepath)
 
+    def focus_or_launch_windsurf_app(project_name: str = None, filepath: str = None):
+        """Focus or launch Windsurf app"""
+        actions.user.focus_or_run_app_by_bundle("com.exafunction.windsurf")
+        print("focus_or_launch_windsurf_app")
+        if project_name:
+            actions.sleep("500ms")
+            actions.user.vscode_open_project(project_name)
+        if filepath:
+            actions.sleep("100ms")
+            actions.user.vscode_open_file(filepath)
+
     def focus_chrome_app():
         """Focus Chrome app"""
         actions.user.focus_app_by_bundle("com.google.Chrome")
@@ -318,6 +329,7 @@ class Actions:
     def focus_or_run_app_by_bundle(bundle_id: str):
         """Focus application by its bundle ID, or run it if not running"""
         app = actions.user.focus_app_by_bundle(bundle_id)
+        
         if not app:
             actions.user.switcher_launch(bundle_id)
 
