@@ -95,6 +95,17 @@ key(f7:up):
     user.maybe_talon_wake_up()
     user.stop_flow()
 
+
+# key(f8:down):
+#     print("f8:down")
+#     user.maybe_talon_sleep()
+#     user.start_flow()
+    
+# key(f8:up):
+#     print("f8:up")
+#     user.maybe_talon_wake_up()
+#     user.stop_flow()
+
 # key(f4:down): 
 #     user.maybe_talon_sleep()
 #     user.start_whisper_mode_and_start_dictation()

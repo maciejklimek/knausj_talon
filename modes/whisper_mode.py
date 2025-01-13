@@ -27,12 +27,12 @@ class Actions:
     def start_flow():
         """Start flow"""
         print("Starting flow")
-        actions.key("alt-b:down")
+        actions.key("ctrl-alt-b:down")
 
     def stop_flow():
         """Stop flow"""
         print("Stopping flow")
-        actions.key("alt-b:up")
+        actions.key("ctrl-alt-b:up")
 
     def start_whisper_mode_and_start_dictation():
         """Enter whisper mode and start dictation"""

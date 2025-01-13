@@ -1,4 +1,5 @@
 from typing import Any
+from pathlib import Path
 
 from talon import Context, Module, actions
 
@@ -24,12 +25,12 @@ def command_server_or_client_fallback(command_id: str, wait: bool):
     """Execute command via command server, falling back to command palette if directory not present."""
     try:
         run_command(command_id, wait_for_finish=wait)
-    except NoFileServerException:
+    except NoFileServerException as e:
         actions.user.command_palette()
         actions.user.paste(command_id)
         actions.key("enter")
         print(
-            "Command server directory not found; falling back to command palette.  For better performance, install the VSCode extension for Talon: https://marketplace.visualstudio.com/items?itemName=pokey.talon"
+            f"Command server directory '{e.path}' not found; falling back to command palette. For better performance, install the VSCode extension for Talon: https://marketplace.visualstudio.com/items?itemName=pokey.talon"
         )
 
 

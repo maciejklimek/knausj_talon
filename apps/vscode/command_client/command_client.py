@@ -43,7 +43,9 @@ class NotSet:
 
 
 class NoFileServerException(Exception):
-    pass
+    def __init__(self, path: Path):
+        self.path = path
+        super().__init__(f"Communication directory not found: {path}")
 
 
 def write_json_exclusive(path: Path, body: Any):
@@ -143,7 +145,7 @@ def run_command(
     if not communication_dir_path.exists():
         if args or return_command_output:
             raise Exception("Must use command-server extension for advanced commands")
-        raise NoFileServerException("Communication directory not found")
+        raise NoFileServerException(communication_dir_path)
 
     request_path = communication_dir_path / "request.json"
     response_path = communication_dir_path / "response.json"
