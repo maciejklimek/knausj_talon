@@ -304,8 +304,9 @@ class SpecificAppActions:
         for app in ui.apps():
             if app.bundle == "com.google.Chrome":
                 print(f"Found Chrome instance with name: {app.name}")
-                if profile_name in app.name:
-                    print(f"Focusing existing Chrome window with profile: {profile_name}")
+
+                if profile_name in app.name or (app.name == "Google Chrome" and profile_name == "Maciej Klimek - normal profile"):
+                    print(f"Focusing existing Chrome window for profile: {profile_name}, window name: {app.name}")
                     app.focus()
                     return
      
@@ -470,6 +471,9 @@ def on_ready():
     update_launch_list()
     update_running_list()
     ui.register("", ui_event)
+
+
+app.register("ready", on_ready)
 
 
 app.register("ready", on_ready)

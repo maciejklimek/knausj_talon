@@ -21,17 +21,22 @@ app: vscode
 ctx.tags = ["user.command_client"]
 
 
-def command_server_or_client_fallback(command_id: str, wait: bool):
-    """Execute command via command server, falling back to command palette if directory not present."""
+def command_server_or_client_fallback(command_id: str, wait: bool, fallback=False):
+    """Execute command via command server, falling back to command palette if directory not present and fallback is True."""
     try:
         run_command(command_id, wait_for_finish=wait)
     except NoFileServerException as e:
-        actions.user.command_palette()
-        actions.user.paste(command_id)
-        actions.key("enter")
-        print(
-            f"Command server directory '{e.path}' not found; falling back to command palette. For better performance, install the VSCode extension for Talon: https://marketplace.visualstudio.com/items?itemName=pokey.talon"
-        )
+        if fallback:
+            actions.user.command_palette()
+            actions.user.paste(command_id)
+            actions.key("enter")
+            print(
+                f"Command server directory '{e.path}' not found; falling back to command palette. For better performance, install the VSCode extension for Talon: https://marketplace.visualstudio.com/items?itemName=pokey.talon"
+            )
+        else:
+            print(
+                f"\033[91m{'-' * 100}\nWARNING: Failed to execute command '{command_id}'. Command server directory '{e.path}' not found and fallback is disabled.\n{'-' * 100}\033[0m"
+            )
 
 
 @ctx.action_class("user")

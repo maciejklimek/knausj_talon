@@ -19,11 +19,17 @@ git remote branches: "git branch --remote\n"
 git branch <user.text>: "git branch {text}"
 # ^git|go checkout$: "git branch -a | grep -v "^\*" | fzf --height=60% --reverse --info=inline | xargs git checkout\n"
 # git checkout: "git checkout \t"
-git checkout master: "git checkout master\n"
+
+
+git checkout master$: "git checkout master\n"
 git checkout main$: "git checkout main\n"
-git checkout new: "git checkout -b "
-git checkout:
+git checkout develop$: "git checkout develop\n"
+
+git checkout new$: "git checkout -b "
+git checkout$:
     insert("fbr\n")
+
+
 # git checkout <user.text>: "git checkout {text}"
 git cherry pick: "git cherry-pick "
 git cherry pick continue: "git cherry-pick --continue "

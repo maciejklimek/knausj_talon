@@ -26,23 +26,23 @@ panda this:
     sleep(100ms)
     edit.paste()
 
-^tango$:
-    user.focus_claude_app()
+# ^tango$:
+#     user.focus_claude_app()
 
-^tango this$:
-    edit.copy()
-    user.focus_claude_app()
-    sleep(200ms)
-    edit.delete_all()
-    edit.paste()
+# ^tango this$:
+#     edit.copy()
+#     user.focus_claude_app()
+#     sleep(200ms)
+#     edit.delete_all()
+#     edit.paste()
 
-^tango explain this$:
-    edit.copy()
-    user.focus_claude_app()
-    sleep(200ms)
-    edit.delete_all()
-    insert("explain this:   ")
-    edit.paste()
+# ^tango explain this$:
+#     edit.copy()
+#     user.focus_claude_app()
+#     sleep(200ms)
+#     edit.delete_all()
+#     insert("explain this:   ")
+#     edit.paste()
 
 ^thomas$:
     user.focus_teams_app()
@@ -57,7 +57,7 @@ panda this:
     user.focus_kitty_app()
 ^obsidian$:
     user.focus_obsidian_app()
-
+`
 ^outlook$:
     user.focus_outlook_app()
     

@@ -67,8 +67,7 @@ https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wik
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/autopilot_wiki/2059/Landscape-overview, auto landscape
 https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto dev
 https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto def
-https://portal.azure.com.rproxy.goskope.com/#home, azure portal
-https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w devknausj_talon
+https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w dev
 https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev
 https://dap-edge-stg.warehousing.pg.com/argo/, argo w stage
 https://dap-edge-nemc-dev.warehousing.pg.com/argo/, argo n dev
@@ -78,6 +77,10 @@ https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipeline
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_release?_a=releases&view=mine&definitionId=33, auto release
 https://dev.azure.com/pg-warehousing/NA%20Autopilot/_sprints/taskboard/Allocation%20algorithm/NA%20Autopilot/Sprint%2056, auto sprint
 https://docs.google.com/spreadsheets/d/100LnxQIzMHvvEWvCYhR2XEWlSX2k2dg9rg63pjDW_RU/edit?gid=0#gid=0, auto timesheet
+
+# azure
+https://portal.azure.com/#home, azure portal
+https://portal.azure.com/#home, azure
 
 # smart yard
 https://smartyard.pg.com/, smartyard
@@ -91,9 +94,9 @@ https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/12
 # Dap, e-carriers
 https://dev.azure.com/pg-warehousing/Decision%20Automation, dap dev  
 https://dev.azure.com/pg-warehousing/Decision%20Automation, d a p dev  
-
-# perplexity
-https://www.perplexity.ai/, perplexity
+https://dev.azure.com/pg-warehousing/Decision%20Automation/_sprints/taskboard/Decision%20Automation%20Team/Decision%20Automation, d a p sprint
+https://github.com/procter-gamble/WHS-decision-automation-api, d a p repo
+https://github.com/procter-gamble/WHS-decision-automation-api, d a p github 
 
 
 # ragbits

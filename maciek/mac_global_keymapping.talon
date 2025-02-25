@@ -14,10 +14,7 @@ key(f6): user.talon_sleep_toggle()
 key(keypad_8): user.talon_sleep_toggle()
 key(keypad_9): 
     user.command_mode()
-# key(keypad_5): 
-#     user.webspeech_polish_dictation_mode_disable()
-#     user.dictation_mode()    
-#
+
 # key(keypad_): user.save_bad_recognition()
 
 # TODO(maciejk): This is a duplication
@@ -84,16 +81,32 @@ key(keypad_4):
 #     user.maybe_talon_wake_up()
 #     user.stop_flow()
     
-  
+# Wispr Flow  
 key(f7:down):
     print("f7:down")
     user.maybe_talon_sleep()
-    user.start_flow()
+    user.start_flow_continuous()
 
 key(f7:up):
     print("f7:up")
     user.maybe_talon_wake_up()
-    user.stop_flow()
+    user.stop_flow_continuous()
+
+key(f8):
+    print("f8")
+    user.toggle_flow()
+
+    
+# key(keypad_0:down):
+#     print("keypad_0:down")
+#     user.maybe_talon_sleep()
+#     user.start_flow_continuous()
+
+# key(keypad_0:up):
+#     print("keypad_0:up")
+#     user.maybe_talon_wake_up()
+#     user.stop_flow_continuous()
+
 
 
 # key(f8:down):
@@ -121,18 +134,27 @@ key(f7:up):
 deck(pedal_middle:down): 
     print("pedal_middle:down")
     user.maybe_talon_sleep()
-    key(ctrl-shift-b:down)
+    user.start_flow_continuous()
 
 deck(pedal_middle:up): 
     print("pedal_middle:up")
     user.maybe_talon_wake_up()
-    key(ctrl-shift-b:up)
-
+    user.stop_flow_continuous()
+ 
 deck(pedal_left:down):
     key(enter)
 
-deck(pedal_right):
-    "middle right"
+deck(pedal_right:down):
+    print("pedal_right:down")
+    key(cmd:down)
+
+deck(pedal_right:up):
+    print("pedal_right:up")
+    key(cmd:up)
+
+
+# deck(pedal_right):
+#     "middle right"
     
 # key(keypad_1):
 #     key("ctrl-1") 

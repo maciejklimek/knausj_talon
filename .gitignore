@@ -183,3 +183,5 @@ pyrightconfig.json
 
 repomix-output.txt
 parrot/test.pkl
+maciek/apps/vscode/vscode.talon
+talon-pyi/

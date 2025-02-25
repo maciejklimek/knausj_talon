@@ -8,8 +8,15 @@ notification_job = None
 
 @mod.action_class
 class Actions:
-    def display_notification(text: str, duration: float = 2.0, font_size: int = 48):
-        """Display a big caption notification on the screen."""
+    def display_notification(text: str, duration: float = 2.0, font_size: int = 48, height_fraction: float = 0.5):
+        """Display a caption notification on the screen.
+        
+        Args:
+            text: Text to display
+            duration: How long to show the text in seconds
+            font_size: Size of the font
+            height_fraction: Where vertically to show the text (0.0 = top, 1.0 = bottom)
+        """
         global notification_canvas, notification_job
 
         # Close the existing canvas if it exists
@@ -33,7 +40,7 @@ class Actions:
             # Calculate the text width and position
             text_width = paint.measure_text(text)[0]
             x = (screen_width - text_width) / 2
-            y = screen_height / 2
+            y = screen_height * height_fraction
 
             # Draw the text
             c.draw_text(text, x, y)

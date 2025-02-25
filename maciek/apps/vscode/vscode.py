@@ -185,7 +185,8 @@ class Actions:
         # user.vscode("projectManager.listProjects")
         user.vscode("projectManager.listProjectsNewWindow")
         sleep(0.1)
-        insert(project_name)
+        print(f"Changing project to: {project_name}")
+        actions.user.paste(project_name)
         key("enter")
 
     def command_palette():
