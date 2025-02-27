@@ -47,6 +47,9 @@ panda this:
 ^thomas$:
     user.focus_teams_app()
 
+^grok$:
+    user.focus_grok_app()
+
 # ^tiger$:
 #     print("intelij")
 #     key("ctrl-5")

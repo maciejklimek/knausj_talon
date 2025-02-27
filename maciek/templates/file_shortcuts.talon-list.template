@@ -1,0 +1,10 @@
+list: user.file_shortcuts
+-
+
+# Common files in this project
+readme: README.md
+config: config.json
+main: src/main.py
+utils: src/utils.py
+
+# Add more project-specific file shortcuts here

@@ -1,0 +1,10 @@
+list: user.project_vocabulary
+-
+
+# Project-specific vocabulary
+api: API
+json: JSON
+config: configuration
+auth: authentication
+
+# Add more project-specific vocabulary here

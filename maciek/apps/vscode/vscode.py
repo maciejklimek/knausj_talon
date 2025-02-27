@@ -47,31 +47,19 @@ global_ctx = Context()
 mod.list("vscode_projects", desc="VSCode projects")
 mod.list("vscode_file_shortcuts", desc="VSCode file shortcuts")
 
-vscode_projects = {
-    # NOTE: this is here because of misrecognition.
-    "crowns": "knausj_talon",
-    "nous": "knausj_talon",
-    "knaus": "knausj_talon",
-    "fish": "fish-config",
-    "auto": "autopilot",
-    "helm": "autopilot-helm",
-    "community": "community",
-    "whisper": "talon-whisper",
-    "talon": "talon-user", 
-    "actions": "action-app-api",
-    'smart yard': "smartyard-fa",
-    'anthropic': "anthropic-quickstarts",
-    'd a p': 'decision-automation-api',
-    'ragbits': 'ragbits',
-    
-}
-
-global_ctx.lists["user.vscode_projects"] = vscode_projects.keys()
-
+# The projects.talon-list file is automatically loaded by Talon
+# and populates the user.vscode_projects list
 
 @mod.capture(rule="{user.vscode_projects}")
 def vscode_project_names(m) -> str:
-    return vscode_projects[m.vscode_projects]
+    """
+    Returns the project directory name from the projects.talon-list
+    If the value contains a pipe character (|), it returns the first part (project_dir)
+    """
+    project_value = m.vscode_projects
+    if "|" in project_value:
+        return project_value.split("|")[0]
+    return project_value
 
 
 @ctx.action_class("win")

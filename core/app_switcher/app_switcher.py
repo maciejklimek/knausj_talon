@@ -2,6 +2,8 @@ import os
 import subprocess
 import time
 from pathlib import Path
+from typing import Optional, Callable, TypeVar, Any
+from contextlib import contextmanager
 
 import talon
 from talon import Context, Module, actions, app, fs, imgui, ui
@@ -238,10 +240,17 @@ class SpecificAppActions:
             actions.sleep("100ms")
             actions.user.vscode_open_file(filepath)
 
-    def focus_or_launch_windsurf_app(project_name: str = None, filepath: str = None):
+    def focus_or_launch_windsurf_app(project_name: Optional[str] = None, filepath: Optional[str] = None):
         """Focus or launch Windsurf app"""
-        actions.user.focus_or_run_app_by_bundle("com.exafunction.windsurf")
-        print("focus_or_launch_windsurf_app")
+        print("Attempting to focus or launch Windsurf app...")
+        
+        # Use the context manager for timing
+        with timing_context("Focus Windsurf app operation"):
+            res = actions.user.focus_or_run_app_by_bundle("com.exafunction.windsurf")
+        
+        print(f"focus_or_launch_windsurf_app result: {res}")
+        print("Windsurf app focus attempt completed.")
+
         if project_name:
             actions.sleep("500ms")
             actions.user.vscode_open_project(project_name)
@@ -270,6 +279,10 @@ class SpecificAppActions:
     def focus_chatgpt_app():
         """Focus ChatGPT app"""
         actions.user.focus_app_by_bundle("com.openai.chat")
+
+    def focus_grok_app():
+        """Focus Grok app"""
+        actions.user.focus_app_by_bundle("com.google.Chrome.app.ggjocahimgaohmigbfhghnlfcnjemagj")
 
     def focus_kitty_app():
         """Focus Kitty app"""
@@ -477,3 +490,39 @@ app.register("ready", on_ready)
 
 
 app.register("ready", on_ready)
+
+
+# Add timing helper functions
+def measure_time_ms(func: Callable, *args, **kwargs) -> tuple[Any, float]:
+    """
+    Measure the execution time of a function in milliseconds.
+    
+    Args:
+        func: The function to measure
+        *args, **kwargs: Arguments to pass to the function
+        
+    Returns:
+        tuple: (function result, execution time in milliseconds)
+    """
+    start_time = time.time()
+    result = func(*args, **kwargs)
+    end_time = time.time()
+    elapsed_ms = (end_time - start_time) * 1000
+    return result, elapsed_ms
+
+@contextmanager
+def timing_context(operation_name: str) -> None:
+    """
+    Context manager for timing operations and printing the results.
+    
+    Args:
+        operation_name: Name of the operation being timed
+    """
+    print(f"⏱️ Starting timing for: {operation_name}")
+    start_time = time.time()
+    try:
+        yield
+    finally:
+        end_time = time.time()
+        elapsed_ms = (end_time - start_time) * 1000
+        print(f"⏱️ {operation_name} took {elapsed_ms:.2f} milliseconds")

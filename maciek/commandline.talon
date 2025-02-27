@@ -221,7 +221,7 @@ run that:
     edit.paste()
     key(enter)
 manual: "man "
-(take it|accept):
+take it:
     key(right)
     # key(enter)
 
