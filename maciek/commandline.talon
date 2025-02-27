@@ -189,6 +189,9 @@ pie test: "pytest "
 pie test all:
     key("ctrl-c")
     insert("pytest . -s\n")
+pie test run:
+    key("ctrl-c")
+    insert("python -m pytest\n")
 
 
 git ui: "gitui\n"

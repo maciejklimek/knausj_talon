@@ -6,7 +6,8 @@ settings():
     # Shortcut key for activating flow mode
     # This is quite strange because it looks like we have to take into account that the F7 key was pressed and only add the rest of the keys so that those keys + F7 create the shortcut that is written in the settings of the Wispr Flow. 
     # But this behavior didn't seem consistent. I recall that it worked even if we just put the shortcut here, the whole shortcut, and have this whole shortcut in the Wisp flow settings. So, not sure what's going on. Probably asking on the Talon Slack would enlighten me here.
-    user.flow_shortcut = "cmd-shift-b"
+    user.flow_shortcut = "ctrl-shift-b"
+    user.flow_shortcut_hands_free = "ctrl-shift-w"
     #user.flow_shortcut = "cmd-alt"
 
     #adjust the scale of the imgui to my liking
