@@ -154,7 +154,7 @@ cube nine: insert("k9s\n")
 
 vars show: "env\n"
 # Taskfile
-task: insert("task \t"|define side)
+task: insert("task \t")
 
 # vd command
 # vidi: insert("vd ")
@@ -244,9 +244,11 @@ code this:
 pip|peep:insert("python -m pip ")
 (pip|peep) freeze: insert("python -m pip freeze\n")
 (pip|peep) install: insert("python -m pip install ")
+(pip|peep) install requirements: insert("python -m pip install -r requirements.txt\n")
 
 
 virtual create: insert("python -m venv ./.venv\n")
+virtual remove|delete: insert("rm -rf ./.venv")
 virtual: insert("python -m venv ")
 virtual activate bash: insert("source .venv/bin/activate\n")
 virtual activate: insert("source .venv/bin/activate.fish\n")

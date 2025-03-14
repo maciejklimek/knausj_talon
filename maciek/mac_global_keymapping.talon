@@ -83,19 +83,38 @@ key(keypad_4):
     
 # Wispr Flow  
 key(f7:down):
+    print(50 * "=")
     print("f7:down")
     user.maybe_talon_sleep()
     user.start_flow_continuous()
+    print(50 * "*")
 
 key(f7:up):
+    print(50 * "=")
     print("f7:up")
     user.maybe_talon_wake_up()
     user.stop_flow_continuous()
+    print(50 * "*")
+
+key(f9:down):
+    print(50 * "=")
+    print("f9:down")
+    user.maybe_talon_sleep()
+    user.start_flow_continuous()
+    print(50 * "*")
+
+key(f9:up):
+    print(50 * "=")
+    print("f9:up")
+    user.maybe_talon_wake_up()
+    user.stop_flow_continuous()
+    print(50 * "*")
 
 key(f8):
+    print(50 * "=")
     print("f8")
     user.toggle_flow()
-
+    print(50 * "*")
     
 # key(keypad_0:down):
 #     print("keypad_0:down")
@@ -141,16 +160,16 @@ deck(pedal_middle:up):
     user.maybe_talon_wake_up()
     user.stop_flow_continuous()
  
-deck(pedal_left:down):
+deck(pedal_right:down):
     key(enter)
 
-deck(pedal_right:down):
-    print("pedal_right:down")
-    key(cmd:down)
+# deck(pedal_right:down):
+#     print("pedal_right:down")
+#     key(cmd:down)
 
-deck(pedal_right:up):
-    print("pedal_right:up")
-    key(cmd:up)
+# deck(pedal_right:up):
+#     print("pedal_right:up")
+#     key(cmd:up)
 
 
 # deck(pedal_right):

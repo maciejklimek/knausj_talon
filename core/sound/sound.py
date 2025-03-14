@@ -1,4 +1,4 @@
-from talon import Module, actions
+from talon import Module, actions, settings
 
 mod = Module()
 mod.list("playback_device", "Playback devices")
@@ -25,8 +25,9 @@ class Actions:
     def sound_microphone_enable(enable: bool):
         """Enables or disables the microphone"""
         if enable:
-            actions.sound.set_microphone("System Default")
-            actions.user.notify("Activating microphone")
+            default_mic = actions.settings.get("user.default_microphone", "System Default")
+            actions.sound.set_microphone(default_mic)
+            actions.user.notify(f"Activating microphone: {default_mic}")
         else:
             actions.sound.set_microphone("None")
             actions.user.notify("Deactivating microphone")

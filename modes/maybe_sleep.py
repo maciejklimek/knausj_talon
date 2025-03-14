@@ -1,4 +1,4 @@
-from talon import Module, Context, actions, app, scope
+from talon import Module, Context, actions, app, scope, settings
 
 mod = Module()
 ctx = Context()
@@ -55,11 +55,11 @@ class Actions:
             if should_wake_up:
                 print("Waking up Talon")
                 actions.speech.enable()
+                print("Setting microphone")
+                default_mic = settings.get("user.default_microphone")
+                print(f"Setting microphone to: {default_mic}")
+                actions.sound.set_microphone(default_mic)
             else:
                 print("Not waking up Talon.")
-
-            # if microphone_active:
-            actions.sound.set_microphone("Wireless GO II RX")
-                # actions.sound.set_microphone(microphone_active)
         except Exception as e:
             app.notify(f"Error in maybe_talon_wake_up: {e}")

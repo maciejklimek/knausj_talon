@@ -71,6 +71,7 @@ front$: browser.go_forward()
 
 google [<user.text>]$:
 password fill:
+    
     key(cmd-shift-l)
     sleep(200ms)
     key(enter)

@@ -58,12 +58,19 @@ panda this:
 
 ^puppy$:
     user.focus_kitty_app()
+
 ^obsidian$:
     user.focus_obsidian_app()
-`
+
 ^outlook$:
     user.focus_outlook_app()
-    
+
+^tana$:
+    user.focus_tana_app()
+
+^beaver$:
+    user.focus_dbeaver_app()
+
 # switcher_focus_and_wait wait u, 0.5ntil ui.active_app() == app,
 # But does this mean that talon made the context switch,  so that we can use rephrase?
 # park [<phrase>]$:
@@ -113,11 +120,11 @@ spot close: key(cmd-w)
 talon play: user.run_in_fish_shell("osascript -e 'tell app \"Terminal\" to activate' -e 'tell app \"Terminal\" to do script \"talon-play-latest\"'")
 
 talon play last: user.run_in_fish_shell("talon-play-pre-last")
-talon restart: user.run_in_fish_shell("talon-restart")
+# talon restart: user.run_in_fish_shell("talon-restart")
 
 puppy talon: user.focus_talon_window()
 
-^ (run this) | (puppy this) $:
+^ (run this) | (puppy thise) $:
     edit.copy()
     user.focus_kitty_app()
     sleep(1000ms)
@@ -169,12 +176,12 @@ puppy talon: user.focus_talon_window()
 
 # anki
 anki vscode:
-    user.run_in_fish_shell("code /Users/maciek/obsidian/maciek-knowledge/vscode\ talon\ anki.md")
+    user.run_in_fish_shell("code '/Users/maciek/obsidian/maciek-knowledge/vscode talon anki.md'")
     user.switcher_focus_and_wait("anki", 0.5)
     key(cmd-down)
     key(enter)
 anki basic:
-    user.run_in_fish_shell("code /Users/maciek/obsidian/maciek-knowledge/talon\ basic\ anki.md")
+    user.run_in_fish_shell("code '/Users/maciek/obsidian/maciek-knowledge/talon basic anki.md'")
     user.switcher_focus_and_wait("anki", 0.5)
     key(cmd-down)
     key(enter)

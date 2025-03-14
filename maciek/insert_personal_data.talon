@@ -1,10 +1,14 @@
 mode: command
 -
 # Insertion of my data
+# Fajnie tu było zrobić jakiś taki popup, czy coś, gdzie wpisujemy "insert" i wyskakuje coś, gdzie wybieramy sobie, koje chcemy "insertować". 
+#Można z Raycastem da się coś takiego zrobić. 
 insert email: insert("maciej.klimek@gmail.com")
 insert waldemar|bajka email: insert("waldemar.bajka@gmail.com")
 insert lingaro email: insert("maciej.klimek@lingarogroup.com")
 insert p g email: insert("klimek.mk@pg.com")
+insert p g login: insert("klimek.mk")
+
 insert deepsense email: insert("maciej.klimek@depsense.ai")
 
 insert first name: insert("Maciej")

@@ -272,6 +272,14 @@ class SpecificAppActions:
         """Focus Obsidian app"""
         actions.user.focus_app_by_bundle("md.obsidian")
 
+    def focus_tana_app():
+        """Focus Tana app"""
+        actions.user.focus_app_by_bundle("inc.tana.desktop")
+
+    def focus_dbeaver_app():
+        """Focus DBeaver app"""
+        actions.user.focus_app_by_bundle("org.jkiss.dbeaver.core.product")
+
     def focus_teams_app():
         """Focus Teams app"""
         actions.user.focus_app_by_bundle("com.microsoft.teams2")

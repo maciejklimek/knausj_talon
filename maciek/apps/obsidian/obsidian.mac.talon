@@ -13,8 +13,8 @@ bullet:
 
 insert task:
     insert("- [ ] ")
-    ,
-# bullet: user.obsidian_run_command("Toggle bullet list")
+
+bullet: user.obsidian_run_command("Toggle bullet list")
 
 lion [<user.text>]$:
     key(cmd-p)
