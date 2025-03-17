@@ -124,7 +124,7 @@ talon play last: user.run_in_fish_shell("talon-play-pre-last")
 
 puppy talon: user.focus_talon_window()
 
-^ (run this) | (puppy thise) $:
+^ (run this) | (puppy this) $:
     edit.copy()
     user.focus_kitty_app()
     sleep(1000ms)
