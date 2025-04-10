@@ -8,13 +8,13 @@ crowns: knausj_talon|/Users/maciek/projects/knausj_talon
 nous: knausj_talon|/Users/maciek/projects/knausj_talon
 knaus: knausj_talon|/Users/maciek/projects/knausj_talon
 fish: fish-config|/Users/maciek/.config/fish
-auto: autopilot|/Users/maciek/projects/autopilot
-helm: autopilot-helm|/Users/maciek/projects/autopilot-helm
+# auto: autopilot|/Users/maciek/projects/autopilot
+# helm: autopilot-helm|/Users/maciek/projects/autopilot-helm
 community: community|/Users/maciek/projects/community
 whisper: talon-whisper|/Users/maciek/projects/talon-whispers
 talon: talon-user|/Users/maciek/projects/talon-user
 actions: action-app-api|/Users/maciek/projects/action-app-api
 smart yard: smartyard-fa|/Users/maciek/projects/smartyard-fa
 anthropic: anthropic-quickstarts|/Users/maciek/projects/anthropic-quickstarts
-d a p: decision-automation-api|/Users/maciek/projects/decision-automation-api
-ragbits: ragbits|/Users/maciek/projects/ragbits
+d a p: decision-automation-api|/Users/maciek/proj4ects/decision-automation-api
+# ragbits: ragbits|/Users/maciek/projects/ragbits

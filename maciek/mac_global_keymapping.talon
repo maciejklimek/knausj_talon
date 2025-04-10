@@ -73,46 +73,41 @@ key(keypad_4):
 #     insert(res)
 #     user.command_mode()
 
-# key(f5:down):
-#     user.maybe_talon_sleep()
-#     user.start_flow()
-
-# key(f5:up):
-#     user.maybe_talon_wake_up()
-#     user.stop_flow()
     
 # Wispr Flow  
-key(f7:down):
-    print(50 * "=")
-    print("f7:down")
-    user.maybe_talon_sleep()
-    user.start_flow_continuous()
-    print(50 * "*")
+# key(f7:down):
+#     print(50 * "=")
+#     print("f7:down")
+#     user.maybe_talon_sleep()
+#     user.start_flow_continuous()
+#     print(50 * "*")
 
-key(f7:up):
-    print(50 * "=")
-    print("f7:up")
-    user.maybe_talon_wake_up()
-    user.stop_flow_continuous()
-    print(50 * "*")
+# key(f7:up):
+#     print(50 * "=")
+#     print("f7:up")
+#     user.maybe_talon_wake_up()
+#     user.stop_flow_continuous()
+#     print(50 * "*")
 
-key(f9:down):
-    print(50 * "=")
-    print("f9:down")
-    user.maybe_talon_sleep()
-    user.start_flow_continuous()
-    print(50 * "*")
+# key(f12:down):
+#     print(50 * "=")
+#     print("f12:down")
+#     user.maybe_talon_sleep()
+#     # user.start_flow_continuous()
+#     print(50 * "*")
 
-key(f9:up):
-    print(50 * "=")
-    print("f9:up")
-    user.maybe_talon_wake_up()
-    user.stop_flow_continuous()
-    print(50 * "*")
+# key(f12:up):
+#     print(50 * "=")
+#     print("f12:up")
+#     user.maybe_talon_wake_up()
+#     # user.stop_flow_continuous()
+#     print(50 * "*")
 
-key(f8):
+# There is a problem with this because when I'm in a VSCode terminal, some string is passed to the terminal. I tried to block this, but it didn't work. 
+key(f8:passive):
     print(50 * "=")
     print("f8")
+    # sleep(50ms)
     user.toggle_flow()
     print(50 * "*")
     
@@ -144,7 +139,7 @@ key(f8):
 
 # key(f3:down):
 #     user.maybe_talon_sleep()
-#     user.start_whisper_mode_and_start_dictation()
+    # user.start_whisper_mode_and_start_dictation()
 
 
 ###############################################################################

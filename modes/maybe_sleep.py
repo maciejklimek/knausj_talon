@@ -1,4 +1,4 @@
-from talon import Module, Context, actions, app, scope, settings
+from talon import Module, Context, actions, app, scope
 
 mod = Module()
 ctx = Context()
@@ -56,9 +56,7 @@ class Actions:
                 print("Waking up Talon")
                 actions.speech.enable()
                 print("Setting microphone")
-                default_mic = settings.get("user.default_microphone")
-                print(f"Setting microphone to: {default_mic}")
-                actions.sound.set_microphone(default_mic)
+                actions.user.sound_set_preferred_microphone()
             else:
                 print("Not waking up Talon.")
         except Exception as e:

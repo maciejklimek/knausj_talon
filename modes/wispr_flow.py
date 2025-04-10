@@ -48,19 +48,20 @@ class Actions:
 
         if _flow_active:
             actions.mode.disable('user.flow')
-            print("[FLOW TOGGLE] Deactivating flow...")
-            shortcut = settings.get("user.flow_shortcut_hands_free")
-            print(f"Using shortcut: {shortcut}")
-            actions.key(f"{shortcut}")
+            print("\033[91m[FLOW TOGGLE] Deactivating flow...\033[0m")
+            # shortcut = settings.get("user.flow_shortcut_hands_free")
+            # print(f"Using shortcut: {shortcut}")
+            # actions.key(f"{shortcut}")
             actions.user.maybe_talon_wake_up()
             print("[FLOW TOGGLE] Flow deactivated")
             _flow_active = False
         else:
             actions.mode.enable('user.flow')
-            print("[FLOW TOGGLE] Activating flow...")
+            print("\033[92m[FLOW TOGGLE] Activating flow...\033[0m")
             actions.user.maybe_talon_sleep()
-            shortcut = settings.get("user.flow_shortcut_hands_free")
-            actions.key(f"{shortcut}")
+            # shortcut = settings.get("user.flow_shortcut_hands_free")
+            # print(f"Using shortcut: {shortcut}")
+            # actions.key(f"{shortcut}")
             print("[FLOW TOGGLE] Flow activated")
             _flow_active = True 
 

@@ -1,5 +1,6 @@
-from talon import Module, actions, settings
-from .maybe_sleep import microphone_active
+from talon import Module, actions
+
+DEFAULT_MICROPHONE = "System Default"
 
 mod = Module()
  
@@ -18,14 +19,8 @@ class Actions:
         
         # If we were sleeping and now waking up, check the microphone
         if was_sleeping:
-            default_mic = settings.get("user.default_microphone", "System Default")
-            actions.sound.set_microphone(default_mic)
-            # actions.user.notify(f"Activating microphone: {default_mic}")
-            
-            # if microphone_active:
-            #     actions.sound.set_microphone(microphone_active)
-            # else:
-            #     print("No active microphone found. Using default.")
+            print("Setting microphone")
+            actions.user.sound_set_preferred_microphone()
         
         return actions.speech.enabled()
 

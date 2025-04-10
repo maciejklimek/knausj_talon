@@ -24,12 +24,7 @@ and app.name: Code
 os: linux
 and app.name: code-oss
 """
-mod.apps.vscode = """
-os: windows
-and app.name: Visual Studio Code
-os: windows
-and app.exe: Code.exe
-"""
+
 
 ctx.matches = r"""
 app: vscode

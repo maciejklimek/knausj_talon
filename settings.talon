@@ -12,7 +12,8 @@ settings():
     # user.flow_shortcut_hands_free = "ctrl-f18"
 
     # XXX: This is hacky
-    user.default_microphone = "Wireless GO II RX"
+    # user.default_microphone = "Yeti Stereo Microphone"
+    user.default_microphone = "Wireless GO II RX, Yeti Stereo Microphone, MacBook Air Microphone"
     #user.flow_shortcut = "cmd-alt"
 
     #adjust the scale of the imgui to my liking

@@ -1,13 +1,13 @@
 app: vscode
 os: mac
 -
-deploy:
+^deploy$:
     user.vscode("workbench.action.terminal.focus")
     sleep(600ms)
     key("ctrl-c")
     insert("task deploy -s\n")
 
-^deploy full:
+^deploy full$:
     user.vscode("workbench.action.terminal.focus")
     sleep(600ms)
     key("ctrl-c")
