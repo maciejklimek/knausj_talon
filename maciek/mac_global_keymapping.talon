@@ -158,6 +158,64 @@ deck(pedal_middle:up):
 deck(pedal_right:down):
     key(enter)
 
+
+###################################################################################
+### Huion dialpad
+###################################################################################
+key(ctrl-shift-alt-cmd-f1):
+    user.huion_dialpad_f1()
+
+key(ctrl-shift-alt-cmd-f2):
+    user.huion_dialpad_f2()
+
+key(ctrl-shift-alt-cmd-f3):
+    user.huion_dialpad_f3()
+
+key(ctrl-shift-alt-cmd-f4):
+    user.huion_dialpad_f4()
+
+key(ctrl-shift-alt-cmd-f5):
+    user.huion_dialpad_f5()
+
+key(ctrl-shift-alt-cmd-f6):
+    user.huion_dialpad_f6()
+
+key(ctrl-shift-alt-cmd-f7):
+    user.huion_dialpad_f7()
+
+key(ctrl-shift-alt-cmd-f8):
+    user.huion_dialpad_f8()
+
+key(ctrl-shift-alt-cmd-f9):
+    user.huion_dialpad_f9()
+
+key(ctrl-shift-alt-cmd-f10):
+    user.huion_dialpad_f10()
+
+key(ctrl-shift-alt-cmd-f11):
+    user.huion_dialpad_f11()
+
+key(ctrl-shift-alt-cmd-f12):
+    user.huion_dialpad_f12()
+
+key(ctrl-shift-alt-cmd-a):
+    user.huion_dialpad_a()
+
+key(ctrl-shift-alt-cmd-b):
+    user.huion_dialpad_b()
+
+key(ctrl-shift-alt-cmd-c):
+    user.huion_dialpad_c()
+
+key(ctrl-shift-alt-cmd-d):
+    user.huion_dialpad_d()
+
+key(ctrl-shift-alt-cmd-e):
+    user.huion_dialpad_e()
+
+key(ctrl-shift-alt-cmd-f):
+    user.huion_dialpad_f()
+
 # deck(pedal_right:down):
 #     print("pedal_right:down")
 #     key(cmd:down)

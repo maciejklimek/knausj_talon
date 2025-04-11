@@ -1,3 +1,4 @@
+import subprocess
 from talon import Module, actions, settings
 
 DEFAULT_MICROPHONE = "System Default"
@@ -44,6 +45,62 @@ class Actions:
     def sound_microphone_enable_event():
         """Event that triggers when the microphone is enabled or disabled"""
         actions.skip()
+
+    def get_macos_current_microphone() -> str:
+        """Gets the current microphone set in macOS using SwitchAudioSource"""
+        try:
+            # Assumes SwitchAudioSource is in the system PATH
+            # -c gets current device, -t input specifies input device type
+            result = subprocess.run(
+                ["SwitchAudioSource", "-c", "-t", "input"],
+                capture_output=True,
+                text=True,
+                check=True,  # Raise an exception if the command fails
+            )
+            mic_name = result.stdout.strip()
+            print(f"macOS current microphone: {mic_name}")
+            return mic_name
+        except FileNotFoundError:
+            print("Error: SwitchAudioSource command not found. Is it installed and in PATH?")
+            actions.app.notify("Error: SwitchAudioSource not found", "Please install it (brew install switchaudio-osx)")
+            return ""
+        except subprocess.CalledProcessError as e:
+            print(f"Error running SwitchAudioSource to get current mic: {e}")
+            print(f"Stderr: {e.stderr}")
+            actions.app.notify("Error getting microphone", f"SwitchAudioSource failed: {e.stderr.strip()}")
+            return ""
+        except Exception as e:
+            print(f"Unexpected error getting current mic: {e}")
+            actions.app.notify("Error getting microphone", "An unexpected error occurred.")
+            return ""
+
+    def set_macos_microphone(name: str):
+        """Sets the macOS microphone using SwitchAudioSource"""
+        if not name:
+            print("Error: Cannot set macOS microphone to an empty name.")
+            return
+        try:
+            # Assumes SwitchAudioSource is in the system PATH
+            # -t input specifies input device type, -s sets the device by name
+            subprocess.run(
+                ["SwitchAudioSource", "-t", "input", "-s", name],
+                capture_output=True,
+                text=True,
+                check=True,  # Raise an exception if the command fails
+            )
+            print(f"Successfully set macOS microphone to: {name}")
+            # Optional: Notify the user
+            actions.app.notify("macOS Microphone Set", f"Input set to: {name}")
+        except FileNotFoundError:
+            print("Error: SwitchAudioSource command not found. Is it installed and in PATH?")
+            actions.app.notify("Error: SwitchAudioSource not found", "Please install it (brew install switchaudio-osx)")
+        except subprocess.CalledProcessError as e:
+            print(f"Error running SwitchAudioSource to set mic '{name}': {e}")
+            print(f"Stderr: {e.stderr}")
+            actions.app.notify("Error setting microphone", f"SwitchAudioSource failed: {e.stderr.strip()}")
+        except Exception as e:
+            print(f"Unexpected error setting mic '{name}': {e}")
+            actions.app.notify("Error setting microphone", f"An unexpected error occurred trying to set to '{name}'.")
 
     def sound_set_preferred_microphone():
         """Sets the microphone to the first available preferred microphone based on the setting user.default_microphone"""
