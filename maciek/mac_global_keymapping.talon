@@ -110,6 +110,15 @@ key(f8:passive):
     # sleep(50ms)
     user.toggle_flow()
     print(50 * "*")
+
+key(f15:passive):
+    print(50 * "=")
+    print("f15")
+    # sleep(50ms)
+    user.toggle_flow()
+    print(50 * "*")
+
+
     
 # key(keypad_0:down):
 #     print("keypad_0:down")

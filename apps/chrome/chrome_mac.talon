@@ -3,6 +3,7 @@ app: chrome
 -
 tag(): browser
 tag(): user.tabs
+
 key(cmd-shift-s):
     edit.copy()
 ###############################################################################
@@ -47,10 +48,6 @@ address [<user.text>]:
     key(cmd-l)
     sleep(50ms)
     insert(text or "")
-address [<user.text>]:
-    key(cmd-l)
-    sleep(50ms)
-    insert(text or "")
 
 jump [<user.text>]:
     key(cmd-shift-a)
@@ -62,17 +59,15 @@ jump [<user.text>]:
     sleep(40ms)
     user.set_next_action("close")
 
-go front: browser.go_forward()
 
 next$: app.tab_next()
 last$: app.tab_previous()
 back$: browser.go_back()
 front$: browser.go_forward()
 
-google [<user.text>]$:
+#google [<user.text>]$:
 password fill:
-    
-    key(cmd-shift-l)
+    key(up)
     sleep(200ms)
     key(enter)
 
@@ -81,7 +76,7 @@ tab open [<user.text>]$:
     sleep(100ms)
     insert(text or "")
 
-
+incognito [window]: key(cmd-shift-n)
 
 [go] find [<user.text>]$:
     key(cmd-f)
@@ -91,6 +86,11 @@ tab open [<user.text>]$:
 
 [go] find this:
     key(cmd-c)
+    key(cmd-f)
+    sleep(200ms)
+    key(cmd-v)
+
+[go] find that:
     key(cmd-f)
     sleep(200ms)
     key(cmd-v)

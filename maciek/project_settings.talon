@@ -1,5 +1,5 @@
 tag: user.project_settings
-
+-
 # Commands to switch between projects
 switch project <user.vscode_projects>:
     user.switch_project(vscode_projects)

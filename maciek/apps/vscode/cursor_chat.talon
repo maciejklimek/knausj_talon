@@ -1,6 +1,3 @@
-app: vscode
-win.title: /[Chat]/
--
 
 # attaching resources in the chat. 
 attach: "@"

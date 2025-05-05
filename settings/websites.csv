@@ -8,7 +8,11 @@ https://allegro.pl/moje-allegro/zakupy/kupione,allegro orders
 https://www.amazon.pl/gp/css/order-history?ref_=nav_orders_first,amazon orders
 https://allegro.pl/koszyk,allegro cart
 https://www.frisco.pl/,frisco
-https://www.olx.pl/, olx
+https://www.olx.pl/, olix
+https://www.ikea.com/pl/pl/,ikea
+
+# LLMs
+https://mcp.so/explore, mcp list
 
 # Banking
 https://konto.infakt.pl/zaloguj/,infakt
@@ -24,7 +28,9 @@ https://dropbox.com/,dropbox
 https://github.com/,github
 https://gist.github.com/,gist
 https://en.wikipedia.org/,wikipedia
-
+http://homeassistant.local:8123/, home assistant
+https://www.gdziepolek.pl/, drugs map
+https://mailum.com/,mailum
 # Google
 https://www.youtube.com/,youtube
 https://photos.google.com/,photos
@@ -39,6 +45,8 @@ https://translate.google.com/,translate
 https://scholar.google.com/,google cool
 https://console.cloud.google.com/home/dashboard, cloud
 https://console.cloud.google.com/home/dashboard, console cloud 
+
+
 https://app.asana.com/0/1206793937365873/1206794044750309, asana
 https://app.clickup.com/24347079/v/l/li/901201885102, click up
 https://keep.google.com/u/0/, keep
@@ -56,50 +64,9 @@ https://nofluffjobs.com/pl, no fluff jobs
 https://justjoin.it/, just join
 https://www.linkedin.com/in/maciejklimek1/, linkedin
 
-
-# lingaro
-https://sulu.lingarogroup.com/, sulu
-https://lingaro.sharepoint.com/, sharepoint
-https://lingarogroup.csod.com/login/render.aspx?id=defaultclp, cornerstone
-
-# auto pilot
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/NA-Autopilot.wiki/1516/NA-Autopilot-Projects, auto wiki
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_wiki/wikis/autopilot_wiki/2059/Landscape-overview, auto landscape
-https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto dev
-https://dev.azure.com/pg-warehousing/NA%20Autopilot, auto def
-https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2Ffc435c31-c49e-4436-a0f6-7ee47d799fa9%2FresourceGroups%2FAZ-RG-WHSDAPEdge-Dev-02%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fautopilotdev2sa/path/latest/etag/%220x8DB39F03BC8644A%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None, storage w dev
-https://dap-edge-dev.warehousing.pg.com/argo/workflows?limit=50, argo w dev
-https://dap-edge-stg.warehousing.pg.com/argo/, argo w stage
-https://dap-edge-nemc-dev.warehousing.pg.com/argo/, argo n dev
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_git/autopilot, auto repos
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipelines
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_build, auto pipeline
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_release?_a=releases&view=mine&definitionId=33, auto release
-https://dev.azure.com/pg-warehousing/NA%20Autopilot/_sprints/taskboard/Allocation%20algorithm/NA%20Autopilot/Sprint%2056, auto sprint
-https://docs.google.com/spreadsheets/d/100LnxQIzMHvvEWvCYhR2XEWlSX2k2dg9rg63pjDW_RU/edit?gid=0#gid=0, auto timesheet
-
 # azure
 https://portal.azure.com/#home, azure portal
 https://portal.azure.com/#home, azure
 
-# smart yard
-https://smartyard.pg.com/, smartyard
-https://smartyard.pg.com/, smart yard
-https://dev.azure.com/pg-warehousing/Smart%20Yard, smartyard dev
-https://dev.azure.com/pg-warehousing/Smart%20Yard, smart yard dev
-https://github.com/procter-gamble/, p g github
-https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/126/Project-Overview, smartyard wiki
-https://dev.azure.com/pg-warehousing/Smart%20Yard/_wiki/wikis/Smart-Yard.wiki/126/Project-Overview, smart yard wiki
-
-# Dap, e-carriers
-https://dev.azure.com/pg-warehousing/Decision%20Automation, dap dev  
-https://dev.azure.com/pg-warehousing/Decision%20Automation, d a p dev  
-https://dev.azure.com/pg-warehousing/Decision%20Automation/_sprints/taskboard/Decision%20Automation%20Team/Decision%20Automation, d a p sprint
-https://github.com/procter-gamble/WHS-decision-automation-api, d a p repo
-https://github.com/procter-gamble/WHS-decision-automation-api, d a p github 
-
-
-# ragbits
-https://github.com/deepsense-ai/ragbits/, ragbits repo
 
 

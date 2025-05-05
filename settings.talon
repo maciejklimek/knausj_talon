@@ -14,12 +14,19 @@ settings():
     # XXX: This is hacky
     # user.default_microphone = "Yeti Stereo Microphone"
     user.default_microphone = "Wireless GO II RX, Yeti Stereo Microphone, MacBook Air Microphone"
+    user.mouse_continuous_scroll_speed_quotient = 1
+    user.mouse_continuous_scroll_amount = 1
+    user.mouse_continuous_scroll_acceleration = 10
+
     #user.flow_shortcut = "cmd-alt"
 
     #adjust the scale of the imgui to my liking
     imgui.scale = 1.3
     imgui.dark_mode = 1
     # enable if you'd like the picker gui to automatically appear when explorer has focus
+
+    # scrolling
+    
     
     #set the max number of command lines per page in help
     user.help_max_command_lines_per_page = 50

@@ -13,8 +13,5 @@ fish: fish-config|/Users/maciek/.config/fish
 community: community|/Users/maciek/projects/community
 whisper: talon-whisper|/Users/maciek/projects/talon-whispers
 talon: talon-user|/Users/maciek/projects/talon-user
-actions: action-app-api|/Users/maciek/projects/action-app-api
-smart yard: smartyard-fa|/Users/maciek/projects/smartyard-fa
 anthropic: anthropic-quickstarts|/Users/maciek/projects/anthropic-quickstarts
-d a p: decision-automation-api|/Users/maciek/proj4ects/decision-automation-api
 # ragbits: ragbits|/Users/maciek/projects/ragbits
